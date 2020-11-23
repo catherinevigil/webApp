@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using uiExp.Shared;
 
 namespace uiExp.Shared
 {
@@ -43,6 +42,7 @@ namespace uiExp.Shared
                 foreach (var message in group.Messages)
                     Console.WriteLine(message.Text);
         }
+
     }
 
 

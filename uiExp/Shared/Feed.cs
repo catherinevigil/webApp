@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using uiExp.Shared;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -21,13 +20,12 @@ namespace uiExp.Shared
 
         private List<Conversation> Seperate(string[] lines)
         {
-            Console.WriteLine("seperate was called");
+            //Console.WriteLine("seperate was called");
             List<Conversation> ConvoList = new List<Conversation>();
-            int index = 0;
 
             for (int i = 0; i < lines.Length; i++)
             {
-                Console.WriteLine(ConvoList.Count);
+                //Console.WriteLine(ConvoList.Count);
                 if (lines[i] == "")
                 {
                     ConvoList.Add(new Conversation());
@@ -35,17 +33,16 @@ namespace uiExp.Shared
                 else if (lines[i].Contains(":"))
                 {
                     var name = lines[i].Remove(lines[i].Length - 1);
-                    if (ConvoList.LastOrDefault().Conversants == null)
+                    if (!ConvoList.LastOrDefault().Conversants.Any())//if list does not have any elements
                     {
-                        index = 1;
                         ConvoList.LastOrDefault().Conversants.Add(name);
+                        Console.WriteLine("added conversant" + ConvoList.LastOrDefault().Conversants.Last());
                     }
                     else
                     {
-                        index = ConvoList.LastOrDefault().Conversants.IndexOf(name);
-                        if (index != -1)
+                        if (ConvoList.LastOrDefault().Conversants.IndexOf(name) == -1)
                             ConvoList.LastOrDefault().Conversants.Add(name);
-                        index = ConvoList.LastOrDefault().Conversants.Count - 1;
+                        Console.WriteLine("added conversant" + ConvoList.LastOrDefault().Conversants.Last());
                     }
 
 

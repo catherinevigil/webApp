@@ -11,8 +11,6 @@
 @inject HttpClient Http
 @using System.Net.Http
 
-<h1>Hello, world!</h1>
-
 @code{
     Conversation convo = new Conversation();
     //string [] lines = new string[]();
@@ -20,6 +18,7 @@
     //{
     //   lines = await WebRequestMethods.Http.GetJsonAsync<lines[]>("sample-data/weather.json");
     //}
+
 
 
     public String getClass(Boolean left)
@@ -38,56 +37,152 @@
             return "right";
     }
 
-    public String getConversant(Boolean left, Conversation conversation)
+    public String getConversant(bool even, Conversation conversation)
     {
-        if (left)
-            return conversation.Conversants[1];
+
+        if (even)
+            return conversation.Conversants.First();
         else
-            return conversation.Conversants[2];
+            return conversation.Conversants.Last();
     }
 
 
 
     //protected override async Task OnInitializedAsync() { }
     //private static string[] Lines { get; } = System.IO.File.ReadAllLines($"{System.IO.Directory.GetCurrentDirectory()}{@"/wwwroot/textThreadFeed.txt"}");
+    private static string[] lines { get; } = {
+    "",
+"Eli Burnes:",
+"Dude what do you think of contemporary interior design / architecture. Like the aesthetic of all the new coffee shops",
+"Tunc Otzemir:",
+"I think it’s good for the cafes",
+"It is nice but not super cozy",
+"",
+"Kush Sharma:",
+"Creating guilt among the powerful functions in a fractal way. The aristocrats of the Roman republic had the same internal dynamics - e.g. Gaius Marius, a low-born but extremely competent military general who denounced the high aristocracy of his day for responding to crises with haughty arrogance that didn't correspond to their abilities. They had power, but competence isn't hereditary like power is/was, so the critiques hit on a legitimate point.",
+"Eli Burnes:",
+"What do you mean by fractal?",
+"Kush Sharma:",
+"Just like the bottom of the bottom (e.g. Jesus and the Jews) were able to critique one level up - establishment Jewish rabbis + the Roman administrators, the same dynamics were occurring within the highest reaches (and maybe occur in every local class / power conflict?)",
+"",
+"Jasmine Wang:",
+"china is so full of contradictions ",
+"",
+"Ethan Fields:",
+"Even prior to the pandemic, the art and museum world was in a state of flux as institutions were critiqued for accepting dubious donations",
+"So the board members clearly wanted to mitigate any sense of controversy that could have exposed them to public dissatisfaction",
+"Caleb Rhodes:",
+"Yeah this is definitely a defensive move, but was it motivated by money or just fear of outrage?",
+"",
+"Sahil Handa:",
+"I definitely think that in quarantine time felt that it was going by much quicker",
+"Regan Brady:",
+"yeah i agree- the spring felt like I was reliving the same day over and over",
+"and honestly, i couldn’t tell you anything that happened to me this summer",
+"Sahil Handa:",
+"exactly, it molds together",
+"",
+"Ian Liefer:",
+"Why do you think Biden is gonna win?",
+"Trump has unprecedented black and Latino support",
+"And hasn’t lost any of his base",
+"Henry Burnes:",
+"elderly people and suburban women are going for Biden, two critical demographics for Trump",
+"Ian Liefer:",
+"but it’s unclear if the data supports that in key swing states",
+"",
+"Eli Burnes:",
+"The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
+"Simpler and more vulgar ways are being used to assert dominance and prestige" };
+    public Feed feed = new Feed(lines);
 
 
-    protected override async Task OnInitializedAsync()
+    @*protected override async Task OnInitializedAsync()
+        {
+
+
+            var data = await Http.GetFromJsonAsync<Feed>("Feed"); //or replace string with Feed, or api/FeedController/Get
+            Console.WriteLine(data);
+
+
+        }*@
+    public int i = 0;
+    public bool even;
+    public void dump()
     {
-
-
-        var data = await Http.GetFromJsonAsync<Feed>("Feed"); //or replace string with Feed, or api/FeedController/Get
-        Console.WriteLine(data);
-
-
+        DumpityDump.Dump(feed); //this will print a json of the feed object's properties/values to the console
     }
+    
 }
 
+@*<button type="button" class="btn btn-primary"
+        @onclick="dump"> //make button to print out data
+</button>*@
 
-@*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-    <div class="page-content">
-        <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
-            <div class="messages">
-                @foreach (var group in convo.Groups)
-                {<div class="message-group">
-                        <p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                            <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
-                                @getConversant(group.Left, convo)
-                            </span>
-                        </p>
-                        @foreach (var message in group.Messages)
-                        {
-                            <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                                <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
-                                    @message.Text
+    @*this is code to display a feed*@
+
+
+
+<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+        <div class="page-content">
+            <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
+
+                @foreach (var convo in feed.FeedList)
+                {
+                i = 0;
+                <div class="messages" data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
+                    @foreach (var group in convo.Groups)
+                    {
+                        <div class="message-group">
+                            <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
+                                    @getConversant((i % 2 == 0), convo)
                                 </span>
                             </p>
-                        }
-                    </div>
-                }
+                            @foreach (var message in group.Messages)
+                            {
+                                <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
+                                        @message.Text
+                                    </span>
+                                </p>
+                            }
+                        </div>
+                        i++;
+                     }
+                </div>
 
-            </div>
-        </section>
-    </div>
-</body>*@
+                }
+            </section>
+        </div>
+    </body>
+
+
+<!--this is code for displaying a conversation-->
+@*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+        <div class="page-content">
+            <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
+                <div class="messages">
+                    @foreach (var group in convo.Groups)
+                    {<div class="message-group">
+                            <p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
+                                    @getConversant(group.Left, convo)
+                                </span>
+                            </p>
+                            @foreach (var message in group.Messages)
+                            {
+                                <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
+                                        @message.Text
+                                    </span>
+                                </p>
+                            }
+                        </div>
+                    }
+
+                </div>
+            </section>
+        </div>
+    </body>*@
 
