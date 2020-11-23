@@ -35,6 +35,42 @@ namespace uiExp.Shared
         {
 
         }
+        public Conversation (String[] lines)
+        {
+            SeperateConvo(lines);
+        }
+
+        private void SeperateConvo(string[] lines)
+        {
+            //Console.WriteLine("seperate was called");
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].EndsWith(":"))
+                {
+                    var name = lines[i].Remove(lines[i].Length - 1);
+                    if (!this.Conversants.Any())//if list does not have any elements
+                    {
+                        this.Conversants.Add(name);
+                        Console.WriteLine("added conversant" + this.Conversants.Last());
+                    }
+                    else
+                    {
+                        if (this.Conversants.IndexOf(name) == -1)
+                            this.Conversants.Add(name);
+                        Console.WriteLine("added conversant" + this.Conversants.Last());
+                    }
+
+
+                    this.Groups.Add(new MessageGroup());
+                }
+                else
+                {
+                    this.Groups.Last().Messages.Add(new Message(lines[i]));
+                }
+
+            }
+        }
 
         public void output()
         {
