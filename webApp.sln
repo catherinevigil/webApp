@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uiExp.Server", "uiExp\Server\uiExp.Server.csproj", "{6862BB43-D935-4D9D-B374-7EF85477B3B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uiExp.Client", "uiExp\Client\uiExp.Client.csproj", "{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uiExp.Shared", "uiExp\Shared\uiExp.Shared.csproj", "{22661C68-70A8-493C-9514-002C4D8A4A9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6862BB43-D935-4D9D-B374-7EF85477B3B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6862BB43-D935-4D9D-B374-7EF85477B3B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6862BB43-D935-4D9D-B374-7EF85477B3B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6862BB43-D935-4D9D-B374-7EF85477B3B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22661C68-70A8-493C-9514-002C4D8A4A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22661C68-70A8-493C-9514-002C4D8A4A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22661C68-70A8-493C-9514-002C4D8A4A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22661C68-70A8-493C-9514-002C4D8A4A9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BB63419-5432-45EB-8A69-8415499ADBBA}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+	EndGlobalSection
+EndGlobal

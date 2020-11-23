@@ -1,0 +1,93 @@
+﻿@page "/"
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@using System.ComponentModel
+@using System.ComponentModel.Design
+@using System.Linq;
+@using System.Net
+@using System.Text
+@using System.IO;
+@inject HttpClient Http
+@using System.Net.Http
+
+<h1>Hello, world!</h1>
+
+@code{
+    Conversation convo = new Conversation();
+    //string [] lines = new string[]();
+    //protected override async Task OnInitializedAsync()
+    //{
+    //   lines = await WebRequestMethods.Http.GetJsonAsync<lines[]>("sample-data/weather.json");
+    //}
+
+
+    public String getClass(Boolean left)
+    {
+        if (left)
+            return ("message message-left aos-init");
+        else
+            return ("message message-right aos-init");
+
+    }
+    public String getAlign(Boolean left)
+    {
+        if (left)
+            return "left";
+        else
+            return "right";
+    }
+
+    public String getConversant(Boolean left, Conversation conversation)
+    {
+        if (left)
+            return conversation.Conversants[1];
+        else
+            return conversation.Conversants[2];
+    }
+
+
+
+    //protected override async Task OnInitializedAsync() { }
+    //private static string[] Lines { get; } = System.IO.File.ReadAllLines($"{System.IO.Directory.GetCurrentDirectory()}{@"/wwwroot/textThreadFeed.txt"}");
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+        var data = await Http.GetFromJsonAsync<Feed>("Feed"); //or replace string with Feed, or api/FeedController/Get
+        Console.WriteLine(data);
+
+
+    }
+}
+
+
+@*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+    <div class="page-content">
+        <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
+            <div class="messages">
+                @foreach (var group in convo.Groups)
+                {<div class="message-group">
+                        <p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                            <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
+                                @getConversant(group.Left, convo)
+                            </span>
+                        </p>
+                        @foreach (var message in group.Messages)
+                        {
+                            <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
+                                    @message.Text
+                                </span>
+                            </p>
+                        }
+                    </div>
+                }
+
+            </div>
+        </section>
+    </div>
+</body>*@
+
