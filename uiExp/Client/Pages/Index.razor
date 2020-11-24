@@ -10,41 +10,43 @@
 @using System.IO;
 @inject HttpClient Http
 @using System.Net.Http
+@inject NavigationManager NavigationManager
+
 
 @code{
-    Conversation convo = new Conversation();
-    //string [] lines = new string[]();
-    //protected override async Task OnInitializedAsync()
-    //{
-    //   lines = await WebRequestMethods.Http.GetJsonAsync<lines[]>("sample-data/weather.json");
-    //}
+        Conversation convo = new Conversation();
+        //string [] lines = new string[]();
+        //protected override async Task OnInitializedAsync()
+        //{
+        //   lines = await WebRequestMethods.Http.GetJsonAsync<lines[]>("sample-data/weather.json");
+        //}
 
 
 
-    public String getClass(Boolean left)
-    {
-        if (left)
-            return ("message message-left aos-init");
-        else
-            return ("message message-right aos-init");
+        public String getClass(Boolean left)
+        {
+            if (left)
+                return ("message message-left aos-init");
+            else
+                return ("message message-right aos-init");
 
-    }
-    public String getAlign(Boolean left)
-    {
-        if (left)
-            return "left";
-        else
-            return "right";
-    }
+        }
+        public String getAlign(Boolean left)
+        {
+            if (left)
+                return "left";
+            else
+                return "right";
+        }
 
-    public String getConversant(bool even, Conversation conversation)
-    {
+        public String getConversant(bool even, Conversation conversation)
+        {
 
-        if (even)
-            return conversation.Conversants.First();
-        else
-            return conversation.Conversants.Last();
-    }
+            if (even)
+                return conversation.Conversants.First();
+            else
+                return conversation.Conversants.Last();
+        }
 
 
 
@@ -94,10 +96,10 @@
     "Eli Burnes:",
     "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
     "Simpler and more vulgar ways are being used to assert dominance and prestige" };
-    
+
     public Feed feed = new Feed(lines);
 
-        @*protected override async Task OnInitializedAsync()
+    @*protected override async Task OnInitializedAsync()
         {
 
 
@@ -118,51 +120,55 @@
         Console.WriteLine("hello");
         Console.WriteLine(LoadConvos.linesList[1][5]); //this will print a json of the feed object's properties/values to the console
     }
+    public void NavigateToKushTalk()
+    {
+        NavigationManager.NavigateTo("/kushconvo");
 
+    }
 }
-
-<button type="button" class="btn btn-primary"
+<!--<button type="button" class="btn btn-primary"
         @onclick="ShowData">
-    make button to print out data
+        make button to print out data
 </button>
-<NavLink class="nav-link" href="KushConvo"> Kush Convo! </NavLink>
-    @*this is code to display a feed*@
-
+<NavLink class="nav-link" href="KushConvo"> Kush Convo! </NavLink>-->
+@*this is code to display a feed*@
 
 
 <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-        <div class="page-content">
-            <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
+    <div class="page-content">
+        <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
 
-                @foreach (var convo in feed.FeedList)
-                {
+            @foreach (var convo in feed.FeedList)
+            {
                 i = 0;
                 <div class="messages" data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
-                    @foreach (var group in convo.Groups)
-                    {
-                        <div class="message-group">
-                            <p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                                <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
-                                    @getConversant((i % 2 == 0), convo)
-                                </span>
-                            </p>
-                            @foreach (var message in group.Messages)
-                            {
-                                <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
-                                        @message.Text
+                    <button @onclick="NavigateToKushTalk">
+                        @foreach (var group in convo.Groups)
+                        {
+                            <div class="message-group">
+                                <p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
+                                        @getConversant((i % 2 == 0), convo)
                                     </span>
                                 </p>
-                            }
-                        </div>
-                        i++;
-                     }
+                                @foreach (var message in group.Messages)
+                                {
+                                    <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
+                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
+                                            @message.Text
+                                        </span>
+                                    </p>
+                                }
+                            </div>
+                            i++;
+                        }
+                    </button>
                 </div>
 
-                }
-            </section>
-        </div>
-    </body>
+            }
+        </section>
+    </div>
+</body>
 
 
 <!--this is code for displaying a conversation-->
