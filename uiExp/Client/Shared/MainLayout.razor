@@ -2,20 +2,39 @@
 @inject NavigationManager NavigationManager
 
 
-@code { private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); } }
+@code { private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
+    private Boolean AtHome()
+    {
+        //if NavigationManager.Uri.contains("")
+
+        return NavigationManager.Uri.EndsWith("/");
+    }
+    private String GetText()
+    {
+        if (AtHome())
+            return "Conversation request...";
+        else
+            return "Comment...";
+    }
+    private void GoToProfile()
+    {
+        NavigationManager.NavigateTo("/user");
+    }
+}
 
 
 <div class="main">
     <div class="top-row px-4" style="position:fixed; top:0">
         @* <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a> *@
         <button class="btn btn-primary" @onclick="NavigateHomeFeedComponent"> Bylines </button>
+        <i class="fas fa-user-circle fa-3x" style="margin-left:90%" @onclick="GoToProfile"></i>
     </div>
 
     <div class="content px-4">
         @Body
     </div>
     <div class="bottom-row px-4" style="position:fixed; bottom:0">
-        <input class="feedConvo">
+        <input class="feedConvo" placeholder="@GetText()" style="font-size:small">
         <button class="btn btn-primary" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
             <i class="fas fa-arrow-up"></i>
         </button>

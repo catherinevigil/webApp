@@ -1,20 +1,25 @@
-﻿
-@page "/kushconvo"
-
+﻿@page "/kushconvo/{convoNum}"
 @using uiExp.Shared
-@using System;
-@using System.Collections.Generic;
-@using System.ComponentModel
-@using System.ComponentModel.Design
-@using System.Linq;
-@using System.Net
-@using System.Text
-@using System.IO;
 @inject HttpClient Http
 @using System.Net.Http
 
 @code{
+    [Parameter]
+    public String convoNum { get; set; }
+    //public int convoInt { get; set; }
 
+    protected override void OnInitialized()
+    {
+        //the param will be set now
+        convoNum = convoNum ?? "2";
+
+    }
+
+    public int getConversationNum()
+    {
+        return Int32.Parse(convoNum);
+
+    }
 
 
 
@@ -43,49 +48,13 @@
             return conversation.Conversants.Last();
     }
 
-    @*private static Conversation SeperateConvo2(string[] lines)
-    {
-        //Console.WriteLine("seperate was called");
-        var convo = new Conversation();
-        for (int i = 0; i < lines.Length; i++)
-        {
-            if (lines[i].Contains(":"))
-            {
-                var name = lines[i].Remove(lines[i].Length - 1);
-                if (!convo.Conversants.Any())//if list does not have any elements
-                {
-                    convo.Conversants.Add(name);
-                    Console.WriteLine("added conversant" + convo.Conversants.Last());
-                }
-                else
-                {
-                    if (convo.Conversants.IndexOf(name) == -1)
-                        convo.Conversants.Add(name);
-                    Console.WriteLine("added conversant" + convo.Conversants.Last());
-                }
-
-
-                convo.Groups.Add(new MessageGroup());
-            }
-            else
-            {
-                convo.Groups.Last().Messages.Add(new Message(lines[i]));
-            }
-
-        }
-        return convo;
-
-
-
-    }*@
-
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
-    Conversation convo = new Conversation(LoadConvos.linesList[1]);//LoadConvos.linesList[1]
+    Conversation convo => new Conversation(LoadConvos.linesList[getConversationNum()]);//LoadConvos.linesList[1]
 
     public void ShowData()
     {
         Console.WriteLine("hello");
-        var stringWhole = String.Concat(LoadConvos.linesList[0]);
+        var stringWhole = String.Concat(LoadConvos.linesList[getConversationNum()]);
         Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
     }
 
@@ -104,15 +73,15 @@
             <div class="messages">
                 @foreach (var group in convo.Groups)
                 {<div class="message-group">
-                        <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                            <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
+                        <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="bottom-bottom">
+                            <span data-aos="out" data-aos-duration="600" data-aos-offset="-60" data-aos-anchor-placement="top-top">
                                 @getConversant(i % 2 == 0, convo)
                             </span>
                         </p>
                         @foreach (var message in group.Messages)
                         {
-                            <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                                <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
+                            <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="bottom-bottom">
+                                <span data-aos="out" data-aos-duration="600" data-aos-offset="-60" data-aos-anchor-placement="top-top">
                                     @message.Text
                                 </span>
                             </p>

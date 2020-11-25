@@ -1,0 +1,36 @@
+﻿@page "/user"
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@using System.ComponentModel
+@using System.ComponentModel.Design
+@using System.Linq;
+@using System.Net
+@using System.Text
+@using System.IO;
+@inject HttpClient Http
+@using System.Net.Http
+@inject NavigationManager NavigationManager
+
+
+@code{
+
+    public void dump(object Obj)
+    {
+        DumpityDump.Dump(Obj); //this will print a json of the feed object's properties/values to the console
+    }
+
+    public void ShowData()
+    {
+
+    }
+}
+
+<h1>user page</h1>
+<!--<button type="button" class="btn btn-primary"
+        onclick="ShowData">
+        make button to print out data
+</button>
+
+<NavLink class="nav-link" href="KushConvo"> Kush Convo! </NavLink>-->
+@*this is code to display a feed*@
