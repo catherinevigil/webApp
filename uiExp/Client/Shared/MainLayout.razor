@@ -52,17 +52,7 @@
 
 <div class="main">
     <div class="top-row px-4" style="position:fixed; top:0">
-        @if (false)
-        {
-            @* <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a> *@
-            <button class="btn btn-primary" @onclick="NavigateHomeFeedComponent"> Bylines </button>
-            <button class="btn btn-primary" @onclick="printHeader"> print title </button>
-            <i class="fas fa-user-circle fa-3x" style="margin-left:90%" @onclick="GoToProfile"></i>
-        }
-        else if (AtHome())
-        {
-            <h1>@getHeader()</h1>
-        }
+            
     </div>
    
     <div class="content px-4">
@@ -73,8 +63,7 @@
         @if (!InConvo())
         {
             <div class="nav-icon-container">
-
-                <i class="fas fa-home fa-2x icon"></i>
+                <i class="fas fa-home fa-2x icon" @onclick="NavigateHomeFeedComponent"></i>
                 <i class="fas fa-search fa-2x icon"></i>
                 <i class="fas fa-comment fa-2x icon"></i>
                 <i class="fas fa-inbox fa-2x icon"></i>
@@ -83,8 +72,15 @@
         }
         else if (NavigationManager.Uri.EndsWith("/request"))
         {
-            <input class="feedConvo" placeholder="@GetText()" style="font-size:small">
-            <button class="btn btn-primary" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
+            <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
+            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        }
+        else if (NavigationManager.Uri.EndsWith("kushconvo"))
+        {
+            <input class="feedConvo" placeholder="Comment..." style="font-size:small">
+            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
                 <i class="fas fa-arrow-up"></i>
             </button>
         }

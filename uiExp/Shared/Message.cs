@@ -82,6 +82,20 @@ namespace uiExp.Shared
             }
             this.Title = lines[lines.Length-1];
         }
+        public String GetNames()
+        {
+            string names="";
+            if (this.Conversants.Count == 1)
+            {
+                return (string) this.Conversants[0].GetName();
+            }
+            else if (this.Conversants.Count == 2)
+            {
+                return (this.Conversants[0].GetName() + " & " + this.Conversants[1].GetName());
+            }
+            return "the squad";
+            
+        }
 
         public void output()
         {

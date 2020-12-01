@@ -194,14 +194,28 @@ protected async override Task OnAfterRenderAsync(bool firstRender)
             <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(x)" data-aos-anchor=@getAnchor(x) data-aos-id="convo-block">
                 @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
                 
-                <div class="feed-header" style="text-align: center" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
+                <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
 
-                    @if (LoadConvos.ConvoList[x].Conversants.Count == 2)
-                    {
-                            <img src="@(LoadConvos.ConvoList[x].Conversants[0].GetImg())" class="profile-pic">
-                            <h2>@LoadConvos.ConvoList[x].Title</h2>
-                            <img src="@(LoadConvos.ConvoList[x].Conversants[1].GetImg())" class="profile-pic">
-                    }
+                   
+                        @if (LoadConvos.ConvoList[x].Conversants.Count == 2)
+                        {
+                            <div>
+                                <img src="@(LoadConvos.ConvoList[x].Conversants[0].GetImg())" class="profile-pic">
+                                <img src="@(LoadConvos.ConvoList[x].Conversants[1].GetImg())" class="profile-pic">
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
+                        <div class="header-text">
+                            <h1 class="feed-title">@LoadConvos.ConvoList[x].Title</h1>
+                            <p class="names">
+                                <span>
+                                    @LoadConvos.ConvoList[x].GetNames()
+                                </span>
+                            </p>
+                        </div>
                 </div>
                 <div>
                     @for (int i = 0; i < LoadConvos.ConvoList[x].feedPreview.GetGroups().Count; i++)
