@@ -47,9 +47,42 @@ html {
     border:0px;
     padding:0px
 }
-.name{
-    margin-bottom:0px;
+.name {
+    margin-bottom: 0px;
 }
+
+.profile-pic{
+    border-radius: 50%; 
+    height: 50px; 
+    width: 50px; 
+    margin-top: 10px;
+}
+
+.nav-icon-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+/*    background-color: #323232;*/
+}
+.icon {
+    color: lightgray;
+}
+
+.profile-link {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+}
+
 
 @media screen and (min-width:700px) {
     .page-content {
@@ -77,10 +110,7 @@ html {
         margin-left: 4%
     }
 }
-.individualMessage {
 
-
-}
 @media screen and (min-width:1040px) {
     section {
         margin-bottom: 256px
@@ -229,7 +259,7 @@ section#page p {
 }
 
 section#content-container div.messages {
-    height: 100% 
+    height: 100% ;
     margin-bottom:100px; /*margin at the bottom of each <div class="messages"> container–individual text threads*/
     margin-top:100px
 }
@@ -237,6 +267,7 @@ section#content-container div.messages {
 section#content-container div.messages div.message-group {  
     margin-bottom: 6px /*margin between message groups*/
 }
+
 
 section#content-container div.messages p { /*paragraph settings*/
     font-size: 16px;

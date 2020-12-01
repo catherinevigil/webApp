@@ -2,59 +2,59 @@
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
-namespace uiExp.Client
+namespace uiExp.Shared
 {
     public class LoadConvos
     {
-        public static List<string[]> linesList = new List<string[]>();
+        public static List<Conversation> ConvoList = new List<Conversation>();
 
         private static string[] lines6 { get; } =
             {
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "Majoritarian politics commanding the morals is what trump is about rejecting",
                 "It’s a righteous mission if he weren’t a racist buffoon ",
                 "Eli Burnes:",
                 "hmmm",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "The tea party is just tired of majoritarian tyranny ",
                 "I’ve been saying this for a while",
                 "Eli Burnes:",
                 "Who is the majority",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "The woke",
                 "Who command industry and schools",
                 "Eli Burnes:",
                 "But the woke are a minority",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "And government ",
                 "Eli Burnes:",
                 "With power",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "But they are a majority of noise",
                 "Eli Burnes:",
                 "true",
                 "That’s the irony",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "They command press, schools, and industry ",
                 "We live in a society governed by majoritarian tyranny of the woke",
                 "It troubles me often",
                 "Eli Burnes:",
                 "hah",
                 "Insane how ever corporation made a statement on BLM",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "Yup",
                 "Eli Burnes:",
                 "Radical politics is establishment politics",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "Yes and no",
                 "Eli Burnes:",
                 "Status quo",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "It’s not radical it’s very tame ",
                 "Eli Burnes:",
                 "That’s the point",
                 "*my point",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "French Revolution, libya, Egypt, China",
                 "Those were radical ",
                 "Ours is so tame",
@@ -63,12 +63,12 @@ namespace uiExp.Client
                 "It’s childish",
                 "Eli Burnes:",
                 "yep",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "There is no radical reforming of ideas",
                 "No robust idea on a reformulation of society besides vomiting up washed up socialist speak that has never worked",
                 "Eli Burnes:",
                 "Isn’t that the history of antiracism though, like blacks just want to be treated like whites",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "But they are",
                 "By and large",
                 "Eli Burnes:",
@@ -77,31 +77,31 @@ namespace uiExp.Client
                 "But discrepancies are still absurd wrt poverty, incarceration, crime etc.",
                 "Police are a straw man in all of this perhaps",
                 "A scapegoat",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "That’s the issue. Our majoritarian politics validates their stance, but nothing changes. Wealth and class don’t change. Their criminality doesn’t change. So they’re just overwhelmed by this lethargic creep towards our countries eventual realization that nothing can be done besides their effort to fall into American conformism until they flourish too. ",
                 "I wonder when that day will come.",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "Because, the feature left out is that in order to be treated as a white you in fact need to act like oneZ",
                 "That may sound heinous ",
                 "But it’s the functioning of American societt",
                 "Eli Burnes:",
                 "Hm that makes sense interesting interpretation, so success in america requires conformism on your view",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "Entirely",
                 "It’s how we operate",
                 "Eli Burnes:",
                 "Asian Americans, are they conformist?",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "We are a conformist society",
                 "Yes",
                 "Entirely",
                 "Eli Burnes:",
                 "But they do it to an extreme",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "But it’s conformism to an idea. That’s why there is such anxiety between immigrants and natives, right? If each immigrant class strives to do better, then the prior class will stagnate and be left behind - fueling this cycle of anxiety.",
                 "Eli Burnes:",
                 "Hm",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "Blacks got the worst of the stick. They - like many whites - are left behind. But they didn’t have the class and wealth to still rise up.",
                "Like some WASPS are still rich. It isn’t just more recent immigrants",
                 "Because class is still currency here.",
@@ -109,7 +109,7 @@ namespace uiExp.Client
                 "true.",
                 "Wasp society is decadent though",
                 "Dying and fracturing",
-                "Marshall Sloan:",
+                "Marshall Sloane:",
                 "I suppose",
                 "We live in a society where clout govern",
                 "And without their clout they’re imploding and resorting to normal means of achieving clout",
@@ -118,8 +118,9 @@ namespace uiExp.Client
                 "haha",
                 "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
                 "Simpler and more vulgar ways are being used to assert dominance and prestige",
-                "Marshall Sloan:",
-                "Yes"
+                "Marshall Sloane:",
+                "Yes",
+                "Majoritarian rule in America"
             };
 
 
@@ -190,7 +191,8 @@ namespace uiExp.Client
                 "Kush Sharma:",
                 "For sure! I do have to run now but this was awesome, had a great time and think we came up with some dope ideas :)",
                 "Eli Burnes:",
-                "Great talk man"
+                "Great talk man",
+                "Nietzsche x Wokeism"
             };
 
             private static string[] lines3 { get; } =
@@ -262,7 +264,8 @@ namespace uiExp.Client
                 "But thanks Ethan, always great to talk! 😘",
                 "Ethan Fields:",
                 "Yes, that topic deserves a book not a text exchange for sure",
-                "Always happy to chat!"
+                "Always happy to chat!",
+                "culture of timidity"
             };
 
             private static string[] lines5 { get; } =
@@ -331,7 +334,8 @@ namespace uiExp.Client
                 "Let’s buy some guns then",
                 "Ian Liefer:",
                 "Agreed",
-                "It’s funny how everyone just thinks their party will win"
+                "It’s funny how everyone just thinks their party will win",
+                "Election predictions"
 
             };
         private static string[] lines0 { get; } =
@@ -426,24 +430,25 @@ namespace uiExp.Client
                 "Tunc Otzemir:",
                 "And that there exists a possibility that when it is not messed up",
                 "It will be provided with care and love rather then precision",
-                "Like u know theyre also cutting costs on everything in these kinda of places"
+                "Like u know they're also cutting costs on everything in these kinda of places",
+                "coffehouse vibe"
             };
             private static string[] lines2 { get; } =
             {
                 "Jasmine Wang:",
                 "Hello hello!",
                 "Along with ‘what tech calls thinking’ I also ordered xiaowei wang’s A Blockchain Chicken Farm and it covers a lot of relevant themes to what we were talking about earlier this week",
-                "Saffron huang:",
+                "Saffron Huang:",
                 "ohh i’ve been meaning to read that! what about it is relevant?",
                 "Jasmine Wang:",
                 "Basically goes into tech x rural China -- the most interesting part was their defense of China’s ‘copycat’ culture was actually incredibly generative + innovative",
-                "Saffron huang:",
+                "Saffron Huang:",
                 "ohhh that actually kind of has stewart brand esque ‘back-to-the-land’ vibes. like, use tech in isolated community settings?",
                 "what kind of stuff did they make",
                 "Jasmine Wang:",
                 "There are entire supply chains for example that crop up around copying high-ticket products -- not just copying say, Gucci bags, but consumer electronics with cheaper / locally made materials for example",
                 "Hmm say more about that? Haven’t read much of Brand’s stuff",
-                "Saffron huang:",
+                "Saffron Huang:",
                 "if they’re making consumer electronics then maybe its less like brand’s countercultural movement in the 60s",
                 "Jasmine Wang:",
                 "Just to finish the thought about Blockchain Chicken Farm - this sort of innovation their view is much more democratic, opens up participation + consumption of consumer good and technologies of all sorts to much more of society / across global currency disparities",
@@ -584,7 +589,8 @@ namespace uiExp.Client
                 "Oh interesting!!",
                 "Saffron Huang:",
                 "if the default state is not caring about animals much, that’s not particularly non-anthropocentric or Daoist, but definitely quite utilitarian",
-                "so many contradictory strands"
+                "so many contradictory strands",
+                "China, culture, innovation"
             };
             private static string[] lines4 { get; } =
             {
@@ -724,18 +730,62 @@ namespace uiExp.Client
                 "I see forever 21 selling mask/sweatpant/sweatshirt matching sets ",
                 "kind of tempted to buy one ",
                 "Emily Markowitz:",
-                "Hahaha next start up idea?"
+                "Hahaha next start up idea?",
+                "time x quarintine"
             };
+
+        private static string[] feed0 { get; } = {
+            "Eli Burnes:",
+            "Dude what do you think of contemporary interior design / architecture. Like the aesthetic of all the new coffee shops",
+            "Tunc Otzemir:",
+            "I think it’s good for the cafes",
+            "It is nice but not super cozy" };
+        private static string[] feed1 { get; } = {
+            "Kush Sharma:",
+            "Creating guilt among the powerful functions in a fractal way. The aristocrats of the Roman republic had the same internal dynamics - e.g. Gaius Marius, a low-born but extremely competent military general who denounced the high aristocracy of his day for responding to crises with haughty arrogance that didn't correspond to their abilities. They had power, but competence isn't hereditary like power is/was, so the critiques hit on a legitimate point.",
+            "Eli Burnes:",
+            "What do you mean by fractal?" };
+        private static string[] feed2 { get; } = {
+            "Jasmine Wang:",
+            "china is so full of contradictions ",
+        };
+        private static string[] feed3 { get; } = {
+            "Ethan Fields:",
+            "Even prior to the pandemic, the art and museum world was in a state of flux as institutions were critiqued for accepting dubious donations",
+            "So the board members clearly wanted to mitigate any sense of controversy that could have exposed them to public dissatisfaction",
+            "Caleb Rhodes:",
+            "Yeah this is definitely a defensive move, but was it motivated by money or just fear of outrage?" };
+        private static string[] feed4 { get; } = {
+            "Emily Markowitz:",
+            "I definitely think that in quarantine time felt that it was going by much quicker",
+            "Regan Brady:",
+            "yeah i agree- the spring felt like I was reliving the same day over and over",
+            "and honestly, i couldn’t tell you anything that happened to me this summer",
+            "Emily Markowitz:",
+            "exactly, it molds together" };
+        private static string[] feed5 { get; } = {
+            "Ian Liefer:",
+            "Why do you think Biden is gonna win?",
+            "Trump has unprecedented black and Latino support",
+            "And hasn’t lost any of his base",
+            "Henry Burnes:",
+            "elderly people and suburban women are going for Biden, two critical demographics for Trump",
+            "Ian Liefer:",
+            "but it’s unclear if the data supports that in key swing states" };
+        private static string[] feed6 { get; } = {
+            "Eli Burnes:",
+            "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
+            "Simpler and more vulgar ways are being used to assert dominance and prestige" };
 
         static LoadConvos()
         {
-            linesList.Add(lines0);
-            linesList.Add(lines1);
-            linesList.Add(lines2);
-            linesList.Add(lines3);
-            linesList.Add(lines4);
-            linesList.Add(lines5);
-            linesList.Add(lines6);
+            ConvoList.Add(new Conversation(lines0,feed0));
+            ConvoList.Add(new Conversation(lines1, feed1));
+            ConvoList.Add(new Conversation(lines2, feed2));
+            ConvoList.Add(new Conversation(lines3, feed3));
+            ConvoList.Add(new Conversation(lines4, feed4));
+            ConvoList.Add(new Conversation(lines5, feed5));
+            ConvoList.Add(new Conversation(lines6, feed6));
         }
     }
 }

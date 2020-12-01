@@ -31,6 +31,7 @@
             return ("message message-right aos-init");
 
     }
+
     public String getAlign(Boolean left)
     {
         if (left)
@@ -43,19 +44,19 @@
     {
 
         if (even)
-            return conversation.Conversants.First();
+            return conversation.Conversants.First().GetName();
         else
-            return conversation.Conversants.Last();
+            return conversation.Conversants.Last().GetName();
     }
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
-    Conversation convo => new Conversation(LoadConvos.linesList[getConversationNum()]);//LoadConvos.linesList[1]
+    Conversation convo => LoadConvos.ConvoList[getConversationNum()];//LoadConvos.linesList[1]
 
     public void ShowData()
     {
         Console.WriteLine("hello");
-        var stringWhole = String.Concat(LoadConvos.linesList[getConversationNum()]);
-        Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
+       // var stringWhole = String.Concat(LoadConvos.ConvoList[getConversationNum()]);
+       // Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
     }
 
     public int i = 0;

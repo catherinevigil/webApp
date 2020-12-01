@@ -26,7 +26,7 @@ namespace uiExp.Server.Controllers
         {
             var lines = System.IO.File.ReadAllLines("/Users/eliburnes/Projects/webApp/uiExp/Server/textThreadFeed.txt");
             //Console.WriteLine(lines[9]);
-            Feed data = new Feed(lines);
+            Feed data = new Feed();
             Console.WriteLine(data);
             return data;
         }

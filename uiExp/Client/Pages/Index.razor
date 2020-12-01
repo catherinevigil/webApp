@@ -11,10 +11,10 @@
 @inject HttpClient Http
 @using System.Net.Http
 @inject NavigationManager NavigationManager
+@inject IJSRuntime js
 
 
 @code{
-    Conversation convo = new Conversation();
     //string [] lines = new string[]();
     //protected override async Task OnInitializedAsync()
     //{
@@ -43,17 +43,25 @@
     {
 
         if (even)
-            return conversation.Conversants.First();
+            return conversation.Conversants.First().GetName();
         else
-            return conversation.Conversants.Last();
+            return conversation.Conversants.Last().GetName();
     }
-
+    public String getAnchor (int x)
+    {
+        int a = x + 1;
+        return "#m"+a.ToString() + "00";
+    }
+    public String getId (int a, int b, int c)
+    {
+        return "m"+a.ToString() + b.ToString() + c.ToString();
+    }
 
 
     //protected override async Task OnInitializedAsync() { }
     //private static string[] Lines { get; } = System.IO.File.ReadAllLines($"{System.IO.Directory.GetCurrentDirectory()}{@"/wwwroot/textThreadFeed.txt"}");
     private static string[] lines { get; } = {
-        "",
+    "",
     "Eli Burnes:",
     "Dude what do you think of contemporary interior design / architecture. Like the aesthetic of all the new coffee shops",
     "Tunc Otzemir:",
@@ -64,8 +72,6 @@
     "Creating guilt among the powerful functions in a fractal way. The aristocrats of the Roman republic had the same internal dynamics - e.g. Gaius Marius, a low-born but extremely competent military general who denounced the high aristocracy of his day for responding to crises with haughty arrogance that didn't correspond to their abilities. They had power, but competence isn't hereditary like power is/was, so the critiques hit on a legitimate point.",
     "Eli Burnes:",
     "What do you mean by fractal?",
-    "Kush Sharma:",
-    "Just like the bottom of the bottom (e.g. Jesus and the Jews) were able to critique one level up - establishment Jewish rabbis + the Roman administrators, the same dynamics were occurring within the highest reaches (and maybe occur in every local class / power conflict?)",
     "",
     "Jasmine Wang:",
     "china is so full of contradictions ",
@@ -76,12 +82,12 @@
     "Caleb Rhodes:",
     "Yeah this is definitely a defensive move, but was it motivated by money or just fear of outrage?",
     "",
-    "Sahil Handa:",
+    "Emily Markowitz:",
     "I definitely think that in quarantine time felt that it was going by much quicker",
     "Regan Brady:",
     "yeah i agree- the spring felt like I was reliving the same day over and over",
     "and honestly, i couldn’t tell you anything that happened to me this summer",
-    "Sahil Handa:",
+    "Emily Markowitz:",
     "exactly, it molds together",
     "",
     "Ian Liefer:",
@@ -97,7 +103,6 @@
     "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
     "Simpler and more vulgar ways are being used to assert dominance and prestige" };
 
-    public Feed feed = new Feed(lines);
 
     @*protected override async Task OnInitializedAsync()
         {
@@ -109,111 +114,119 @@
 
         }*@
 
-    public int i = 0;
-    public bool even;
-    public void dump()
-    {
-        DumpityDump.Dump(feed); //this will print a json of the feed object's properties/values to the console
-    }
-    public void ShowData()
-    {
-        Console.WriteLine("hello");
-        Console.WriteLine(LoadConvos.linesList[1][5]); //this will print a json of the feed object's properties/values to the console
-    }
-    public void NavigateToKushTalk()
-    {
-        NavigationManager.NavigateTo("/kushconvo");
-
-    }
-    public void NavigateToConvo(int talk)
-    {
-        NavigationManager.NavigateTo("/kushconvo/" + talk);
-
-    }
-    public int headerHeight = 60;
+public int i = 0;
+public bool even;
+public void dump()
+{
+    //DumpityDump.Dump(feed); //this will print a json of the feed object's properties/values to the console
 }
-<!--<button type="button" class="btn btn-primary"
-        onclick="ShowData">
-        make button to print out data
-</button>
-<NavLink class="nav-link" href="KushConvo"> Kush Convo! </NavLink>-->
-@*this is code to display a feed*@
-
-<style>
-
-    [data-aos=out] {
-        opacity: 1;
-        transition-property: opacity, transform
+public void ShowData()
+{
+    Console.WriteLine(Users.List.Count);
+    foreach (var person in Users.List)
+    {
+        //Console.WriteLine(person.GetName()); //this will print a json of the feed object's properties/values to the console
     }
-
-        [data-aos=out].aos-animate {
-            opacity: 0;
-            transform: translateZ(0)
+    var i = 0;
+    foreach (var convo in Feed.FeedList)//debugging///
+    {
+        foreach (var conversant in convo.Conversants)
+        {
+            DumpityDump.Dump(conversant);
         }
-</style>
+        i++;
+    }
+}
+
+public void NavigateToKushTalk()
+{
+    NavigationManager.NavigateTo("/kushconvo");
+
+}
+
+public void NavigateToConvo(int talk)
+{
+    NavigationManager.NavigateTo("/kushconvo/" + talk);
+
+}
+public int topHeaderHeight = 40;//aos offset for top
+public int bottomHeaderHeight = 60;//aos offset for bottom
+public int animationDuration = 1200;
+public int messagesOffset = 150;
+protected async override Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender)
+    {
+        await js.InvokeVoidAsync("initializeAnimateInListener");
+        await js.InvokeVoidAsync("initializeAnimateOutListener");
+    }
+}
+
+}
+
+@*<button type="button" class="btn btn-primary"
+            @onclick="ShowData" style="position: absolute; left: 300px; top: 350px;">
+        make button to print out data
+    </button>*@
+
+
+@*<style>
+
+        [data-aos=out] {
+            opacity: 1;
+            transition-property: opacity, transform
+        }
+
+            [data-aos=out].aos-animate {
+                opacity: 0;
+                transform: translateZ(0)
+            }
+    </style>*@
 
 
 <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
     <div class="page-content">
         <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
 
-            @foreach (var convo in feed.FeedList)
+            @for (int x=0;x<LoadConvos.ConvoList.Count;x++)
             {
-                i = 0;
-                @*should bind aos-offset for top-top animation to the height of the header *@
-                <div class="messages" data-aos="out" data-aos-duration="600" data-aos-offset="-@headerHeight" data-aos-anchor-placement="top-top" @onclick="() => NavigateToConvo(feed.FeedList.IndexOf(convo))">
-                    @foreach (var group in convo.Groups)
+
+            <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(x)" data-aos-anchor=@getAnchor(x) data-aos-id="convo-block">
+                @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
+                
+                <div class="feed-header" style="text-align: center" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
+
+                    @if (LoadConvos.ConvoList[x].Conversants.Count == 2)
+                    {
+                            <img src="@(LoadConvos.ConvoList[x].Conversants[0].GetImg())" class="profile-pic">
+                            <h2>@LoadConvos.ConvoList[x].Title</h2>
+                            <img src="@(LoadConvos.ConvoList[x].Conversants[1].GetImg())" class="profile-pic">
+                    }
+                </div>
+                <div>
+                    @for (int i = 0; i < LoadConvos.ConvoList[x].feedPreview.GetGroups().Count; i++)
                     {
                         <div class="message-group">
-                            <p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@headerHeight" data-aos-anchor-placement="bottom-bottom">
+                            <p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
                                 <span>
-                                    @getConversant((i % 2 == 0), convo)
+                                    @getConversant((i % 2 == 0), LoadConvos.ConvoList[x])
                                 </span>
                             </p>
-                            @foreach (var message in group.Messages)
+                            @for (int y = 0; y < LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages.Count; y++)
                             {
-                                <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@headerHeight" data-aos-anchor-placement="bottom-bottom">
+                                <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x,i,y)>
                                     <span>
-                                        @message.Text
+                                        @Feed.FeedList[x].Groups[i].Messages[y].Text
                                     </span>
                                 </p>
                             }
                         </div>
-                        i++;
                     }
                 </div>
-
+            </div>
+            <hr>
             }
         </section>
     </div>
 </body>
-
-
-<!--this is code for displaying a conversation-->
-@*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-        <div class="page-content">
-            <section class="aos-init " data-aos-once="false" data-aos-duration="600" data-aos-offset="125" id="content-container">
-                <div class="messages">
-                    @foreach (var group in convo.Groups)
-                    {<div class="message-group">
-                            <p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                                <span data-aos="out" data-aos-duration="600" data-aos-offset="75" data-aos-anchor-placement="top-top">
-                                    @getConversant(group.Left, convo)
-                                </span>
-                            </p>
-                            @foreach (var message in group.Messages)
-                            {
-                                <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="125" data-aos-anchor-placement="bottom-bottom">
-                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-top">
-                                        @message.Text
-                                    </span>
-                                </p>
-                            }
-                        </div>
-                    }
-
-                </div>
-            </section>
-        </div>
-    </body>*@
 

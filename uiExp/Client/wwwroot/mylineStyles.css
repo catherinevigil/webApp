@@ -1,0 +1,252 @@
+
+head {
+    background-color: black;
+}
+
+
+.partner1{
+    color: white;
+}
+    
+
+@media screen and (min-width: 40.5em) {
+    .product-img {
+      width: 50%;
+      float: left;
+    }
+  }
+
+/*Default styles*/
+.related-products li {
+    float: left;
+    width: 50%;
+  }
+  
+  /*Display 3 per row for medium displays (like mobile phones in landscape or smaller tablets)*/
+  @media screen and (min-width: 28.75em) {
+    .related-products li {
+      width: 33.3333333%;
+    }
+  }
+  /*Display 6 to a row for large displays (like medium tablets and up) */
+  @media screen and (min-width: 40.5em) {
+    .related-products li {
+      width: 16.6666667%;
+    }
+  }
+
+.html, body{
+    background-color:black; 
+    height: 100vh;
+}
+
+/*takes up full screen on small screens*/
+.mobile{
+    background-color: black;
+    height: 100%; 
+    color: #fff; 
+    font-style: "HelveticaNeue";
+    }
+
+/*Top navbar. Contains menu icon, back icon, and title*/
+.navbar {
+      list-style: none;
+      background-color: black;
+      color: darkgrey;  
+      text-align: center;
+      box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.material-icons{
+    cursor: pointer;
+}
+/*changes icon color on hover.*/ 
+.material-icons:hover{ 
+    color: white; 
+}
+
+/* Makes something grow on hover. source: https://github.com/IanLunn/Hover/blob/master/README.md#a-copy-and-paste-an-effect. Not working currently lol */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform; 
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+
+/*MyLines title*/ 
+.profilename{
+    float: center; 
+    font-style: "HelveticaNeue"; 
+    color: white;
+    font-size: 34pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tagline{ /**This is the user's selected line that follows them everywhere.**/
+    position: relative;
+    border-style: solid;
+    border-width: medium;
+    border-color: grey;
+    float: right; 
+    max-width: 25em;
+    font-style: "HelveticaNeue"; 
+    font-weight: normal;
+    padding: .5em .5em;
+    font-size: 17pt;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    }
+
+    /*This is the triangle on the side of the box*/
+.tagline::before{
+    position: absolute;
+    font-style: "HelveticaNeue"; 
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    left: 1.5em; 
+    border: .75rem solid transparent;
+    border-top: none;
+    border-bottom-color: #3e4043;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1)); 
+    }
+    
+/*User information; photo, name, short bio, tagline.*/ 
+.user{
+    color: lightgrey;
+    display: block; 
+    text-align: left;
+    align-self: center;
+    padding-top: 10px; 
+    padding-left:1.5em;
+    bottom: 0; 
+    font-size: 17pt;
+    font-weight: medium; 
+    font-style: "HelveticaNeue";
+    image-orientation: top;
+}
+
+
+/*navbar for toggling between user's favorites, participated-in convos, and drafts*/
+.options{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-around;
+    align-content: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    color: grey; 
+    cursor: pointer;
+}
+
+/*Wraps user info area*/
+.user-wrapper{
+    display: flex; 
+    flex-grow: unset;
+    flex-direction: row;
+    height: fit-content; 
+    width: 100%; 
+    font-style: "HelveticaNeue"; 
+    }
+    
+ul#partnerlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+/*Partner information; photo, name, short bio, tagline.*/ 
+.partner-name{
+    text-align: left;
+    align-self: center;
+    padding-top: 0.5em;
+    padding-left:1.5em;
+    font-weight: medium;
+    font-size: 17pt;
+    color: white;
+}
+
+.partner-picture{
+    cursor: pointer;
+}
+
+.partner-line{
+    text-align: left;
+    align-self: center;
+    padding-top: -1em;
+    padding-left:1.5em;
+    bottom: 0; 
+    font-weight: regular;
+    font-size: 15pt;
+    color: grey;
+}
+
+/*Name of chat participant on the left*/
+.name-left{
+    left: 0; 
+}
+
+/*Name of chat participant on the right*/
+.name-right{
+    margin-left: 90%;  
+}
+
+.user-picture{
+    height: 100px; 
+    width: 100px;  
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px;
+    padding-bottom: 5px;
+}
+
+.partner-picture{
+    height: 100px; 
+    width: 100px;  
+    border-radius: 50%;
+    display: block;
+    margin-left: 10px;
+    padding:10px;
+    float: left;   
+}
+
+/*Unit to be displayed of saved conversation in feed*/
+.saved-convo{
+    width: 100%; 
+    max-height: fit-content;
+    border-bottom: solid thin black;  
+    justify-content: space-evenly;
+    align-content: center;  
+    color: black; 
+}
+
+/*Changes color on hover. Will loop back to potentially change info displayed here as well.*/
+.saved-convo:hover{
+        background-color: #3e4043;
+        color: white; 
+    }
+
+/*Tags for convo*/
+.tags{
+        width: 100%; 
+        text-align: center;
+    }
+
+/*A chain of messages. Taken/modified from David's initial /yournamehere.*/
+
+
+/*A message left*/

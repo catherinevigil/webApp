@@ -1,5 +1,8 @@
-﻿@inherits LayoutComponentBase
+﻿
+@using uiExp.Shared
+@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject IJSRuntime js
 
 
 @code { private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
@@ -8,6 +11,10 @@
         //if NavigationManager.Uri.contains("")
 
         return NavigationManager.Uri.EndsWith("/");
+    }
+    private Boolean InConvo()
+    {
+        return NavigationManager.Uri.EndsWith("/kushconvo");
     }
     private String GetText()
     {
@@ -20,24 +27,67 @@
     {
         NavigationManager.NavigateTo("/user");
     }
-}
 
+    public static int ConvoNum=0;
+
+
+    [JSInvokable]
+    public static void updateHeader()
+    {
+        ConvoNum = ConvoNum + 1;
+    }
+
+    public String getHeader()
+    {
+        Console.WriteLine(ConvoNum);
+        return Feed.FeedList[ConvoNum].Title;
+    }
+    public void printHeader()
+    {
+        foreach (var convo in LoadConvos.ConvoList)
+            Console.WriteLine(convo.Title);
+    }
+
+    }
 
 <div class="main">
     <div class="top-row px-4" style="position:fixed; top:0">
-        @* <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a> *@
-        <button class="btn btn-primary" @onclick="NavigateHomeFeedComponent"> Bylines </button>
-        <i class="fas fa-user-circle fa-3x" style="margin-left:90%" @onclick="GoToProfile"></i>
+        @if (false)
+        {
+            @* <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a> *@
+            <button class="btn btn-primary" @onclick="NavigateHomeFeedComponent"> Bylines </button>
+            <button class="btn btn-primary" @onclick="printHeader"> print title </button>
+            <i class="fas fa-user-circle fa-3x" style="margin-left:90%" @onclick="GoToProfile"></i>
+        }
+        else if (AtHome())
+        {
+            <h1>@getHeader()</h1>
+        }
     </div>
-
+   
     <div class="content px-4">
         @Body
     </div>
     <div class="bottom-row px-4" style="position:fixed; bottom:0">
-        <input class="feedConvo" placeholder="@GetText()" style="font-size:small">
-        <button class="btn btn-primary" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-            <i class="fas fa-arrow-up"></i>
-        </button>
+        @*in order to get this to stay fixed, need to specifiy position in line.*@
+        @if (!InConvo())
+        {
+            <div class="nav-icon-container">
+
+                <i class="fas fa-home fa-2x icon"></i>
+                <i class="fas fa-search fa-2x icon"></i>
+                <i class="fas fa-comment fa-2x icon"></i>
+                <i class="fas fa-inbox fa-2x icon"></i>
+                <img src="https://pbs.twimg.com/profile_images/955259459449884672/cxYFJUJX_400x400.jpg" class="profile-link">
+            </div>
+        }
+        else if (NavigationManager.Uri.EndsWith("/request"))
+        {
+            <input class="feedConvo" placeholder="@GetText()" style="font-size:small">
+            <button class="btn btn-primary" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        }
     </div>
 </div>
 

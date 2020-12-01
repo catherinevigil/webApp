@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using uiExp.Shared;
 
 namespace uiExp.Shared
 {
@@ -25,40 +26,49 @@ namespace uiExp.Shared
             Text = text;
         }
     }
+    
 
     public class Conversation
     {
+        public FeedPreview feedPreview;
+
         public List<MessageGroup> Groups = new List<MessageGroup>();
-        public List<String> Conversants = new List<String>(); //left is conversant 0
+        public List<UserData> Conversants = new List<UserData>(); //left is conversant 0
+        public String Title;
 
         public Conversation()
         {
 
         }
-        public Conversation (String[] lines)
+        public Conversation (String[] convo, String[] feed)
         {
-            SeperateConvo(lines);
+            SeperateConvo(convo);
+            feedPreview = new FeedPreview(feed);
         }
 
         private void SeperateConvo(string[] lines)
         {
             //Console.WriteLine("seperate was called");
 
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < lines.Length-1; i++)
             {
                 if (lines[i].EndsWith(":"))
                 {
                     var name = lines[i].Remove(lines[i].Length - 1);
                     if (!this.Conversants.Any())//if list does not have any elements
                     {
-                        this.Conversants.Add(name);
-                        Console.WriteLine("added conversant" + this.Conversants.Last());
+                        this.Conversants.Add(Users.GetUserByName(name));
+                        if (!(Users.GetUserByName(name)==null))
+                        {
+                            Console.WriteLine("no user by this name:" + name);
+                        }
+                        Console.WriteLine("added conversant" + this.Conversants.Last().GetName());
                     }
                     else
                     {
-                        if (this.Conversants.IndexOf(name) == -1)
-                            this.Conversants.Add(name);
-                        Console.WriteLine("added conversant" + this.Conversants.Last());
+                        if (this.Conversants.IndexOf(Users.GetUserByName(name)) == -1)
+                            this.Conversants.Add(Users.GetUserByName(name));
+                            Console.WriteLine("added conversant" + this.Conversants.Last().GetName());
                     }
 
 
@@ -70,6 +80,7 @@ namespace uiExp.Shared
                 }
 
             }
+            this.Title = lines[lines.Length-1];
         }
 
         public void output()

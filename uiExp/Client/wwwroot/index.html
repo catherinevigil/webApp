@@ -16,10 +16,25 @@
     <link rel="stylesheet" href="css/styles/eliStyles/aosE.css">
     <script src="https://kit.fontawesome.com/4be1c400b6.js" crossorigin="anonymous"></script>
     <!--<link href="styleinboxfeed.css" rel="stylesheet">-->
+    <!--sahil stuff
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--ByLines Styles-->
+    <!--<link href="css/mylineStyles.css" rel="stylesheet">-->
+    <!-- Material IO Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
     <link href="css/styles/eliStyles/style2.css" media="screen" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <style>
 
         [data-aos=out] {
@@ -30,6 +45,16 @@
             [data-aos=out].aos-animate {
                 opacity: 0;
                 transform: translateZ(0)
+            }
+
+        [data-aos=slow-partial-fade] {
+            opacity: 1;
+            transition-property: opacity, transform;
+        }
+
+            [data-aos=slow-partial-fade].aos-animate {
+                opacity: .2;
+                transform: translateZ(0);
             }
     </style>
 
@@ -45,11 +70,12 @@
     </div>
 
     <!--<script src="../scripts/aos.js"></script>-->
-   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>AOS.init();</script>
 
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <script src="animateListen.js"></script>
 
 </body>
 
