@@ -190,8 +190,8 @@ protected async override Task OnAfterRenderAsync(bool firstRender)
 
             @for (int x=0;x<LoadConvos.ConvoList.Count;x++)
             {
-
-            <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(x)" data-aos-anchor=@getAnchor(x) data-aos-id="convo-block">
+            var convo = x;
+            <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-id="convo-block">
                 @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
                 
                 <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">

@@ -1,44 +1,16 @@
-﻿@page "/user"
-@using uiExp.Shared
-@using System;
-@using System.Collections.Generic;
-@using System.ComponentModel
-@using System.ComponentModel.Design
-@using System.Linq;
-@using System.Net
-@using System.Text
-@using System.IO;
-@inject HttpClient Http
-@using System.Net.Http
+﻿@page "/mylines"
 @inject NavigationManager NavigationManager
 
 
-@code{
+@code {
+    private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
 
-    public void dump(object Obj)
-    {
-        DumpityDump.Dump(Obj); //this will print a json of the feed object's properties/values to the console
-    }
-
-    public void ShowData()
-    {
-    }
-    public String sahilBio = "Associate Editor at JoinPersuasion | Bylines WSJ, @ForeignPolicy, @NRO | Undergrad @Harvard | Writing a Book About Campus Conformity | Building a Social Platform";
 }
-
-<h1>user page</h1>
-<!--<button type="button" class="btn btn-primary"
-        onclick="ShowData">
-        make button to print out data
-</button>
-
-<NavLink class="nav-link" href="KushConvo"> Kush Convo! </NavLink>-->
-@*this is code to display a feed*@
 
 
 <body>
     <nav class="navbar">
-        <span class="material-icons">
+        <span class="material-icons" @onclick="NavigateHomeFeedComponent">
             arrow_back_ios
         </span>
         <img class="user-picture" alt="Profile Picture" src="Sahil.JPG">
@@ -53,7 +25,8 @@
             <div class="user">
                 <div class="tagline">
                     <p>
-                        @sahilBio
+                        Associate Editor at JPersuasion | Bylines WSJ, ForeignPolicy, NRO |
+                        Undergrad Harvard | Writing a Book About Campus Conformity | Building a Social Platform
                     </p>
                 </div>
             </div>

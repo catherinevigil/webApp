@@ -170,7 +170,6 @@ ul#partnerlist {
 /*Partner information; photo, name, short bio, tagline.*/ 
 .partner-name{
     text-align: left;
-    align-self: center;
     padding-top: 0.5em;
     padding-left:1.5em;
     font-weight: medium;
@@ -185,7 +184,7 @@ ul#partnerlist {
 .partner-line{
     text-align: left;
     align-self: center;
-    padding-top: -1em;
+    padding-top: 20px;
     padding-left:1.5em;
     bottom: 0; 
     font-weight: regular;
