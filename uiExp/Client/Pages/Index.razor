@@ -15,13 +15,6 @@
 
 
 @code{
-    //string [] lines = new string[]();
-    //protected override async Task OnInitializedAsync()
-    //{
-    //   lines = await WebRequestMethods.Http.GetJsonAsync<lines[]>("sample-data/weather.json");
-    //}
-
-
 
     public String getClass(Boolean left)
     {
@@ -50,153 +43,75 @@
     public String getAnchor (int x)
     {
         int a = x + 1;
-        return "#m"+a.ToString() + "00";
+        if (x < (LoadConvos.ConvoList.Count - 1))//if not the last convo
+            return "#m" + a.ToString() + "00";
+        else
+            return null;
     }
     public String getId (int a, int b, int c)
     {
         return "m"+a.ToString() + b.ToString() + c.ToString();
     }
 
+    public void dump(object a)
+    {
+        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+    }
 
-    //protected override async Task OnInitializedAsync() { }
-    //private static string[] Lines { get; } = System.IO.File.ReadAllLines($"{System.IO.Directory.GetCurrentDirectory()}{@"/wwwroot/textThreadFeed.txt"}");
-    private static string[] lines { get; } = {
-    "",
-    "Eli Burnes:",
-    "Dude what do you think of contemporary interior design / architecture. Like the aesthetic of all the new coffee shops",
-    "Tunc Otzemir:",
-    "I think it’s good for the cafes",
-    "It is nice but not super cozy",
-    "",
-    "Kush Sharma:",
-    "Creating guilt among the powerful functions in a fractal way. The aristocrats of the Roman republic had the same internal dynamics - e.g. Gaius Marius, a low-born but extremely competent military general who denounced the high aristocracy of his day for responding to crises with haughty arrogance that didn't correspond to their abilities. They had power, but competence isn't hereditary like power is/was, so the critiques hit on a legitimate point.",
-    "Eli Burnes:",
-    "What do you mean by fractal?",
-    "",
-    "Jasmine Wang:",
-    "china is so full of contradictions ",
-    "",
-    "Ethan Fields:",
-    "Even prior to the pandemic, the art and museum world was in a state of flux as institutions were critiqued for accepting dubious donations",
-    "So the board members clearly wanted to mitigate any sense of controversy that could have exposed them to public dissatisfaction",
-    "Caleb Rhodes:",
-    "Yeah this is definitely a defensive move, but was it motivated by money or just fear of outrage?",
-    "",
-    "Emily Markowitz:",
-    "I definitely think that in quarantine time felt that it was going by much quicker",
-    "Regan Brady:",
-    "yeah i agree- the spring felt like I was reliving the same day over and over",
-    "and honestly, i couldn’t tell you anything that happened to me this summer",
-    "Emily Markowitz:",
-    "exactly, it molds together",
-    "",
-    "Ian Liefer:",
-    "Why do you think Biden is gonna win?",
-    "Trump has unprecedented black and Latino support",
-    "And hasn’t lost any of his base",
-    "Henry Burnes:",
-    "elderly people and suburban women are going for Biden, two critical demographics for Trump",
-    "Ian Liefer:",
-    "but it’s unclear if the data supports that in key swing states",
-    "",
-    "Eli Burnes:",
-    "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
-    "Simpler and more vulgar ways are being used to assert dominance and prestige" };
-
-
-    @*protected override async Task OnInitializedAsync()
+    public void ShowData()
+    {
+        Console.WriteLine(Users.List.Count);
+        foreach (var person in Users.List)
         {
-
-
-            var data = await Http.GetFromJsonAsync<Feed>("Feed"); //or replace string with Feed, or api/FeedController/Get
-            Console.WriteLine(data);
-
-
-        }*@
-
-public int i = 0;
-public bool even;
-public void dump()
-{
-    //DumpityDump.Dump(feed); //this will print a json of the feed object's properties/values to the console
-}
-public void ShowData()
-{
-    Console.WriteLine(Users.List.Count);
-    foreach (var person in Users.List)
-    {
-        //Console.WriteLine(person.GetName()); //this will print a json of the feed object's properties/values to the console
-    }
-    var i = 0;
-    foreach (var convo in Feed.FeedList)//debugging///
-    {
-        foreach (var conversant in convo.Conversants)
+            //Console.WriteLine(person.GetName()); //this will print a json of the feed object's properties/values to the console
+        }
+        var i = 0;
+        foreach (var convo in Feed.FeedList)//debugging///
         {
-            DumpityDump.Dump(conversant);
-        }
-        i++;
-    }
-}
-
-public void NavigateToKushTalk()
-{
-    NavigationManager.NavigateTo("/kushconvo");
-
-}
-
-public void NavigateToConvo(int talk)
-{
-    NavigationManager.NavigateTo("/kushconvo/" + talk);
-
-}
-public int topHeaderHeight = 40;//aos offset for top
-public int bottomHeaderHeight = 60;//aos offset for bottom
-public int animationDuration = 1200;
-public int messagesOffset = 150;
-protected async override Task OnAfterRenderAsync(bool firstRender)
-{
-    if (firstRender)
-    {
-        await js.InvokeVoidAsync("initializeAnimateInListener");
-        await js.InvokeVoidAsync("initializeAnimateOutListener");
-    }
-}
-
-}
-
-@*<button type="button" class="btn btn-primary"
-            @onclick="ShowData" style="position: absolute; left: 300px; top: 350px;">
-        make button to print out data
-    </button>*@
-
-
-@*<style>
-
-        [data-aos=out] {
-            opacity: 1;
-            transition-property: opacity, transform
-        }
-
-            [data-aos=out].aos-animate {
-                opacity: 0;
-                transform: translateZ(0)
+            foreach (var conversant in convo.Conversants)
+            {
+                DumpityDump.Dump(conversant);
             }
-    </style>*@
+            i++;
+        }
+    }
 
+    public void NavigateToConvo(int talk)
+    {
+        NavigationManager.NavigateTo("/convo/" + talk);
+
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await js.InvokeVoidAsync("initializeAnimateInListener");
+            await js.InvokeVoidAsync("initializeAnimateOutListener");
+        }
+    }
+
+    public int bottomHeaderHeight = 60;//aos offset for bottom
+    public int animationDuration = 1000;
+    public int messagesOffset = 80;//aos offset for top
+}
 
 <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
     <div class="page-content">
         <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
+            <div style="height:150px">
 
-            @for (int x=0;x<LoadConvos.ConvoList.Count;x++)
+            </div>
+            @for (int x = 0; x < LoadConvos.ConvoList.Count; x++)
             {
-            var convo = x;
-            <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-id="convo-block">
-                @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
-                
-                <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
+                var convo = x;
 
-                   
+                <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x==LoadConvos.ConvoList.Count-1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
+                    @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
+
+                    <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
+
+
                         @if (LoadConvos.ConvoList[x].Conversants.Count == 2)
                         {
                             <div>
@@ -216,30 +131,33 @@ protected async override Task OnAfterRenderAsync(bool firstRender)
                                 </span>
                             </p>
                         </div>
-                </div>
-                <div>
-                    @for (int i = 0; i < LoadConvos.ConvoList[x].feedPreview.GetGroups().Count; i++)
-                    {
-                        <div class="message-group">
-                            <p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
+                    </div>
+                    <div>
+                        @for (int i = 0; i < LoadConvos.ConvoList[x].feedPreview.GetGroups().Count; i++)
+                        {
+                            <div class="message-group">
+                                @*<p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
                                 <span>
                                     @getConversant((i % 2 == 0), LoadConvos.ConvoList[x])
                                 </span>
-                            </p>
-                            @for (int y = 0; y < LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages.Count; y++)
-                            {
-                                <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x,i,y)>
-                                    <span>
-                                        @Feed.FeedList[x].Groups[i].Messages[y].Text
-                                    </span>
-                                </p>
-                            }
-                        </div>
-                    }
+                            </p>*@
+                                @for (int y = 0; y < LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages.Count; y++)
+                                {
+                                    <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x,i,y)>
+                                        <span>
+                                            @Feed.FeedList[x].Groups[i].Messages[y].Text
+                                        </span>
+                                    </p>
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
-            <hr>
+                <hr style="border-top:1px solid white;">
             }
+        <div style="height:150px">
+
+        </div>
         </section>
     </div>
 </body>

@@ -1,4 +1,4 @@
-﻿@page "/kushconvo/{convoNum}"
+﻿@page "/convo/{convoNum}"
 @using uiExp.Shared
 @inject HttpClient Http
 @using System.Net.Http
@@ -62,10 +62,6 @@
     public int i = 0;
 
 }
-
-<button type="button" class="btn btn-primary"
-        @onclick="ShowData">
-</button>
 
 <!--this is code for displaying a conversation-->
 <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">

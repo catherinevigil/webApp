@@ -19,11 +19,8 @@ section {
 }
 
 body {
-    line-height: 1
-}
-
-body {
-    background-color: #18191a;
+    line-height: 1;
+    background-color: #000000;
 }
 
 html {
@@ -198,7 +195,8 @@ section#content-container div.messages {
         }
 
             section#content-container div.messages p.message-right span {
-                background-color: #3a71e8
+                background-color: #3c75ef;
+/*                #3a71e8*/
             }
 
         section#content-container div.messages p.message-left {
@@ -207,7 +205,7 @@ section#content-container div.messages {
         }
 
             section#content-container div.messages p.message-left span {
-                background-color: #262626
+                background-color: #141414
             }
 
 .name {
