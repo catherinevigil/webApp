@@ -243,9 +243,12 @@ section#content-container div.messages {
     margin-right: 5%;
     width: 45%;
 }
-.feed-name-countainer
-{
-    position:absolute;
-    width:40%;
-    z-index:1;
+.feed-name-container {
+    width: 40%;
+    height: 3rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    border-radius: 1000px;
+    z-index: 1;
 }

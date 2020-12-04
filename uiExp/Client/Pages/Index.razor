@@ -91,10 +91,17 @@
 
     public bool selectorRight = false;
 
-    public void SwitchSelector()
+    public void SwitchLeft()
     {
-        selectorRight = !(selectorRight);
+
+        selectorRight = false;
     }
+    public void SwitchRight()
+    {
+
+        selectorRight = true;
+    }
+
     public String GetSelector()
     {
         if (selectorRight)
@@ -139,10 +146,10 @@
 <div class="top-float">
     @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
-    <div class="feed-name-container" @onclick="SwitchSelector" style="color:@GetLeftColor()">
+    <div class="feed-name-container" @onclick="SwitchLeft" style="color:@GetLeftColor()">
         main feed
     </div>
-    <div class="feed-name-container" @onclick="SwitchSelector" style="color:@GetRightColor()">
+    <div class="feed-name-container" @onclick="SwitchRight" style="color:@GetRightColor()">
         lines feed
     </div>
     <div class="top-float-selector" id="@GetSelector()">
