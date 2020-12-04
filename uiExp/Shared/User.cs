@@ -1,7 +1,7 @@
 ﻿using System;
 namespace uiExp.Shared
 {
-    public class UserData
+    public class User
     {
         private int DateOfBirth;
         private int PhoneNumber;
@@ -9,7 +9,7 @@ namespace uiExp.Shared
         private String ImageUrl;
 
 
-        public UserData(string name, String img)
+        public User(string name, String img)
         {
             Name = name;
             ImageUrl = img;

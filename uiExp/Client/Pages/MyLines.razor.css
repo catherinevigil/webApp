@@ -16,6 +16,11 @@ head {
     }
   }
 
+.material-icons {
+    cursor: pointer;
+    color: lightgray;
+}
+
 /*Default styles*/
 .related-products li {
     float: left;
@@ -57,9 +62,7 @@ head {
       box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
-.material-icons{
-    cursor: pointer;
-}
+
 /*changes icon color on hover.*/ 
 .material-icons:hover{ 
     color: white; 

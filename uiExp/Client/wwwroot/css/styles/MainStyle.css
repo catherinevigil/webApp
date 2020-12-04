@@ -82,30 +82,20 @@ html {
     margin-top: 10px;
 }
 
-.nav-icon-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /*    background-color: #323232;*/
-}
 
 .icon {
     color: lightgray;
 }
 
-    .icon:hover {
-        color: white;
-    }
+.icon:hover {
+    color: white;
+}
 
 .profile-link {
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
 }
-
 
 
 @media screen and (min-width:1040px) {
@@ -147,13 +137,6 @@ section#content-container p a {
     position: relative;
     transition: color 175ms ease, background-color .15s ease, box-shadow .15s cubic-bezier(.175, .885, .32, 1.275), transform 175ms cubic-bezier(.175, .885, .32, 1.275)
 }
-
-@media screen and (min-width:700px) {
-    section#content-container {
-        margin: 0 auto 96px auto
-    }
-}
-
 
 section#page p {
     max-width: 600px /* total width of the text thread*/
@@ -219,25 +202,51 @@ section#content-container div.messages {
     margin-top: 10px;
 }
 
-.nav-icon-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-/*    background-color: #323232;*/
-}
-.icon {
+
+.material-icons {
+    cursor: pointer;
     color: lightgray;
 }
-.icon:hover {
-    color: white;
+
+.top-float {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1000px;
+    align-items: center;
+    height: 3rem;
+    width: 90%;
+    margin-left:5%;
+    background-color: black;
+    z-index:-1;
 }
 
-.profile-link {
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
+.top-float-selector {
+    top:0;
+    border-radius: 1000px;
+    height: 3rem;
+    width : 45%;
+    background-color: white;
+    color:black;
+    position:absolute;
+    z-index:0;
 }
 
+
+#left.top-float-selector {
+    margin-left: 5%;
+    margin-right:50%;
+    width:45%;
+}
+#right.top-float-selector {
+    margin-left: 50%;
+    margin-right: 5%;
+    width: 45%;
+}
+.feed-name-countainer
+{
+    position:absolute;
+    width:40%;
+    z-index:1;
+}

@@ -33,17 +33,22 @@ namespace uiExp.Shared
         public FeedPreview feedPreview;
 
         public List<MessageGroup> Groups = new List<MessageGroup>();
-        public List<UserData> Conversants = new List<UserData>(); //left is conversant 0
+        public List<User> Conversants = new List<User>(); //left is conversant 0
         public String Title;
 
         public Conversation()
         {
-
         }
+
         public Conversation (String[] convo, String[] feed)
         {
             SeperateConvo(convo);
             feedPreview = new FeedPreview(feed);
+        }
+
+        public Conversation(String[] convo)
+        {
+            SeperateConvo(convo);
         }
 
         private void SeperateConvo(string[] lines)

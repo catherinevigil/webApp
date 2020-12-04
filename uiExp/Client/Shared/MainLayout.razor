@@ -17,7 +17,7 @@
         }
         private Boolean InConvo()
         {
-            return NavigationManager.Uri.Contains("/kushconvo");
+            return NavigationManager.Uri.Contains("/convo");
         }
         private Boolean InInbox()
         {
@@ -62,6 +62,18 @@
         foreach (var convo in LoadConvos.ConvoList)
             Console.WriteLine(convo.Title);
     }
+    public void PrintUri()
+    {
+        Console.WriteLine(NavigationManager.Uri);
+    }
+    public bool ShowTopFloat()
+    {
+        if (AtHome())
+        {
+            return true;
+        }
+        return false;
+    }
 }
 
 <div class="main">
@@ -74,11 +86,9 @@
         </span>
     </div>
     }
-   
+    
 
-        <div class="content px-4">
-            @Body
-        </div>
+    <div>@Body</div>
 
         @*in order to get this to stay fixed, need to specifiy position in line.*@
         @if (ShowBottom())
@@ -87,7 +97,7 @@
 
                 <div class="nav-icon-container">
                     <i class="fas fa-home fa-2x icon" @onclick="NavigateHomeFeedComponent"></i>
-                    <i class="fas fa-comment fa-2x icon" @onclick="NavigateRequestComponent"></i>
+                    <i class="fas fa-upload fa-2x icon" @onclick="NavigateRequestComponent"></i>
                     <i class="fas fa-inbox fa-2x icon" @onclick="NavigateInboxComponent"></i>
                     <img src="https://pbs.twimg.com/profile_images/955259459449884672/cxYFJUJX_400x400.jpg" class="profile-link" @onclick="NavigateMyLinesComponent">
                 </div>
@@ -95,22 +105,22 @@
         }
         else if (NavigationManager.Uri.Contains("request"))
         {
-            <div>
+            <div class="bottom-row px-4" style="position:fixed; bottom:0">
                 <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
                 <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
                     <i class="fas fa-arrow-up"></i>
                 </button>
             </div>
         }
-        else if (NavigationManager.Uri.Contains("kushconvo"))
+        else if (NavigationManager.Uri.Contains("convo"))
         {
-            <div>
+            <div class="bottom-row px-4" style="position:fixed; bottom:0">
                 <input class="feedConvo" placeholder="Comment..." style="font-size:small">
                 <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
                     <i class="fas fa-arrow-up"></i>
                 </button>
             </div>
         }
-    </div>
+</div>
 
 @*style="align-items:flex-end"*@
