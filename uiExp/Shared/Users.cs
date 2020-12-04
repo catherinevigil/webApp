@@ -22,20 +22,24 @@ namespace uiExp.Shared
             List.Add(new User("Kush Sharma", "https://pbs.twimg.com/profile_images/1140844401620447232/Au3Rq27v_400x400.png"));
             List.Add(new User("Marshall Sloane", "https://pbs.twimg.com/profile_images/1219094554302959617/Z_kxkzep_400x400.jpg"));
             List.Add(new User("Henry Burnes", "https://scontent-bos3-1.cdninstagram.com/v/t51.2885-19/s150x150/116309149_1228799094139352_5633672728796461794_n.jpg?_nc_ht=scontent-bos3-1.cdninstagram.com&_nc_ohc=bYP4TvSWxLQAX91fK9_&tp=1&oh=ff9e88b60a4bcdbd0b9b9b66be350399&oe=5FE62907"));
+            List.Add(new User("Jonah Berger", "https://pbs.twimg.com/profile_images/945496350149500928/oSwRCrOR_400x400.jpg"));
+            List.Add(new User("Campbell Erickson", "https://pbs.twimg.com/profile_images/1268391920117612544/HgMzJ8yN_400x400.jpg"));
+            List.Add(new User("Noah Redlich", "https://pbs.twimg.com/profile_images/1185259612938702849/PpL8KbsI_400x400.jpg"));
+
         }
 
         public static User GetUserByName(string name)
         {
             foreach (var person in List)
             {
-                Console.WriteLine("name being checked:\""+name+"\" name of this person in list:\""+person.GetName());
+                //Console.WriteLine("name being checked:\""+name+"\" name of this person in list:\""+person.GetName());
                 if (person.GetName() == name)
                 {
-                    Console.WriteLine("will return a person, data given to a convo object");
+                 //   Console.WriteLine("will return a person, data given to a convo object");
                     return person;
                 }
             }
-            Console.WriteLine("will return null. no user by that name");
+            Console.WriteLine("will return null. no user by that name: "+name);
             return null;
         }
     }

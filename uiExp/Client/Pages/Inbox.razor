@@ -1,13 +1,77 @@
 ﻿@page "/inbox"
-
-<h1>inbox</h1>
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@inject NavigationManager NavigationManager
 
 
 @code {
-    private int currentCount = 0;
 
-    private void IncrementCount()
+    public String getAlign(Boolean left)
     {
-        currentCount++;
+        if (left)
+            return "left";
+        else
+            return "right";
     }
+
+
+    public void dump(object a)
+    {
+        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+    }
+
+    public void ShowData()
+    {
+    }
+
+    public void NavigateToPm(int talk)
+    {
+        NavigationManager.NavigateTo("/Pm/" + talk);
+
+    }
+
+    public String UsersMessagesClass = "message message-left aos-init";
+    public String OthersMessageClass = "message message-right aos-init";
+    public String UserName = "Eli Burnes";
+
+    public int bottomHeaderHeight = 60;//aos offset for bottom
+    public int animationDuration = 1000;
+    public int messagesOffset = 80;//aos offset for top
+
+    public String GetConvoHeading(PrivateMessage pm)
+    {
+        if (pm.GetPartners().Count == 1)
+        {
+            return pm.GetPartners()[0].GetName();
+        }
+        else
+        {
+            return pm.GetConvoName();
+        }
+    }
+
 }
+
+<div style="height:150px">
+</div>
+
+<body>
+    <section>
+        <div class="content">
+            <ul id="partnerlist">
+                @for (int x = 0; x < LoadDms.InboxList.Count; x++)
+                {
+                    var convo = x;// need to do this so proper number is inputted with @onclick 
+                    <li class="inbox-item" @onclick="() => NavigateToPm(convo)">
+                        <img class="partner-picture" alt="Profile Picture" src="@LoadDms.InboxList[x].GetImg()">
+                        <h3 class="partner-name"> @(LoadDms.InboxList[x].GetConvoName()) </h3>
+                        <p class="partner-line"> @LoadDms.InboxList[x].GetLastMessage()</p>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </section>
+</body>
+

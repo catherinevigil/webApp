@@ -219,7 +219,6 @@ section#content-container div.messages {
     width: 90%;
     margin-left:5%;
     background-color: black;
-    z-index:-1;
 }
 
 .top-float-selector {

@@ -1,9 +1,10 @@
-﻿using System;
+﻿//this class is no longer used. keeping it around to 1. have the text of the feed in string format and 2. to suggest maybe in the future to edit then use this class
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-
 
 namespace uiExp.Shared
 {
@@ -58,7 +59,6 @@ namespace uiExp.Shared
 
         static Feed()
         {
-            FeedList = Seperate(Lines);
         }
 
         private static List<int> convoBreaks (string[] lines)
@@ -73,66 +73,5 @@ namespace uiExp.Shared
             }
             return positionList;
         }
-
-        //private static List<Conversation> MakeFeed( string[] lines)
-        //{
-
-        //    List<Conversation> ConvoList = new List<Conversation>();
-
-        //    var list = convoBreaks(lines);
-        //    list.Add(lines.Length);
-        //    list.Insert(0, 0);
-
-        //    var length = list.Count;
-
-        //    for (int i = 0; i < length-1; i++)
-        //    {
-        //        var segLength = list[i + 1] - list[i];
-        //        var upTo = lines.Skip(list[i]).Take(segLength).ToArray();
-        //        ConvoList.Add(new Conversation(upTo));
-        //    }
-        //    return ConvoList;
-        //}
-
-        private static List<Conversation> Seperate(string[] lines)
-        {
-            //Console.WriteLine("seperate was called");
-            List<Conversation> ConvoList = new List<Conversation>();
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                //Console.WriteLine(ConvoList.Count);
-                if (lines[i] == "")
-                {
-                    ConvoList.Add(new Conversation());
-                }
-                else if (lines[i].Contains(":"))
-                {
-                    var name = lines[i].Remove(lines[i].Length - 1);
-                    if (!ConvoList.LastOrDefault().Conversants.Any())//if list does not have any elements
-                    {
-                        ConvoList.LastOrDefault().Conversants.Add(Users.GetUserByName(name));
-                        Console.WriteLine("added conversant" + ConvoList.LastOrDefault().Conversants.Last().GetName());
-                    }
-                    else
-                    {
-                        if (ConvoList.LastOrDefault().Conversants.IndexOf(Users.GetUserByName(name)) == -1)//could maybe replace this with ==
-                            ConvoList.LastOrDefault().Conversants.Add(Users.GetUserByName(name));
-                        Console.WriteLine("added conversant" + ConvoList.LastOrDefault().Conversants.Last().GetName());
-                    }
-
-
-                    ConvoList.LastOrDefault().Groups.Add(new MessageGroup());
-                }
-                else
-                {
-                    ConvoList.Last().Groups.Last().Messages.Add(new Message(lines[i]));
-                }
-
-            }
-
-            return ConvoList;
-        }
-
     }
 }

@@ -60,20 +60,6 @@
 
     public void ShowData()
     {
-        Console.WriteLine(Users.List.Count);
-        foreach (var person in Users.List)
-        {
-            //Console.WriteLine(person.GetName()); //this will print a json of the feed object's properties/values to the console
-        }
-        var i = 0;
-        foreach (var convo in Feed.FeedList)//debugging///
-        {
-            foreach (var conversant in convo.Conversants)
-            {
-                DumpityDump.Dump(conversant);
-            }
-            i++;
-        }
     }
 
     public void NavigateToConvo(int talk)
@@ -102,27 +88,28 @@
     }
     FeedType CurrentFeed = FeedType.MainFeed;
     public String Selector = "left";
-    public void SelectorLeft()
+
+    public bool selectorRight = false;
+
+    public void SwitchSelector()
     {
-        Selector = "left";
+        selectorRight = !(selectorRight);
     }
-    public void SelectorRight()
+    public String GetSelector()
     {
-        Selector = "right";
+        if (selectorRight)
+        {
+            return "right";
+        }
+        else
+        {
+            return "left";
+        }
     }
+
     public String GetLeftColor()
     {
-        if (Selector == "right")
-        {
-            return "white";
-        }
-        else {
-            return "black";
-        }
-    }
-    public String GetRightColor()
-    {
-        if (Selector == "left")
+        if (selectorRight)
         {
             return "white";
         }
@@ -131,23 +118,41 @@
             return "black";
         }
     }
+    public String GetRightColor()
+    {
+        if (selectorRight)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
+    }
+    public void DumpRequests()
+    {
+        DumpityDump.Dump(LoadRequests.LineList);
+    }
 }
 
 
 <div class="top-float">
-@* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
+    @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
-    <div class="feed-name-container" @onclick="SelectorLeft" style="color:@GetLeftColor()">
+    <div class="feed-name-container" @onclick="SwitchSelector" style="color:@GetLeftColor()">
         main feed
     </div>
-    <div class="feed-name-container" @onclick="SelectorRight" style="color:@GetRightColor()">
+    <div class="feed-name-container" @onclick="SwitchSelector" style="color:@GetRightColor()">
         lines feed
     </div>
-    <div class="top-float-selector" id="@Selector">
+    <div class="top-float-selector" id="@GetSelector()">
     </div>
 
 </div>
-@if (Selector == "left")
+<div style="height:150px" @onclick="DumpRequests">
+
+</div>
+@if (!selectorRight)
 {
     <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
         <div class="page-content">
@@ -198,7 +203,7 @@
                                     {
                                         <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
                                             <span>
-                                                @Feed.FeedList[x].Groups[i].Messages[y].Text
+                                                @LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages[y].Text
                                             </span>
                                         </p>
                                     }
@@ -206,6 +211,53 @@
                             }
                         </div>
                     </div>
+                    <hr style="border-top:1px solid white;">
+                }
+                <div style="height:150px">
+
+                </div>
+            </section>
+        </div>
+    </body>
+}
+else
+{
+    <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+        <div class="page-content">
+            <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
+                <div style="height:150px">
+                </div>
+                @for (int x = 0; x < LoadRequests.LineList.Count; x++)
+                {
+                    var convo = x;
+
+                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="-50" @onclick="() => NavigateToConvo(convo)" data-aos-anchor-placement="top-top" data-aos-id="convo-block">
+                        @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
+
+                        <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
+                            <div>
+                                <img src="@(LoadRequests.LineList[x].GetRequester().GetImg())" class="profile-pic">
+                            </div>
+                            <div class="header-text">
+                                <p class="names">
+                                    <span>
+                                        @LoadRequests.LineList[x].GetRequester().GetName()
+                                    </span>
+                                </p>
+
+                            </div>
+                            </div>
+                                <div class="message-group">
+                                    @for (int y = 0; y < LoadRequests.LineList[x].GetRequest().Groups[0].Messages.Count; y++)
+                                    {
+                                        <p class=@getClass(true) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="center-bottom">
+                                            <span>
+                                                @LoadRequests.LineList[x].GetRequest().Groups[0].Messages[y].Text
+                                            </span>
+                                        </p>
+                                    }
+                                </div>
+                        </div>
                     <hr style="border-top:1px solid white;">
                 }
                 <div style="height:150px">

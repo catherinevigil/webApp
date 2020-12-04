@@ -6,7 +6,7 @@ namespace uiExp.Shared
 {
     public class LoadDms
     {
-        public static List<Conversation> InboxList = new List<Conversation>();
+        public static List<PrivateMessage> InboxList = new List<PrivateMessage>();
 
         private static string[] lines0 { get; } =
             {
@@ -294,7 +294,7 @@ namespace uiExp.Shared
 
         private static string[] lines3 { get; } =
         {
-                        "Jonah:",
+            "Jonah Berger:",
             "https://twitter.com/sahilkapur/status/1332411155701264391?s=10",
             "Kind of crazy!",
             "Noah Redlich:",
@@ -324,15 +324,15 @@ namespace uiExp.Shared
             "Eli Burnes:",
             "Intersting",
             "Didn’t know that",
-            "Jonah:",
+            "Jonah Berger:",
             "But they live in cities",
             "Eli Burnes:",
             "Most people also don’t go to college",
-            "Jonah:",
+            "Jonah Berger:",
             "We need to give money to republicans",
             "Eli Burnes:",
             "yes",
-            "Jonah:",
+            "Jonah Berger:",
             "Bribe them to vote for us",
             "Eli Burnes:",
             "We can’t just forgive the debt of the educated class, how is that fair to working class people who passed on a 4 year liberal arts degree to hit the job market?",
@@ -342,19 +342,21 @@ namespace uiExp.Shared
             "Lol true",
             "Eli Burnes:",
             "https://twitter.com/PrinceVogel/status/1299886882139058177?s=20",
-            "Jonah:",
+            "Jonah Berger:",
             "Lol if we only forgave black people’s debt there would be a civil war",
             "Eli Burnes:",
             "Reparations !",
             "The higher education industry has collectively ripped off so many heads",
             "Its just too damn expensive" };
+        private static string user = "Eli Burnes";
 
         static LoadDms()
         {
-            InboxList.Add(new Conversation(lines0));
-            InboxList.Add(new Conversation(lines1));
-            InboxList.Add(new Conversation(lines2));
-            InboxList.Add(new Conversation(lines3));
+            InboxList.Add(new PrivateMessage(lines0, user));
+            InboxList.Add(new PrivateMessage(lines1, user));
+            InboxList.Add(new PrivateMessage(lines2, user));
+            InboxList.Add(new PrivateMessage(lines3, user));
+
         }
     }
 }

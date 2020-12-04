@@ -28,7 +28,8 @@ namespace uiExp.Shared
             {
                 if (lines[i].EndsWith(":"))
                 {
-                    this.Groups.Add(new MessageGroup());
+                    var name = lines[i].Remove(lines[i].Length - 1);
+                    this.Groups.Add(new MessageGroup(Users.GetUserByName(name)));
                 }
                 else
                 {

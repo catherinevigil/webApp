@@ -20,17 +20,26 @@ namespace uiExp.Shared
             {
                 if (lines[i].EndsWith(":"))
                 {
-                    var name = lines[i].Remove(lines[i].Length - 1);
-                    this.Requester = Users.GetUserByName(name);
-                    this.Request.Groups.Add(new MessageGroup());
+                    var requester = Users.GetUserByName(lines[i].Remove(lines[i].Length - 1));
+                    this.Requester = requester;
+                    this.Request.Groups.Add(new MessageGroup(requester));
                 }
                 else
                 {
-                    this.Request.Groups.Last().Messages.Add(new Message(lines[i]));
+                    this.Request.Groups.LastOrDefault().Messages.Add(new Message(lines[i]));
                 }
 
             }
         }
+        public User GetRequester()
+        {
+            return this.Requester;
+        }
+        public Conversation GetRequest()
+        {
+            return this.Request;
+        }
+
 
     }
 }
