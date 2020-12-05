@@ -25,6 +25,7 @@ namespace uiExp.Shared
             List.Add(new User("Jonah Berger", "https://pbs.twimg.com/profile_images/945496350149500928/oSwRCrOR_400x400.jpg"));
             List.Add(new User("Campbell Erickson", "https://pbs.twimg.com/profile_images/1268391920117612544/HgMzJ8yN_400x400.jpg"));
             List.Add(new User("Noah Redlich", "https://pbs.twimg.com/profile_images/1185259612938702849/PpL8KbsI_400x400.jpg"));
+            List.Add(new User("Garrett Walker", "https://scontent-bos3-1.xx.fbcdn.net/v/t1.0-9/28783100_177715086186379_6047144902855229440_o.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=s5y7vtmn9DcAX9xMxj6&_nc_ht=scontent-bos3-1.xx&oh=0dba68c02d4e5278758719ea3e96167e&oe=5FF0CD60"));
 
         }
 

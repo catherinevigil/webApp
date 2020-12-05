@@ -85,7 +85,12 @@
                         {
                             <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
                                 <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                    @if (@message.Text.Contains("img")){
+                                    @((MarkupString)@message.Text)
+                                    }
+                                    else{
                                     @message.Text
+                                    }
                                 </span>
                             </p>
                         }

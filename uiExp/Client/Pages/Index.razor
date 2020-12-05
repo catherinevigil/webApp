@@ -140,6 +140,10 @@
     {
         DumpityDump.Dump(LoadRequests.LineList);
     }
+    public void NavigateToRespond(int line)
+    {
+        //
+    }
 }
 
 
@@ -237,10 +241,8 @@ else
                 @for (int x = 0; x < LoadRequests.LineList.Count; x++)
                 {
                     var convo = x;
-
-                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="-50" @onclick="() => NavigateToConvo(convo)" data-aos-anchor-placement="top-top" data-aos-id="convo-block">
+                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="-50" @onclick="() => NavigateToRespond(convo)" data-aos-anchor-placement="top-top" data-aos-id="convo-block">
                         @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
-
                         <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
                             <div>
                                 <img src="@(LoadRequests.LineList[x].GetRequester().GetImg())" class="profile-pic">
@@ -251,24 +253,22 @@ else
                                         @LoadRequests.LineList[x].GetRequester().GetName()
                                     </span>
                                 </p>
-
                             </div>
-                            </div>
-                                <div class="message-group">
-                                    @for (int y = 0; y < LoadRequests.LineList[x].GetRequest().Groups[0].Messages.Count; y++)
-                                    {
-                                        <p class=@getClass(true) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="center-bottom">
-                                            <span>
-                                                @LoadRequests.LineList[x].GetRequest().Groups[0].Messages[y].Text
-                                            </span>
-                                        </p>
-                                    }
-                                </div>
                         </div>
+                        <div class="message-group">
+                            @for (int y = 0; y < LoadRequests.LineList[x].GetRequest().Groups[0].Messages.Count; y++)
+                            {
+                                <p class=@getClass(true) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="center-bottom">
+                                    <span>
+                                        @LoadRequests.LineList[x].GetRequest().Groups[0].Messages[y].Text
+                                    </span>
+                                </p>
+                            }
+                        </div>
+                    </div>
                     <hr style="border-top:1px solid white;">
                 }
                 <div style="height:150px">
-
                 </div>
             </section>
         </div>

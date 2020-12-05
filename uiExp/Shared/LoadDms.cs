@@ -123,8 +123,6 @@ namespace uiExp.Shared
                 "Majoritarian rule in America"
             };
 
-
-
             private static string[] lines1 { get; } =
             {
                 "Eli Burnes:",
@@ -348,6 +346,156 @@ namespace uiExp.Shared
             "Reparations !",
             "The higher education industry has collectively ripped off so many heads",
             "Its just too damn expensive" };
+        private static string[] lines4 { get; } =
+            {
+            "Garrett Walker:",
+            "I read a crazy stat that between 250 and 500 million people are going to fall back into poverty as a result of covid",
+            "Eli Burnes:",
+            "Holy shit",
+            "Garrett Walker:",
+            "So we definitely need some PH innovation",
+            "Eli Burnes:",
+            "That’s horrible",
+            "Yep",
+            "Garrett Walker:",
+            "That totally flipped my perspective on the shutdown",
+            "Eli Burnes:",
+            "Yeah I’m on team free america",
+            "Garrett Walker:",
+            "That's what the kids like to hear",
+            "Eli Burnes:",
+            "we got to get back to work",
+            "4 days on, 10 days off... or something like that",
+            "Garrett Walker:",
+            "The problem is marketing it to the left when the optics are just \"You want to kill my grandparents to make money\"",
+            "Eli Burnes:",
+            "Yep",
+            "People don’t see that economic loss=death as well",
+            "Garrett Walker:",
+            "Great quote from Condorcet (paraphrasing): \"The only difficult question is how to explain complex economic policies to the masses\"",
+            "Eli Burnes:",
+            "Yep that’s a tough one",
+            "Politics is almost 100% about the optics, not actual substance",
+            "I think the only solution is to ensure that the people who end up in power are benevolent and educated",
+            "Garrett Walker:",
+            "This is true",
+            "Eli Burnes:",
+            "Not sure how that’s possible though...",
+            "Garrett Walker:",
+            "Yeah. You should read Burke's Speech to the Electors of Bristol",
+            "Eli Burnes:",
+            "I’ll check it out",
+            "I’m kind of sympathetic to him",
+            "Garrett Walker:",
+            "Dems in particular have gone down this hole of increasing transparency after 1968, when Humphrey won the nomination despite not running in any primaries",
+            "So now it's just grassroots without any oversight, leading to bad candidates and populist policies",
+            "Anyway. These are the questions we get to address",
+            "Eli Burnes:",
+            "yep",
+            "Democratic Party is no longer a party",
+            "They let Bernie run!!",
+            "At this point they are just an empty shell",
+            "Garrett Walker:",
+            "Definitely not helped by the fact that conservative values are broadly reconcilable: imagined 1950s white agrarian culture, laissez-faire economics, hawkish foreign policy, etc.",
+            "How the hell do Dems expect to get minority voters, feminists, intellectuals, LGBT activists, and the working class on the same page?",
+            "We need a Macron-esque third party",
+            "Though probably not possible with current party structures" };
+        private static string[] lines5 { get; } =
+            {
+            "Eli Burnes:",
+            "The structure of our economy is fucked ",
+            "A bunch of unnecessary office jobs getting rich who then support a massive service sector ",
+            "Of course if you look at the numbers most trade deals have been net positive ",
+            "In terms of jobs ",
+            "The disruption though is hard to bear ",
+            "When corporations break the law they should go to prison",
+            "Noah Redlich:",
+            "Yeah I mean they might increase the number of jobs but I think a lot of the jobs end up being lower pay",
+            "And the higher paying ones end up on the coasts",
+            "Love that!!",
+            "Eli Burnes:",
+            "Honestly they have too much legal power",
+            "If they get to be people they can go to prison!",
+            "Noah Redlich:",
+            "They do!",
+            "But corporations are not people!!",
+            "Eli Burnes:",
+            "Well in fact they have more legal rights than people do to some extent ",
+            "They are collections of people doing something ",
+            "The engines of progress ",
+            "Noah Redlich:",
+            "Yeah they definitely shouldn’t tho",
+            "They aren’t entitled to the same treatment by the gov’t as people are",
+            "Eli Burnes:",
+            "Yes for instance if they go bankrupt we should just take all their owners personal money",
+            "Psych ",
+            "The whole point of a corporation is a legal shield ",
+            "It allows people to take risks ",
+            "Noah Redlich:",
+            "Hahahaha ",
+            "But it shouldn’t be that way",
+            "It makes no sense to make corporations get away with behavior that individuals would be penalized for ",
+            "Eli Burnes:",
+            "Well its just to protect personal assets",
+            "Of course it depends case by case",
+            "We should think of a corporation as a person feeder . So Xerox corp feeds 27k people, or thereabouts",
+            "Noah Redlich:",
+            "Yeah but we can’t just allow corporations to engage in behavior that would be blatantly unethical if individuals did it ",
+            "Eli Burnes:",
+            "By paying wages and getting profit through collective action",
+            "Noah Redlich:",
+            "But they aren’t jut feeding people? ",
+            "Just ",
+            "Eli Burnes:",
+            "Its just hard to punish corporations in the same way people are",
+            "Right now the solution is just make them pay up",
+            "But jailing executives would be better",
+            "yet. I hold firm that corporations as a concept and in practice are a decent invention. They allow a person to separate certain business actions from the rest of their life. Yet when corporations (or people in them) cross some lines they should face personal consequences",
+            "Noah Redlich:",
+            "Yeah I agree with all of that",
+            "I’m not against corporations inherently",
+            "They just can never be above the law" };
+        private static string[] lines6 { get; } =
+            {
+            "Jonah Berger:",
+            "<img src=\"https://i.postimg.cc/Z5bxb1Y1/owl.jpg\" alt=\"owl\"/>",
+            "<img src=\"https://i.postimg.cc/RC2x6xWJ/rockHike.jpg\" alt=\"rockHike\"/>",
+            "<img src=\"https://i.postimg.cc/2SZSg5hG/bird-Mid-Flight.jpg\" alt=\"bird-Mid-Flight\"/>",
+            "<img src=\"https://i.postimg.cc/L8pdDkBH/waterfall.jpg\" alt=\"waterfall\"/>",
+            "Eli Burnes:",
+            "<img src=\"https://i.postimg.cc/XqGxShWT/selfie.jpg\" alt=\"selfie\"/>",
+            "Jonah Berger:",
+            "<img src='https://i.postimg.cc/J4ttmL9y/bug.jpg' border='0' alt='bug'/>",
+            "Eli Burnes:",
+            "<img src=\"https://i.postimg.cc/jd9j8fwC/dog.jpg\" alt=\"dog\"/>",
+            "<img src=\"https://i.postimg.cc/WbP7KdBp/marsh.jpg\" alt=\"marsh\"/>",
+            "<img src=\"https://i.postimg.cc/pT2V9Y7c/colorado.jpg\" alt=\"colorado\"/>",
+            "Jonah Berger:",
+            "<img src=\"https://i.postimg.cc/fb86MG4L/utahSnow.jpg\" alt=\"utahSnow\"/>",
+            "<img src=\"https://i.postimg.cc/gkRF3thS/snow-Cliffs.jpg\" alt=\"snow-Cliffs\"/>",
+            "<img src=\"https://i.postimg.cc/y6LxZt7m/blackbird.jpg\" alt=\"blackbird\"/>",
+            "Eli Burnes:",
+            "<img src=\"https://i.postimg.cc/kM2dgggd/sunset.jpg\" alt=\"sunset\"/>",
+            "Jonah Berger:",
+            "<img src=\"https://i.postimg.cc/HLKwtn0g/jSunset.png\" alt=\"jSunset\"/>",
+            "Eli Burnes:",
+            "<img src=\"https://i.postimg.cc/qR38DrQC/glowing.jpg\" alt=\"glowing\"/>",
+            "<img src=\"https://i.postimg.cc/Xq1v6GsH/brews.jpg\" alt=\"brews\"/>",
+            "<img src=\"https://i.postimg.cc/mrh3MCHj/niceTree.jpg\" alt=\"niceTree\"/>",
+            "<img src=\"https://i.postimg.cc/1z055YWN/dogInBed.jpg\" alt=\"dogInBed\"/>",
+            "Jonah Berger:",
+            "<img src=\"https://i.postimg.cc/SsrsVtCp/bird-On-Sign.jpg\" alt=\"bird-On-Sign\"/>",
+            "<img src=\"https://i.postimg.cc/wT3vc2BS/clouds.jpg\" alt=\"clouds\"/>",
+            "<img src=\"https://i.postimg.cc/25ksRzKM/snakes.jpg\" alt=\"snakes\"/>",
+            "Eli Burnes:",
+            "<img src=\"https://i.postimg.cc/kXFydnCQ/marsh2.jpg\" alt=\"marsh2\"/>",
+            "Jonah Berger:",
+            "<img src=\"https://i.postimg.cc/QdfkH0HV/hike.jpg\" alt=\"hike\"/>",
+            "Eli Burnes:",
+            "<img src=\"https://i.postimg.cc/RhkdMRVq/Screen-Shot-2020-12-04-at-11-22-08-PM.png\" alt=\"Screen-Shot-2020-12-04-at-11-22-08-PM\"/>",
+            "send some more later buddy","love the pics"};
+
+
         private static string user = "Eli Burnes";
 
         static LoadDms()
@@ -356,7 +504,9 @@ namespace uiExp.Shared
             InboxList.Add(new PrivateMessage(lines1, user));
             InboxList.Add(new PrivateMessage(lines2, user));
             InboxList.Add(new PrivateMessage(lines3, user));
-
+            InboxList.Add(new PrivateMessage(lines4, user));
+            InboxList.Add(new PrivateMessage(lines5, user));
+            InboxList.Add(new PrivateMessage(lines6, user));
         }
     }
 }

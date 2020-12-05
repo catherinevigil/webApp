@@ -15,7 +15,6 @@
             return "right";
     }
 
-
     public void dump(object a)
     {
         DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
@@ -28,7 +27,6 @@
     public void NavigateToPm(int talk)
     {
         NavigationManager.NavigateTo("/Pm/" + talk);
-
     }
 
     public String UsersMessagesClass = "message message-left aos-init";
@@ -50,28 +48,39 @@
             return pm.GetConvoName();
         }
     }
-
 }
 
-<div style="height:150px">
-</div>
 
-<body>
-    <section>
-        <div class="content">
-            <ul id="partnerlist">
-                @for (int x = 0; x < LoadDms.InboxList.Count; x++)
-                {
-                    var convo = x;// need to do this so proper number is inputted with @onclick 
-                    <li class="inbox-item" @onclick="() => NavigateToPm(convo)">
-                        <img class="partner-picture" alt="Profile Picture" src="@LoadDms.InboxList[x].GetImg()">
-                        <h3 class="partner-name"> @(LoadDms.InboxList[x].GetConvoName()) </h3>
-                        <p class="partner-line"> @LoadDms.InboxList[x].GetLastMessage()</p>
-                    </li>
 
-                }
-            </ul>
-        </div>
-    </section>
+<body id="page">
+    <div style="height:80px">
+    </div>
+    <div class="content">
+            @for (int x = 0; x < LoadDms.InboxList.Count; x++)
+            {
+            var convo = x;
+            <div class="inbox-item" @onclick="() => NavigateToPm(convo)">
+                <div>
+                    <img src="@LoadDms.InboxList[x].GetImg()" class="profile-pic">
+                </div>
+                <div class="inbox-text">
+                    <h1 class="convo-name">@(LoadDms.InboxList[x].GetConvoName())</h1>
+                    <p class="preview-message">
+                        <span>
+                            @LoadDms.InboxList[x].GetLastMessage()
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            }
+    </div>
 </body>
 
+
+ @*var convo = x;// need to do this so proper number is inputted with @onclick
+<li class="inbox-item" @onclick="() => NavigateToPm(convo)">
+    <img class="partner-picture" alt="Profile Picture" src="@LoadDms.InboxList[x].GetImg()">
+    <h3 class="partner-name"> @(LoadDms.InboxList[x].GetConvoName()) </h3>
+    <p class="partner-line"> @LoadDms.InboxList[x].GetLastMessage()</p>
+</li>*@
