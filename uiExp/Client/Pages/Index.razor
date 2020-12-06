@@ -147,30 +147,31 @@
 }
 
 
-<div class="top-float">
-    @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
-    <div class="feed-name-container" @onclick="SwitchLeft" style="color:@GetLeftColor()">
-        main feed
-    </div>
-    <div class="feed-name-container" @onclick="SwitchRight" style="color:@GetRightColor()">
-        lines feed
-    </div>
-    <div class="top-float-selector" id="@GetSelector()">
-    </div>
+@*<div style="height:150px" @onclick="DumpRequests">
 
-</div>
-<div style="height:150px" @onclick="DumpRequests">
+    </div>*@
+@*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">*@
+<div class="content">
+    <div class="top-float">
+        @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
-</div>
-@if (!selectorRight)
-{
-    <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+        <div class="feed-name-container" @onclick="SwitchLeft" style="color:@GetLeftColor()">
+            main feed
+        </div>
+        <div class="feed-name-container" @onclick="SwitchRight" style="color:@GetRightColor()">
+            lines feed
+        </div>
+        <div class="top-float-selector" id="@GetSelector()">
+        </div>
+    </div>
+    @if (!selectorRight)
+    {
         <div class="page-content">
             <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
-                <div style="height:150px">
+                @*<div style="height:150px">
 
-                </div>
+                    </div>*@
                 @for (int x = 0; x < LoadConvos.ConvoList.Count; x++)
                 {
                     var convo = x;
@@ -229,15 +230,11 @@
                 </div>
             </section>
         </div>
-    </body>
-}
-else
-{
-    <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+    }
+    else
+    {
         <div class="page-content">
             <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
-                <div style="height:150px">
-                </div>
                 @for (int x = 0; x < LoadRequests.LineList.Count; x++)
                 {
                     var convo = x;
@@ -272,5 +269,7 @@ else
                 </div>
             </section>
         </div>
-    </body>
-}
+        <hr style="border-top: 10px solid red;" />
+    }
+</div>
+    @*</body>*@

@@ -16,18 +16,22 @@ namespace uiExp.Shared
         {
         }
 
-        public Conversation(String[] convo, String[] feed)
+        public Conversation(String[] convo, String[] feed, bool title)
         {
-            SeperateConvo(convo);
+            SeperateConvo(convo,title);
             feedPreview = new FeedPreview(feed);
         }
 
-        public Conversation(String[] convo)
+        //public Conversation(String[] convo)
+        //{
+        //    SeperateConvo(convo);
+        //}
+        public Conversation(String[] convo, bool title)
         {
-            SeperateConvo(convo);
+            SeperateConvo(convo,title);
         }
 
-        private void SeperateConvo(string[] lines)
+        private void SeperateConvo(string[] lines, bool title)
         {
             //Console.WriteLine("seperate was called");
 
@@ -62,7 +66,10 @@ namespace uiExp.Shared
                 }
 
             }
-            this.Title = lines[lines.Length - 1];
+            if (title)
+                this.Title = lines[lines.Length - 1];
+            else
+                this.Groups.Last().Messages.Add(new Message(lines[lines.Length - 1]));
         }
         public String GetNames()
         {

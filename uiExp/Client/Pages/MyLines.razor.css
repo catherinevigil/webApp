@@ -69,16 +69,16 @@ head {
 }
 
 /* Makes something grow on hover. source: https://github.com/IanLunn/Hover/blob/master/README.md#a-copy-and-paste-an-effect. Not working currently lol */
-.hvr-grow {
-    display: inline-block;
-    vertical-align: middle;
+/*.hvr-grow {*/
+/*    display: inline-block;*/
+    /*vertical-align: middle;
     transform: translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
     transition-duration: 0.3s;
     transition-property: transform; 
-}
+}*/
 
 .hvr-grow:hover,
 .hvr-grow:focus,
@@ -162,38 +162,6 @@ head {
     width: 100%; 
     font-style: "HelveticaNeue"; 
     }
-    
-ul#partnerlist {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-}
-
-/*Partner information; photo, name, short bio, tagline.*/ 
-.partner-name{
-    text-align: left;
-    padding-top: 0.5em;
-    padding-left:1.5em;
-    font-weight: medium;
-    font-size: 17pt;
-    color: white;
-}
-
-.partner-picture{
-    cursor: pointer;
-}
-
-.partner-line{
-    text-align: left;
-    align-self: center;
-    padding-top: 20px;
-    padding-left:1.5em;
-    bottom: 0; 
-    font-weight: regular;
-    font-size: 15pt;
-    color: grey;
-}
 
 /*Name of chat participant on the left*/
 .name-left{
@@ -209,22 +177,14 @@ ul#partnerlist {
     height: 100px; 
     width: 100px;  
     border-radius: 50%;
-    display: inline-block;
+/*    display: inline-block;*/
     margin-left: auto;
     margin-right: auto;
     padding:10px;
     padding-bottom: 5px;
 }
 
-.partner-picture{
-    height: 100px; 
-    width: 100px;  
-    border-radius: 50%;
-    display: block;
-    margin-left: 10px;
-    padding:10px;
-    float: left;   
-}
+
 
 /*Unit to be displayed of saved conversation in feed*/
 .saved-convo{
@@ -252,3 +212,116 @@ ul#partnerlist {
 
 
 /*A message left*/
+
+
+ul#partnerlist {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+/*    overflow: hidden;
+    overflow-y: scroll;*/
+/*    height:50%;*/
+}
+
+/*Partner information; photo, name, short bio, tagline.*/
+/* .partner-name{
+    text-align: left;
+    padding-top: 0.5em;
+    padding-left:1.5em;
+    font-weight: medium;
+    font-size: 17pt;
+    color: white;
+} */
+
+.partner-name {
+    color: white;
+    font-weight: 600;
+    /* 400 is norma, 700 is bold */
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: 17pt;
+}
+
+.partner-picture {
+    cursor: pointer;
+}
+
+/* .partner-line{
+    text-align: left;
+    align-self: center;
+    margin-top: 8px;
+    font-weight: regular;
+    font-size: 15pt;
+    color: grey;
+} */
+
+.partner-line {
+    color: rgb(166, 165, 165);
+    margin-bottom: 0px;
+    margin-top: 4px;
+    font-weight: regular;
+    /*    white-space: nowrap;
+    overflow: hidden;*/
+    font-size: 15pt;
+    line-height: 1em;
+    /*    overflow-wrap: break-word;*/
+}
+
+.partner-text {
+    margin-left: .75em;
+}
+
+.partner-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 120px;
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    padding-left: 5%;
+    border-top: 1px solid #141414;
+}
+
+.partner-picture {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: block;
+    margin-left: 10px;
+    padding: 10px;
+    float: left;
+}
+
+
+.profile-top {
+    overflow: hidden;
+    overflow-y: scroll;
+/*    height:50%;*/
+}
+
+.profile-bottom {
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 88%;
+    margin-left: 6%;
+}
+.profile-middle{
+    height:60px;
+}
+
+
+.content {
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 88%;
+    margin-left: 6%;
+}
+.list-div {
+    overflow: hidden;
+    overflow-y: scroll;
+}

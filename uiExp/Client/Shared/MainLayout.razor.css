@@ -54,16 +54,6 @@
 }
 
 
-.nav-icon-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /*    background-color: #323232;*/
-}
-
 
 .btn-header {
     background-color: transparent;
@@ -77,7 +67,7 @@
 }
 
 .bottom-row {
-    height: 4rem;
+    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,5 +82,18 @@
 .main .bottom-row {
     background-color: black;
     border-top: 1px solid #d6d5d5;
-  
 }
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/*.content {
+    height: 92vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}*/

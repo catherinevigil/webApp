@@ -15,7 +15,7 @@ namespace uiExp.Shared
         public PrivateMessage(string[] lines, string user)
         {
             this.InboxOwner = Users.GetUserByName(user);
-            conversation = new Conversation(lines);
+            conversation = new Conversation(lines, false);
             MakePartners(user);
             if (this.partners.Count > 1)
             {

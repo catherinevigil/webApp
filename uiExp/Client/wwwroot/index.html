@@ -71,7 +71,17 @@
 
     <!--<script src="../scripts/aos.js"></script>-->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <!--<script>
+        AOS.init({
+            disable: function () {
+                var maxWidth = 600;
+                return window.innerWidth < maxWidth;
+            }
+        });
+    </script>-->
+    <script>AOS.init({
+            disable: true
+        });</script>
 
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>

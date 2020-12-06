@@ -37,15 +37,18 @@ p {
 body,
 html {
     width: 100%;
-    overflow-x: hidden
+/*    overflow-x: hidden*/
 }
 
 .page-content {
     width: 88%;
     margin-left: 6%;
-    max-width: 1100px margin-top:0px;
+    max-width: 1100px;
     border: 0px;
-    padding: 0px
+    padding: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    /*    margin-top: 3.5rem;*/
 }
 
 
@@ -202,16 +205,14 @@ section#content-container div.messages {
 }
 
 .top-float {
-    position: fixed;
-    top: 0;
     display: flex;
     justify-content: space-around;
     border-radius: 1000px;
     align-items: center;
     height: 3rem;
     width: 90%;
-    margin-left:5%;
     background-color: black;
+    margin-bottom:6px;
 }
 
 .top-float-selector {
@@ -246,40 +247,23 @@ section#content-container div.messages {
     z-index: 1;
 }
 
-.preview-message {
-    color: rgb(166, 165, 165);
-    margin-bottom: 0px;
+/*body#page{
     margin-top:4px;
-/*    white-space: nowrap;
-    overflow: hidden;*/
-    font-size: 12pt;
-    line-height: 1em;
-    /*    overflow-wrap: break-word;*/
-}
+}*/
 
-.convo-name {
-    color: white;
-    padding: 0px;
-    margin-bottom: 0px;
-    font-size: 11pt;
-}
 
-.inbox-item {
+.content {
+    height: 92vh;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    height: 70px;
-    padding: 5px;
-    margin:0;
-    width: 100%;
-    padding-left: 5%;
-    border: 1px solid #141414;
 }
-
-.inbox-text {
-    margin-left: .75rem;
-}
-
-.inbox-item:hover {
-    background-color: #141414;
-}
+/*
+.content {
+    height: 92vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}*/

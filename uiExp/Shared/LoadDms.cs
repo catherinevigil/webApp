@@ -119,7 +119,7 @@ namespace uiExp.Shared
                 "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
                 "Simpler and more vulgar ways are being used to assert dominance and prestige",
                 "Marshall Sloane:",
-                "Yes",
+                "Yes. this is just example text for inbox. it comes down for the decline in the wasp mentality and the ascendance of people of all creeds who do not ascribe to new england puritanism, an ideology which allowed aristocratic values to stick around into modernity.",
                 "Majoritarian rule in America"
             };
 

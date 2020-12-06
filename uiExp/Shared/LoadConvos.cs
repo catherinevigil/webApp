@@ -779,13 +779,13 @@ namespace uiExp.Shared
 
         static LoadConvos()
         {
-            ConvoList.Add(new Conversation(lines0,feed0));
-            ConvoList.Add(new Conversation(lines1, feed1));
-            ConvoList.Add(new Conversation(lines2, feed2));
-            ConvoList.Add(new Conversation(lines3, feed3));
-            ConvoList.Add(new Conversation(lines4, feed4));
-            ConvoList.Add(new Conversation(lines5, feed5));
-            ConvoList.Add(new Conversation(lines6, feed6));
+            ConvoList.Add(new Conversation(lines0,feed0,true));
+            ConvoList.Add(new Conversation(lines1, feed1, true));
+            ConvoList.Add(new Conversation(lines2, feed2, true));
+            ConvoList.Add(new Conversation(lines3, feed3, true));
+            ConvoList.Add(new Conversation(lines4, feed4, true));
+            ConvoList.Add(new Conversation(lines5, feed5, true));
+            ConvoList.Add(new Conversation(lines6, feed6, true));
         }
     }
 }

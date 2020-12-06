@@ -1,46 +1,37 @@
-
-.inbox-item
-{
-
+.preview-message {
+    color: rgb(166, 165, 165);
+    margin-bottom: 0px;
+    margin-top: 4px;
+    /*    white-space: nowrap;
+    overflow: hidden;*/
+    font-size: 12pt;
+    line-height: 1em;
+    /*    overflow-wrap: break-word;*/
 }
 
-.partner-name {
-    text-align: left;
-    padding-top: 0.5em;
-    padding-left: 1.5em;
-    font-weight: medium;
-    font-size: 17pt;
+.convo-name {
     color: white;
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: 11pt;
 }
 
-.partner-picture {
-    cursor: pointer;
-}
-
-.partner-picture {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    display: block;
-    margin-left: 10px;
-    padding: 10px;
-    float: left;
-}
-
-.partner-line {
-    text-align: left;
-    align-self: center;
-    padding-top: 20px;
-    padding-left: 1.5em;
-    bottom: 0;
-    font-weight: regular;
-    font-size: 15pt;
-    color: grey;
-}
-
-ul#partnerlist {
-    list-style-type: none;
+.inbox-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 70px;
+    padding: 5px;
     margin: 0;
-    padding: 0;
-    position: absolute;
+    width: 100%;
+    padding-left: 5%;
+    border: 1px solid #141414;
+}
+
+.inbox-text {
+    margin-left: .75rem;
+}
+
+.inbox-item:hover {
+    background-color: #141414;
 }

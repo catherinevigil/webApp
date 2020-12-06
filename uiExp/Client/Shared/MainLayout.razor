@@ -6,7 +6,9 @@
 
 
 @code {
-    private void NavigateBack() { var destination = (InPm()) ? "/inbox" : "/";
+    private void NavigateBack()
+    {
+        var destination = (InPm()) ? "/inbox" : "/";
         NavigationManager.NavigateTo(destination);
     }
     private void NavigateRequestComponent() { NavigationManager.NavigateTo("/request"); }
@@ -49,7 +51,7 @@
         NavigationManager.NavigateTo("/user");
     }
 
-    public static int ConvoNum=0;
+    public static int ConvoNum = 0;
 
 
     [JSInvokable]
@@ -82,60 +84,75 @@
     }
 }
 
-<div class="main">
 
-    @if (!ShowBottom())
-    {
-        <div class="top-row px-4" style="position:fixed; top:0">
-            <span class="material-icons" @onclick="NavigateBack">
-                arrow_back_ios
-            </span>
+@*<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <div class="main">
+        <div class="top-row px-4">
+            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
         </div>
-    }
 
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>*@
 
-    <div>@Body</div>
+    <div class="main">
 
-    @*in order to get this to stay fixed, need to specifiy position in line.*@
-    @if (ShowBottom())
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-
-            <div class="nav-icon-container">
-                <i class="fas fa-home fa-2x icon" @onclick="NavigateBack"></i>
-                <i class="fas fa-upload fa-2x icon" @onclick="NavigateRequestComponent"></i>
-                <i class="fas fa-inbox fa-2x icon" @onclick="NavigateInboxComponent"></i>
-                <img src="https://pbs.twimg.com/profile_images/955259459449884672/cxYFJUJX_400x400.jpg" class="profile-link" @onclick="NavigateMyLinesComponent">
+        @*@if (!ShowBottom())
+        {
+            <div class="top-row px-4" style="position:fixed; top:0">
+                <span class="material-icons" @onclick="NavigateBack">
+                    arrow_back_ios
+                </span>
             </div>
-        </div>
-    }
-    else if (NavigationManager.Uri.Contains("request"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
-            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-                <i class="fas fa-arrow-up"></i>
-            </button>
-        </div>
-    }
-    else if (NavigationManager.Uri.Contains("convo"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <input class="feedConvo" placeholder="Comment..." style="font-size:small">
-            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-                <i class="fas fa-arrow-up"></i>
-            </button>
-        </div>
-    }
-    else if (NavigationManager.Uri.Contains("Pm"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
-            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-                <i class="fas fa-arrow-up"></i>
-            </button>
-        </div>
-    }
-</div>
+        }*@
 
+        @Body
+
+        @*in order to get this to stay fixed, need to specifiy position in line.*@
+        @if (ShowBottom())
+        {
+            <div class="bottom-row px-4" style="position:fixed; bottom:0">
+
+                <div class="nav-icon-container">
+                    <i class="fas fa-home fa-2x icon" @onclick="NavigateBack"></i>
+                    <i class="fas fa-upload fa-2x icon" @onclick="NavigateRequestComponent"></i>
+                    <i class="fas fa-inbox fa-2x icon" @onclick="NavigateInboxComponent"></i>
+                    <img src="https://pbs.twimg.com/profile_images/955259459449884672/cxYFJUJX_400x400.jpg" class="profile-link" @onclick="NavigateMyLinesComponent">
+                </div>
+            </div>
+        }
+        else if (NavigationManager.Uri.Contains("request"))
+        {
+            <div class="bottom-row px-4" style="position:fixed; bottom:0">
+                <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
+                <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        }
+        else if (NavigationManager.Uri.Contains("convo"))
+        {
+            <div class="bottom-row px-4" style="position:fixed; bottom:0">
+                <input class="feedConvo" placeholder="Comment..." style="font-size:small">
+                <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        }
+        else if (NavigationManager.Uri.Contains("Pm"))
+        {
+            <div class="bottom-row px-4" style="position:fixed; bottom:0">
+                <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
+                <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        }
+    </div>
 @*style="align-items:flex-end"*@

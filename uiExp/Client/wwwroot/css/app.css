@@ -8,7 +8,8 @@ a, .btn-link {
     color: #0366d6;
 }
 
-.btn-primary {
+.btn-primary {    
+
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
@@ -21,11 +22,10 @@ app {
     flex-direction: column;
 }
 
-
-
-
 .main {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 
@@ -60,3 +60,4 @@ app {
         top: 0.5rem;
     }
 }
+
