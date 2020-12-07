@@ -206,11 +206,11 @@
                             @for (int i = 0; i < LoadConvos.ConvoList[x].feedPreview.GetGroups().Count; i++)
                             {
                                 <div class="message-group">
-                                    @*<p class="name" style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
+                                    <p class="name" style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
                                             <span>
                                                 @getConversant((i % 2 == 0), LoadConvos.ConvoList[x])
                                             </span>
-                                        </p>*@
+                                        </p>
                                     @for (int y = 0; y < LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages.Count; y++)
                                     {
                                         <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>

@@ -9,17 +9,12 @@
 }
 
 
+
 <body>
     <div class="content">
         <div class="profile-top">
             <nav class="navbar">
-                <span class="material-icons" @onclick="NavigateHomeFeedComponent">
-                    arrow_back_ios
-                </span>
                 <img class="user-picture" alt="Profile Picture" src="Sahil.JPG">
-                <span class="material-icons">
-                    more_vert
-                </span>
             </nav>
             <h3 class="profilename">Sahil Handa</h3>
             <!--User information area. I think it would be cool to eventually have swipe to see frequent convo partners.-->
@@ -33,7 +28,6 @@
                     </div>
                 </div>
             </div>
-            <div style="height:200px"></div>
             <!--Allows users to toggle between feeds of their lines.-->
         </div>
         <div class="profile-middle">
@@ -108,3 +102,14 @@
         </div>
     </div>
 </body>
+
+
+@*<nav class="navbar">
+    <span class="material-icons" @onclick="NavigateHomeFeedComponent">
+        arrow_back_ios
+    </span>
+    <img class="user-picture" alt="Profile Picture" src="Sahil.JPG">
+    <span class="material-icons">
+        more_vert
+    </span>
+</nav>*@
