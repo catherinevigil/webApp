@@ -51,6 +51,7 @@
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
     Conversation convo => LoadConvos.ConvoList[getConversationNum()];//LoadConvos.linesList[1]
+    Comments comments => LoadComments.CommentsList[getConversationNum()];
 
     public void ShowData()
     {
@@ -73,7 +74,7 @@
             <div class="messages">
                 @foreach (var group in convo.Groups)
                 {
-                    <div class="message-group" >
+                    <div class="message-group">
                         <p style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                             <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
                                 @getConversant(i % 2 == 0, convo)
@@ -92,6 +93,27 @@
                 }
 
             </div>
+            <hr style="border-top:1px solid lightgray"/>
+            <div class="comments">
+                @foreach (var comment in comments.GetComments())
+                {
+                <div class="comment">
+                    <p style="text-align:center; color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                        <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
+                            @comment.GetCommenterName()
+                        </span>
+                    </p>
+                    <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                            @comment.GetText();
+                        </span>
+                    </p>
+                </div>
+                }
+            </div>
         </section>
+
     </div>
 </body>
+
+@*<hr style="border-top:2px solid white" />*@

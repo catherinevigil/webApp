@@ -48,7 +48,7 @@ html {
     padding: 0px;
     overflow: hidden;
     overflow-y: scroll;
-    /*    margin-top: 3.5rem;*/
+    margin-top: 3.5rem;
 }
 
 
@@ -205,6 +205,8 @@ section#content-container div.messages {
 }
 
 .top-float {
+    position:fixed;
+    top:0;
     display: flex;
     justify-content: space-around;
     border-radius: 1000px;
@@ -261,3 +263,36 @@ section#content-container div.messages {
     justify-content: flex-start;
 }*/
 
+
+section#content-container div.comments { /*paragraph settings*/
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    justify-content: flex-start;
+}
+
+section#content-container div.comments p { /*paragraph settings*/
+    font-size: 16px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    
+
+}
+
+    section#content-container div.comments p.comment-text {
+        font-family: -apple-system, system-ui, "Helvetica Neue", "Work Sans", sans-serif;
+        display: flex;
+        text-align:center;
+    }
+
+        section#content-container div.comments p.comment-text span {
+            padding: 12px;
+            border-radius: 20px;
+            color: #fff;
+            background-color: #db9d52;
+        }
+
+
+section#content-container div.comments div.comment {
+    margin-bottom: 6px /*margin between message groups*/
+}
