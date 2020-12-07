@@ -251,13 +251,6 @@ section#content-container div.messages {
     margin-top:4px;
 }*/
 
-
-.content {
-    height: 92vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
 /*
 .content {
     height: 92vh;

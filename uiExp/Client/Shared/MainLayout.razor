@@ -110,7 +110,7 @@
 
     @if (!ShowBottom())
     {
-        <div class="top-row px-4" style="position:fixed; top:0">
+        <div class="top-row px-4" id="normal" style="position:fixed; top:0">
             <span class="material-icons" @onclick="NavigateBack">
                 arrow_back_ios
             </span>
@@ -118,8 +118,8 @@
     }
     else if (AtMylines())
     {
-        <div class="top-row-mylines px-4" style="position:fixed; top:0">
-            <span class="material-icons" @onclick="NavigateBack">
+        <div class="top-row px-4" id="mylines" style="position:fixed; top:0">
+            <span class="material-icons">
                 settings
             </span>
         </div>

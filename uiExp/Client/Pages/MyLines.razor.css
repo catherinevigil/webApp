@@ -301,7 +301,8 @@ ul#partnerlist {
 }
 
 .profile-bottom {
-    height: 45vh;
+/*    height: 45vh;*/
+    overflow:hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -309,13 +310,14 @@ ul#partnerlist {
     margin-left: 6%;
 }
 .profile-middle{
-    height:40px;
+/*    height:40px;*/
 }
 
 
 .content {
-    margin-top:4vh;
-    height: 88vh;
+    top:5vh;
+    position:fixed;
+    height: 87vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -329,15 +331,3 @@ ul#partnerlist {
     overflow-y: scroll;
 }
 
-.top-row-mylines {
-    background-color: black;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
-    height: 1rem;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    flex-direction: row;
-}
