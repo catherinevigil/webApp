@@ -64,15 +64,10 @@
         ConvoNum = ConvoNum + 1;
     }
 
-    public String getHeader()
-    {
-        Console.WriteLine(ConvoNum);
-        return Feed.FeedList[ConvoNum].Title;
-    }
     public void printHeader()
     {
-        foreach (var convo in LoadConvos.ConvoList)
-            Console.WriteLine(convo.Title);
+        foreach (var convo in LoadFeedConvos.ConvoList)
+            Console.WriteLine(convo.GetTitle());
     }
     public void PrintUri()
     {

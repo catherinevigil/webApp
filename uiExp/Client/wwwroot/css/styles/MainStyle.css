@@ -21,6 +21,8 @@ section {
 body {
     line-height: 1;
     background-color: #000000;
+    top:5vh;
+    position:fixed;
 }
 
 html {
@@ -48,7 +50,10 @@ html {
     padding: 0px;
     overflow: hidden;
     overflow-y: scroll;
-    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    padding-bottom:1rem;
+    height:87vh;
+    top:5vh;
 }
 
 
@@ -282,6 +287,7 @@ section#content-container div.comments p { /*paragraph settings*/
     section#content-container div.comments p.comment-text {
         font-family: -apple-system, system-ui, "Helvetica Neue", "Work Sans", sans-serif;
         display: flex;
+        flex-direction:column;
         text-align:center;
     }
 
@@ -295,4 +301,44 @@ section#content-container div.comments p { /*paragraph settings*/
 
 section#content-container div.comments div.comment {
     margin-bottom: 6px /*margin between message groups*/
+}
+
+.comment{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.commenter-div{
+    width:fit-content;
+}
+.cmment-div{
+    width:fit-content;
+}
+
+.page-content-pm {
+    width: 88%;
+    margin-left: 6%;
+    max-width: 1100px;
+    border: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    height: 87vh;
+    bottom: 8vh;
+    position:fixed;
+    display:flex;
+    flex-direction:column-reverse;
+}
+
+.bottom-float {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1000px;
+    align-items: center;
+    height: 3rem;
+    width: 90%;
+    background-color: black;
+    margin-bottom: 6px;
 }

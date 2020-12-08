@@ -4,9 +4,9 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace uiExp.Shared
 {
-    public class LoadConvos
+    public class LoadFeedConvos
     {
-        public static List<Conversation> ConvoList = new List<Conversation>();
+        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
 
         private static string[] lines6 { get; } =
             {
@@ -120,13 +120,12 @@ namespace uiExp.Shared
                 "Simpler and more vulgar ways are being used to assert dominance and prestige",
                 "Marshall Sloane:",
                 "Yes",
-                "Majoritarian rule in America"
             };
 
 
 
-            private static string[] lines1 { get; } =
-            {
+        private static string[] lines1 { get; } =
+        {
                 "Eli Burnes:",
                 "\"They stalk about in our midst as living reproaches, as warnings to us—as though health, fitness, strength, pride, the sensation of power, were really vicious things in themselves, for which one would have some day to do penance, bitter penance. Oh, how they themselves are ready in their hearts to exact penance, how they thirst after being hangmen! (GM III 14)\"",
                 "Here Nietzsche describes the revolt of the lowly, the oppressed, against the strong",
@@ -191,12 +190,12 @@ namespace uiExp.Shared
                 "Kush Sharma:",
                 "For sure! I do have to run now but this was awesome, had a great time and think we came up with some dope ideas :)",
                 "Eli Burnes:",
-                "Great talk man",
-                "Nietzsche x Wokeism"
+                "Great talk man"
+
             };
 
-            private static string[] lines3 { get; } =
-            {
+        private static string[] lines3 { get; } =
+        {
                 "Caleb Rhodes:",
                 "Ok, so today we will be talking about the Philip Guston Retrospective Controversy",
                 "Ethan do you want to set the scene",
@@ -265,11 +264,10 @@ namespace uiExp.Shared
                 "Ethan Fields:",
                 "Yes, that topic deserves a book not a text exchange for sure",
                 "Always happy to chat!",
-                "culture of timidity"
             };
 
-            private static string[] lines5 { get; } =
-            {
+        private static string[] lines5 { get; } =
+        {
                 "Ian Liefer:",
                 "Why do you think Biden is gonna win?",
                 "He has unprecedented black and Latino support",
@@ -334,9 +332,7 @@ namespace uiExp.Shared
                 "Let’s buy some guns then",
                 "Ian Liefer:",
                 "Agreed",
-                "It’s funny how everyone just thinks their party will win",
-                "Election predictions"
-
+                "It’s funny how everyone just thinks their party will win"
             };
         private static string[] lines0 { get; } =
         {
@@ -431,10 +427,10 @@ namespace uiExp.Shared
                 "And that there exists a possibility that when it is not messed up",
                 "It will be provided with care and love rather then precision",
                 "Like u know they're also cutting costs on everything in these kinda of places",
-                "coffehouse vibe"
+
             };
-            private static string[] lines2 { get; } =
-            {
+        private static string[] lines2 { get; } =
+        {
                 "Jasmine Wang:",
                 "Hello hello!",
                 "Along with ‘what tech calls thinking’ I also ordered xiaowei wang’s A Blockchain Chicken Farm and it covers a lot of relevant themes to what we were talking about earlier this week",
@@ -589,11 +585,10 @@ namespace uiExp.Shared
                 "Oh interesting!!",
                 "Saffron Huang:",
                 "if the default state is not caring about animals much, that’s not particularly non-anthropocentric or Daoist, but definitely quite utilitarian",
-                "so many contradictory strands",
-                "China, culture, innovation"
+                "so many contradictory strands"
             };
-            private static string[] lines4 { get; } =
-            {
+        private static string[] lines4 { get; } =
+        {
                 "Emily Markowitz:",
                 "Regan, let’s talk about how the pandemic has changed our conception of time ",
                 "Regan Brady:",
@@ -731,7 +726,7 @@ namespace uiExp.Shared
                 "kind of tempted to buy one ",
                 "Emily Markowitz:",
                 "Hahaha next start up idea?",
-                "time x quarintine"
+
             };
 
         private static string[] feed0 { get; } = {
@@ -777,15 +772,87 @@ namespace uiExp.Shared
             "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
             "Simpler and more vulgar ways are being used to assert dominance and prestige" };
 
-        static LoadConvos()
+
+        private static string title0 { get; } =
+            "coffehouse vibe";
+
+        private static string title1 { get; } =
+            "Nietzsche x Wokeism";
+
+        private static string title2 { get; } =
+            "China, culture, innovation";
+
+        private static string title3 { get; } =
+            "culture of timidity";
+
+        private static string title4 { get; } =
+            "time x quarintine";
+
+        private static string title5 { get; } =
+            "Election predictions";
+
+        private static string title6 { get; } =
+            "Majoritarian rule in America";
+
+
+        private static string poster0 { get; } =
+            "Eli Burnes";
+
+        private static string poster1 { get; } =
+            "Kush Sharma";
+
+        private static string poster2 { get; } =
+            "Saffron Huang";
+
+        private static string poster3 { get; } =
+            "Caleb Rhodes";
+
+        private static string poster4 { get; } =
+            "Regan Brady";
+
+        private static string poster5 { get; } =
+            "Henry Burnes";
+
+        private static string poster6 { get; } =
+            "Marshall Sloane";
+
+        private static int[] replies0 { get; } = {
+            2,5
+        };
+
+        private static int[] replies1 { get; } = {
+            1,3,4
+        };
+
+        private static int[] replies2 { get; } = {
+            1
+        };
+
+        private static int[] replies3 { get; } = {
+            6
+        };
+
+        private static int[] replies4 { get; } = {
+
+        };
+
+        private static int[] replies5 { get; } = {
+        };
+        private static int[] replies6 { get; } = {
+        };
+        //string[] lines, string title, string poster, string[] preview
+
+        static LoadFeedConvos()
         {
-            ConvoList.Add(new Conversation(lines0,feed0,true));
-            ConvoList.Add(new Conversation(lines1, feed1, true));
-            ConvoList.Add(new Conversation(lines2, feed2, true));
-            ConvoList.Add(new Conversation(lines3, feed3, true));
-            ConvoList.Add(new Conversation(lines4, feed4, true));
-            ConvoList.Add(new Conversation(lines5, feed5, true));
-            ConvoList.Add(new Conversation(lines6, feed6, true));
+
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+            ConvoList.Add(new PublicConvo(lines1, title1, poster1, feed1, LoadComments.CommentsList[1], replies1));
+            ConvoList.Add(new PublicConvo(lines2, title2, poster2, feed2, LoadComments.CommentsList[2], replies2));
+            ConvoList.Add(new PublicConvo(lines3, title3, poster3, feed3, LoadComments.CommentsList[3], replies3));
+            ConvoList.Add(new PublicConvo(lines4, title4, poster4, feed4, LoadComments.CommentsList[4], replies4));
+            ConvoList.Add(new PublicConvo(lines5, title5, poster5, feed5, LoadComments.CommentsList[5], replies5));
+            ConvoList.Add(new PublicConvo(lines6, title6, poster6, feed6, LoadComments.CommentsList[6], replies6));
+
         }
     }
 }

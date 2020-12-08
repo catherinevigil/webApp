@@ -35,6 +35,7 @@ namespace uiExp.Shared
             }
         }
     }
+
     public class Comment
     {
         private User Commenter;

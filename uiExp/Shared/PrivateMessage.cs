@@ -15,11 +15,12 @@ namespace uiExp.Shared
         public PrivateMessage(string[] lines, string user)
         {
             this.InboxOwner = Users.GetUserByName(user);
-            conversation = new Conversation(lines, false);
+            conversation = new Conversation(lines);
             MakePartners(user);
             if (this.partners.Count > 1)
             {
                 this.name = "languid leftists";
+                this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Bernie_Sanders_in_March_2020.jpg/433px-Bernie_Sanders_in_March_2020.jpg";
             }
             else if (this.partners.Count == 1)
             {
