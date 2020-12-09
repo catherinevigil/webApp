@@ -70,12 +70,12 @@
                     <span @onclick="()=> showAllLines=true">@GetShowText()</span>
                 }
             </div>
-            @if (showReplyInput)
-            {
-                <div class="reply-container">
-                    <input placeholder="@GetInputPlaceholder()" class="comment-reply-input" />
-                </div>
-            }
         </div>
+        @if (showReplyInput)
+        {
+            <div class="reply-container">
+                <input placeholder="@GetInputPlaceholder()" class="comment-reply-input" />
+            </div>
+        }
     </div>
 </div>

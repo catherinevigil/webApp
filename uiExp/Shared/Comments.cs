@@ -40,6 +40,10 @@ namespace uiExp.Shared
     {
         private User Commenter;
         private List<Message> Bubbles = new List<Message>();
+        private float fractionTimeLeft;
+        private static int totalMinutesPublic = 1440;
+        private bool currentUserReplied = false;
+        private List<User> repliers = new List<User>();
 
         public Comment(User commenter)
         {
@@ -50,6 +54,15 @@ namespace uiExp.Shared
             this.Bubbles = bubbles;
             this.Commenter = commenter;
         }
+        public void AddReplier (User replier)
+        {
+            this.repliers.Add(replier);
+        }
+        public bool checkReply(User replier)
+        {
+            return this.repliers.Contains(replier);
+        }
+
         public List<Message> GetBubbles()
         {
             return this.Bubbles;

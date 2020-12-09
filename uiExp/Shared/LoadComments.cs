@@ -10,14 +10,14 @@ namespace uiExp.Shared
         private static string[] convo0 { get; } =
         {
             "Eli Burnes:",
-            "I'd like to take a stance on this aesthetic. Of course the places are clean, the interactions go smoothly (at least for people used to such interiors), yet this smoothly is the smoothness of a boy on morphine idly talking to his fastidious nurse. The coffee is generally top notch. And the whiteness of the whole thing does instill an air of possibility into the room. A youthful orientation. I'm mixed on the vibe. ",
+            "I'd like to take a stance on this aesthetic. Of course the places are clean, the interactions go smoothly (at least for people used to such interiors), yet this smoothly is the smoothness of a boy on morphine idly talking to his fastidious nurse. The coffee is generally top notch. And the whiteness of the whole thing does instill an air of possibility into the room. A youthful orientation. I'm mixed on the vibe.",
             "consectetur adipiscing. Enim sit amet venenatis urna cursus eget nunc scelerisque. Adipiscing enim eu turpis egestas. Mattis pellentesque id nibh tortor id aliquet lectus proin.",
             "Saffron Huang:",
             "Yes you can smell the efficiency of it. These places are comforting, though. Young, friendly, usually attractive staff...",
             "Noah Redlich:",
-            "This is an embodiment of the elites' dream to escape the world of dirt, toil, disease, inefficiency, spontaneity. the playlists probably come down from corporate. ",
+            "This is an embodiment of the elites' dream to escape the world of dirt, toil, disease, inefficiency, spontaneity. the playlists probably come down from corporate.",
             "Marshall Sloane:",
-            "All I need is a quick cup of coffee. Just a hit of caffeine and some blue light to stimulate the nerves and I'm out. ",
+            "All I need is a quick cup of coffee. Just a hit of caffeine and some blue light to stimulate the nerves and I'm out.",
             "Campbell Erickson:",
             "Of course I love the incandescent bulbs and the plants. Honestly vibe depends on the barista's mood.",
             "Ligula ullamcorper malesuada proin libero nunc consequat interdum varius?",
@@ -48,7 +48,7 @@ namespace uiExp.Shared
             "Ligula ullamcorper malesuada proin libero nunc consequat interdum varius",
             "Noah Redlich:",
             "et dolore magna aliqua",
-            "Henry Burnes: ",
+            "Henry Burnes:",
             "Elementum nisi"
         };
         private static string[] convo2 { get; } =
@@ -122,7 +122,7 @@ namespace uiExp.Shared
             "ac turpis...",
             "Henry Burnes:",
             "Dui nunc mattis enim ut tellus elementum??",
-             "Noah Redlich:",
+            "Noah Redlich:",
             "et dolore magna aliqua",
             "Henry Burnes:",
             "Elementum nisi",

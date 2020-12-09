@@ -8,7 +8,7 @@
 @code {
     private void NavigateBack()
     {
-        var destination = (InPm()) ? "/inbox" : "/";
+        var destination = (InPm()) ? "/inbox" : "/index";
         NavigationManager.NavigateTo(destination);
     }
     private void NavigateRequestComponent() { NavigationManager.NavigateTo("/request"); }
@@ -17,7 +17,7 @@
 
     private bool AtHome()
     {
-        return NavigationManager.Uri.EndsWith("/");
+        return NavigationManager.Uri.EndsWith("/index");
     }
     private bool InConvo()
     {

@@ -1,0 +1,132 @@
+﻿@page "/"
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@using System.ComponentModel
+@using System.ComponentModel.Design
+@using System.Linq;
+@using System.Net
+@using System.Text
+@using System.IO;
+@inject HttpClient Http
+@using System.Net.Http
+@inject NavigationManager NavigationManager
+@inject IJSRuntime js
+
+@layout LoginLayout
+
+
+<div class="login-box">
+    <h3 style="width: 300px;background-color:#202020;color:lightgray">Login</h3>
+    <div class="p-div">
+        <input class="login-input" placeholder="@LoginPlaceholder " @oninput="OnUsernameChanged"
+               required
+               value="@username" />
+    </div>
+
+    <div class="p-div">
+        <input class="login-input" placeholder="@PasswordPlaceholder  " @oninput="OnPasswordChanged"
+               required
+               type="@(showPassword ? "text" : "password")"
+               value="@password" />
+        <span class="show-b" @onclick="ToggleShowPassword">@PButtonText</span>
+    </div>
+    <button class="log-in-b" @onclick="LogUserIn">Login</button>
+</div>
+
+
+
+<span class="text-danger">@validationMessage</span>
+
+@code {
+    private bool showPassword;
+    private string password;
+    private string username;
+    private string validationMessage;
+
+    public string PButtonText = "Show";
+    public string LoginPlaceholder = "Username, phone number, or email";
+    public string PasswordPlaceholder = "Password";
+
+    [Parameter]
+    public string Password { get; set; }
+
+    [Parameter]
+    public string Username { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<string> UsernameChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        password = e.Value.ToString();
+
+        if (password.Contains(' '))
+        {
+            validationMessage = "Spaces not allowed!";
+
+            return Task.CompletedTask;
+        }
+        else
+        {
+            validationMessage = string.Empty;
+
+            return PasswordChanged.InvokeAsync(password);
+        }
+    }
+
+    private Task OnUsernameChanged(ChangeEventArgs e)
+    {
+        username = e.Value.ToString();
+
+        if (username.Contains(' '))
+        {
+            validationMessage = "Spaces not allowed!";
+
+            return Task.CompletedTask;
+        }
+        else
+        {
+            validationMessage = string.Empty;
+
+            return UsernameChanged.InvokeAsync(username);
+        }
+    }
+    private void LogUserIn()
+    {
+        Console.WriteLine("username: "+username);
+        Console.WriteLine("password: "+password);
+
+        var user = Users.loginUser(username, password);
+        if (!(user == null))
+        {
+
+            Console.WriteLine("logged in : " + user.GetFirstName());
+            CurrentUser.SetUser(user);
+            NavigationManager.NavigateTo("/index");
+
+        }
+        else
+        {
+            validationMessage = "no user with that password and username";
+        }
+
+    }
+
+    private void ToggleShowPassword()
+    {
+        showPassword = !showPassword;
+        if (showPassword)
+        {
+            PButtonText = "Hide";
+        }
+        else
+        {
+            PButtonText = "Show";
+        }
+    }
+}
+
