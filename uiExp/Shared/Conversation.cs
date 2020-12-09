@@ -6,36 +6,24 @@ namespace uiExp.Shared
 {
     public class Conversation
     {
-        public FeedPreview feedPreview;
+        
 
         public List<MessageGroup> Groups = new List<MessageGroup>();
         public List<User> Conversants = new List<User>(); //left is conversant 0
-        public String Title;
 
         public Conversation()
         {
         }
 
-        public Conversation(String[] convo, String[] feed, bool title)
+        public Conversation(String[] convo)
         {
-            SeperateConvo(convo,title);
-            feedPreview = new FeedPreview(feed);
+            SeperateConvo(convo);
         }
 
-        //public Conversation(String[] convo)
-        //{
-        //    SeperateConvo(convo);
-        //}
-        public Conversation(String[] convo, bool title)
-        {
-            SeperateConvo(convo,title);
-        }
-
-        private void SeperateConvo(string[] lines, bool title)
+        private void SeperateConvo(string[] lines)
         {
             //Console.WriteLine("seperate was called");
-
-            for (int i = 0; i < lines.Length - 1; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
                 if (lines[i].EndsWith(":"))
                 {
@@ -64,13 +52,9 @@ namespace uiExp.Shared
                 {
                     this.Groups.Last().Messages.Add(new Message(lines[i]));
                 }
-
             }
-            if (title)
-                this.Title = lines[lines.Length - 1];
-            else
-                this.Groups.Last().Messages.Add(new Message(lines[lines.Length - 1]));
         }
+
         public String GetNames()
         {
             string names = "";

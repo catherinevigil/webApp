@@ -21,6 +21,8 @@ section {
 body {
     line-height: 1;
     background-color: #000000;
+    top:5vh;
+    position:fixed;
 }
 
 html {
@@ -48,7 +50,10 @@ html {
     padding: 0px;
     overflow: hidden;
     overflow-y: scroll;
-    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    padding-bottom:1rem;
+    height:87vh;
+    top:5vh;
 }
 
 
@@ -239,6 +244,7 @@ section#content-container div.messages {
     margin-right: 5%;
     width: 45%;
 }
+
 .feed-name-container {
     width: 40%;
     height: 3rem;
@@ -282,17 +288,103 @@ section#content-container div.comments p { /*paragraph settings*/
     section#content-container div.comments p.comment-text {
         font-family: -apple-system, system-ui, "Helvetica Neue", "Work Sans", sans-serif;
         display: flex;
-        text-align:center;
+        flex-direction:column;
+        text-align:left;
     }
 
         section#content-container div.comments p.comment-text span {
             padding: 12px;
             border-radius: 20px;
             color: #fff;
-            background-color: #db9d52;
+            background-color: #c38437;
+/*            comment background color*/
         }
 
 
 section#content-container div.comments div.comment {
-    margin-bottom: 6px /*margin between message groups*/
+    margin-bottom: 9px /*margin between comment groups*/
+}
+
+.comment{
+    display:flex;
+    flex-direction:row;
+    align-items:flex-ends;
+
+/*    max-width:90%;*/
+}
+
+.commenter-photo-div {
+    margin-right: 10px;
+    margin-left: 5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.comment-div{
+    width:70vh;
+}
+.comment-div p{
+    width: fit-content;
+    align-text: left;
+}
+
+.page-content-pm {
+    width: 88%;
+    margin-left: 6%;
+    max-width: 1100px;
+    border: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    height: 87vh;
+    bottom: 8vh;
+    position:fixed;
+    display:flex;
+    flex-direction:column-reverse;
+}
+
+.bottom-float {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1000px;
+    align-items: center;
+    height: 3rem;
+    width: 90%;
+    background-color: black;
+    margin-bottom: 6px;
+}
+
+.comment-actions {
+    color: lightgray;
+    font-size: 12pt;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+.comment-tight-div{
+    width:fit-content;
+}
+/*.comment-reply {
+    border-radius:1000px;
+    
+}
+*/
+.reply-container {
+    border-radius: 18px/20px;
+    width: 100%;
+    background-color: #141414;
+    padding: 12px;
+}
+.comment-reply-input {
+    border-radius: 1000px;
+    background-color: transparent;
+    font-size: 11pt;
+    border: none;
+    color: lightgray;
+    word-break: break-word;
+    outline-width: 0;
+    width: 100%;
 }

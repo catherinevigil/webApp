@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/index"
 @using uiExp.Shared
 @using System;
 @using System.Collections.Generic;
@@ -16,9 +16,9 @@
 
 @code{
 
-    public String getClass(Boolean left)
+    public String getClass(Boolean leftMessage)
     {
-        if (left)
+        if (leftMessage)
             return ("message message-left aos-init");
         else
             return ("message message-right aos-init");
@@ -43,7 +43,7 @@
     public String getAnchor(int x)
     {
         int a = x + 1;
-        if (x < (LoadConvos.ConvoList.Count - 1))//if not the last convo
+        if (x < (LoadFeedConvos.ConvoList.Count - 1))//if not the last convo
             return "#m" + a.ToString() + "00";
         else
             return null;
@@ -98,7 +98,6 @@
     }
     public void SwitchRight()
     {
-
         selectorRight = true;
     }
 
@@ -157,36 +156,37 @@
         @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
         <div class="feed-name-container" @onclick="SwitchLeft" style="color:@GetLeftColor()">
-            main feed
+            lines
         </div>
         <div class="feed-name-container" @onclick="SwitchRight" style="color:@GetRightColor()">
-            lines feed
+            threads
         </div>
         <div class="top-float-selector" id="@GetSelector()">
         </div>
     </div>
     @if (!selectorRight)
     {
+
         <div class="page-content">
             <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
                 @*<div style="height:150px">
 
                     </div>*@
-                @for (int x = 0; x < LoadConvos.ConvoList.Count; x++)
+                @for (int x = 0; x < LoadFeedConvos.ConvoList.Count; x++)
                 {
                     var convo = x;
 
-                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x == LoadConvos.ConvoList.Count - 1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
+                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x == LoadFeedConvos.ConvoList.Count - 1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
                         @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
 
                         <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
 
 
-                            @if (LoadConvos.ConvoList[x].Conversants.Count == 2)
+                            @if (LoadFeedConvos.ConvoList[x].GetConversants().Count == 2)
                             {
                                 <div>
-                                    <img src="@(LoadConvos.ConvoList[x].Conversants[0].GetImg())" class="profile-pic">
-                                    <img src="@(LoadConvos.ConvoList[x].Conversants[1].GetImg())" class="profile-pic">
+                                    <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[0].GetImg())" class="profile-pic">
+                                    <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[1].GetImg())" class="profile-pic">
                                 </div>
                             }
                             else
@@ -194,28 +194,28 @@
 
                             }
                             <div class="header-text">
-                                <h1 class="feed-title">@LoadConvos.ConvoList[x].Title</h1>
+                                <h1 class="feed-title">@LoadFeedConvos.ConvoList[x].GetTitle()</h1>
                                 <p class="names">
                                     <span>
-                                        @LoadConvos.ConvoList[x].GetNames()
+                                        @LoadFeedConvos.ConvoList[x].GetNames()
                                     </span>
                                 </p>
                             </div>
                         </div>
                         <div>
-                            @for (int i = 0; i < LoadConvos.ConvoList[x].feedPreview.GetGroups().Count; i++)
+                            @for (int i = 0; i < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups().Count; i++)
                             {
                                 <div class="message-group">
-                                    <p class="name" style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
+                                    @*<p class="name" style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
                                         <span>
                                             @getConversant((i % 2 == 0), LoadConvos.ConvoList[x])
                                         </span>
-                                    </p>
-                                    @for (int y = 0; y < LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages.Count; y++)
+                                    </p>*@
+                                    @for (int y = 0; y < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages.Count; y++)
                                     {
-                                        <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
+                                        <p class=@getClass(LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Left) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
                                             <span>
-                                                @LoadConvos.ConvoList[x].feedPreview.GetGroups()[i].Messages[y].Text
+                                                @LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages[y].Text
                                             </span>
                                         </p>
                                     }

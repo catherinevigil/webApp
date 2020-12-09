@@ -10,7 +10,7 @@ namespace uiExp.Shared
 
         public Comments(string[] rawtext)
         {
-            MakeSet(rawtext); 
+            MakeSet(rawtext);
         }
         public List<Comment> GetComments()
         { return this.CommentSet; }
@@ -24,43 +24,68 @@ namespace uiExp.Shared
                     var person = Users.GetUserByName(line.Remove(line.Length - 1));
                     this.CommentSet.Add(new Comment(person));
                 }
-                else if (line==null)
+                else if (line == null)
                 {
-             
+
                 }
                 else
                 {
-                    this.CommentSet.Last().setText(line);
+                    this.CommentSet.Last().AddLine(line);
                 }
             }
         }
     }
+
     public class Comment
     {
         private User Commenter;
-        private String Text;
+        private List<Message> Bubbles = new List<Message>();
+        private float fractionTimeLeft;
+        private static int totalMinutesPublic = 1440;
+        private bool currentUserReplied = false;
+        private List<User> repliers = new List<User>();
 
         public Comment(User commenter)
         {
             this.Commenter = commenter;
         }
-        public Comment(User commenter, String comment)
+        public Comment(User commenter, List<Message> bubbles)
         {
-            this.Text = comment;
+            this.Bubbles = bubbles;
             this.Commenter = commenter;
         }
-        public void setText(string text)
+        public void AddReplier (User replier)
         {
-            this.Text = text;
+            this.repliers.Add(replier);
+        }
+        public bool checkReply(User replier)
+        {
+            return this.repliers.Contains(replier);
         }
 
-        public String GetText()
+        public List<Message> GetBubbles()
         {
-            return this.Text;
+            return this.Bubbles;
+        }
+        public void AddLine(String line)
+        {
+            this.Bubbles.Add(new Message(line));
+        }
+        public String GetFirstText()
+        {
+            return this.Bubbles.First().Text;
         }
         public String GetCommenterName()
         {
             return this.Commenter.GetName();
+        }
+        public String GetCommenterFirstName()
+        {
+            return this.Commenter.GetFirstName();
+        }
+        public String GetCommenterImg()
+        {
+            return this.Commenter.GetImg();
         }
     }
 }

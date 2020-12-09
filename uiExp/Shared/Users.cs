@@ -15,8 +15,8 @@ namespace uiExp.Shared
             List.Add(new User("Saffron Huang", "https://pbs.twimg.com/profile_images/1316334259972390912/uIqM_yio_400x400.jpg"));
             List.Add(new User("Jasmine Wang", "https://media-exp1.licdn.com/dms/image/C5103AQFBUjc90QLYeQ/profile-displayphoto-shrink_800_800/0?e=1611792000&v=beta&t=E9Paz009aIUs3CADHvjHJ_NmquBWVqZNwTC8HG_LG84"));
             List.Add(new User("Tunc Otzemir", "https://pbs.twimg.com/profile_images/1323650686874275840/rN1b-3IF_400x400.jpg"));
-            List.Add(new User("Sahil Handa", "https://pbs.twimg.com/profile_images/1278702779666624512/etYprSkh_400x400.jpg"));
-            List.Add(new User("Eli Burnes", "https://pbs.twimg.com/profile_images/955259459449884672/cxYFJUJX_400x400.jpg"));
+            List.Add(new User("Sahil Handa", "shandapanda","password1", "https://pbs.twimg.com/profile_images/1278702779666624512/etYprSkh_400x400.jpg"));
+            List.Add(new User("Eli Burnes", "ewaterman","password2", "https://pbs.twimg.com/profile_images/955259459449884672/cxYFJUJX_400x400.jpg"));
             List.Add(new User("Emily Markowitz", "https://scontent-bos3-1.cdninstagram.com/v/t51.2885-19/s150x150/58745485_429207334326379_3268500443315044352_n.jpg?_nc_ht=scontent-bos3-1.cdninstagram.com&_nc_ohc=6Eaz3kSgnk0AX8O3Jkh&tp=1&oh=4fd2ad7fbd5967d4587c2a9488908814&oe=5FE70501"));
             List.Add(new User("Regan Brady", "https://pbs.twimg.com/profile_images/1278565520200151040/oqt3H8mV_400x400.jpg"));
             List.Add(new User("Kush Sharma", "https://pbs.twimg.com/profile_images/1140844401620447232/Au3Rq27v_400x400.png"));
@@ -41,6 +41,19 @@ namespace uiExp.Shared
                 }
             }
             Console.WriteLine("will return null. no user by that name: "+name);
+            return null;
+        }
+        public static User loginUser(String username, String password)
+        {
+            foreach (var user in List)
+            {
+                Console.WriteLine("in users method, username: " + username);
+                Console.WriteLine(user.LogIn(username, password));
+                if (user.LogIn(username,password))
+                {
+                    return user;
+                }
+            }
             return null;
         }
     }
