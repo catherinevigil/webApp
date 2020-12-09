@@ -16,9 +16,9 @@
 
 @code{
 
-    public String getClass(Boolean left)
+    public String getClass(Boolean leftMessage)
     {
-        if (left)
+        if (leftMessage)
             return ("message message-left aos-init");
         else
             return ("message message-right aos-init");
@@ -98,7 +98,6 @@
     }
     public void SwitchRight()
     {
-
         selectorRight = true;
     }
 
@@ -214,7 +213,7 @@
                                     </p>*@
                                     @for (int y = 0; y < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages.Count; y++)
                                     {
-                                        <p class=@getClass(i % 2 == 0) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
+                                        <p class=@getClass(LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Left) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
                                             <span>
                                                 @LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages[y].Text
                                             </span>

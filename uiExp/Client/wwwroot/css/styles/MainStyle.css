@@ -244,6 +244,7 @@ section#content-container div.messages {
     margin-right: 5%;
     width: 45%;
 }
+
 .feed-name-container {
     width: 40%;
     height: 3rem;
@@ -288,32 +289,44 @@ section#content-container div.comments p { /*paragraph settings*/
         font-family: -apple-system, system-ui, "Helvetica Neue", "Work Sans", sans-serif;
         display: flex;
         flex-direction:column;
-        text-align:center;
+        text-align:left;
     }
 
         section#content-container div.comments p.comment-text span {
             padding: 12px;
             border-radius: 20px;
             color: #fff;
-            background-color: #db9d52;
+            background-color: #c38437;
+/*            comment background color*/
         }
 
 
 section#content-container div.comments div.comment {
-    margin-bottom: 6px /*margin between message groups*/
+    margin-bottom: 9px /*margin between comment groups*/
 }
 
 .comment{
     display:flex;
-    flex-direction:column;
-    align-items:center;
+    flex-direction:row;
+    align-items:flex-ends;
+
+/*    max-width:90%;*/
 }
 
-.commenter-div{
-    width:fit-content;
+.commenter-photo-div {
+    margin-right: 10px;
+    margin-left: 5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
-.cmment-div{
-    width:fit-content;
+.comment-div{
+    width:70vh;
+}
+.comment-div p{
+    width: fit-content;
+    align-text: left;
 }
 
 .page-content-pm {
@@ -341,4 +354,37 @@ section#content-container div.comments div.comment {
     width: 90%;
     background-color: black;
     margin-bottom: 6px;
+}
+
+.comment-actions {
+    color: lightgray;
+    font-size: 12pt;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+.comment-tight-div{
+    width:fit-content;
+}
+/*.comment-reply {
+    border-radius:1000px;
+    
+}
+*/
+.reply-container {
+    border-radius: 18px/20px;
+    width: 100%;
+    background-color: #141414;
+    margin-top: 6px;
+}
+.comment-reply-input {
+    border-radius: 1000px;
+    background-color: transparent;
+    font-size: 11pt;
+    border: none;
+    color: lightgray;
+    word-break: break-word;
+    outline-width: 0;
+    width: 100%;
 }

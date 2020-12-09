@@ -2,7 +2,6 @@
 @using uiExp.Shared
 @inject HttpClient Http
 @using System.Net.Http
-@using uiExp.Shared
 
 @code{
     [Parameter]
@@ -24,9 +23,9 @@
 
 
 
-    public String getClass(Boolean left)
+    public String getClass(Boolean leftMessage)
     {
-        if (left)
+        if (leftMessage)
             return ("message message-left aos-init");
         else
             return ("message message-right aos-init");
@@ -92,6 +91,7 @@
                 return "left";
             }
         }*@
+
     public String GetLeftColor()
     {
         if (selectorRight)
@@ -125,14 +125,14 @@
                 @foreach (var group in conversation.Groups)
                 {
                     <div class="message-group">
-                        <p style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                        <p style="text-align:@getAlign(group.Left); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                             <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
-                                @getConversant(i % 2 == 0, conversation)
+                                @group.Texter.GetName()
                             </span>
                         </p>
                         @foreach (var message in group.Messages)
                         {
-                            <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                            <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
                                 <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
                                     @message.Text
                                 </span>
@@ -141,7 +141,6 @@
                     </div>
                     i++;
                 }
-
             </div>
             <hr style="border-top:1px solid lightgray" />
             <div class="bottom-float">
@@ -159,22 +158,7 @@
                 <div class="comments">
                     @foreach (var comment in comments.GetComments())
                     {
-                        <div class="comment">
-                            <div class="commenter-div">
-                                <p style="text-align:center; color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                                    <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
-                                        @comment.GetCommenterName()
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="comment-div">
-                                <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
-                                        @comment.GetText()
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
+                        <CommentComponent commentI=comment></CommentComponent>
                     }
                 </div>
             }
@@ -190,3 +174,20 @@
 </body>
 
 @*<hr style="border-top:2px solid white" />*@
+<!--<div class="comment">
+    <div class="commenter-photo-div">
+        <img src="@(comment.GetCommenterImg())" class="profile-pic">
+    </div>
+    <div class="comment-div">
+        <p style="text-align:center; color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+            <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
+                @comment.GetCommenterName()
+            </span>
+        </p>
+        <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+            <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">-->
+                @*@comment.GetText()*@
+            <!--</span>
+        </p>
+    </div>
+</div>-->

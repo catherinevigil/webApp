@@ -11,18 +11,22 @@ namespace uiExp.Shared
         {
             "Eli Burnes:",
             "I'd like to take a stance on this aesthetic. Of course the places are clean, the interactions go smoothly (at least for people used to such interiors), yet this smoothly is the smoothness of a boy on morphine idly talking to his fastidious nurse. The coffee is generally top notch. And the whiteness of the whole thing does instill an air of possibility into the room. A youthful orientation. I'm mixed on the vibe. ",
-            "Saffron Huang: ",
+            "consectetur adipiscing. Enim sit amet venenatis urna cursus eget nunc scelerisque. Adipiscing enim eu turpis egestas. Mattis pellentesque id nibh tortor id aliquet lectus proin.",
+            "Saffron Huang:",
             "Yes you can smell the efficiency of it. These places are comforting, though. Young, friendly, usually attractive staff...",
             "Noah Redlich:",
             "This is an embodiment of the elites' dream to escape the world of dirt, toil, disease, inefficiency, spontaneity. the playlists probably come down from corporate. ",
             "Marshall Sloane:",
             "All I need is a quick cup of coffee. Just a hit of caffeine and some blue light to stimulate the nerves and I'm out. ",
             "Campbell Erickson:",
-            "Of course I love the incandescent bulbs and the plants. Honestly vibe depends on the barista's mood. ",
+            "Of course I love the incandescent bulbs and the plants. Honestly vibe depends on the barista's mood.",
+            "Ligula ullamcorper malesuada proin libero nunc consequat interdum varius?",
+             "Massa ultricies mi quis hendrerit dolor magna eget est lorem",
             "Regan Brady:",
             "Lorem ipsum dolor sit amet",
             "Emily Markowitz:",
             "consectetur adipiscing elit.",
+            "consectetur adipiscing.",
             "Kush Sharma:",
             "consectetur adipiscing."
         };
@@ -59,7 +63,7 @@ namespace uiExp.Shared
             "Ligula ullamcorper malesuada proin libero nunc consequat interdum varius",
             "Noah Redlich:",
             "et dolore magna aliqua",
-            "Henry Burnes: ",
+            "Henry Burnes:",
             "Elementum nisi"
         };
         private static string[] convo3 { get; } =
@@ -70,7 +74,7 @@ namespace uiExp.Shared
             "consectetur adipiscing elit.",
             "Kush Sharma:",
             "consectetur adipiscing. Enim sit amet venenatis urna cursus eget nunc scelerisque. Adipiscing enim eu turpis egestas. Mattis pellentesque id nibh tortor id aliquet lectus proin. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac. ",
-            "Jasmine Wang: ",
+            "Jasmine Wang:",
             "sed do",
             "Tunc Otzemir:",
             "eiusmod tempor incididunt",
@@ -120,7 +124,7 @@ namespace uiExp.Shared
             "Dui nunc mattis enim ut tellus elementum??",
              "Noah Redlich:",
             "et dolore magna aliqua",
-            "Henry Burnes: ",
+            "Henry Burnes:",
             "Elementum nisi",
             "Emily Markowitz:",
             "Enim sit amet venenatis urna cursus eget nunc scelerisque. Adipiscing enim eu turpis egestas. Mattis pellentesque id nibh tortor id aliquet lectus proin. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac. Nulla aliquet enim tortor at auctor urna. Aliquam sem fringilla ut morbi tincidunt augue",

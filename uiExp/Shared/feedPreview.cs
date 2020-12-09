@@ -12,6 +12,10 @@ namespace uiExp.Shared
         {
             return Groups;
         }
+        public void SetGroups(List<MessageGroup> groups)
+        {
+            this.Groups=groups;
+        }
         public FeedPreview()
         {
 

@@ -1,0 +1,26 @@
+﻿@page "/reply/{convoNum}/{commentNum}"
+@using uiExp.Shared
+@inject HttpClient Http
+@using System.Net.Http
+
+@code{
+    [Parameter]
+    public String convoNum { get; set; }
+    //public int convoInt { get; set; }
+
+    protected override void OnInitialized()
+    {
+        //the param will be set now
+        convoNum = convoNum ?? "2";
+
+    }
+
+
+}
+<!--this is code for displaying a conversation-->
+<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+    <div class="page-content">
+       
+    </div>
+</body>
+

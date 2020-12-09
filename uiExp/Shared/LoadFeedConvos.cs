@@ -821,7 +821,7 @@ namespace uiExp.Shared
         };
 
         private static int[] replies1 { get; } = {
-            1,3,4
+            3,4,6
         };
 
         private static int[] replies2 { get; } = {
@@ -829,7 +829,6 @@ namespace uiExp.Shared
         };
 
         private static int[] replies3 { get; } = {
-            6
         };
 
         private static int[] replies4 { get; } = {

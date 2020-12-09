@@ -10,7 +10,7 @@ namespace uiExp.Shared
 
         public Comments(string[] rawtext)
         {
-            MakeSet(rawtext); 
+            MakeSet(rawtext);
         }
         public List<Comment> GetComments()
         { return this.CommentSet; }
@@ -24,13 +24,13 @@ namespace uiExp.Shared
                     var person = Users.GetUserByName(line.Remove(line.Length - 1));
                     this.CommentSet.Add(new Comment(person));
                 }
-                else if (line==null)
+                else if (line == null)
                 {
-             
+
                 }
                 else
                 {
-                    this.CommentSet.Last().setText(line);
+                    this.CommentSet.Last().AddLine(line);
                 }
             }
         }
@@ -39,29 +39,40 @@ namespace uiExp.Shared
     public class Comment
     {
         private User Commenter;
-        private String Text;
+        private List<Message> Bubbles = new List<Message>();
 
         public Comment(User commenter)
         {
             this.Commenter = commenter;
         }
-        public Comment(User commenter, String comment)
+        public Comment(User commenter, List<Message> bubbles)
         {
-            this.Text = comment;
+            this.Bubbles = bubbles;
             this.Commenter = commenter;
         }
-        public void setText(string text)
+        public List<Message> GetBubbles()
         {
-            this.Text = text;
+            return this.Bubbles;
         }
-
-        public String GetText()
+        public void AddLine(String line)
         {
-            return this.Text;
+            this.Bubbles.Add(new Message(line));
+        }
+        public String GetFirstText()
+        {
+            return this.Bubbles.First().Text;
         }
         public String GetCommenterName()
         {
             return this.Commenter.GetName();
+        }
+        public String GetCommenterFirstName()
+        {
+            return this.Commenter.GetFirstName();
+        }
+        public String GetCommenterImg()
+        {
+            return this.Commenter.GetImg();
         }
     }
 }
