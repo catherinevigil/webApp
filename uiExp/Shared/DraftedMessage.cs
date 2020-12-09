@@ -7,14 +7,14 @@ namespace uiExp.Shared
     {
         private String name;
         private Conversation conversation;
-        private User ProfileOwner;//this is the person who is looking at the convo from their profile
+        private User MyLinesOwner;//this is the person who is looking at the convo from their profile
         private List<User> partners = new List<User>();
         private String image;
 
         public DraftedMessage(string[] lines, string user)
         {
-            this.ProfileOwner = Users.GetUserByName(user);
-            conversation = new Conversation(lines, false);
+            this.MyLinesOwner = Users.GetUserByName(user);
+            conversation = new Conversation(lines);
             MakePartners(user);
             if (this.partners.Count > 1)
             {
@@ -41,9 +41,9 @@ namespace uiExp.Shared
         {
             return this.partners;
         }
-        public User GetInboxOwner()
+        public User GetMyLinesOwner()
         {
-            return this.InboxOwner;
+            return this.MyLinesOwner;
         }
         public String GetLastMessage()
         {

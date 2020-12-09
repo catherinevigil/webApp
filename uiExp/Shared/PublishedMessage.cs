@@ -14,7 +14,7 @@ namespace uiExp.Shared
         public PublishedMessage(string[] lines, string user)
         {
             this.MyLinesOwner = Users.GetUserByName(user);
-            conversation = new Conversation(lines, false);
+            conversation = new Conversation(lines);
             MakePartners(user);
             if (this.partners.Count > 1)
             {

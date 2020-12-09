@@ -31,6 +31,16 @@ namespace uiExp.Shared
             MakeFirstName();
         }
 
+        public User(string name, string bio, String img)
+        {
+            this.Name = name;
+            this.Bio = bio;
+            this.ImageUrl = img;
+
+            MakeFirstName();
+        }
+
+
         public void MakeFirstName()
         {
             this.Names = this.Name.Split(' ');
@@ -56,6 +66,10 @@ namespace uiExp.Shared
         public String GetName()
         {
             return this.Name;
+        }
+        public String GetBio()
+        {
+            return this.Bio;
         }
         public String GetImg()
         {

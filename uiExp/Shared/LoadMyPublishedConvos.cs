@@ -74,11 +74,11 @@ namespace uiExp.Shared
                 "Maybe I’m unaware of how heavy the tea party’s influence was. But to me it doesn’t seem like that’s attributable to her. Like yeah- McCain could’ve picked a better running mate and Palin never had a clue what she was talking about but it’s amazing how much of the path dependence he puts on her",
                 "What’d you think of Lepore’s book?",
                 "Sahil Handa:",
-                "Super interesting re. Palin. I’ve heard those grumbles from a few quarters, and if anything it tells me that the Republicans knew about the ‘trumpist’ strain in their party way back when. A figure like that can be a catalyst, but the structural factors made people ripe for personalities like hers and Trump’s"
+                "Super interesting re. Palin. I’ve heard those grumbles from a few quarters, and if anything it tells me that the Republicans knew about the ‘trumpist’ strain in their party way back when. A figure like that can be a catalyst, but the structural factors made people ripe for personalities like hers and Trump’s",
                 "Lepore’ book was gripping - I absolutely loved it. She’s a wonderful storyteller, and also happens to make a great narrator! Only reason I didn’t give it 5 stars was that she left out all the positive social science research in the sixties, and kept referring to ‘models’ without explaining any of them (felt a bit like a black box at times.) But the stories and interweaving is a model for any work of modern history. I also loved the epilogue, despite its simplifications and slants",
                 "Jake Sylvestre:",
-                "totally get it. She really didn’t explain what a “simulation” was- it almost felt like she substituted in the fact that every American’s seen the social dilemma for an explanation 😂.  That being said, your completely right she’s a fantastic story teller"
-                "That style - interweaving anecdotes just makes for much better stories imo. I was trying to articulate this to someone about Cullen’s book on Columbine and said on clubhouse “it’s written like all the presidents men”. Horrible phrasing on my part, but you get the idea 😂"
+                "totally get it. She really didn’t explain what a “simulation” was- it almost felt like she substituted in the fact that every American’s seen the social dilemma for an explanation 😂.  That being said, your completely right she’s a fantastic story teller",
+                "That style - interweaving anecdotes just makes for much better stories imo. I was trying to articulate this to someone about Cullen’s book on Columbine and said on clubhouse “it’s written like all the presidents men”. Horrible phrasing on my part, but you get the idea 😂",
                 "Caro-esque, maybe?",
                 "Sahil Handa:",
                 "Exactly, you could see the same assumptions being made in the prologue - ‘let’s make clear this is super relevant without actually doing the work of drawing out the connections between the algorithms being used.’",
@@ -98,7 +98,7 @@ namespace uiExp.Shared
                 "And that sets up where’s my flying car perfectly...",
                 "Also I just reread your message — 200k is high from the state!",
                 "Jake Sylvestre:",
-                "the other thing that’s interesting is the staying power. It's incredible how relevant they've been for so long"
+                "the other thing that’s interesting is the staying power. It's incredible how relevant they've been for so long",
                 "Sahil Handa:",
                 "What’s their origin story I wonder?",
                 "Jake Sylvestre:",
@@ -291,7 +291,7 @@ namespace uiExp.Shared
                 "and also because many programmers are Programmers^TM",
                 "or at least think in that way",
                 "(even if they’re not that good)",
-                "It’s like how there are a lot of musicians whose audience is basically only other musicians"
+                "It’s like how there are a lot of musicians whose audience is basically only other musicians",
                 "Sahil Handa:",
                 "Ahhh yes",
                 "The writer’s writer",
@@ -338,9 +338,9 @@ namespace uiExp.Shared
 
         static LoadMyPublishedConvos()
         {
-            InboxList.Add(new PrivateMessage(lines0, user));
-            InboxList.Add(new PrivateMessage(lines1, user));
-            InboxList.Add(new PrivateMessage(lines2, user));
+            InboxList.Add(new PublishedMessage(lines0, user));
+            InboxList.Add(new PublishedMessage(lines1, user));
+            InboxList.Add(new PublishedMessage(lines2, user));
         }
     }
 }

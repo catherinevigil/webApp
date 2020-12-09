@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
+
 namespace uiExp.Shared
 {
     public class LoadMyDraftedConvos
@@ -72,11 +75,11 @@ namespace uiExp.Shared
                 "Maybe I’m unaware of how heavy the tea party’s influence was. But to me it doesn’t seem like that’s attributable to her. Like yeah- McCain could’ve picked a better running mate and Palin never had a clue what she was talking about but it’s amazing how much of the path dependence he puts on her",
                 "What’d you think of Lepore’s book?",
                 "Sahil Handa:",
-                "Super interesting re. Palin. I’ve heard those grumbles from a few quarters, and if anything it tells me that the Republicans knew about the ‘trumpist’ strain in their party way back when. A figure like that can be a catalyst, but the structural factors made people ripe for personalities like hers and Trump’s"
+                "Super interesting re. Palin. I’ve heard those grumbles from a few quarters, and if anything it tells me that the Republicans knew about the ‘trumpist’ strain in their party way back when. A figure like that can be a catalyst, but the structural factors made people ripe for personalities like hers and Trump’s",
                 "Lepore’ book was gripping - I absolutely loved it. She’s a wonderful storyteller, and also happens to make a great narrator! Only reason I didn’t give it 5 stars was that she left out all the positive social science research in the sixties, and kept referring to ‘models’ without explaining any of them (felt a bit like a black box at times.) But the stories and interweaving is a model for any work of modern history. I also loved the epilogue, despite its simplifications and slants",
                 "Jake Sylvestre:",
-                "totally get it. She really didn’t explain what a “simulation” was- it almost felt like she substituted in the fact that every American’s seen the social dilemma for an explanation 😂.  That being said, your completely right she’s a fantastic story teller"
-                "That style - interweaving anecdotes just makes for much better stories imo. I was trying to articulate this to someone about Cullen’s book on Columbine and said on clubhouse “it’s written like all the presidents men”. Horrible phrasing on my part, but you get the idea 😂"
+                "totally get it. She really didn’t explain what a “simulation” was- it almost felt like she substituted in the fact that every American’s seen the social dilemma for an explanation 😂.  That being said, your completely right she’s a fantastic story teller",
+                "That style - interweaving anecdotes just makes for much better stories imo. I was trying to articulate this to someone about Cullen’s book on Columbine and said on clubhouse “it’s written like all the presidents men”. Horrible phrasing on my part, but you get the idea 😂",
                 "Caro-esque, maybe?",
                 "Sahil Handa:",
                 "Exactly, you could see the same assumptions being made in the prologue - ‘let’s make clear this is super relevant without actually doing the work of drawing out the connections between the algorithms being used.’",
@@ -96,7 +99,7 @@ namespace uiExp.Shared
                 "And that sets up where’s my flying car perfectly...",
                 "Also I just reread your message — 200k is high from the state!",
                 "Jake Sylvestre:",
-                "the other thing that’s interesting is the staying power. It's incredible how relevant they've been for so long"
+                "the other thing that’s interesting is the staying power. It's incredible how relevant they've been for so long",
                 "Sahil Handa:",
                 "What’s their origin story I wonder?",
                 "Jake Sylvestre:",
@@ -322,7 +325,7 @@ namespace uiExp.Shared
             {
                 "Sahil Handa:",
                 "Sahil Lav just deprecated location-based pay",
-                "Gumroad will pay the same salary for workers in San Fran, Bangalore, Lagos, or anywhere else."
+                "Gumroad will pay the same salary for workers in San Fran, Bangalore, Lagos, or anywhere else.",
                 "Good lad",
                 "David Grant:",
                 "There’s a lot of implicits in there that could make it a very good or a very bad idea for other companies",
@@ -399,19 +402,19 @@ namespace uiExp.Shared
                 "https://peoplesdispatch.org/2020/11/27/250-million-people-participate-in-nationwide-strike-in-india/",
                 "nuts!",
                 "David Grant:",
-                "Man this whole thing reminds me that I need to reconnect with the SA / Austin tech people
+                "Man this whole thing reminds me that I need to reconnect with the SA / Austin tech people",
                 "Sahil Handa:",
-                "India news is so crazy that I completely missed this strike"
+                "India news is so crazy that I completely missed this strike",
                 "Fuck this is fascinating",
                 "David Grant:",
                 "I think they need to focus a lot more on training people who are already here in tech so they can work remotely for other companies instead of trying the really difficult task of attracting people to relocate",
                 "Sahil Handa:",
-                "Modi’s voter demographics are insane"
+                "Modi’s voter demographics are insane",
                 "David Grant:",
                 "Although I guess you could do both since SA’s cost of living is so low",
                 "also holy shit re: India",
                 "oh wow literally the largest in history??",
-                "I feel like history has shown that you really don’t want to piss of your nation’s farmers...."
+                "I feel like history has shown that you really don’t want to piss of your nation’s farmers....",
                 "Sahil Handa:",
                 "Idk man, look at France",
                 "Farmers have been pissed for a while...",
@@ -443,8 +446,8 @@ namespace uiExp.Shared
                 "Although Mexico is rather violent and Canada is pretty chill so idk",
                 "I guess our meddling in LATAM could account for MX",
                 "Sahil Handa:",
-                "'It was, therefore, very French of Tocqueville to say that the Americans’ method of thought was Cartesian without their ever having read Descartes, and to wonder whether they could understand a Pascal or produce one. America was not for him a people with a book. A Frenchman was a creature of sentiments informed by a literary tradition, while an American was a man of rational principles.'"
-                "'In America, Tocqueville said, everyone is a Cartesian although no one has read Descartes. We were almost entirely importers of philosophy, with the exception of Pragmatism. One need not have read a line of philosophy to be considered educated in this country. '"
+                "'It was, therefore, very French of Tocqueville to say that the Americans’ method of thought was Cartesian without their ever having read Descartes, and to wonder whether they could understand a Pascal or produce one. America was not for him a people with a book. A Frenchman was a creature of sentiments informed by a literary tradition, while an American was a man of rational principles.'",
+                "'In America, Tocqueville said, everyone is a Cartesian although no one has read Descartes. We were almost entirely importers of philosophy, with the exception of Pragmatism. One need not have read a line of philosophy to be considered educated in this country. '",
                 "It’s why Menand wrote the book on pragmatism. The dominant line in American thought -- the country’s philosophical contribution -- is based on being pragmatic",
                 "Eli Burnes:",
                 "Are you using roam?",
@@ -511,7 +514,7 @@ namespace uiExp.Shared
                 "Thinking out loud",
                 "Eli Burnes:",
                 "dude I just returned to Joshua Landy",
-                "read some of his essays".,
+                "read some of his essays",
                 "they are so fricken on point",
                 "https://arcade.stanford.edu/rofl/deceit-desire-and-literature-professor-why-girardians-exist",
                 "and  destroys 'death of the author'",
@@ -563,11 +566,11 @@ namespace uiExp.Shared
 
         static LoadMyDraftedConvos()
         {
-            InboxList.Add(new PrivateMessage(lines0, user));
-            InboxList.Add(new PrivateMessage(lines1, user));
-            InboxList.Add(new PrivateMessage(lines2, user));
-            InboxList.Add(new PrivateMessage(lines3, user));
-            InboxList.Add(new PrivateMessage(lines4, user));
+            InboxList.Add(new DraftedMessage(lines0, user));
+            InboxList.Add(new DraftedMessage(lines1, user));
+            InboxList.Add(new DraftedMessage(lines2, user));
+            InboxList.Add(new DraftedMessage(lines3, user));
+            InboxList.Add(new DraftedMessage(lines4, user));
         }
     }
 }
