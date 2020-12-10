@@ -7,7 +7,7 @@ namespace uiExp.Shared
     { 
         private String name;
         private Conversation conversation;
-        private User MyLinesOwner;//this is the person who is looking at the convo from their profile
+        private User MyLinesOwner; //this is the person who is looking at the convo from their profile
         private List<User> partners = new List<User>();
         private String image;
 
@@ -37,6 +37,7 @@ namespace uiExp.Shared
                 }
             }
         }
+
         public List<User> GetPartners()
         {
             return this.partners;

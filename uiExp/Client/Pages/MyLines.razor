@@ -37,7 +37,7 @@
     public int animationDuration = 1000;
     public int messagesOffset = 80;//aos offset for top
 
-    public String GetConvoHeading(PrivateMessage pm)
+    public String GetConvoHeading(PublishedMessage pm)
     {
         if (pm.GetPartners().Count == 1)
         {
@@ -54,14 +54,34 @@
     <div style="height:80px">
     </div>
        <div class="content">
+      
            <div class="profile-info">
-               <img src="@LoadMyPublishedConvos.InboxList.GetImg()" class="profile-pic">
-               
+               @this.MyLinesOwner = Users.GetUserByName(user);
+               <img src="@Users.GetUserByName(user);" class="profile-pic">
+               }
+               <h3 class="MyLinesName">@this.UserName</h3>
+               <h1 class="bio">@LoadMyPublishedConvos.InboxList[x].GetBio())</h1>
            </div>
-
-
+           <div class="profile-middle">
+               <nav class="options">
+                   <div class="favorites">
+                       <span class="material-icons" "hvr-grow">
+                           favorite_border
+                       </span>
+                   </div>
+                   <div class="participated-in">
+                       <span class="material-icons" "hvr-grow">
+                           comment_bank
+                       </span>
+                   </div>
+                   <div class="drafts">
+                       <span class="material-icons" "hvr-grow">
+                           publish
+                       </span>
+                   </div>
+               </nav>
+           </div>
         @for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
-        {
             var convo = x;
             <div class="inbox-item" @onclick="() => NavigateToPm(convo)">
                 <div>

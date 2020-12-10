@@ -1,4 +1,10 @@
-﻿<h3>Component1</h3>
+﻿@page "/mylines"
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@inject NavigationManager NavigationManager
+@layout MainLayout
+    <h3>Component1</h3>
 
 @code {
     public String getAlign(Boolean left)
@@ -75,7 +81,6 @@
                         comment_bank
                     </span>
                 </div>
-                <!--Don't let me forget to loop back to this one; will need a slightly different view to accnt for uploading-->
                 <div class="drafts">
                     <span class="material-icons" "hvr-grow">
                         publish
