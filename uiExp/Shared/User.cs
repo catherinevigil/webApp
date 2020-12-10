@@ -48,10 +48,10 @@ namespace uiExp.Shared
         }
         public bool LogIn(string username, string password)
         {
-            Console.WriteLine("in user class method, username:" + username);
+            //Console.WriteLine("in user class method, username:" + username);
 
             if (!(this.Username == null || this.Password == null)) {
-                Console.WriteLine("inside user class method if statement");
+                //Console.WriteLine("inside user class method if statement");
                 if (this.Username == username && this.Password == password)
                 {
                     return true;

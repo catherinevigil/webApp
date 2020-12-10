@@ -40,23 +40,59 @@ namespace uiExp.Shared
     {
         private User Commenter;
         private List<Message> Bubbles = new List<Message>();
-        private float fractionTimeLeft;
+        private double fractionTimeLeft;
+        private DateTime postTime;
         private static int totalMinutesPublic = 1440;
         private bool currentUserReplied = false;
         private List<User> repliers = new List<User>();
+        private int repliesAccepted;
+        private int repliesRecieved;
+        private bool acceptingReplies = true;
+
+        Random Rand = new Random();
 
         public Comment(User commenter)
         {
             this.Commenter = commenter;
+            this.fractionTimeLeft = (double) Rand.Next(1000) / (double) 1000;
+            this.repliesAccepted = Rand.Next(15);
+            this.repliesRecieved = Rand.Next(30);
+
+            FixReplies();
+        }
+        public void FixReplies()
+        {
+            if (this.repliesRecieved > this.repliesAccepted)
+            {
+                this.repliesRecieved = this.repliesAccepted;
+                this.acceptingReplies = false;
+            }
         }
         public Comment(User commenter, List<Message> bubbles)
         {
             this.Bubbles = bubbles;
             this.Commenter = commenter;
         }
+
+        public String getColor()
+        {
+            string color = ("rgb(" + (this.fractionTimeLeft * 255).ToString() + ", " + (this.fractionTimeLeft * 140).ToString() + ", 0)");
+            Console.WriteLine(color);
+            return color;
+        }
+        public void AddReply(User user, List<Message> reply)
+        {
+            AddReplier(user);
+        }
         public void AddReplier (User replier)
         {
             this.repliers.Add(replier);
+            this.repliesRecieved = this.repliesRecieved + 1;
+
+            if (this.repliesRecieved == this.repliesAccepted)
+            {
+                this.acceptingReplies = false;
+            }
         }
         public bool checkReply(User replier)
         {

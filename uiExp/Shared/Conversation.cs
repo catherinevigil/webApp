@@ -36,13 +36,13 @@ namespace uiExp.Shared
                         {
                             Console.WriteLine("no user by this name:" + name);
                         }
-                        Console.WriteLine("added conversant" + this.Conversants.Last().GetName());
+                        //Console.WriteLine("added conversant" + this.Conversants.Last().GetName());
                     }
                     else
                     {
                         if (this.Conversants.IndexOf(texter) == -1)
                             this.Conversants.Add(texter);
-                        Console.WriteLine("added conversant" + texter.GetName());
+                        //Console.WriteLine("added conversant" + texter.GetName());
                     }
 
 

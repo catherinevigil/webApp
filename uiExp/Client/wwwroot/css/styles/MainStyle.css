@@ -296,7 +296,7 @@ section#content-container div.comments p { /*paragraph settings*/
             padding: 12px;
             border-radius: 20px;
             color: #fff;
-            background-color: #c38437;
+/*            background-color: #c38437;*/
 /*            comment background color*/
         }
 
@@ -377,7 +377,10 @@ section#content-container div.comments div.comment {
     width: 100%;
     background-color: #141414;
     padding: 12px;
+    display:flex;
+    justify-content:space-between;
 }
+
 .comment-reply-input {
     border-radius: 1000px;
     background-color: transparent;
@@ -387,4 +390,10 @@ section#content-container div.comments div.comment {
     word-break: break-word;
     outline-width: 0;
     width: 100%;
+}
+.icon{
+    color:lightgray;
+}
+.icon:hover{
+    color:white;
 }
