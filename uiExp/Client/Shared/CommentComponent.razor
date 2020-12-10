@@ -7,13 +7,14 @@
 
 
 @code{
-        [Parameter]
-        public Comment commentI{ get; set; }
 
-        public void dump(object a)
-        {
-            DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
-        }
+    [Parameter]
+    public Comment commentI{ get; set; }
+
+    public void dump(object a)
+    {
+        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+    }
 
     public int BottomFadeOffset;
     public int FadeInAnchorP;
@@ -30,10 +31,19 @@
         {
             return "See " + (bubbleNum - 1).ToString() + " more lines...";
         }
+        Console.WriteLine(commentI.getColor());
     }
     public String GetInputPlaceholder()
     {
         return "Send reply to " + this.commentI.GetCommenterFirstName()+"'s inbox...";
+    }
+    public String color => commentI.getColor();
+    private String reply { get; set; }
+
+    private void submitComment()
+    {
+        //commentI.AddReply(CurrentUser.GetUser());
+        Console.WriteLine(reply);
     }
 }
 
@@ -49,7 +59,7 @@
                 </span>
             </p>
             <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                <span>@commentI.GetFirstText()</span>
+                <span style="background-color:@color">@commentI.GetFirstText()</span>
             </p>
 
             @if (showAllLines)
@@ -57,7 +67,7 @@
                 for (int i = 1; i < bubbleNum; i++)
                 {
                     <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                        <span> @commentI.GetBubbles()[i].Text</span>
+                        <span style="background-color:@color"> @commentI.GetBubbles()[i].Text</span>
                     </p>
                 }
             }
@@ -73,9 +83,11 @@
         </div>
         @if (showReplyInput)
         {
-            <div class="reply-container">
-                <input placeholder="@GetInputPlaceholder()" class="comment-reply-input" />
-            </div>
+        <div class="reply-container">
+            <input placeholder="@GetInputPlaceholder()" class="comment-reply-input" @bind="reply" />
+            <i class="fas fa-arrow-up icon" @onclick="submitComment"></i>
+        </div>
+
         }
     </div>
 </div>

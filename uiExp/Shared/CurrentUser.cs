@@ -17,5 +17,9 @@ namespace uiExp.Shared
         {
             cUser = user;
         }
+        public static User GetUser()
+        {
+            return cUser;
+        }
     }
 }

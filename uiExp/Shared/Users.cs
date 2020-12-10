@@ -47,8 +47,8 @@ namespace uiExp.Shared
         {
             foreach (var user in List)
             {
-                Console.WriteLine("in users method, username: " + username);
-                Console.WriteLine(user.LogIn(username, password));
+                //Console.WriteLine("in users method, username: " + username);
+                //Console.WriteLine(user.LogIn(username, password));
                 if (user.LogIn(username,password))
                 {
                     return user;
