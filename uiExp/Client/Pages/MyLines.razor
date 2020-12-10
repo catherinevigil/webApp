@@ -5,7 +5,6 @@
 @inject NavigationManager NavigationManager
 @layout MainLayout
 
-
 @code {
     public String getAlign(Boolean left)
     {
@@ -18,10 +17,6 @@
     public void dump(object a)
     {
         DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
-    }
-
-    public void ShowData()
-    {
     }
 
     public void NavigateToPm(int talk)
@@ -56,11 +51,11 @@
        <div class="content">
       
            <div class="profile-info">
-               @this.MyLinesOwner = Users.GetUserByName(user);
-               <img src="@Users.GetUserByName(user);" class="profile-pic">
-               }
-               <h3 class="MyLinesName">@this.UserName</h3>
-               <h1 class="bio">@LoadMyPublishedConvos.InboxList[x].GetBio())</h1>
+               <img src="@CurrentUser.cUser.GetImg()" class="profile-pic">
+               <h1 class="profilename">
+                   @CurrentUser.cUser.GetName();
+               </h1>
+               <h3 class="bio">@CurrentUser.cUser.GetBio()</h3>
            </div>
            <div class="profile-middle">
                <nav class="options">
@@ -81,22 +76,23 @@
                    </div>
                </nav>
            </div>
-        @for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
-            var convo = x;
-            <div class="inbox-item" @onclick="() => NavigateToPm(convo)">
-                <div>
-                    <img src="@LoadMyPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
-                </div>
-                <div class="inbox-text">
-                    <h1 class="convo-name">@(LoadMyPublishedConvos.InboxList[x].GetConvoName())</h1>
-                    <p class="preview-message">
-                        <span>
-                            @LoadMyPublishedConvos.InboxList[x].GetLastMessage()
-                        </span>
-                    </p>
-                </div>
-            </div>
 
+        @for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
+        {
+          var convo = x;
+        <div class="inbox-item" @onclick="() => NavigateToPm(convo)">
+            <div>
+                <img src="@LoadMyPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
+            </div>
+            <div class="inbox-text">
+                <h1 class="convo-name">@LoadMyPublishedConvos.InboxList[x].GetConvoName()</h1>
+                <p class="preview-message">
+                    <span>
+                        @LoadMyPublishedConvos.InboxList[x].GetLastMessage()
+                    </span>
+                </p>
+            </div>
+        </div>
         }
     </div>
 </body>
