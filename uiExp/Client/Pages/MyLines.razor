@@ -6,6 +6,10 @@
 @layout MainLayout
 
 @code {
+
+        private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
+        public String ListHeight = "300px"; //height in pixels of list
+
     public String getAlign(Boolean left)
     {
         if (left)
