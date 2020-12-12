@@ -1,26 +1,50 @@
+.mylines-pic {
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 10px;
+}
 
-.profilename {
+.profile-name {
     float: center;
     font-style: "HelveticaNeue";
     color: white;
-    font-size: 34pt;
+    font-size: 17pt;
     font-weight: bold;
     text-align: center;
 }
 
-.tagline {
+.bio {
     position: relative;
+    max-width: 25em;
     border-style: solid;
     border-width: medium;
     border-color: grey;
-    float: right;
-    max-width: 25em;
+    border-radius: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 10px;
+    color: white;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
     font-style: "HelveticaNeue";
     font-weight: normal;
-    padding: .5em .5em;
-    font-size: 17pt;
-    border-radius: 1rem;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    font-size: 15pt;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: grey;
+    cursor: pointer;
 }
 
 .preview-message {
@@ -61,29 +85,12 @@
     background-color: #141414;
 }
 
-
 .material-icons {
     cursor: pointer;
     color: lightgray;
 }
 
-/*Top navbar. Contains menu icon, back icon, and title*/
-.navbar {
-      list-style: none;
-      background-color: black;
-      color: darkgrey;  
-      text-align: center;
-      box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-}
-
-
 /*changes icon color on hover.*/ 
 .material-icons:hover{ 
     color: white; 
-}
-
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-    transform: scale(1.1);
 }

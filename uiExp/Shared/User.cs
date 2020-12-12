@@ -31,6 +31,17 @@ namespace uiExp.Shared
             MakeFirstName();
         }
 
+        public User(string name, String username, String password, String bio, String img)
+        {
+            this.Name = name;
+            this.ImageUrl = img;
+            this.Password = password;
+            this.Bio = bio;
+            this.Username = username;
+
+            MakeFirstName();
+        }
+
         public User(string name, string bio, String img)
         {
             this.Name = name;

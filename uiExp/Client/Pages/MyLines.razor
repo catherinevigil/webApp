@@ -60,37 +60,23 @@
 @*<button style="top:200px;position:absolute;height:25p;" @onclick="WriteStuff"></button>*@
 
 <body id="page">
-    <div style="height:80px">
+    <div style="height:40px">
     </div>
        <div class="content">
       
            <div class="profile-info">
-               <img src="@user.GetImg()" class="profile-pic">
-               <h1 class="profilename">
-                   @user.GetName();
-               </h1>
+               <img src="@user.GetImg()" class="mylines-pic">
+               <h1 class="profile-name">
+                   @user.GetName()</h1>
                <h3 class="bio">@user.GetBio()</h3>
            </div>
-           <div class="profile-middle">
-               <nav class="options">
-                   <div class="favorites">
-                       <span class="material-icons" "hvr-grow">
-                           favorite_border
-                       </span>
-                   </div>
-                   <div class="participated-in">
-                       <span class="material-icons" "hvr-grow">
-                           comment_bank
-                       </span>
-                   </div>
-                   <div class="drafts">
-                       <span class="material-icons" "hvr-grow">
-                           publish
-                       </span>
-                   </div>
-               </nav>
-           </div>
 
+           <nav class="options">
+                   <div class="favorites"> <span class="material-icons"> favorite_border </span></div>
+                   <div class="participated-in"> <span class="material-icons"> comment_bank </span></div>
+                   <div class="drafts"> <span class="material-icons"> publish </span></div>
+           </nav>
+          
         @for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
         {
         var convo = x;
