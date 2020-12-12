@@ -317,7 +317,8 @@ namespace uiExp.Shared
                 "now both Java and C# support lambdas",
                 "Actually, just looked it up -- they introduced anonymous functions literally the same year lol",
                 "(Microsoft did, in C# 2.0)",
-                "point is that I *think* historically the bigger tech companies have lagged behind the new hotness ~ slightly ~ but when they finally have their implementation out, it’s super robust, stable, and you don’t have to worry about someone deciding not to maintain it anymore"
+                "point is that I *think* historically the bigger tech companies have lagged behind the new hotness ~ slightly ~",
+                "but when they finally have their implementation out, it’s super robust, stable, and you don’t have to worry about someone deciding not to maintain it anymore",
             };
 
         private static string[] lines3 { get; } =

@@ -1,0 +1,103 @@
+﻿ß@page "/Rm/{rmNum}"
+@using uiExp.Shared
+@inject HttpClient Http
+@using System.Net.Http
+
+@code{
+    [Parameter]
+    public String rmNum { get; set; }
+    //public int convoInt { get; set; }
+
+    protected override void OnInitialized()
+    {
+        //the param will be set now
+        rmNum = rmNum ?? "2";
+
+    }
+
+    public int getConversationNum()
+    {
+        return Int32.Parse(rmNum);
+
+    }
+
+
+    public String getClass(Boolean left)
+    {
+        if (left)
+            return ("message message-left aos-init");
+        else
+            return ("message message-right aos-init");
+
+    }
+
+    public String getAlign(Boolean left)
+    {
+        if (left)
+            return "left";
+        else
+            return "right";
+    }
+
+    public String getConversant(bool even, Conversation conversation)
+    {
+
+        if (even)
+            return conversation.Conversants.First().GetName();
+        else
+            return conversation.Conversants.Last().GetName();
+    }
+
+    //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
+    Conversation convo => LoadMyPublishedConvos.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
+
+    public void ShowData()
+    {
+        Console.WriteLine("hello");
+        // var stringWhole = String.Concat(LoadConvos.ConvoList[getConversationNum()]);
+        // Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
+    }
+
+    public int i = 0;
+    public String TopFadeOffset = "-100";
+    public String BottomFadeOffset = "100";
+    public String TopFadeOutAnchorP = "center-top";
+    public String FadeInAnchorP = "center-bottom";
+
+}
+<!--this is code for displaying a conversation-->
+<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+    <div class="page-content-pm">
+        <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+            <div class="messages">
+                @foreach (var group in convo.Groups)
+                {
+                    <div class="message-group">
+                        @*@<p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                    @getConversant(i % 2 == 0, convo)
+                                </span>
+                            </p>*@
+                        @foreach (var message in group.Messages)
+                        {
+                            <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                    @if (@message.Text.Contains("img"))
+                                    {
+                                        @((MarkupString)@message.Text)
+                                    }
+                                    else
+                                    {
+                                        @message.Text
+                                    }
+                                </span>
+                            </p>
+                        }
+                    </div>
+                    i++;
+                }
+
+            </div>
+        </section>
+    </div>
+</body>

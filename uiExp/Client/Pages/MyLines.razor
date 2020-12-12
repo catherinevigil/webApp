@@ -23,9 +23,9 @@
         DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
     }
 
-    public void NavigateToPm(int talk)
+    public void NavigateToRm(int talk)
     {
-        NavigationManager.NavigateTo("/Pm/" + talk);
+        NavigationManager.NavigateTo("/Rm/" + talk);
     }
 
     public String ProfileMessagesClass = "message message-left aos-init";
@@ -36,15 +36,15 @@
     public int animationDuration = 1000;
     public int messagesOffset = 80;//aos offset for top
 
-    public String GetConvoHeading(PublishedMessage pm)
+    public String GetConvoHeading(PublishedMessage rm)
     {
-        if (pm.GetPartners().Count == 1)
+        if (rm.GetPartners().Count == 1)
         {
-            return pm.GetPartners()[0].GetName();
+            return rm.GetPartners()[0].GetName();
         }
         else
         {
-            return pm.GetConvoName();
+            return rm.GetConvoName();
         }
     }
     User user = Users.GetUserByName("Sahil Handa");
@@ -80,7 +80,7 @@
         @for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
         {
         var convo = x;
-        <div class="inbox-item" @onclick="() => NavigateToPm(convo)">
+        <div class="inbox-item" @onclick="() => NavigateToRm(convo)">
             <div>
                 <img src="@LoadMyPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
             </div>
