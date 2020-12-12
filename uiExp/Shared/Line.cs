@@ -8,6 +8,7 @@ namespace uiExp.Shared
     {
         private User Requester;
         private Conversation Request = new Conversation();
+        private int MessageCount = 0;
 
         public Line(string[] lines)
         {
@@ -27,6 +28,7 @@ namespace uiExp.Shared
                 else
                 {
                     this.Request.Groups.LastOrDefault().Messages.Add(new Message(lines[i]));
+                    MessageCount++;
                 }
 
             }

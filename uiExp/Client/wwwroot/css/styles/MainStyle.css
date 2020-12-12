@@ -414,8 +414,26 @@ section#content-container div.comments div.comment {
 
 .name-link:hover {
     cursor: pointer;
-    text-decoration:underline:
+    text-decoration:underline;
 }
 .image-link:hover {
     cursor: pointer;
+}
+.action:hover{
+    cursor:pointer;
+}
+
+.more-messages {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: rgb(166, 165, 165);
+}
+
+.convo-title {
+    position: fixed;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, 0);
 }

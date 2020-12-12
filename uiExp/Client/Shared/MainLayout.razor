@@ -11,9 +11,17 @@
         var destination = (InPm()) ? "/inbox" : "/";
         NavigationManager.NavigateTo(destination);
     }
+
     private void NavigateRequestComponent() { NavigationManager.NavigateTo("/request"); }
     private void NavigateInboxComponent() { NavigationManager.NavigateTo("/inbox"); }
     private void NavigateMyLinesComponent() { NavigationManager.NavigateTo("/mylines"); }
+    private int GetConvoNum()
+    {
+        var start = NavigationManager.Uri.LastIndexOf("/") + 1;
+        var length = NavigationManager.Uri.Length;
+        string convo = NavigationManager.Uri.Substring(start, length - start);
+        return Int32.Parse(convo);
+    }
 
     private bool AtHome()
     {
@@ -82,9 +90,7 @@
         return false;
     }
 
-
-
-}
+    }
 }
 
 
@@ -114,6 +120,10 @@
             <span class="material-icons" @onclick="NavigateBack">
                 arrow_back_ios
             </span>
+            @if (InConvo())
+            {
+                <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
+            }
         </div>
     }
     else if (AtMylines())

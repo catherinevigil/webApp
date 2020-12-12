@@ -10,6 +10,7 @@ namespace uiExp.Shared
 
         public List<MessageGroup> Groups = new List<MessageGroup>();
         public List<User> Conversants = new List<User>(); //left is conversant 0
+        public int MessageCount = 0;
 
         public Conversation()
         {
@@ -51,6 +52,7 @@ namespace uiExp.Shared
                 else
                 {
                     this.Groups.Last().Messages.Add(new Message(lines[i]));
+                    this.MessageCount++;
                 }
             }
         }

@@ -127,7 +127,7 @@
                     <div class="message-group">
                         <p style="text-align:@getAlign(group.Left); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                             <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
-                                @group.Texter.GetName()
+                                <LinkedName Conversant="@group.Texter"></LinkedName>
                             </span>
                         </p>
                         @foreach (var message in group.Messages)
@@ -146,10 +146,10 @@
             <div class="bottom-float">
                 @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
-                <div class="feed-name-container" @onclick="SwitchLeft" style="color:@GetLeftColor(); background-color:@GetRightColor();">
+                <div class="feed-name-container action" @onclick="SwitchLeft" style="color:@GetLeftColor(); background-color:@GetRightColor();">
                     lines
                 </div>
-                <div class="feed-name-container" @onclick="SwitchRight" style="color:@GetRightColor(); background-color:@GetLeftColor();">
+                <div class="feed-name-container action" @onclick="SwitchRight" style="color:@GetRightColor(); background-color:@GetLeftColor();">
                     threads
                 </div>
             </div>

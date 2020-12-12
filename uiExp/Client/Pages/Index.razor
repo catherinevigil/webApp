@@ -15,58 +15,64 @@
 
 
 @code{
+        public string GetMoreMessagesString(PublicConvo convo)
+        {
+            var messagesLeft = convo.GetConversation().MessageCount - convo.GetFeedPreview().GetMessageCount();
+            string output = "Read " + messagesLeft.ToString() + " more messages...";
+            return output;
+        }
 
-    public String getClass(Boolean leftMessage)
-    {
-        if (leftMessage)
-            return ("message message-left aos-init");
-        else
-            return ("message message-right aos-init");
+        public String getClass(Boolean leftMessage)
+        {
+            if (leftMessage)
+                return ("message message-left aos-init");
+            else
+                return ("message message-right aos-init");
 
-    }
-    public String getAlign(Boolean left)
-    {
-        if (left)
-            return "left";
-        else
-            return "right";
-    }
+        }
+        public String getAlign(Boolean left)
+        {
+            if (left)
+                return "left";
+            else
+                return "right";
+        }
 
-    public String getConversant(bool even, Conversation conversation)
-    {
+        public String getConversant(bool even, Conversation conversation)
+        {
 
-        if (even)
-            return conversation.Conversants.First().GetName();
-        else
-            return conversation.Conversants.Last().GetName();
-    }
-    public String getAnchor(int x)
-    {
-        int a = x + 1;
-        if (x < (LoadFeedConvos.ConvoList.Count - 1))//if not the last convo
-            return "#m" + a.ToString() + "00";
-        else
-            return null;
-    }
-    public String getId(int a, int b, int c)
-    {
-        return "m" + a.ToString() + b.ToString() + c.ToString();
-    }
+            if (even)
+                return conversation.Conversants.First().GetName();
+            else
+                return conversation.Conversants.Last().GetName();
+        }
+        public String getAnchor(int x)
+        {
+            int a = x + 1;
+            if (x < (LoadFeedConvos.ConvoList.Count - 1))//if not the last convo
+                return "#m" + a.ToString() + "00";
+            else
+                return null;
+        }
+        public String getId(int a, int b, int c)
+        {
+            return "m" + a.ToString() + b.ToString() + c.ToString();
+        }
 
-    public void dump(object a)
-    {
-        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
-    }
+        public void dump(object a)
+        {
+            DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+        }
 
-    public void ShowData()
-    {
-    }
+        public void ShowData()
+        {
+        }
 
-    public void NavigateToConvo(int talk)
-    {
-        NavigationManager.NavigateTo("/convo/" + talk);
+        public void NavigateToConvo(int talk)
+        {
+            NavigationManager.NavigateTo("/convo/" + talk);
 
-    }
+        }
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
@@ -223,6 +229,9 @@
                                 </div>
                             }
                         </div>
+                    </div>
+                    <div class="more-messages">
+                        <span>@GetMoreMessagesString(LoadFeedConvos.ConvoList[x])</span>
                     </div>
                     <hr style="border-top:1px solid white;">
                 }

@@ -7,6 +7,7 @@ namespace uiExp.Shared
     public class FeedPreview
     {
         private List<MessageGroup> Groups = new List<MessageGroup>();
+        private int MessageCount;
 
         public  List<MessageGroup> GetGroups()
         {
@@ -24,7 +25,10 @@ namespace uiExp.Shared
         {
             SeperatePreview(lines);
         }
-
+        public int GetMessageCount()
+        {
+            return MessageCount;
+        }
 
         public void SeperatePreview(string[] lines)
         {
@@ -38,6 +42,7 @@ namespace uiExp.Shared
                 else
                 {
                     this.Groups.Last().Messages.Add(new Message(lines[i]));
+                    MessageCount++;
                 }
             }
         }
