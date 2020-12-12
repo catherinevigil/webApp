@@ -163,10 +163,10 @@ namespace uiExp.Shared
                 "*that might not be an election year...",
                 "Professionalization of authenticity is a fantastic phrase. You know who it makes me think of?",
                 "....Mr Barack Hussein Obama...",
-                "(And I emphasize Hussein as a compliment):",
+                "(And I emphasize Hussein as a compliment)-",
                 "https://youtu.be/jpWQC3nSsSo?t=560",
                 "(This timestamp will make the point...)",
-                "Along with this fantastic article:",
+                "Along with this fantastic article-",
                 "https://www.nysun.com/arts/obama-bests-clinton-at-craft-of-writing/72169/",
                 "I tried my hand at a piece along these lines - it’s a little chaotic and not my best, but you might find worthwhile nuggets inside",
                 "Jake Sylvestre:",
@@ -178,7 +178,7 @@ namespace uiExp.Shared
                 "I knew what I was trying to say, but couldn’t quite get there",
                 "Jake Sylvestre:",
                 "I love the meta commentary of this ",
-                "Right after the Arendt quote:",
+                "Right after the Arendt quote-",
                 "I think the other reason liberals might seem disingenuous is that they don’t believe some of what they’re saying",
                 "(And to be fair they can’t. If you take a lot of woke ideology to it’s logical end its pretty horrible.) But the disingenuousness is an emergent property of Clinton doing a photo-op with AOC and then calling Kissinger to talk realpolitik",
                 "Have you seen the politician on Netflix? I actually think they do a pretty good job at depicting a candidate struggling with trying to appear authentic and simultaneously questioning his own motives for doing so",
@@ -317,7 +317,7 @@ namespace uiExp.Shared
                 "now both Java and C# support lambdas",
                 "Actually, just looked it up -- they introduced anonymous functions literally the same year lol",
                 "(Microsoft did, in C# 2.0)",
-                "point is that I *think* historically the bigger tech companies have lagged behind the new hotness ~ slightly ~ but when they finally have their implementation out, it’s super robust, stable, and you don’t have to worry about someone deciding not to maintain it anymore",
+                "point is that I *think* historically the bigger tech companies have lagged behind the new hotness ~ slightly ~ but when they finally have their implementation out, it’s super robust, stable, and you don’t have to worry about someone deciding not to maintain it anymore"
             };
 
         private static string[] lines3 { get; } =

@@ -7,8 +7,8 @@
 
 @code {
 
-        private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
-        public String ListHeight = "300px"; //height in pixels of list
+    private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
+    public String ListHeight = "300px"; //height in pixels of list
 
     public String getAlign(Boolean left)
     {
@@ -47,7 +47,17 @@
             return pm.GetConvoName();
         }
     }
+    User user = Users.GetUserByName("Sahil Handa");
+    public void WriteStuff() {
+        Console.WriteLine(user.GetImg());
+        Console.WriteLine(user.GetName());
+        Console.WriteLine(user.GetBio());
+        Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetImg());
+        Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetConvoName());
+        Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetLastMessage());
+    }
 }
+@*<button style="top:200px;position:absolute;height:25p;" @onclick="WriteStuff"></button>*@
 
 <body id="page">
     <div style="height:80px">
@@ -55,11 +65,11 @@
        <div class="content">
       
            <div class="profile-info">
-               <img src="@CurrentUser.cUser.GetImg()" class="profile-pic">
+               <img src="@user.GetImg()" class="profile-pic">
                <h1 class="profilename">
-                   @CurrentUser.cUser.GetName();
+                   @user.GetName();
                </h1>
-               <h3 class="bio">@CurrentUser.cUser.GetBio()</h3>
+               <h3 class="bio">@user.GetBio()</h3>
            </div>
            <div class="profile-middle">
                <nav class="options">
