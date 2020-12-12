@@ -185,8 +185,9 @@
                             @if (LoadFeedConvos.ConvoList[x].GetConversants().Count == 2)
                             {
                                 <div>
-                                    <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[0].GetImg())" class="profile-pic">
-                                    <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[1].GetImg())" class="profile-pic">
+                                    <LinkedImages ConversantList="LoadFeedConvos.ConvoList[x].GetConversants()"></LinkedImages>
+                                    @*<img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[0].GetImg())" class="profile-pic">
+                                    <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[1].GetImg())" class="profile-pic">*@
                                 </div>
                             }
                             else
@@ -197,7 +198,7 @@
                                 <h1 class="feed-title">@LoadFeedConvos.ConvoList[x].GetTitle()</h1>
                                 <p class="names">
                                     <span>
-                                        @LoadFeedConvos.ConvoList[x].GetNames()
+                                        <LinkedNames ConversantList="@LoadFeedConvos.ConvoList[x].GetConversants()"></LinkedNames>
                                     </span>
                                 </p>
                             </div>

@@ -407,3 +407,15 @@ section#content-container div.comments div.comment {
     display:flex;
     flex-direction:column-reverse;
 }
+
+.default{
+    cursor:default;
+}
+
+.name-link:hover {
+    cursor: pointer;
+    text-decoration:underline:
+}
+.image-link:hover {
+    cursor: pointer;
+}

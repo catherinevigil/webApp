@@ -111,6 +111,10 @@ namespace uiExp.Shared
         {
             return this.Bubbles.First().Text;
         }
+        public User GetCommenter()
+        {
+            return this.Commenter;
+        }
         public String GetCommenterName()
         {
             return this.Commenter.GetName();

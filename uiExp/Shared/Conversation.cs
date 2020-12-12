@@ -69,6 +69,10 @@ namespace uiExp.Shared
             return "the squad";
 
         }
+        public List<User> GetConversants()
+        {
+            return this.Conversants;
+        }
 
         public void output()
         {

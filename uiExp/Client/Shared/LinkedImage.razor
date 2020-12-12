@@ -1,0 +1,59 @@
+﻿
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@using System.ComponentModel
+@using System.ComponentModel.Design
+@using System.Linq;
+@using System.Net
+@using System.Text
+@using System.IO;
+@inject HttpClient Http
+@using System.Net.Http
+@inject NavigationManager NavigationManager
+@inject IJSRuntime js
+
+
+@code{
+    [Parameter]
+    public User Conversant{ get; set; }
+
+    public void dump(object a)
+    {
+        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+    }
+
+    public void ShowData()
+    {
+    }
+
+    public void NavigateToProfile()
+    {
+        NavigationManager.NavigateTo("/mylines/" + Conversant.GetUri());
+
+    }
+
+    @*protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await js.InvokeVoidAsync("initializeAnimateInListener");
+            await js.InvokeVoidAsync("initializeAnimateOutListener");
+        }
+    }*@
+
+    public int bottomHeaderHeight = 60;//aos offset for bottom
+    public int animationDuration = 1000;
+    public int messagesOffset = 80;//aos offset for top
+
+    public void DumpRequests()
+    {
+        DumpityDump.Dump(LoadRequests.LineList);
+    }
+    public void NavigateToRespond(int line)
+    {
+        //
+    }
+}
+
+<img src="@Conversant.GetImg()" @onclick="NavigateToProfile" class="profile-pic image-link" />

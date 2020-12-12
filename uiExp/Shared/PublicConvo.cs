@@ -64,6 +64,7 @@ namespace uiExp.Shared
         {
             return this.Title;
         }
+        
         public String GetNames()
         {
             return this.conversation.GetNames();

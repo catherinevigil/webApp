@@ -35,6 +35,10 @@ namespace uiExp.Shared
             this.Names = this.Name.Split(' ');
             this.FirstName = this.Names[0];
         }
+        public int GetUri()
+        {
+            return this.GetHashCode();
+        }
         public bool LogIn(string username, string password)
         {
             //Console.WriteLine("in user class method, username:" + username);

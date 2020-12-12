@@ -45,13 +45,13 @@
 
 <div class="comment">
     <div class="commenter-photo-div">
-        <img src="@(commentI.GetCommenterImg())" class="profile-pic">
+        <LinkedImage Conversant="@commentI.GetCommenter()"></LinkedImage>
     </div>
     <div class="comment-div">
         <div class="comment-tight-div"
             <p style="text-align:center; color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                 <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
-                    @commentI.GetCommenterName()
+                    <LinkedName Conversant="@commentI.GetCommenter()"></LinkedName>
                 </span>
             </p>
             <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
@@ -69,11 +69,11 @@
             }
             <div class="comment-actions">
                 @if (!showReplyInput && !replied){
-                    <span @onclick="OnReplyClick">Reply</span>
+                    <span @onclick="OnReplyClick" class="action">Reply</span>
                 }
                 @if (!(bubbleNum == 1) && !showAllLines)
                 {
-                    <span @onclick="()=> showAllLines=true">@GetShowText()</span>
+                    <span class="action" @onclick="()=> showAllLines=true">@GetShowText()</span>
                 }
             </div>
         </div>
@@ -81,12 +81,12 @@
         {
             <div class="input-container">
                 <textarea placeholder="@GetInputPlaceholder()" class="comment-reply-message-input" style="resize:none" @bind="reply" rows="1" oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px';"/>
-                <i class="fas fa-arrow-up icon sendButton" @onclick="submitReply"></i>
+                <i class="fas fa-arrow-up icon sendButton action" @onclick="submitReply"></i>
             </div>
         }
         @if (replied == true)
         {
-            <span style="color:white" @onclick="NavToInbox">View reply in inbox...</span>
+            <span style="color:white" @onclick="NavToInbox" class="action">View reply in inbox...</span>
         }
     </div>
 </div>
