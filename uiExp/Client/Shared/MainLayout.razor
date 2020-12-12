@@ -81,26 +81,30 @@
         }
         return false;
     }
-    
+
+
+
+}
 }
 
 
-@*example app 
-    <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+@*example app
+        <div class="page">
+        <div class="sidebar">
+            <NavMenu />
         </div>
 
-        <div class="content px-4">
-            @Body
+        <div class="main">
+            <div class="top-row px-4">
+                <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+            </div>
+
+            <div class="content px-4">
+                @Body
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 <div class="main">
 
@@ -138,29 +142,77 @@
     else if (NavigationManager.Uri.Contains("request"))
     {
         <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
-            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-                <i class="fas fa-arrow-up"></i>
-            </button>
+            <div @ref=inputDiv class="input-container">
+                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
+            </div>
         </div>
     }
     else if (NavigationManager.Uri.Contains("convo"))
     {
         <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <input class="feedConvo" placeholder="Comment..." style="font-size:small">
-            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-                <i class="fas fa-arrow-up"></i>
-            </button>
+            <div @ref=inputDiv class="input-container">
+                <textarea id= "inputTextArea" class="comment-reply-message-input" placeholder="@CommentInputPlaceholder" style = "resize:none"  @bind="convoComment" rows = "1" @oninput = "Resize" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitComment"></i>
+            </div>
         </div>
     }
     else if (NavigationManager.Uri.Contains("Pm"))
     {
         <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <input class="feedConvo" placeholder="What's on your mind?..." style="font-size:small">
-            <button class="btn btn-send" style="margin-left: 2px;padding-left: 6px;padding-right: 6px;padding-bottom:0px; padding-top: 0px">
-                <i class="fas fa-arrow-up material-icons"></i>
-            </button>
+            <div @ref=inputDiv class="input-container">
+                <textarea id= "inputTextArea" placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+            </div>
         </div>
     }
 </div>
+
+@*on input to bottom comment/reply input, will need to hide header. input box will grow and it will get ugly*@
 @*style="align-items:flex-end"*@
+
+@code{
+
+    @*public double GetHeight()
+    {
+        return 
+    }*@
+ElementReference inputDiv;
+public string MessageInputPlaceholder = "reply...";
+public string RequestInputPlaceholder = "what's on your mind?...";
+public string CommentInputPlaceholder = "comment...";
+
+private String messageReply { get; set; }
+private String convoComment { get; set; }
+private String request { get; set; }
+
+private void submitComment()
+{
+
+}
+private void submitRequest()
+{
+
+}
+private void sendReply()
+{
+
+}
+
+[Inject] IJSRuntime JSRuntime { get; set; }
+double MyHeight = 0;
+async Task Resize()
+{
+    var result = await JSRuntime.InvokeAsync<object>("eval", @"(function() {
+            inputTextArea.style.height='auto';
+            inputTextArea.style.height=(inputTextArea.scrollHeight)+'px';
+            return inputTextArea.scrollHeight;
+        })()");
+    Double.TryParse(result.ToString(), out MyHeight);
+}
+
+@*failed JS code, was just above return Line. problem is inputDiv is not found
+inputDiv.style.height=(inputTextArea.scrollHeight+10)+'px'*@
+
+
+}

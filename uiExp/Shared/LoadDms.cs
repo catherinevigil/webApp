@@ -119,8 +119,7 @@ namespace uiExp.Shared
                 "The culture of the nouveau riche is taking over. Because “class” as a state of mind and manners is less and less respected",
                 "Simpler and more vulgar ways are being used to assert dominance and prestige",
                 "Marshall Sloane:",
-                "Yes. this is just example text for inbox. it comes down for the decline in the wasp mentality and the ascendance of people of all creeds who do not ascribe to new england puritanism, an ideology which allowed aristocratic values to stick around into modernity.",
-                "Majoritarian rule in America"
+                "Yes. this is just example text for inbox. it comes down for the decline in the wasp mentality and the ascendance of people of all creeds who do not ascribe to new england puritanism, an ideology which allowed aristocratic values to stick around into modernity."
             };
 
             private static string[] lines1 { get; } =
@@ -189,8 +188,7 @@ namespace uiExp.Shared
                 "Kush Sharma:",
                 "For sure! I do have to run now but this was awesome, had a great time and think we came up with some dope ideas :)",
                 "Eli Burnes:",
-                "Great talk man",
-                "Nietzsche x Wokeism"
+                "Great talk man"
             };
 
            
@@ -286,8 +284,7 @@ namespace uiExp.Shared
                 "Tunc Otzemir:",
                 "And that there exists a possibility that when it is not messed up",
                 "It will be provided with care and love rather then precision",
-                "Like u know they're also cutting costs on everything in these kinda of places",
-                "coffehouse vibe"
+                "Like u know they're also cutting costs on everything in these kinda of places"
             };
 
         private static string[] lines3 { get; } =
@@ -455,45 +452,45 @@ namespace uiExp.Shared
             "Yeah I agree with all of that",
             "I’m not against corporations inherently",
             "They just can never be above the law" };
-        private static string[] lines6 { get; } =
-            {
-            "Jonah Berger:",
-            "<img src=\"https://i.postimg.cc/Z5bxb1Y1/owl.jpg\" alt=\"owl\"/>",
-            "<img src=\"https://i.postimg.cc/RC2x6xWJ/rockHike.jpg\" alt=\"rockHike\"/>",
-            "<img src=\"https://i.postimg.cc/2SZSg5hG/bird-Mid-Flight.jpg\" alt=\"bird-Mid-Flight\"/>",
-            "<img src=\"https://i.postimg.cc/L8pdDkBH/waterfall.jpg\" alt=\"waterfall\"/>",
-            "Eli Burnes:",
-            "<img src=\"https://i.postimg.cc/XqGxShWT/selfie.jpg\" alt=\"selfie\"/>",
-            "Jonah Berger:",
-            "<img src='https://i.postimg.cc/J4ttmL9y/bug.jpg' border='0' alt='bug'/>",
-            "Eli Burnes:",
-            "<img src=\"https://i.postimg.cc/jd9j8fwC/dog.jpg\" alt=\"dog\"/>",
-            "<img src=\"https://i.postimg.cc/WbP7KdBp/marsh.jpg\" alt=\"marsh\"/>",
-            "<img src=\"https://i.postimg.cc/pT2V9Y7c/colorado.jpg\" alt=\"colorado\"/>",
-            "Jonah Berger:",
-            "<img src=\"https://i.postimg.cc/fb86MG4L/utahSnow.jpg\" alt=\"utahSnow\"/>",
-            "<img src=\"https://i.postimg.cc/gkRF3thS/snow-Cliffs.jpg\" alt=\"snow-Cliffs\"/>",
-            "<img src=\"https://i.postimg.cc/y6LxZt7m/blackbird.jpg\" alt=\"blackbird\"/>",
-            "Eli Burnes:",
-            "<img src=\"https://i.postimg.cc/kM2dgggd/sunset.jpg\" alt=\"sunset\"/>",
-            "Jonah Berger:",
-            "<img src=\"https://i.postimg.cc/HLKwtn0g/jSunset.png\" alt=\"jSunset\"/>",
-            "Eli Burnes:",
-            "<img src=\"https://i.postimg.cc/qR38DrQC/glowing.jpg\" alt=\"glowing\"/>",
-            "<img src=\"https://i.postimg.cc/Xq1v6GsH/brews.jpg\" alt=\"brews\"/>",
-            "<img src=\"https://i.postimg.cc/mrh3MCHj/niceTree.jpg\" alt=\"niceTree\"/>",
-            "<img src=\"https://i.postimg.cc/1z055YWN/dogInBed.jpg\" alt=\"dogInBed\"/>",
-            "Jonah Berger:",
-            "<img src=\"https://i.postimg.cc/SsrsVtCp/bird-On-Sign.jpg\" alt=\"bird-On-Sign\"/>",
-            "<img src=\"https://i.postimg.cc/wT3vc2BS/clouds.jpg\" alt=\"clouds\"/>",
-            "<img src=\"https://i.postimg.cc/25ksRzKM/snakes.jpg\" alt=\"snakes\"/>",
-            "Eli Burnes:",
-            "<img src=\"https://i.postimg.cc/kXFydnCQ/marsh2.jpg\" alt=\"marsh2\"/>",
-            "Jonah Berger:",
-            "<img src=\"https://i.postimg.cc/QdfkH0HV/hike.jpg\" alt=\"hike\"/>",
-            "Eli Burnes:",
-            "<img src=\"https://i.postimg.cc/RhkdMRVq/Screen-Shot-2020-12-04-at-11-22-08-PM.png\" alt=\"Screen-Shot-2020-12-04-at-11-22-08-PM\"/>",
-            "send some more later buddy","love the pics"};
+        //private static string[] lines6 { get; } =
+        //    {
+        //    "Jonah Berger:",
+        //    "<img src=\"https://i.postimg.cc/Z5bxb1Y1/owl.jpg\" alt=\"owl\"/>",
+        //    "<img src=\"https://i.postimg.cc/RC2x6xWJ/rockHike.jpg\" alt=\"rockHike\"/>",
+        //    "<img src=\"https://i.postimg.cc/2SZSg5hG/bird-Mid-Flight.jpg\" alt=\"bird-Mid-Flight\"/>",
+        //    "<img src=\"https://i.postimg.cc/L8pdDkBH/waterfall.jpg\" alt=\"waterfall\"/>",
+        //    "Eli Burnes:",
+        //    "<img src=\"https://i.postimg.cc/XqGxShWT/selfie.jpg\" alt=\"selfie\"/>",
+        //    "Jonah Berger:",
+        //    "<img src='https://i.postimg.cc/J4ttmL9y/bug.jpg' border='0' alt='bug'/>",
+        //    "Eli Burnes:",
+        //    "<img src=\"https://i.postimg.cc/jd9j8fwC/dog.jpg\" alt=\"dog\"/>",
+        //    "<img src=\"https://i.postimg.cc/WbP7KdBp/marsh.jpg\" alt=\"marsh\"/>",
+        //    "<img src=\"https://i.postimg.cc/pT2V9Y7c/colorado.jpg\" alt=\"colorado\"/>",
+        //    "Jonah Berger:",
+        //    "<img src=\"https://i.postimg.cc/fb86MG4L/utahSnow.jpg\" alt=\"utahSnow\"/>",
+        //    "<img src=\"https://i.postimg.cc/gkRF3thS/snow-Cliffs.jpg\" alt=\"snow-Cliffs\"/>",
+        //    "<img src=\"https://i.postimg.cc/y6LxZt7m/blackbird.jpg\" alt=\"blackbird\"/>",
+        //    "Eli Burnes:",
+        //    "<img src=\"https://i.postimg.cc/kM2dgggd/sunset.jpg\" alt=\"sunset\"/>",
+        //    "Jonah Berger:",
+        //    "<img src=\"https://i.postimg.cc/HLKwtn0g/jSunset.png\" alt=\"jSunset\"/>",
+        //    "Eli Burnes:",
+        //    "<img src=\"https://i.postimg.cc/qR38DrQC/glowing.jpg\" alt=\"glowing\"/>",
+        //    "<img src=\"https://i.postimg.cc/Xq1v6GsH/brews.jpg\" alt=\"brews\"/>",
+        //    "<img src=\"https://i.postimg.cc/mrh3MCHj/niceTree.jpg\" alt=\"niceTree\"/>",
+        //    "<img src=\"https://i.postimg.cc/1z055YWN/dogInBed.jpg\" alt=\"dogInBed\"/>",
+        //    "Jonah Berger:",
+        //    "<img src=\"https://i.postimg.cc/SsrsVtCp/bird-On-Sign.jpg\" alt=\"bird-On-Sign\"/>",
+        //    "<img src=\"https://i.postimg.cc/wT3vc2BS/clouds.jpg\" alt=\"clouds\"/>",
+        //    "<img src=\"https://i.postimg.cc/25ksRzKM/snakes.jpg\" alt=\"snakes\"/>",
+        //    "Eli Burnes:",
+        //    "<img src=\"https://i.postimg.cc/kXFydnCQ/marsh2.jpg\" alt=\"marsh2\"/>",
+        //    "Jonah Berger:",
+        //    "<img src=\"https://i.postimg.cc/QdfkH0HV/hike.jpg\" alt=\"hike\"/>",
+        //    "Eli Burnes:",
+        //    "<img src=\"https://i.postimg.cc/RhkdMRVq/Screen-Shot-2020-12-04-at-11-22-08-PM.png\" alt=\"Screen-Shot-2020-12-04-at-11-22-08-PM\"/>",
+        //    "send some more later buddy","love the pics"};
 
 
         private static string user = "Eli Burnes";
@@ -506,7 +503,7 @@ namespace uiExp.Shared
             InboxList.Add(new PrivateMessage(lines3, user));
             InboxList.Add(new PrivateMessage(lines4, user));
             InboxList.Add(new PrivateMessage(lines5, user));
-            InboxList.Add(new PrivateMessage(lines6, user));
+            //InboxList.Add(new PrivateMessage(lines6, user));
         }
     }
 }

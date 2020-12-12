@@ -82,8 +82,8 @@
 }
 
 .main .bottom-row {
-    background-color: black;
-    border-top: 1px solid #d6d5d5;
+    background-color: #090909;
+    /*    border-top: 1px solid #d6d5d5;*/
 }
 .main {
     display: flex;

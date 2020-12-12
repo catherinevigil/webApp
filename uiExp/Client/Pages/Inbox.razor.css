@@ -35,3 +35,10 @@
 .inbox-item:hover {
     background-color: #141414;
 }
+
+.message-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

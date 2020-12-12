@@ -9,7 +9,7 @@
 @code{
 
     [Parameter]
-    public Comment commentI{ get; set; }
+    public Comment commentI { get; set; }
 
     public void dump(object a)
     {
@@ -35,16 +35,12 @@
     }
     public String GetInputPlaceholder()
     {
-        return "Send reply to " + this.commentI.GetCommenterFirstName()+"'s inbox...";
+        return "Send reply to " + this.commentI.GetCommenterFirstName() + "'s inbox...";
     }
     public String color => commentI.getColor();
-    private String reply { get; set; }
 
-    private void submitComment()
-    {
-        //commentI.AddReply(CurrentUser.GetUser());
-        Console.WriteLine(reply);
-    }
+
+
 }
 
 <div class="comment">
@@ -72,8 +68,8 @@
                 }
             }
             <div class="comment-actions">
-                @if (!(showReplyInput)){
-                    <span @onclick="()=> showReplyInput=true">Reply</span>
+                @if (!showReplyInput && !replied){
+                    <span @onclick="OnReplyClick">Reply</span>
                 }
                 @if (!(bubbleNum == 1) && !showAllLines)
                 {
@@ -83,11 +79,35 @@
         </div>
         @if (showReplyInput)
         {
-        <div class="reply-container">
-            <input placeholder="@GetInputPlaceholder()" class="comment-reply-input" @bind="reply" />
-            <i class="fas fa-arrow-up icon" @onclick="submitComment"></i>
-        </div>
-
+            <div class="input-container">
+                <textarea placeholder="@GetInputPlaceholder()" class="comment-reply-message-input" style="resize:none" @bind="reply" rows="1" oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px';"/>
+                <i class="fas fa-arrow-up icon sendButton" @onclick="submitReply"></i>
+            </div>
+        }
+        @if (replied == true)
+        {
+            <span style="color:white" @onclick="NavToInbox">View reply in inbox...</span>
         }
     </div>
 </div>
+
+@code{
+    private String reply { get; set; }
+    private bool replied = false;
+    private void OnReplyClick()
+    {
+        showReplyInput = true;
+        showAllLines = true; 
+    }
+    private void NavToInbox()
+    {
+        NavigationManager.NavigateTo("/inbox");
+    }
+    private void submitReply()
+    {
+        //commentI.AddReply(CurrentUser.GetUser());
+        showReplyInput = false;
+        replied = true;
+        Console.WriteLine(reply);
+    }
+}

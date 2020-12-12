@@ -7,7 +7,7 @@ namespace uiExp.Shared
 {
     public static class CurrentUser
     {
-        private static User cUser;
+        public static User cUser;
         private static DateTime loginTime;
 
         static CurrentUser()

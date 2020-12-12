@@ -372,17 +372,20 @@ section#content-container div.comments div.comment {
     
 }
 */
-.reply-container {
+
+
+
+.input-container {
     border-radius: 18px/20px;
     width: 100%;
     background-color: #141414;
     padding: 12px;
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
-.comment-reply-input {
-    border-radius: 1000px;
+.comment-reply-message-input {
+    /*    border-radius: 1000px;*/
     background-color: transparent;
     font-size: 11pt;
     border: none;
@@ -390,10 +393,17 @@ section#content-container div.comments div.comment {
     word-break: break-word;
     outline-width: 0;
     width: 100%;
+    padding: 4px;
+    resize: none
 }
 .icon{
     color:lightgray;
 }
 .icon:hover{
     color:white;
+}
+
+.sendButton{
+    display:flex;
+    flex-direction:column-reverse;
 }
