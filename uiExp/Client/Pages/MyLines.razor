@@ -93,7 +93,7 @@
 
         @for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
         {
-          var convo = x;
+        var convo = x;
         <div class="inbox-item" @onclick="() => NavigateToPm(convo)">
             <div>
                 <img src="@LoadMyPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
