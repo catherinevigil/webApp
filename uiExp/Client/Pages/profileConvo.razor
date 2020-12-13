@@ -1,24 +1,29 @@
-﻿@page "/Rm/{rmNum}"
+﻿@page "/profile/{userNum}/conversation/{convoNum}"
+
 @using uiExp.Shared
 @inject HttpClient Http
 @using System.Net.Http
 
 @code{
     [Parameter]
-    public String rmNum { get; set; }
+    public String convoNum { get; set; }
+
+    [Parameter]
+    public String userNum { get; set; }
     //public int convoInt { get; set; }
 
     protected override void OnInitialized()
     {
         //the param will be set now
-        rmNum = rmNum ?? "2";
+        convoNum = convoNum ?? "2";
+        userNum = userNum;
 
     }
 
 
     public int getConversationNum()
     {
-        return Int32.Parse(rmNum);
+        return Int32.Parse(convoNum);
 
     }
 
@@ -50,7 +55,7 @@
     }
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
-    Conversation convo => LoadMyPublishedConvos.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
+    Conversation convo => LoadGenericPublishedConvos.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
 
     public void ShowData()
     {

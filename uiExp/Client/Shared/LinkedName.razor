@@ -29,7 +29,7 @@
 
     public void NavigateToProfile()
     {
-        NavigationManager.NavigateTo("/mylines/" + Conversant.GetUri());
+        NavigationManager.NavigateTo("/profile/" + Users.List.IndexOf(Conversant));
 
     }
 

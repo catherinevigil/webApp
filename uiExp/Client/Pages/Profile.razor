@@ -1,0 +1,110 @@
+﻿@page "/profile/{userNum}"
+@using uiExp.Shared
+@using System;
+@using System.Collections.Generic;
+@inject NavigationManager NavigationManager
+@layout MainLayout
+
+@code {
+
+    private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
+    public String ListHeight = "300px"; //height in pixels of list
+
+    [Parameter]
+    public String userNum { get; set; }
+
+    protected override void OnInitialized()
+    {
+        //the param will be set now
+        userNum = userNum ?? "0";
+    }
+
+    public int getUserNum()
+    {
+        return Int32.Parse(userNum);
+
+    }
+
+
+    public void dump(object a)
+    {
+        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+    }
+
+    public void NavigateToRm(int talk)
+    {
+        NavigationManager.NavigateTo("profile/"+userNum+"/conversation/" + talk);
+    }
+
+    public String ProfileMessagesClass = "message message-left aos-init";
+    public String OthersMessageClass = "message message-right aos-init";
+    public String UserName = "Sahil Handa";
+
+    public int bottomHeaderHeight = 60;//aos offset for bottom
+    public int animationDuration = 1000;
+    public int messagesOffset = 80;//aos offset for top
+
+    public String GetConvoHeading(PublishedMessage rm)
+    {
+        if (rm.GetPartners().Count == 1)
+        {
+            return rm.GetPartners()[0].GetName();
+        }
+        else
+        {
+            return rm.GetConvoName();
+        }
+    }
+
+    User user => Users.List[getUserNum()];
+
+    @*public void WriteStuff() {
+        Console.WriteLine(user.GetImg());
+        Console.WriteLine(user.GetName());
+        Console.WriteLine(user.GetBio());
+        Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetImg());
+        Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetConvoName());
+        Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetLastMessage());
+    }*@
+
+
+}
+@*<button style="top:200px;position:absolute;height:25p;" @onclick="WriteStuff"></button>*@
+
+<body id="page">
+    <div style="height:40px">
+    </div>
+       <div class="content">
+      
+           <div class="profile-info">
+               <img src="@user.GetImg()" class="mylines-pic">
+               <h1 class="profile-name">
+                   @user.GetName()</h1>
+               <h3 class="bio">@user.GetBio()</h3>
+           </div>
+
+           <nav class="options">
+                   <div class="favorites"> <span class="material-icons"> favorite_border </span></div>
+                   <div class="participated-in"> <span class="material-icons"> comment_bank </span></div>
+                   <div class="drafts"> <span class="material-icons"> publish </span></div>
+           </nav>
+          
+        @for (int x = 0; x < LoadGenericPublishedConvos.InboxList.Count; x++)
+        {
+        var convo = x;
+        <div class="inbox-item" @onclick="() => NavigateToRm(convo)">
+            <div>
+                <img src="@LoadGenericPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
+            </div>
+            <div class="inbox-text">
+                <h1 class="convo-name">@LoadGenericPublishedConvos.InboxList[x].GetConvoName()</h1>
+                <p class="preview-message">
+                    <span>
+                        @LoadGenericPublishedConvos.InboxList[x].GetLastMessage()
+                    </span>
+                </p>
+            </div>
+        </div>
+        }
+    </div>
+</body>

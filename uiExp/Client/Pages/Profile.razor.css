@@ -1,0 +1,97 @@
+.mylines-pic {
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 10px;
+}
+
+.profile-name {
+    float: center;
+    font-style: "HelveticaNeue";
+    color: white;
+    font-size: 17pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bio {
+    position: relative;
+    max-width: 25em;
+    border-style: solid;
+    border-width: medium;
+    border-color: grey;
+    border-radius: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 10px;
+    color: white;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    font-style: "HelveticaNeue";
+    font-weight: normal;
+    font-size: 12pt;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: grey;
+    cursor: pointer;
+}
+
+.preview-message {
+    color: rgb(166, 165, 165);
+    margin-bottom: 0px;
+    margin-top: 4px;
+    font-size: 12pt;
+    line-height: 1em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.convo-name {
+    color: white;
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: 11pt;
+}
+
+.inbox-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 70px;
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    padding-left: 5%;
+    border: 1px solid #141414;
+}
+
+.inbox-text {
+    margin-left: .75rem;
+}
+
+.inbox-item:hover {
+    background-color: #141414;
+}
+
+.material-icons {
+    cursor: pointer;
+    color: lightgray;
+}
+
+/*changes icon color on hover.*/ 
+.material-icons:hover{ 
+    color: white; 
+}
