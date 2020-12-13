@@ -12,6 +12,7 @@ namespace uiExp.Shared
 
         static CurrentUser()
         {
+            cUser = Users.GetUserByName("Sahil Handa");
         }
         public static void SetUser(User user)
         {

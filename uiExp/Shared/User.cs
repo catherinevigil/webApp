@@ -10,6 +10,7 @@ namespace uiExp.Shared
         private String FirstName;
         private String Username;
         private String Password;
+        private String Bio;
 
         private string[] Names;
 
@@ -29,6 +30,27 @@ namespace uiExp.Shared
 
             MakeFirstName();
         }
+
+        public User(string name, String username, String password, String bio, String img)
+        {
+            this.Name = name;
+            this.ImageUrl = img;
+            this.Password = password;
+            this.Bio = bio;
+            this.Username = username;
+
+            MakeFirstName();
+        }
+
+        public User(string name, string bio, String img)
+        {
+            this.Name = name;
+            this.Bio = bio;
+            this.ImageUrl = img;
+
+            MakeFirstName();
+        }
+
 
         public void MakeFirstName()
         {
@@ -59,6 +81,10 @@ namespace uiExp.Shared
         public String GetName()
         {
             return this.Name;
+        }
+        public String GetBio()
+        {
+            return this.Bio;
         }
         public String GetImg()
         {
