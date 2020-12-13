@@ -231,7 +231,7 @@
                         </div>
                     </div>
                     <div class="more-messages">
-                        <span>@GetMoreMessagesString(LoadFeedConvos.ConvoList[x])</span>
+                        <span @onclick="() => NavigateToConvo(convo)">@GetMoreMessagesString(LoadFeedConvos.ConvoList[x])</span>
                     </div>
                     <hr style="border-top:1px solid white;">
                 }
