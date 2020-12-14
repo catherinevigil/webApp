@@ -12,7 +12,6 @@
     {
         //the param will be set now
         convoNum = convoNum ?? "2";
-
     }
 
     public int getConversationNum()
@@ -20,8 +19,6 @@
         return Int32.Parse(convoNum);
 
     }
-
-
 
     public String getClass(Boolean leftMessage)
     {
@@ -92,35 +89,40 @@
             }
         }*@
 
-    public String GetLeftColor()
+public String GetLeftColor()
+{
+    if (selectorRight)
     {
-        if (selectorRight)
-        {
-            return "white";
-        }
-        else
-        {
-            return "black";
-        }
+        return "white";
     }
-    public String GetRightColor()
+    else
     {
-        if (selectorRight)
-        {
-            return "black";
-        }
-        else
-        {
-            return "white";
-        }
+        return "black";
     }
+}
+public String GetRightColor()
+{
+    if (selectorRight)
+    {
+        return "black";
+    }
+    else
+    {
+        return "white";
+    }
+}
+public string GetPicClass(bool left)
+{
+    if (left) { return "small-profile-convo-left"; }
+    else { return "small-profile-convo-right"; }
+}
 
 
 }
 <!--this is code for displaying a conversation-->
 <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
     <div class="page-content">
-        <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+        <section class="aos-init hold-m-and-p" data-aos-once="false" data-aos-duration="600" id="content-container">
             <div class="messages">
                 @foreach (var group in conversation.Groups)
                 {
@@ -138,6 +140,7 @@
                                 </span>
                             </p>
                         }
+                        <img src="@group.Texter.GetImg()" class="@GetPicClass(group.Left)"/>
                     </div>
                     i++;
                 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace uiExp.Shared
 {
     public class User
@@ -11,18 +13,21 @@ namespace uiExp.Shared
         private String Username;
         private String Password;
         private String Bio;
+        private List<int> Favorites;
 
         private string[] Names;
 
 
         public User(string name, String img)
         {
+            this.Favorites = MakeFavorites();
             Name = name;
             ImageUrl = img;
             MakeFirstName();
         }
         public User(string name, String username, String password, String img)
         {
+            this.Favorites = MakeFavorites();
             this.Name = name;
             this.ImageUrl = img;
             this.Password = password;
@@ -33,6 +38,7 @@ namespace uiExp.Shared
 
         public User(string name, String username, String password, String bio, String img)
         {
+            this.Favorites = MakeFavorites();
             this.Name = name;
             this.ImageUrl = img;
             this.Password = password;
@@ -44,15 +50,32 @@ namespace uiExp.Shared
 
         public User(string name, string bio, String img)
         {
+            this.Favorites = MakeFavorites();
             this.Name = name;
             this.Bio = bio;
             this.ImageUrl = img;
 
             MakeFirstName();
         }
+        public List<int> GetFavorites()
+        {
+            return this.Favorites;
+        }
+        private List<int> MakeFavorites()
+        {
+            List<int> favs = new List<int>();
+            var rand = new Random();
+            for (int x = 0; x < 7; x++)
+            {
+                var chance1 = rand.Next(100);
+                var chance2 = rand.Next(80);
+                if (chance1 > chance2)
+                    favs.Add(x);
+            }
+            return favs;
+        }
 
-
-        public void MakeFirstName()
+        private void MakeFirstName()
         {
             this.Names = this.Name.Split(' ');
             this.FirstName = this.Names[0];

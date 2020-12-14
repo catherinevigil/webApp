@@ -339,9 +339,9 @@ namespace uiExp.Shared
 
         static LoadMyPublishedConvos()
         {
-            InboxList.Add(new PublishedMessage(lines0, user));
-            InboxList.Add(new PublishedMessage(lines1, user));
-            InboxList.Add(new PublishedMessage(lines2, user));
+            InboxList.Add(new PublishedMessage(lines0, user, "Soroush Ghodsi", "modern malaise"));
+            InboxList.Add(new PublishedMessage(lines1, user, "Sahil Handa", "book talk"));
+            InboxList.Add(new PublishedMessage(lines2, user, "David Grant", "whats hot in code"));
         }
     }
 }

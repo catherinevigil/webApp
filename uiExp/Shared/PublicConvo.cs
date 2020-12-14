@@ -13,6 +13,15 @@ namespace uiExp.Shared
         private String Title;
         private FeedPreview feedPreview;
         private List<int> ResponseConvoNumbers;
+        private String image;
+
+
+        public PublicConvo(string[] lines, string title, string poster)
+        {
+            this.Poster = Users.GetUserByName(poster);
+            this.Title = title;
+            this.conversation = new Conversation(lines);
+        }
 
         public PublicConvo(string[] lines, string title, string poster, string[] preview, Comments com, int[] replies)
         {
@@ -43,6 +52,18 @@ namespace uiExp.Shared
                 
             }
             return groups;
+        }
+        public void SetTitle(string title)
+        {
+            this.Title = title;
+        }
+        public void SetImg(string img)
+        {
+            this.image = img;
+        }
+        public String GetImg()
+        {
+            return this.image;
         }
         public List<int> GetReplyThreadNums()
         {

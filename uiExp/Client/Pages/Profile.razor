@@ -33,7 +33,12 @@
 
     public void NavigateToRm(int talk)
     {
-        NavigationManager.NavigateTo("profile/"+userNum+"/conversation/" + talk);
+        NavigationManager.NavigateTo("profile/" + userNum + "/conversation/" + talk);
+    }
+    public void NavigateToFav(int talk)
+    {
+        Console.WriteLine(talk);
+        NavigationManager.NavigateTo("/convo/" + talk);
     }
 
     public String ProfileMessagesClass = "message message-left aos-init";
@@ -58,7 +63,105 @@
 
     User user => Users.List[getUserNum()];
 
-    @*public void WriteStuff() {
+    public enum State
+    {
+        Published,
+        Favorites,
+        Drafts
+    }
+    public State View = State.Published;
+
+    public void ShowFavorites()
+    {
+        View = State.Favorites;
+        dump(user.GetFavorites());
+    }
+    public void ShowPublished()
+    {
+        View = State.Published;
+        dump(user.GetFavorites());
+    }
+    public void ShowDrafts()
+    {
+        View = State.Drafts;
+        dump(user.GetFavorites());
+    }
+}
+
+<body id="page">
+    <div style="height:40px">
+    </div>
+    <div class="content">
+
+        <div class="profile-info">
+            <img src="@user.GetImg()" class="mylines-pic">
+            <h1 class="profile-name">
+                @user.GetName()
+            </h1>
+            <h3 class="bio">@user.GetBio()</h3>
+        </div>
+
+        <nav class="options">
+            <div class="favorites" @onclick="ShowFavorites"> <span class="material-icons"> favorite_border </span></div>
+            <div class="participated-in" @onclick="ShowPublished"> <span class="material-icons"> comment_bank </span></div>
+            <div class="drafts" @onclick="ShowDrafts"> <span class="material-icons"> publish </span></div>
+        </nav>
+        @if (View == State.Published)
+            for (int x = 0; x < LoadGenericPublishedConvos.InboxList.Count; x++)
+            {
+                var convo = x;
+                <div class="inbox-item" @onclick="() => NavigateToRm(convo)">
+                    <div>
+                        <img src="@LoadGenericPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
+                    </div>
+                    <div class="inbox-text">
+                        <h1 class="convo-name">@LoadGenericPublishedConvos.InboxList[x].GetConvoName()</h1>
+                        <p class="preview-message">
+                            <span>
+                                @LoadGenericPublishedConvos.InboxList[x].GetLastMessage()
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            }
+        else if (View == State.Favorites)
+        {
+            for (int y = 0; y < user.GetFavorites().Count; y++)
+            {
+                var FavConvo = LoadFeedConvos.ConvoList[user.GetFavorites()[y]];
+                var convo = user.GetFavorites()[y];
+                <div class="inbox-item" @onclick="() => NavigateToFav(convo)">
+                    <div>
+                        @if (FavConvo.GetConversants().Count == 2)
+                        {
+                            <div class="small-p-container">
+                                <img src="@FavConvo.GetConversants()[0].GetImg()" class="small-profile-left">
+                                <img src="@FavConvo.GetConversants()[1].GetImg()" class="small-profile-right">
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="@FavConvo.GetImg()" class="profile-pic">
+                        }
+                    </div>
+                    <div class="inbox-text">
+                        <h1 class="convo-name">@FavConvo.GetTitle()</h1>
+                        <p class="preview-message">
+                            <span>
+                                @FavConvo.GetNames()
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</body>
+
+@*<button style="top:200px;position:absolute;height:25p;" @onclick="WriteStuff"></button>*@
+
+
+@*public void WriteStuff() {
         Console.WriteLine(user.GetImg());
         Console.WriteLine(user.GetName());
         Console.WriteLine(user.GetBio());
@@ -66,45 +169,3 @@
         Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetConvoName());
         Console.WriteLine(LoadMyPublishedConvos.InboxList[0].GetLastMessage());
     }*@
-
-
-}
-@*<button style="top:200px;position:absolute;height:25p;" @onclick="WriteStuff"></button>*@
-
-<body id="page">
-    <div style="height:40px">
-    </div>
-       <div class="content">
-      
-           <div class="profile-info">
-               <img src="@user.GetImg()" class="mylines-pic">
-               <h1 class="profile-name">
-                   @user.GetName()</h1>
-               <h3 class="bio">@user.GetBio()</h3>
-           </div>
-
-           <nav class="options">
-                   <div class="favorites"> <span class="material-icons"> favorite_border </span></div>
-                   <div class="participated-in"> <span class="material-icons"> comment_bank </span></div>
-                   <div class="drafts"> <span class="material-icons"> publish </span></div>
-           </nav>
-          
-        @for (int x = 0; x < LoadGenericPublishedConvos.InboxList.Count; x++)
-        {
-        var convo = x;
-        <div class="inbox-item" @onclick="() => NavigateToRm(convo)">
-            <div>
-                <img src="@LoadGenericPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
-            </div>
-            <div class="inbox-text">
-                <h1 class="convo-name">@LoadGenericPublishedConvos.InboxList[x].GetConvoName()</h1>
-                <p class="preview-message">
-                    <span>
-                        @LoadGenericPublishedConvos.InboxList[x].GetLastMessage()
-                    </span>
-                </p>
-            </div>
-        </div>
-        }
-    </div>
-</body>

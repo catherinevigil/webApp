@@ -157,7 +157,8 @@ section#content-container div.messages {
 }
 
     section#content-container div.messages div.message-group {
-        margin-bottom: 6px /*margin between message groups*/
+        margin-bottom: 6px; /*margin between message groups*/
+        position : relative;
     }
 
 
@@ -436,4 +437,51 @@ section#content-container div.comments div.comment {
     left: 50%;
     color: white;
     transform: translate(-50%, 0);
+}
+
+.small-profile-left {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    margin-left: 0%;
+    top: 0%;
+    position: absolute;
+}
+
+.small-profile-right {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    margin-left: 33%;
+    top: 33%;
+    position: absolute;
+}
+
+.small-p-container {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.small-profile-convo-right {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    position: absolute;
+    bottom:-15px;
+    right:-15px;
+}
+
+.small-profile-convo-left {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+}
+
+.hold-m-and-p{
+    margin-left:5%;
+    margin-right:5%;
 }

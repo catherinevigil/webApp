@@ -86,7 +86,7 @@ namespace uiExp.Shared
 
         static LoadGenericPublishedConvos()
         {
-            InboxList.Add(new PublishedMessage(lines0, user));
+            InboxList.Add(new PublishedMessage(lines0, user, "Noah Redlich", "Latin groupchat"));
             //InboxList.Add(new PublishedMessage(lines1, user));
             //InboxList.Add(new PublishedMessage(lines2, user));
         }

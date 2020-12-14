@@ -6,15 +6,14 @@ namespace uiExp.Shared
     public class PublishedMessage
     { 
         private String name;
-        private Conversation conversation;
+        private PublicConvo Conversation;
         private User MyLinesOwner; //this is the person who is looking at the convo from their profile
         private List<User> partners = new List<User>();
-        private String image;
-
-        public PublishedMessage(string[] lines, string user)
+        
+        public PublishedMessage(string[] lines, string user, string poster, string title)
         {
             this.MyLinesOwner = Users.GetUserByName(user);
-            conversation = new Conversation(lines);
+            Conversation = new PublicConvo(lines, title, poster);
             MakePartners(user);
             if (this.partners.Count > 1)
             {
@@ -22,20 +21,29 @@ namespace uiExp.Shared
             }
             else if (this.partners.Count == 1)
             {
-                this.image = this.partners[0].GetImg();
-                this.name = partners[0].GetName();
+                this.Conversation.SetImg(this.partners[0].GetImg());
+                this.Conversation.SetTitle(partners[0].GetName());
             }
+        }
+        public PublishedMessage (PublicConvo conversation,User user)
+        {
+            this.MyLinesOwner = user;
+            this.Conversation = conversation;
         }
 
         public void MakePartners(string user)
         {
-            foreach (var person in this.conversation.Conversants)
+            foreach (var person in this.Conversation.GetConversants())
             {
                 if (!(person.GetName() == user))
                 {
                     this.partners.Add(person);
                 }
             }
+        }
+        public string GetTitle()
+        {
+            return this.Conversation.GetTitle();
         }
 
         public List<User> GetPartners()
@@ -48,12 +56,12 @@ namespace uiExp.Shared
         }
         public String GetLastMessage()
         {
-            return conversation.Groups.Last().Messages.Last().Text;
+            return Conversation.GetConversation().Groups.Last().Messages.Last().Text;
         }
 
         public String GetLastTexter()
         {
-            return conversation.Groups.Last().Texter.GetName();
+            return Conversation.GetConversation().Groups.Last().Texter.GetName();
         }
 
         public String GetConvoName()
@@ -63,11 +71,11 @@ namespace uiExp.Shared
 
         public String GetImg()
         {
-            return this.image;
+            return this.Conversation.GetImg();
         }
         public Conversation GetConvo()
         {
-            return this.conversation;
+            return this.Conversation.GetConversation();
         }
 
     }
