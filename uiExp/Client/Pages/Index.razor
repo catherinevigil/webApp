@@ -15,64 +15,64 @@
 
 
 @code{
-        public string GetMoreMessagesString(PublicConvo convo)
-        {
-            var messagesLeft = convo.GetConversation().MessageCount - convo.GetFeedPreview().GetMessageCount();
-            string output = "Read " + messagesLeft.ToString() + " more messages...";
-            return output;
-        }
+    public string GetMoreMessagesString(PublicConvo convo)
+    {
+        var messagesLeft = convo.GetConversation().MessageCount - convo.GetFeedPreview().GetMessageCount();
+        string output = "Read " + messagesLeft.ToString() + " more messages...";
+        return output;
+    }
 
-        public String getClass(Boolean leftMessage)
-        {
-            if (leftMessage)
-                return ("message message-left aos-init");
-            else
-                return ("message message-right aos-init");
+    public String getClass(Boolean leftMessage)
+    {
+        if (leftMessage)
+            return ("message message-left aos-init");
+        else
+            return ("message message-right aos-init");
 
-        }
-        public String getAlign(Boolean left)
-        {
-            if (left)
-                return "left";
-            else
-                return "right";
-        }
+    }
+    public String getAlign(Boolean left)
+    {
+        if (left)
+            return "left";
+        else
+            return "right";
+    }
 
-        public String getConversant(bool even, Conversation conversation)
-        {
+    public String getConversant(bool even, Conversation conversation)
+    {
 
-            if (even)
-                return conversation.Conversants.First().GetName();
-            else
-                return conversation.Conversants.Last().GetName();
-        }
-        public String getAnchor(int x)
-        {
-            int a = x + 1;
-            if (x < (LoadFeedConvos.ConvoList.Count - 1))//if not the last convo
-                return "#m" + a.ToString() + "00";
-            else
-                return null;
-        }
-        public String getId(int a, int b, int c)
-        {
-            return "m" + a.ToString() + b.ToString() + c.ToString();
-        }
+        if (even)
+            return conversation.Conversants.First().GetName();
+        else
+            return conversation.Conversants.Last().GetName();
+    }
+    public String getAnchor(int x)
+    {
+        int a = x + 1;
+        if (x < (LoadFeedConvos.ConvoList.Count - 1))//if not the last convo
+            return "#m" + a.ToString() + "00";
+        else
+            return null;
+    }
+    public String getId(int a, int b, int c)
+    {
+        return "m" + a.ToString() + b.ToString() + c.ToString();
+    }
 
-        public void dump(object a)
-        {
-            DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
-        }
+    public void dump(object a)
+    {
+        DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
+    }
 
-        public void ShowData()
-        {
-        }
+    public void ShowData()
+    {
+    }
 
-        public void NavigateToConvo(int talk)
-        {
-            NavigationManager.NavigateTo("/convo/" + talk);
+    public void NavigateToConvo(int talk)
+    {
+        NavigationManager.NavigateTo("/convo/" + talk);
 
-        }
+    }
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
@@ -143,7 +143,7 @@
     }
     public void DumpRequests()
     {
-        DumpityDump.Dump(LoadRequests.LineList);
+        //DumpityDump.Dump(LoadRequests.RequestList);
     }
     public void NavigateToRespond(int line)
     {
@@ -182,58 +182,58 @@
                 {
                     var convo = x;
 
-                <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x == LoadFeedConvos.ConvoList.Count - 1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
-                    @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
+                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x == LoadFeedConvos.ConvoList.Count - 1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
+                        @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
 
-                    <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
+                        <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
 
 
-                        @if (LoadFeedConvos.ConvoList[x].GetConversants().Count == 2)
-                        {
-                            <div>
-                                <LinkedImages ConversantList="LoadFeedConvos.ConvoList[x].GetConversants()"></LinkedImages>
-                                @*<img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[0].GetImg())" class="profile-pic">
-                    <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[1].GetImg())" class="profile-pic">*@
+                            @if (LoadFeedConvos.ConvoList[x].GetConversants().Count == 2)
+                            {
+                                <div>
+                                    <LinkedImages ConversantList="LoadFeedConvos.ConvoList[x].GetConversants()"></LinkedImages>
+                                    @*<img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[0].GetImg())" class="profile-pic">
+                                        <img src="@(LoadFeedConvos.ConvoList[x].GetConversants()[1].GetImg())" class="profile-pic">*@
+                                </div>
+                            }
+                            else
+                            {
+
+                            }
+                            <div class="header-text">
+                                <h1 class="feed-title">@LoadFeedConvos.ConvoList[x].GetTitle()</h1>
+                                <p class="names">
+                                    <span>
+                                        <LinkedNames ConversantList="@LoadFeedConvos.ConvoList[x].GetConversants()"></LinkedNames>
+                                    </span>
+                                </p>
                             </div>
-                        }
-                        else
-                        {
-
-                        }
-                        <div class="header-text">
-                            <h1 class="feed-title">@LoadFeedConvos.ConvoList[x].GetTitle()</h1>
-                            <p class="names">
-                                <span>
-                                    <LinkedNames ConversantList="@LoadFeedConvos.ConvoList[x].GetConversants()"></LinkedNames>
-                                </span>
-                            </p>
+                        </div>
+                        <div>
+                            @for (int i = 0; i < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups().Count; i++)
+                            {
+                                <div class="message-group">
+                                    @*<p class="name" style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
+                                            <span>
+                                                @getConversant((i % 2 == 0), LoadConvos.ConvoList[x])
+                                            </span>
+                                        </p>*@
+                                    @for (int y = 0; y < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages.Count; y++)
+                                    {
+                                        <p class=@getClass(LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Left) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
+                                            <span>
+                                                @LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages[y].Text
+                                            </span>
+                                        </p>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="more-messages">
+                            <span @onclick="() => NavigateToConvo(convo)">@GetMoreMessagesString(LoadFeedConvos.ConvoList[x])</span>
                         </div>
                     </div>
-                    <div>
-                        @for (int i = 0; i < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups().Count; i++)
-                        {
-                            <div class="message-group">
-                                @*<p class="name" style="text-align:@getAlign(i % 2 == 0); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom">
-                        <span>
-                            @getConversant((i % 2 == 0), LoadConvos.ConvoList[x])
-                        </span>
-                    </p>*@
-                                @for (int y = 0; y < LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages.Count; y++)
-                                {
-                                    <p class=@getClass(LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Left) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" id=@getId(x, i, y)>
-                                        <span>
-                                            @LoadFeedConvos.ConvoList[x].GetFeedPreview().GetGroups()[i].Messages[y].Text
-                                        </span>
-                                    </p>
-                                }
-                            </div>
-                        }
-                    </div>
-                    <div class="more-messages">
-                        <span @onclick="() => NavigateToConvo(convo)">@GetMoreMessagesString(LoadFeedConvos.ConvoList[x])</span>
-                    </div>
-                </div>
-                    
+
                     <hr style="border-top:1px solid white;">
                 }
                 <div style="height:150px">
@@ -246,41 +246,43 @@
     {
         <div class="page-content">
             <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
-                @for (int x = 0; x < LoadRequests.LineList.Count; x++)
-                {
-                    var convo = x;
-                    <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="-50" @onclick="() => NavigateToRespond(convo)" data-aos-anchor-placement="top-top" data-aos-id="convo-block">
-                        @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
-                        <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
-                            <div>
-                                <img src="@(LoadRequests.LineList[x].GetRequester().GetImg())" class="profile-pic">
-                            </div>
-                            <div class="header-text">
-                                <p class="names">
-                                    <span>
-                                        @LoadRequests.LineList[x].GetRequester().GetName()
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="message-group">
-                            @for (int y = 0; y < LoadRequests.LineList[x].GetRequest().Groups[0].Messages.Count; y++)
-                            {
-                                <p class=@getClass(true) style="text-align:left" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="center-bottom">
-                                    <span>
-                                        @LoadRequests.LineList[x].GetRequest().Groups[0].Messages[y].Text
-                                    </span>
-                                </p>
-                            }
-                        </div>
+                <div class="comments">
+                    @for (int x = 0; x < LoadRequests.RequestList.Count; x++)
+                    {
+                        <LineComponent requestI="LoadRequests.RequestList[x]"></LineComponent>
+                        <hr style="border-top:1px solid white;">
+                    }
+                    <div style="height:150px">
                     </div>
-                    <hr style="border-top:1px solid white;">
-                }
-                <div style="height:150px">
-                </div>
+                 </div>
             </section>
         </div>
     }
-  
+
 </div>
-    @*</body>*@
+
+@code{
+    public String GetInputPlaceholder(Request line)
+    {
+        return "Send reply to " + line.GetPosterFirstName() + "'s inbox...";
+    }
+
+    public bool showReplyInput = false;
+    private String reply { get; set; }
+    private bool replied = false;
+    private void OnReplyClick()
+    {
+        showReplyInput = true;
+    }
+    private void NavToInbox()
+    {
+        NavigationManager.NavigateTo("/inbox");
+    }
+    private void submitReply()
+    {
+        //commentI.AddReply(CurrentUser.GetUser());
+        showReplyInput = false;
+        replied = true;
+        Console.WriteLine(reply);
+    }
+}

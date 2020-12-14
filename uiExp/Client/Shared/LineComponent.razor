@@ -9,7 +9,7 @@
 @code{
 
     [Parameter]
-    public Comment commentI { get; set; }
+    public Request requestI { get; set; }
 
     public void dump(object a)
     {
@@ -19,7 +19,7 @@
     public int BottomFadeOffset;
     public int FadeInAnchorP;
     public bool showAllLines = false;
-    public int bubbleNum => commentI.GetBubbles().Count;
+    public int bubbleNum => requestI.GetBubbles().Count;
 
     public String GetShowText()
     {
@@ -31,56 +31,47 @@
         {
             return "See " + (bubbleNum - 1).ToString() + " more lines...";
         }
-        Console.WriteLine(commentI.getColor());
+        //Console.WriteLine(requestI.getColor());
     }
 
     public String GetInputPlaceholder()
     {
-        return "Send reply to " + this.commentI.GetCommenterFirstName() + "'s inbox...";
+        return "Send reply to " + this.requestI.GetPosterFirstName() + "'s inbox...";
     }
-    public String color => commentI.getColor();
+    public String color => requestI.rLine.getColor();
 
 }
 
 <div class="comment">
     <div class="commenter-photo-div">
-        <LinkedImage Conversant="@commentI.GetCommenter()"></LinkedImage>
+        <LinkedImage Conversant="@requestI.GetPoster()"></LinkedImage>
     </div>
     <div class="comment-div">
         <div class="comment-tight-div"
             <p style="text-align:center; color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                 <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
-                    <LinkedName Conversant="@commentI.GetCommenter()"></LinkedName>
+                    <LinkedName Conversant="@requestI.GetPoster()"></LinkedName>
                 </span>
             </p>
-            <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                <span style="background-color:@color">@commentI.GetFirstText()</span>
-            </p>
 
-            @if (showAllLines)
+            @for (int i = 1; i < bubbleNum; i++)
             {
-                for (int i = 1; i < bubbleNum; i++)
-                {
-                    <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                        <span style="background-color:@color"> @commentI.GetBubbles()[i].Text</span>
-                    </p>
-                }
+                <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                    <span style="background-color:@color"> @requestI.GetBubbles()[i].Text</span>
+                </p>
             }
+
             <div class="comment-actions">
                 @if (!showReplyInput && !replied){
                     <span @onclick="OnReplyClick" class="action">Reply</span>
                 }
-                @if (!(bubbleNum == 1) && !showAllLines)
-                {
-                    <span class="action" @onclick="()=> showAllLines=true">@GetShowText()</span>
-                }
             </div>
-        @if (replied == true)
-        {
+            @if (replied == true)
+            {
             <div class="comment-actions">
                 <span style="color:white" @onclick="NavToInbox" class="action">View reply in inbox...</span>
             </div>
-        }
+            }
         </div>
         @if (showReplyInput)
         {
@@ -111,7 +102,7 @@
     }
     private void submitReply()
     {
-        //commentI.AddReply(CurrentUser.GetUser());
+        //requestI.AddReply(CurrentUser.GetUser());
         showReplyInput = false;
         replied = true;
         Console.WriteLine(reply);
