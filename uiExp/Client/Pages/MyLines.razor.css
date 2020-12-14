@@ -95,3 +95,32 @@
 .material-icons:hover{ 
     color: white; 
 }
+
+
+
+.list-div {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+.profile-bottom {
+    /*    height: 45vh;*/
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 88%;
+    margin-left: 6%;
+}
+
+.content {
+    top: 5vh;
+    position: fixed;
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 88%;
+    margin-left: 6%;
+}

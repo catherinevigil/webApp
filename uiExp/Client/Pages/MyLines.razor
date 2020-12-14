@@ -100,62 +100,65 @@
             <div class="participated-in" @onclick="ShowPublished"> <span class="material-icons"> comment_bank </span></div>
             <div class="drafts" @onclick="ShowDrafts"> <span class="material-icons"> publish </span></div>
         </nav>
-        <div class="profile-list">
-            @if (View == State.Published)
-            {
-                for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
-                {
-                    var convo = x;
-                    <div class="inbox-item" @onclick="() => NavigateToRm(convo)">
-                        <div>
-                            <img src="@LoadMyPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
-                        </div>
-                        <div class="inbox-text">
-                            <h1 class="convo-name">@LoadMyPublishedConvos.InboxList[x].GetConvoName()</h1>
-                            <p class="preview-message">
-                                <span>
-                                    @LoadMyPublishedConvos.InboxList[x].GetLastMessage()
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                }
-            }
-            else if (View == State.Favorites)
-            {
-                for (int y = 0; y < user.GetFavorites().Count; y++)
-                {
-                    var FavConvo = LoadFeedConvos.ConvoList[user.GetFavorites()[y]];
-                    var convo = user.GetFavorites()[y];
-                    <div class="inbox-item" @onclick="() => NavigateToFav(convo)">
-                        <div>
-                            @if (FavConvo.GetConversants().Count == 2)
-                            {
-                                <div class="small-p-container">
-                                    <img src="@FavConvo.GetConversants()[0].GetImg()" class="small-profile-left">
-                                    <img src="@FavConvo.GetConversants()[1].GetImg()" class="small-profile-right">
-                                </div>
-                            }
-                            else
-                            {
-                                <img src="@FavConvo.GetImg()" class="profile-pic">
-                            }
-                        </div>
-                        <div class="inbox-text">
-                            <h1 class="convo-name">@FavConvo.GetTitle()</h1>
-                            <p class="preview-message">
-                                <span>
-                                    @FavConvo.GetNames()
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                }
-            }
-            else if (View == State.Drafts)
-            {
+        <div class="profile-bottom">
+            <div class="list-div">
 
-            }
+                @if (View == State.Published)
+                {
+                    for (int x = 0; x < LoadMyPublishedConvos.InboxList.Count; x++)
+                    {
+                        var convo = x;
+                        <div class="inbox-item" @onclick="() => NavigateToRm(convo)">
+                            <div>
+                                <img src="@LoadMyPublishedConvos.InboxList[x].GetImg()" class="profile-pic">
+                            </div>
+                            <div class="inbox-text">
+                                <h1 class="convo-name">@LoadMyPublishedConvos.InboxList[x].GetConvoName()</h1>
+                                <p class="preview-message">
+                                    <span>
+                                        @LoadMyPublishedConvos.InboxList[x].GetLastMessage()
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+                else if (View == State.Favorites)
+                {
+                    for (int y = 0; y < user.GetFavorites().Count; y++)
+                    {
+                        var FavConvo = LoadFeedConvos.ConvoList[user.GetFavorites()[y]];
+                        var convo = user.GetFavorites()[y];
+                        <div class="inbox-item" @onclick="() => NavigateToFav(convo)">
+                            <div>
+                                @if (FavConvo.GetConversants().Count == 2)
+                                {
+                                    <div class="small-p-container">
+                                        <img src="@FavConvo.GetConversants()[0].GetImg()" class="small-profile-left">
+                                        <img src="@FavConvo.GetConversants()[1].GetImg()" class="small-profile-right">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <img src="@FavConvo.GetImg()" class="profile-pic">
+                                }
+                            </div>
+                            <div class="inbox-text">
+                                <h1 class="convo-name">@FavConvo.GetTitle()</h1>
+                                <p class="preview-message">
+                                    <span>
+                                        @FavConvo.GetNames()
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+                else if (View == State.Drafts)
+                {
+
+                }
+            </div>
         </div>
     </div>
 </body>
