@@ -60,9 +60,9 @@
 
 @if (conversants == 1)
 {
-<LinkedName Conversant="@ConversantList[0]"></LinkedName>
+<LinkedName Conversant="@ConversantList[0]" NameType=1></LinkedName>
 }
 else if  (conversants == 2)
 {
-    <LinkedName Conversant="@ConversantList[0]"></LinkedName><span> & </span><LinkedName Conversant="@ConversantList[1]"></LinkedName>
+    <LinkedName Conversant="@ConversantList[0]" NameType=1></LinkedName><span> & </span><LinkedName Conversant="@ConversantList[1]" NameType=1></LinkedName>
 }

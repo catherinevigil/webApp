@@ -18,6 +18,16 @@
     [Parameter]
     public User Conversant{ get; set; }
 
+    [Parameter]
+    public int NameType { get; set; }
+    //enum wasn't working... let 1 = Feed, 2= Convo
+
+    @*public enum NameType
+    {
+        Feed,
+        Convo
+    }*@
+
     public void dump(object a)
     {
         DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
@@ -42,18 +52,19 @@
         }
     }*@
 
-    public int bottomHeaderHeight = 60;//aos offset for bottom
-    public int animationDuration = 1000;
-    public int messagesOffset = 80;//aos offset for top
+public int bottomHeaderHeight = 60;//aos offset for bottom
+public int animationDuration = 1000;
+public int messagesOffset = 80;//aos offset for top
 
-    public void DumpRequests()
-    {
-        DumpityDump.Dump(LoadRequests.LineList);
-    }
-    public void NavigateToRespond(int line)
-    {
-        //
-    }
+public void DumpRequests()
+{
+    DumpityDump.Dump(LoadRequests.LineList);
+}
+public void NavigateToRespond(int line)
+{
+    //
+}
+public string fontsize => NameType == 1 ? null : "9pt"; //this is shitty, but... null fontsize, inherit from a parent element (body)
 }
 
-<span @onclick="NavigateToProfile" class="name-link">@Conversant.GetName()</span>
+<span style="font-size:@fontsize" @onclick="NavigateToProfile" class="name-link">@Conversant.GetName()</span>

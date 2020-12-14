@@ -127,11 +127,11 @@ public string GetPicClass(bool left)
                 @foreach (var group in conversation.Groups)
                 {
                     <div class="message-group">
-                        <p style="text-align:@getAlign(group.Left); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                            <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
-                                <LinkedName Conversant="@group.Texter"></LinkedName>
-                            </span>
-                        </p>
+                        <div style="width:100%;height:fit-content;text-align:@getAlign(group.Left); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                            <div data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
+                                <LinkedName Conversant="@group.Texter" NameType=2></LinkedName>
+                            </div>
+                        </div>
                         @foreach (var message in group.Messages)
                         {
                             <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
@@ -140,7 +140,7 @@ public string GetPicClass(bool left)
                                 </span>
                             </p>
                         }
-                        <img src="@group.Texter.GetImg()" class="@GetPicClass(group.Left)"/>
+                        @*<img src="@group.Texter.GetImg()" class="@GetPicClass(group.Left)"/>*@
                     </div>
                     i++;
                 }
