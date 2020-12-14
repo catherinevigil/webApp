@@ -73,6 +73,10 @@ namespace uiExp.Shared
         {
             return this.Conversation.GetImg();
         }
+        public PublicConvo GetPublicConvo()
+        {
+            return this.Conversation;
+        }
         public Conversation GetConvo()
         {
             return this.Conversation.GetConversation();

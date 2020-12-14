@@ -68,6 +68,10 @@ html {
     margin-bottom: 0px;
     font-size:16pt;
 }
+.feed-title:hover {
+    cursor:pointer;
+    text-decoration:underline;
+}
 
 .feed-header {
     display: flex;
@@ -152,8 +156,8 @@ section#page p {
 
 section#content-container div.messages {
     height: 100%;
-    margin-bottom: 30px; /*margin at the bottom of each <div class="messages"> container–individual text threads*/
-    margin-top: 30px
+    margin-bottom: 20px; /*margin at the bottom of each <div class="messages"> container–individual text threads*/
+    margin-top: 20px
 }
 
     section#content-container div.messages div.message-group {
@@ -221,6 +225,10 @@ section#content-container div.messages {
     width: 90%;
     background-color: black;
     margin-bottom:6px;
+}
+
+.top-float:hover{
+    cursor:pointer;
 }
 
 .top-float-selector {
@@ -402,6 +410,7 @@ section#content-container div.comments div.comment {
 }
 .icon:hover{
     color:white;
+    cursor:pointer;
 }
 
 .sendButton{
@@ -430,6 +439,10 @@ section#content-container div.comments div.comment {
     flex-direction: row;
     justify-content: flex-end;
     color: rgb(166, 165, 165);
+}
+
+.more-messages:hover {
+    text-decoration: underline;
 }
 
 .convo-title {

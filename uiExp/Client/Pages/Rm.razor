@@ -51,7 +51,7 @@
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
     Conversation convo => LoadMyPublishedConvos.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
-
+    PublicConvo pConvo => LoadMyPublishedConvos.InboxList[getConversationNum()].GetPublicConvo();
     public void ShowData()
     {
         Console.WriteLine("hello");
@@ -64,11 +64,12 @@
     public String BottomFadeOffset = "100";
     public String TopFadeOutAnchorP = "center-top";
     public String FadeInAnchorP = "center-bottom";
+    public bool showChildren = false;
 
 }
 <!--this is code for displaying a conversation-->
 <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-    <div class="page-content-pm">
+    <div class="page-content">
         <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
             <div class="messages">
                 @foreach (var group in convo.Groups)
@@ -99,6 +100,75 @@
                 }
 
             </div>
+            <button @onclick="() => showChildren=true">show children</button>
+            @if (showChildren)
+            {
+                <div class="bottom-float action">
+                    @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
+
+                    <div class="feed-name-container action" @onclick="SwitchLeft" style="color:@GetLeftColor(); background-color:@GetRightColor();">
+                        lines
+                    </div>
+                    <div class="feed-name-container action" @onclick="SwitchRight" style="color:@GetRightColor(); background-color:@GetLeftColor();">
+                        threads
+                    </div>
+                </div>
+                @if (!selectorRight)
+                {
+                    <div class="comments">
+                        @foreach (var comment in comments.GetComments())
+                        {
+                            <CommentComponent commentI=comment></CommentComponent>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @code{
+                        public Feed feed => new uiExp.Shared.Feed(pConvo.GetReplyConvoNumbers());
+                    }
+                    <ThreadFeed ConvoList="@feed.GetConvoList()"></ThreadFeed>
+                }
+            }
         </section>
     </div>
 </body>
+@code{
+    Comments comments => pConvo.GetComments();
+
+    public String GetLeftColor()
+    {
+        if (selectorRight)
+        {
+            return "white";
+        }
+        else
+        {
+            return "black";
+        }
+    }
+    public String GetRightColor()
+    {
+        if (selectorRight)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
+    }
+    public bool selectorRight = false;
+
+    public void SwitchLeft()
+    {
+
+        selectorRight = false;
+    }
+    public void SwitchRight()
+    {
+
+        selectorRight = true;
+    }
+
+}

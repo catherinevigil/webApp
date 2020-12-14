@@ -47,6 +47,7 @@
     }
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
+
     PublicConvo convo => LoadFeedConvos.ConvoList[getConversationNum()];
     Conversation conversation => convo.GetConversation();//LoadConvos.linesList[1]
     Comments comments => LoadFeedConvos.ConvoList[getConversationNum()].GetComments();
@@ -146,7 +147,7 @@ public string GetPicClass(bool left)
                 }
             </div>
             <hr style="border-top:1px solid lightgray" />
-            <div class="bottom-float">
+            <div class="bottom-float action">
                 @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
 
                 <div class="feed-name-container action" @onclick="SwitchLeft" style="color:@GetLeftColor(); background-color:@GetRightColor();">
