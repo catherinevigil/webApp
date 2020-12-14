@@ -104,13 +104,11 @@
 
 
 .profile-bottom {
-    /*    height: 45vh;*/
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-/*    width: 88%;
-    margin-left: 6%;*/
+    width: 100%;
 }
 
 .content {
@@ -120,6 +118,5 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 88%;
-    margin-left: 6%;
+    width: 100%;
 }
