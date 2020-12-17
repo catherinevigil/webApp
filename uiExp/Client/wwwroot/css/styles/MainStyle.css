@@ -498,3 +498,15 @@ section#content-container div.comments div.comment {
     margin-left:5%;
     margin-right:5%;
 }
+
+.show-r-b {
+    color: white;
+    background-color: #151515;
+    border: none;
+    outline: none;
+    float: center;
+    padding: 10px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}

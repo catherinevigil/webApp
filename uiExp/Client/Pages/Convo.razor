@@ -1,7 +1,9 @@
 ﻿@page "/convo/{convoNum}"
 @using uiExp.Shared
 @inject HttpClient Http
+@inject IJSRuntime JS
 @using System.Net.Http
+
 
 @code{
     [Parameter]
@@ -90,33 +92,33 @@
             }
         }*@
 
-public String GetLeftColor()
-{
-    if (selectorRight)
+    public String GetLeftColor()
     {
-        return "white";
+        if (selectorRight)
+        {
+            return "white";
+        }
+        else
+        {
+            return "black";
+        }
     }
-    else
+    public String GetRightColor()
     {
-        return "black";
+        if (selectorRight)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
     }
-}
-public String GetRightColor()
-{
-    if (selectorRight)
+    public string GetPicClass(bool left)
     {
-        return "black";
+        if (left) { return "small-profile-convo-left"; }
+        else { return "small-profile-convo-right"; }
     }
-    else
-    {
-        return "white";
-    }
-}
-public string GetPicClass(bool left)
-{
-    if (left) { return "small-profile-convo-left"; }
-    else { return "small-profile-convo-right"; }
-}
 
 
 }
@@ -128,7 +130,7 @@ public string GetPicClass(bool left)
                 @foreach (var group in conversation.Groups)
                 {
                     <div class="message-group">
-                        <div style="width:100%;height:fit-content;text-align:@getAlign(group.Left); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                        <div style="width:100%;text-align:@getAlign(group.Left); color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                             <div data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
                                 <LinkedName Conversant="@group.Texter" NameType=2></LinkedName>
                             </div>
@@ -177,6 +179,16 @@ public string GetPicClass(bool left)
     </div>
 </body>
 
+
+
+@code{
+    protected override async Task OnParametersSetAsync()
+    {
+        //await JS.InvokeVoidAsync("scrollToTop");
+        //StateHasChanged();
+    }
+}
+
 @*<hr style="border-top:2px solid white" />*@
 <!--<div class="comment">
     <div class="commenter-photo-div">
@@ -190,8 +202,8 @@ public string GetPicClass(bool left)
         </p>
         <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
             <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">-->
-                @*@comment.GetText()*@
-            <!--</span>
+@*@comment.GetText()*@
+<!--</span>
         </p>
     </div>
 </div>-->

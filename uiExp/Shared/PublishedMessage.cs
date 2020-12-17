@@ -14,6 +14,7 @@ namespace uiExp.Shared
         {
             this.MyLinesOwner = Users.GetUserByName(user);
             Conversation = new PublicConvo(lines, title, poster);
+            Console.WriteLine(this.Conversation.GetPoster().GetName());
             MakePartners(user);
             if (this.partners.Count > 1)
             {
@@ -29,6 +30,10 @@ namespace uiExp.Shared
         {
             this.MyLinesOwner = user;
             this.Conversation = conversation;
+        }
+        public void SetReplies(int[] convos)
+        {
+            this.Conversation.SetReplyConvoNumbers(convos);
         }
 
         public void MakePartners(string user)

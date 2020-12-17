@@ -17,7 +17,10 @@ namespace uiExp.Shared
 
         private string[] Names;
 
+        public User()
+        {
 
+        }
         public User(string name, String img)
         {
             this.Favorites = MakeFavorites();

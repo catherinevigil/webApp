@@ -52,6 +52,8 @@
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
     Conversation convo => LoadMyPublishedConvos.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
     PublicConvo pConvo => LoadMyPublishedConvos.InboxList[getConversationNum()].GetPublicConvo();
+    Comments comments => LoadFeedConvos.ConvoList[getConversationNum()].GetComments();
+
     public void ShowData()
     {
         Console.WriteLine("hello");
@@ -82,11 +84,11 @@
                             </p>*@
                         @foreach (var message in group.Messages)
                         {
-                            <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                            <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
                                 <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
                                     @if (@message.Text.Contains("img"))
                                     {
-                                        @((MarkupString)@message.Text)
+                                        @((MarkupString)@message.Text) //this is so img html as message.Text will lead to image drawing...
                                     }
                                     else
                                     {
@@ -96,11 +98,15 @@
                             </p>
                         }
                     </div>
-                    i++;
                 }
 
             </div>
-            <button @onclick="() => showChildren=true">show children</button>
+            <div style="display:flex;justify-content:space-evenly">
+                @if (!showChildren)
+                {
+                <button class="show-r-b" @onclick="() => showChildren = true">show responses</button>
+                }
+            </div>
             @if (showChildren)
             {
                 <div class="bottom-float action">
@@ -134,7 +140,7 @@
     </div>
 </body>
 @code{
-    Comments comments => pConvo.GetComments();
+    
 
     public String GetLeftColor()
     {

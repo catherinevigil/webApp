@@ -23,13 +23,14 @@ namespace uiExp.Shared
 
         private void SeperateConvo(string[] lines)
         {
+            var texter = new User();
             //Console.WriteLine("seperate was called");
             for (int i = 0; i < lines.Length; i++)
             {
                 if (lines[i].EndsWith(":"))
                 {
                     var name = lines[i].Remove(lines[i].Length - 1);
-                    var texter = Users.GetUserByName(name);
+                    texter = Users.GetUserByName(name);
                     if (!this.Conversants.Any())//if list does not have any elements
                     {
                         this.Conversants.Add(texter);
@@ -45,9 +46,9 @@ namespace uiExp.Shared
                             this.Conversants.Add(texter);
                         //Console.WriteLine("added conversant" + texter.GetName());
                     }
-
-
+                    Console.WriteLine("added message group belonging to conversant" + texter.GetName());
                     this.Groups.Add(new MessageGroup(texter));
+                    Console.WriteLine("the group's texter: " + this.Groups.Last().GetTexter().GetName());
                 }
                 else
                 {

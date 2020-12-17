@@ -20,10 +20,12 @@ namespace uiExp.Shared
         public void SetLeft()
         {
             this.Left = true;
+            Console.WriteLine("set left");
         }
         public void SetRight()
         {
             this.Left = false;
+            Console.WriteLine("set right");
         }
 
     }

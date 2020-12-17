@@ -10,7 +10,7 @@ namespace uiExp.Shared
         private static string[] lines0 { get; } =
             {
                 "Sahil Handa:",
-                "Fukuyama: “There are many people in contemporary democratic societies, particularly among the young, who are not content to merely congratulate themselves on their broadmindedness, but who would like to ‘live within a horizon.’” For these people, the search for meaning and the struggle for recognition are ultimate goods, and if these goods can no longer be provided by religion—at least for Christians because Christianity has lost its resonance—then something else must fill the vacuum.",
+                "Fukuyama - “There are many people in contemporary democratic societies, particularly among the young, who are not content to merely congratulate themselves on their broadmindedness, but who would like to ‘live within a horizon.’” For these people, the search for meaning and the struggle for recognition are ultimate goods, and if these goods can no longer be provided by religion—at least for Christians because Christianity has lost its resonance—then something else must fill the vacuum.",
                 "Jake Sylvestre:",
                 "Doesn’t a world without meritocratic pressure imply an end to progress?",
                 "Does the meritocratic system exist only in a world of growth where g>r? In my mind the reason for a meritocracy is a world where capital from labor is greater than that from accrual in capital (knowledge economies)",
@@ -339,9 +339,17 @@ namespace uiExp.Shared
 
         static LoadMyPublishedConvos()
         {
+            Console.WriteLine("about to load published message");
             InboxList.Add(new PublishedMessage(lines0, user, "Soroush Ghodsi", "modern malaise"));
-            InboxList.Add(new PublishedMessage(lines1, user, "Sahil Handa", "book talk"));
-            InboxList.Add(new PublishedMessage(lines2, user, "David Grant", "whats hot in code"));
+
+            //InboxList.Add(new PublishedMessage(lines1, user, "Sahil Handa", "book talk"));
+            //InboxList.Add(new PublishedMessage(lines2, user, "David Grant", "whats hot in code"));
+            int[] convos = { 1, 2, 6 };
+            foreach (var PuMessage in InboxList)
+            {
+                
+                PuMessage.SetReplies(convos);
+            }
         }
     }
 }
