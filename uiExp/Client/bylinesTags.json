@@ -1,0 +1,1548 @@
+
+
+
+
+
+
+ {{list: [
+    {
+        "string": "[cold war]()",
+        "uid": "aiTTbGr4X",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "-lKjhYU6S",
+        "edit-time": 1608596001450,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[central banks]()",
+        "uid": "ZFy0DCtOm",
+        "edit-time": 1608596001450,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "v7YS_vlyT",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[currency]()",
+        "uid": "KobUHtBqM",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "9W5QXCxOR",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[real estate]()",
+        "uid": "NbAKcJibQ",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "bNSc-Pvqo",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[cities]()",
+        "uid": "Z04OAtxX-",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "LIbdYGDe_",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[serendipity]()",
+        "uid": "Bb8QhHrdb",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "6yEiBBnQz",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[stagnation]()",
+        "uid": "ugwYmdEWw",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "jmXEkWMSp",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[startups]()",
+        "uid": "zui5gBjND",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "4366pfCwd",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[patience]()",
+        "uid": "vr0Ejq3I4",
+        "edit-time": 1608596001451,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "FJVoTlvV5",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[high school]()",
+        "uid": "Cb0a591cM",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "or1IkFLLz",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[connector]()",
+        "uid": "5zRnm3Dqp",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[creator types]][[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            },
+            {
+                "uid": "Lm_0YKO47"
+            }
+        ],
+        "uid": "adZ8iLKEB",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            },
+            {
+                ":block/uid": "Lm_0YKO47"
+            }
+        ]
+    },
+    {
+        "string": "[community]()",
+        "uid": "OWzVbcOee",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "bOfZx1fkC",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[second brain]",
+        "uid": "WXvycRb4S",
+        "edit-time": 1608596053994,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "X6rGhGnu6",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[Roam]()",
+        "uid": "tYPX3yb93",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "Me90pS7S1",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[altered states]()",
+        "uid": "PXKteXBaF",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "YjI4oS5j3",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[neurotech]()",
+        "uid": "TPlF4IUDn",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "82AAh8aAz",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[neuroscience]()",
+        "uid": "o-KM1Zdy0",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "N5IyVi9zA",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[higher education]()",
+        "uid": "HHBgt6Cu7",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "qew9zelSq",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[social mobility]()",
+        "uid": "2C-Y7w3bx",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "mD4aVQwx3",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[privacy]()",
+        "uid": "j-YGlis9M",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "RPnTpvcdq",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[American exceptionalism]()",
+        "uid": "bNmWoIs8J",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "6nUE_LW6i",
+        "edit-time": 1608596001452,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[bitcoin]()",
+        "uid": "MCy0pQkEW",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "9hYNHmSIe",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[music]()",
+        "uid": "M2QwzvBro",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "rjgnjWZls",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[entrepreneur]()",
+        "uid": "Aj-AFTjii",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "iLaDrVqqK",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[China]()",
+        "uid": "8Tt6fa22m",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "COpgRnPsW",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[marriage]()",
+        "uid": "3kDUnJGTI",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "jQ5S-qPif",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[gen z]()",
+        "uid": "V74o1FbSp",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "Nduz6ELBE",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[sex]()",
+        "uid": "NgLVoggFO",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "RxDYlrrPr",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[consent]()",
+        "uid": "cPB2AiBe7",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "s_UJ2PWA3",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[longevity]()",
+        "uid": "B-Cz-FOsk",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "t2FSrtkPx",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[governance]()",
+        "uid": "53-SWPzc9",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "keMA19Is_",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[media]()",
+        "uid": "cc3HwWtEK",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "CdCsbSg00",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[coding]()",
+        "uid": "V0HU6VHlR",
+        "edit-time": 1608596001453,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "pUI1rxgMn",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[reading]()",
+        "uid": "myDB7dC3V",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "ivkXDZXoD",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[deepfakes]()",
+        "uid": "FX6026OTq",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "C2cJTFg4s",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[free speech]()",
+        "uid": "zm7To_H3j",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "qDrjsajXa",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[surveillance]()",
+        "uid": "S5-60PmuE",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "BeJQpFzK0",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[contact tracing]()",
+        "uid": "Y3IwsI8Dw",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "HZBd6q8J-",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[copyright]()",
+        "uid": "hdAAHOYoF",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "MMU7II4qg",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[cycling]()",
+        "uid": "XGBF69HrX",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "eAi_sg3rb",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[attention spans]()",
+        "uid": "GCZ_DQ182",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "_9nGIKPTl",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[memory]()",
+        "uid": "kWANNS_-K",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "1aaNSOwIL",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[content moderation]()",
+        "uid": "hpHuMzWUv",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "e9GyeA4tf",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[big tech]()",
+        "uid": "flQ0FS4JJ",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "geDdcnycN",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[dancefloors]()",
+        "uid": "sqJzGHMh4",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "fqk7IHO2P",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[existentialism]()",
+        "uid": "UZjHRZpiM",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "ZDdA9F-Tx",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[suffering]()",
+        "uid": "rX6FvHp4C",
+        "edit-time": 1608596001454,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "0-criZt1D",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[love]()",
+        "uid": "2qBv67PLR",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "LeGqyicQr",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[honesty]()",
+        "uid": "WWipnRkOV",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "TZBoC2zp4",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[authenticity]()",
+        "uid": "WpBTtPsGk",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "W1A-m3Epa",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[religion]()",
+        "uid": "YmfEf8HpB",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "_pE4zyAJu",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[blockchain]()",
+        "uid": "rVwXzrtxt",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "_c5ZOqj7C",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[VC]()",
+        "uid": "M8XDNnF27",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "lyFL9IakZ",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[geopolitics]()",
+        "uid": "OUDlpG1Ro",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "9YGiNat2C",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[business]()",
+        "uid": "aKzfUsf79",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "g401eh5F_",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[militiary history]()",
+        "uid": "GkuX2RRaN",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "bbTYwtF2E",
+        "edit-time": 1608596001455,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[data]()",
+        "uid": "uL0Vk2bfc",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "g6lK5GaEY",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[cybersecurity]()",
+        "uid": "xQz2MiVxv",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "ESX8Ozzh9",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[crypto]()",
+        "uid": "_Lq6kd52N",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "DbBJvHrUY",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[computation]()",
+        "uid": "BrUN-Dt6_",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "S7aYCsLaQ",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[game theory]()",
+        "uid": "VpU-aUUQf",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "HKaT-ykXQ",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[machine learning]()",
+        "uid": "_qGTzdjLI",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]][[skill]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            },
+            {
+                "uid": "I5SNCSl8g"
+            }
+        ],
+        "uid": "Cj5zr-0C0",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            },
+            {
+                ":block/uid": "I5SNCSl8g"
+            }
+        ]
+    },
+    {
+        "string": "[psychedelics]()",
+        "uid": "LYjU2Xypa",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "JLBMWpbOG",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[consciousness]()",
+        "uid": "1ml44kXLI",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "hsyDKdBij",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[India]()",
+        "uid": "KqNx3oPPo",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "_8eqgGc7Z",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[AI]()",
+        "uid": "TTXqHOg0q",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "OwcBQxbqA",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[politics]()",
+        "uid": "kbzrTkLop",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "APdKww7fE",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "[social media]()",
+        "uid": "CvZ3A2yeL",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    },
+    {
+        "string": "[[tags]]",
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            }
+        ],
+        "uid": "kwwlmB1Wq",
+        "edit-time": 1608596001456,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            }
+        ]
+    },
+    {
+        "string": "{{[[mentions]]: [[tags]]}}",
+        "create-email": "sahil_handa@college.harvard.edu",
+        "create-time": 1608595193448,
+        "refs": [
+            {
+                "uid": "nuQ5knxge"
+            },
+            {
+                "uid": "G2D4LaY5a"
+            }
+        ],
+        "uid": "HQ1caNIOt",
+        "edit-time": 1608595197841,
+        "edit-email": "sahil_handa@college.harvard.edu",
+        ":block/refs": [
+            {
+                ":block/uid": "nuQ5knxge"
+            },
+            {
+                ":block/uid": "G2D4LaY5a"
+            }
+        ]
+    },
+    {
+        "string": "",
+        "create-email": "sahil_handa@college.harvard.edu",
+        "create-time": 1608595199637,
+        "uid": "Wp_Zb7dK-",
+        "edit-time": 1608595199637,
+        "edit-email": "sahil_handa@college.harvard.edu"
+    }
+]}}

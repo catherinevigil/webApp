@@ -1,0 +1,179 @@
+﻿@page "/compose/"
+@using uiExp.Shared
+@inject HttpClient Http
+@using System.Net.Http
+@layout EmptyLayout
+
+@code{
+
+
+    public String getClass(Boolean left)
+    {
+        if (left)
+            return ("message message-left aos-init");
+        else
+            return ("message message-right aos-init");
+
+    }
+
+    public String getAlign(Boolean left)
+    {
+        if (left)
+            return "left";
+        else
+            return "right";
+    }
+
+    public String getConversant(bool even, Conversation conversation)
+    {
+
+        if (even)
+            return conversation.Conversants.First().GetName();
+        else
+            return conversation.Conversants.Last().GetName();
+    }
+
+    //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
+    //Conversation convo => LoadDms.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
+
+    public void ShowData()
+    {
+        Console.WriteLine("hello");
+        // var stringWhole = String.Concat(LoadConvos.ConvoList[getConversationNum()]);
+        // Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
+    }
+
+    public int i = 0;
+    public string TopFadeOffset = "-100";
+    public string BottomFadeOffset = "100";
+    public string TopFadeOutAnchorP = "center-top";
+    public string FadeInAnchorP = "center-bottom";
+    public bool justAddedRecipient = false;
+    public string recipientInputPlaceholder = "Send to...";
+
+    ElementReference recipientInputDiv;
+
+    public string recipientInput;
+
+
+
+
+}
+
+<div class="top-row" style="position:fixed; top:0; height:@getTopHeight()"
+    <div class="recipient-container" style="position: fixed; top: 0; height: @getTopHeight()">
+        <div class="recipientText">
+            To:
+        </div>
+        <textarea id="inputTextArea" @ref="recipientInputRef" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" rows="1" @oninput="() => Resize(recipientInputRef, false)" />
+    </div>
+</div>
+ 
+@*@<!--this is code for displaying a conversation-->
+    @if (justAddedRecipient)
+    {
+        <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+            <div class="page-content-pm">
+                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                    <div class="messages">
+                        @foreach (var group in convo.Groups)
+                        {
+                            <div class="message-group">
+                                <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                            @getConversant(i % 2 == 0, convo)
+                                        </span>
+                                    </p>
+                                @foreach (var message in group.Messages)
+                                {
+                                    <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                            @if (@message.Text.Contains("img"))
+                                            {
+                                                @((MarkupString)@message.Text)
+                                            }
+                                            else
+                                            {
+                                                @message.Text
+                                            }
+                                        </span>
+                                    </p>
+                                }
+                            </div>
+                            i++;
+                        }
+
+                    </div>
+                </section>
+            </div>
+        </body>
+    }*@
+
+<div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
+    <div class="messaging-bottom">
+        <div class="input-container" id="messageInput">
+            <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
+            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
+        </div>
+        @if (ShowSelector)
+        {
+            <span class="material-icons" style="font-size:50px" @onclick="DeployShareConvo">
+                add_box
+            </span>
+        }
+    </div>
+</div>
+
+@code {
+    private bool ShowSelector = true;
+    private string message;
+    private string messageInputPlaceholder = "Send a line...";
+    ElementReference messageInputRef;
+    ElementReference recipientInputRef;
+
+    [Inject] IJSRuntime JSRuntime { get; set; }
+
+    double MessageHeight = 0;
+    double RecipientHeight = 0;
+
+    public void DeployShareConvo()
+    {
+
+    }
+
+    async Task Resize(ElementReference element,bool bottom)
+    {
+        var result = await JSRuntime.InvokeAsync<object>("resizeText", element);
+        if (bottom)
+        {
+            Double.TryParse(result.ToString(), out MessageHeight);
+            Console.WriteLine("bottom height: " + MessageHeight);
+        }
+        else
+        {
+            Double.TryParse(result.ToString(), out RecipientHeight);
+            Console.WriteLine("top height: " + RecipientHeight);
+        }
+    }
+
+    private string getBottomHeight()
+    {
+        if (MessageHeight == 0)
+            return "58px";
+        else
+            return (MessageHeight + 36).ToString() + "px";
+    }
+
+    private string getTopHeight()
+    {
+        if (RecipientHeight == 0)
+            return "58px";
+        else
+            return (RecipientHeight + 36).ToString() + "px";
+    }
+
+    public void sendMessage()
+    {
+
+    }
+    } 

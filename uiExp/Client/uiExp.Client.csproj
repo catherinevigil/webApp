@@ -29,8 +29,11 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\animateListen.js" />
+    <Content Remove="wwwroot\resizeText.js" />
+    <Content Remove="wwwroot\tags.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\animateListen.js" />
+    <None Include="wwwroot\tags.txt" />
   </ItemGroup>
 </Project>

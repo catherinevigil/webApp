@@ -339,7 +339,7 @@ namespace uiExp.Shared
 
         static LoadMyPublishedConvos()
         {
-            Console.WriteLine("about to load published message");
+            //Console.WriteLine("about to load published message");
             InboxList.Add(new PublishedMessage(lines0, user, "Soroush Ghodsi", "modern malaise"));
 
             //InboxList.Add(new PublishedMessage(lines1, user, "Sahil Handa", "book talk"));

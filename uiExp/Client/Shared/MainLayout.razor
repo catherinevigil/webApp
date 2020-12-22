@@ -22,7 +22,6 @@
         string convo = NavigationManager.Uri.Substring(start, length - start);
         return Int32.Parse(convo);
     }
-
     private bool AtHome()
     {
         return NavigationManager.Uri.EndsWith("/index");
@@ -47,9 +46,9 @@
     {
         return NavigationManager.Uri.Contains("Pm");
     }
-    private bool ShowBottom()
+    private bool ShowBottomNav()
     {
-        return !InConvo() && !InInbox() && !InRequest() & !InPm();
+        return !InConvo() && !InInbox() && !InRequest() && !InPm();
     }
     private String GetText()
     {
@@ -61,6 +60,10 @@
     private void GoToProfile()
     {
         NavigationManager.NavigateTo("/user");
+    }
+    private void NavigateCompose()
+    {
+        NavigationManager.NavigateTo("/compose");
     }
 
     public static int ConvoNum = 0;
@@ -114,17 +117,23 @@
 
 <div class="main">
 
-    @if (!ShowBottom())
+    @if (!ShowBottomNav())
     {
-        <div class="top-row px-4" id="normal" style="position:fixed; top:0">
-            <span class="material-icons" @onclick="NavigateBack">
-                arrow_back_ios
+    <div class="top-row px-4" id="normal" style="position:fixed; top:0">
+        <span class="material-icons" @onclick="NavigateBack">
+            arrow_back_ios
+        </span>
+        @if (InConvo())
+        {
+            <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
+        }
+        @if (InInbox())
+        {
+            <span class="material-icons" @onclick="NavigateCompose">
+                create
             </span>
-            @if (InConvo())
-            {
-                <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
-            }
-        </div>
+        }      
+    </div>
     }
     else if (AtMylines())
     {
@@ -139,7 +148,7 @@
     @Body
 
     @*in order to get this to stay fixed, need to specifiy position in line.*@
-    @if (ShowBottom())
+    @if (ShowBottomNav())
     {
         <div class="bottom-row px-4" style="position:fixed; bottom:0">
             <div class="nav-icon-container">
@@ -151,26 +160,26 @@
     }
     else if (NavigationManager.Uri.Contains("request"))
     {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <div @ref=inputDiv class="input-container">
-                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
-            </div>
-        </div>
+<div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
+    <div @ref=inputDiv class="input-container" id="input-container-bottom">
+        <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
+        <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
+    </div>
+</div>
     }
     else if (NavigationManager.Uri.Contains("convo"))
     {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <div @ref=inputDiv class="input-container">
-                <textarea id= "inputTextArea" class="comment-reply-message-input" placeholder="@CommentInputPlaceholder" style = "resize:none"  @bind="convoComment" rows = "1" @oninput = "Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitComment"></i>
-            </div>
-        </div>
+<div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
+    <div @ref=inputDiv class="input-container" id="input-container-bottom">
+        <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@CommentInputPlaceholder" style="resize:none" @bind="convoComment" rows="1" @oninput="Resize" />
+        <i class="fas fa-arrow-up icon sendButton" @onclick="@submitComment"></i>
+    </div>
+</div>
     }
     else if (NavigationManager.Uri.Contains("Pm"))
     {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <div @ref=inputDiv class="input-container">
+        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
+            <div @ref=inputDiv class="input-container" id="input-container-bottom">
                 <textarea id= "inputTextArea" placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
                 <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
             </div>
@@ -183,42 +192,47 @@
 
 @code{
 
-    @*public double GetHeight()
+    private string getBottomHeight()
     {
-        return 
-    }*@
-ElementReference inputDiv;
-public string MessageInputPlaceholder = "reply...";
-public string RequestInputPlaceholder = "what's on your mind?...";
-public string CommentInputPlaceholder = "comment...";
+        if (MyHeight == 0)
+            return "58px";
+        else
+            return (MyHeight + 36).ToString() + "px";
+    }
+    ElementReference inputDiv;
+    public string MessageInputPlaceholder = "reply...";
+    public string RequestInputPlaceholder = "what's on your mind?...";
+    public string CommentInputPlaceholder = "comment...";
 
-private String messageReply { get; set; }
-private String convoComment { get; set; }
-private String request { get; set; }
+    private String messageReply { get; set; }
+    private String convoComment { get; set; }
+    private String request { get; set; }
 
-private void submitComment()
-{
+    private void submitComment()
+    {
 
-}
-private void submitRequest()
-{
+    }
+    private void submitRequest()
+    {
 
-}
-private void sendReply()
-{
+    }
+    private void sendReply()
+    {
 
-}
+    }
 
-[Inject] IJSRuntime JSRuntime { get; set; }
-double MyHeight = 0;
-async Task Resize()
-{
-    var result = await JSRuntime.InvokeAsync<object>("eval", @"(function() {
+    [Inject] IJSRuntime JSRuntime { get; set; }
+    double MyHeight = 0;
+    async Task Resize()
+    {
+    @*var result = await JSRuntime.InvokeAsync<object>("eval", @"(function() {
             inputTextArea.style.height='auto';
             inputTextArea.style.height=(inputTextArea.scrollHeight)+'px';
             return inputTextArea.scrollHeight;
-        })()");
+        })()");*@
+    var result = await JSRuntime.InvokeAsync<object>("resizeText");
     Double.TryParse(result.ToString(), out MyHeight);
+    Console.WriteLine("height: "+MyHeight);
 }
 
 @*failed JS code, was just above return Line. problem is inputDiv is not found

@@ -39,7 +39,7 @@ namespace uiExp.Shared
         public String getColor()
         {
             string color = ("rgb(" + (this.fractionTimeLeft * 255).ToString() + ", " + (this.fractionTimeLeft * 140).ToString() + ", 0)");
-            Console.WriteLine(color);
+            //Console.WriteLine(color);
             return color;
         }
         //public void AddReply(User user, List<Message> reply)

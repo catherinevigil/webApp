@@ -46,9 +46,9 @@ namespace uiExp.Shared
                             this.Conversants.Add(texter);
                         //Console.WriteLine("added conversant" + texter.GetName());
                     }
-                    Console.WriteLine("added message group belonging to conversant" + texter.GetName());
+                   // Console.WriteLine("added message group belonging to conversant" + texter.GetName());
                     this.Groups.Add(new MessageGroup(texter));
-                    Console.WriteLine("the group's texter: " + this.Groups.Last().GetTexter().GetName());
+                   // Console.WriteLine("the group's texter: " + this.Groups.Last().GetTexter().GetName());
                 }
                 else
                 {

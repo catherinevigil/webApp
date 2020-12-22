@@ -70,6 +70,7 @@
     height: 8vh;
     display: flex;
     align-items: center;
+    align-content: center;
     justify-content: space-between;
     width: 100%;
 }
@@ -78,6 +79,7 @@
     background-color: black;
     border-bottom: 1px solid darkgrey;
     height:5vh;
+    width:100%;
 
 }
 
