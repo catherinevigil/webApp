@@ -554,3 +554,42 @@ section#content-container div.comments div.comment {
     height: 58px;
     width: 100%;
 }
+.rSuggestions{
+    display:flex;
+    flex-direction:column;
+    width:100%
+
+}
+.tagSuggestion {
+    eight: 40px;
+    border-bottom: 1px solid #404040;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+/*    height:50px;*/
+    padding:12px;
+}
+
+.personSuggestion {
+    eight: 40px;
+    border-bottom: 1px solid #404040;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    /*    height: 50px;*/
+}
+
+.hashtagText{
+    margin-left:5%;
+}
+
+.suggestionImage{
+    margin-right:10px;
+}
+
+.suggestionName{
+
+}

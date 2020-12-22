@@ -13,7 +13,7 @@ namespace uiExp.Shared
                 "tristique et egestas quis ipsum. Scelerisque in dictum non consectetur a erat nam at lectus. Vitae proin sagittis nisl rhoncus. Urna id volutpat lacus laoreet non curabitur.",
                 "Sahil Handa:",
                 "Eu volutpat odio facilisis",
-                "Ethan Fields:",
+                "Ethan Fogarty:",
                 "mauris sit amet. Dignissim enim sit amet venenatis",
                 "Eli Burnes:",
                 "urna cursus eget nunc scelerisque",

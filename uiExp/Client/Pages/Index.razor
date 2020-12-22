@@ -80,19 +80,6 @@
 
     }
 
-    protected async override Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            //await js.InvokeVoidAsync("initializeAnimateInListener");
-            //await js.InvokeVoidAsync("initializeAnimateOutListener");
-        }
-        foreach (var tag in Hashtags.Tags)
-        {
-            Console.WriteLine(tag);
-        }
-    }
-
     public int bottomHeaderHeight = 60;//aos offset for bottom
     public int animationDuration = 1000;
     public int messagesOffset = 80;//aos offset for top

@@ -10,3 +10,16 @@ function resizeText(docElement) {
     return docElement.scrollHeight;
 
 }
+
+function focused(docElement) {
+    //check if doc element is focused
+    return (document.activeElement === docElement);
+}
+
+function initializeFocusListener(docElement) {
+    docElement.addEventListener('focus', (event) => {
+        event.target.style.background = 'pink';
+    });
+}
+
+
