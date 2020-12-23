@@ -225,7 +225,6 @@
      <div class="message-tabText">
          New Message
      </div>
-
 </div>
 
 <div class="top-row" style="position:fixed; top:15%; height:@getTopHeight()"
@@ -331,20 +330,23 @@
             </body>
         }*@
 
-    <div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
-        <div class="messaging-bottom">
-            <div class="input-container" id="messageInput">
-                <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
-            </div>
-            @if (ShowSelector)
-            {
-                <span class="material-icons" style="font-size:50px; margin-left: 10px" @onclick="DeployShareConvo">
-                    add_box
-                </span>
-            }
+<div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
+    <div class="messaging-bottom">
+        @if (ShowSelector)
+        {
+            <i class="material-icons" @onclick="DeployShareConvo">
+                camera_alt
+                add_box
+            </i>
+        }
+
+        <div class="input-container" id="messageInput">
+            <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
+            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
         </div>
+
     </div>
+</div>
 
     @code {
         private bool ShowSelector = true;

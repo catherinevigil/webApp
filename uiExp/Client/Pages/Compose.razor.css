@@ -78,7 +78,7 @@
 }
 
 .tagSuggestion {
-    eight: 40px;
+    height: 40px;
     border-bottom: 1px solid #404040;
     color: lightgray;
     display: flex;
@@ -95,7 +95,7 @@
     }
 
 .personSuggestion {
-    eight: 40px;
+    height: 40px;
     border-bottom: 1px solid #404040;
     color: lightgray;
     display: flex;
@@ -141,4 +141,9 @@
 #r-highlighted {
     background-color: darkblue;
     color: white;
+}
+
+.material-icons {
+    font-size: 40px;
+    color: #828284;
 }
