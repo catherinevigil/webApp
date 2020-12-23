@@ -571,10 +571,11 @@ section#content-container div.comments div.comment {
     padding:12px;
 }
 
-.tagSuggestion:hover{
-    cursor:pointer;
-    background-color:#141414;
-}
+    .tagSuggestion:hover {
+        cursor: pointer;
+        background-color: #141414 !important;
+/*the !important overrides inline style wich is added to highlight items w/arrow keys*/
+    }
 .personSuggestion {
     eight: 40px;
     border-bottom: 1px solid #404040;
