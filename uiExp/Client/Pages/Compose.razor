@@ -221,8 +221,15 @@
     }
 }
 
-<div class="top-row" style="position:fixed; top:0; height:@getTopHeight()"
-    <div class="recipient-container" style="position: fixed; top: 0; height: @getTopHeight()">
+<div class="message-tab"
+     <div class="message-tabText">
+         New Message
+     </div>
+
+</div>
+
+<div class="top-row" style="position:fixed; top:15%; height:@getTopHeight()"
+    <div class="recipient-container" style="position: fixed; height: @getTopHeight()">
         <div class="recipientText">
             To:
         </div>
@@ -259,7 +266,7 @@
 
 @if (focusedRecipient && !(recipientInput==""))
 {
-    <div class="rSuggestions" style="top:@getTopHeight();position:fixed">
+    <div class="rSuggestions" style="top: @getTopHeight();position:fixed">
 
         @foreach (var tag in displayTags)
         { 
@@ -332,7 +339,7 @@
             </div>
             @if (ShowSelector)
             {
-                <span class="material-icons" style="font-size:50px" @onclick="DeployShareConvo">
+                <span class="material-icons" style="font-size:50px; margin-left: 10px" @onclick="DeployShareConvo">
                     add_box
                 </span>
             }
