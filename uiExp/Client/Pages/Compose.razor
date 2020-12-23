@@ -134,6 +134,7 @@
     }
     public void topInput()
     {
+        //could improve efficiency by only calling these when recipientInput is changed
         displayTags = GetTags();
         displayUsers = GetPeople();
         //Resize(recipientInputRef, false);
@@ -168,34 +169,51 @@
     private bool recipientHighlighted = false;
     private bool recipientInputEmpty = false;
 
-    private void detectDel(KeyboardEventArgs e)
+    private void detectKey(KeyboardEventArgs e)
     {
-        Console.WriteLine("key pressed: " + e.Key);
+        ///Console.WriteLine("key pressed: " + e.Key);
 
-        if (recipientsInList )
-        {
-            if (e.Key == "Backspace" ) {
-                if (recipientInput=="")
+
+        if (e.Key == "Backspace") {
+            if (recipientsInList && recipientInput == "")
+            {
+                if (recipientHighlighted)
                 {
-                    if (recipientHighlighted)
-                    {
-                        if (recipientList.Count == 1)
-                            recipientsInList = false;
-                        recipientList.RemoveAt(recipientList.Count - 1);
-                        recipientHighlighted = false;
-                    }
-                    else
-                    {
-                        recipientHighlighted = true;
-                    }
+                    if (recipientList.Count == 1)
+                        recipientsInList = false;
+                    recipientList.RemoveAt(recipientList.Count - 1);
+                    recipientHighlighted = false;
+                }
+                else
+                {
+                    recipientHighlighted = true;
                 }
             }
-            else if (recipientHighlighted)
-            {
-                recipientHighlighted = false;
-            }
+        }
+        else if (e.Key == "ArrowDown")
+        {
+            Console.WriteLine("selected R pre adjust: " + selectedR);
+            Console.WriteLine("recip list count: " + recipientList.Count);
+            rSelected = true;
+            if (selectedR < GetNumSuggestions() - 1)
+                selectedR++;
+            else
+                selectedR = 0;
+            Console.WriteLine("selected R post adjust: " + selectedR);
+
+        }
+        else if (recipientHighlighted)
+        {
+            recipientHighlighted = false;
         }
     }
+    private int GetNumSuggestions()
+    {
+        return displayTags.Count + displayUsers.Count;
+    }
+
+    private bool rSelected = false;
+    private int selectedR = -1;
 
     async Task focus(ElementReference element)
     {
@@ -213,6 +231,7 @@
             {
                 for (int x = 0; x < recipientList.Count - 1; x++)
                 {
+
                     <span class="addedRecipient">
                         @recipientList[x].GetText(),
                     </span>
@@ -232,26 +251,27 @@
             }
         </div>
 
-        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectDel(e))"  />
+        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectKey(e))" @onkeyup="() => topInput()" />
           @*@onchange="@((String.IsNullOrEmpty(recipientInput) ? detectDel() : detectDel()))"*@
     </div>
 </div>
 @*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
 
-@if (focusedRecipient)
+@if (focusedRecipient && !(recipientInput==""))
 {
     <div class="rSuggestions" style="top:@getTopHeight();position:fixed">
-        @foreach (var tag in GetTags())
-        {
-            <div class="tagSuggestion" @onclick="() => addTag(tag)">
+
+        @foreach (var tag in displayTags)
+        { 
+            <div class="tagSuggestion" @onclick="() => addTag(tag)" style="background-color:@((displayTags.IndexOf(tag) == selectedR && rSelected) ? "#141414" : "#000000")">
                 <span class="hashtagText">
                     @GetTagString(tag)
                 </span>
             </div>
         }
-        @foreach (var person in GetPeople())
+        @foreach (var person in displayUsers) //good to use foreach loops to avoid index errors with for loop
         {
-            <div class="personSuggestion" @onclick="() => addPerson(person)">
+            <div class="personSuggestion" @onclick="() => addPerson(person)" style="background-color:@((displayUsers.IndexOf(person)+displayTags.Count == selectedR) ? "#141414" : "#000000")">
                 <div class="suggestionImage">
                     <img src="@person.GetImg()" class="profile-pic" />
                 </div>
