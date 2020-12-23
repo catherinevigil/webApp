@@ -57,6 +57,7 @@
     public bool focusedRecipient = false;
     public List<Hashtag> displayTags = new List<Hashtag>();
     public List<User> displayUsers = new List<User>();
+    public List<Reciever> recipientList = new List<Reciever>();
 
     public List<Hashtag> GetTags()
     {
@@ -109,48 +110,78 @@
         return "#" + tag.Tag;
     }
 
-    @*async Task CheckFocus(ElementReference element)
+    protected async override Task OnAfterRenderAsync(bool firstRender)
     {
-        var result = JSRuntime.InvokeAsync<bool>("focused", element);
-        focusedRecipient = await result;
-        Console.WriteLine("focused?: " + focusedRecipient);
+        if (firstRender)
+        {
+            //initialize event listener??
+        }
     }
-
-    public async Task<bool> GetTopFocused() {
-        await CheckFocus(recipientInputRef);
-        return focusedRecipient;
-    }*@
-
-protected async override Task OnAfterRenderAsync(bool firstRender)
-{
-    if (firstRender)
+    public void checkState()
     {
-        //initialize event listener??
+        Console.WriteLine("focus top: " + focusedRecipient);
+        Console.WriteLine("recipientInput: " + recipientInput);
     }
-}
-public void checkState()
-{
-    Console.WriteLine("focus top: " + focusedRecipient);
-    Console.WriteLine("recipientInput: " + recipientInput);
-}
-public void focusTop()
-{
-    focusedRecipient = true;
-    Console.WriteLine("focused top");
-}
-public void blurTop()
-{
-    //focusedRecipient = false;
-    Console.WriteLine("un focused top");
-}
-public void topInput()
-{
-    displayTags = GetTags();
-    displayUsers = GetPeople();
-    //Resize(recipientInputRef, false);
-    Console.WriteLine("top input");
-}
+    public void focusTop()
+    {
+        focusedRecipient = true;
+        Console.WriteLine("focused top");
+    }
+    public void blurTop()
+    {
+        //focusedRecipient = false;
+        Console.WriteLine("un focused top");
+    }
+    public void topInput()
+    {
+        displayTags = GetTags();
+        displayUsers = GetPeople();
+        //Resize(recipientInputRef, false);
+        Console.WriteLine("top input");
+    }
+    public void addTag(Hashtag tag)
+    {
+        if (!recipientsInList)
+        {
+            recipientInputPlaceholder = "Add more recipients....";
+        }
+        recipientList.Add(new Reciever(tag));
+        recipientsInList = true;
+        recipientInput = "";
+    }
+    public void addPerson(User person)
+    {
+        if (!recipientsInList)
+        {
+            recipientInputPlaceholder = "Add more recipients....";
+        }
 
+        recipientList.Add(new Reciever(person));
+        recipientsInList = true;
+        recipientInput = "";
+    }
+    public bool recipientsInList = false;
+    private bool recipientHighlighted = false;
+
+    private void detectDel(KeyboardEventArgs e)
+    {
+        if (recipientsInList && recipientInput=="")
+        {
+            if (e.Key == "Backspace") {
+                if (recipientHighlighted)
+                {
+                    if (recipientList.Count == 1)
+                        recipientsInList = false;
+                    recipientList.RemoveAt(recipientList.Count - 1);
+                    recipientHighlighted = false;
+                }
+                else
+                {
+                    recipientHighlighted = true;
+                }
+            }
+        }
+    }
 }
 
 <div class="top-row" style="position:fixed; top:0; height:@getTopHeight()"
@@ -158,8 +189,31 @@ public void topInput()
         <div class="recipientText">
             To:
         </div>
+        <div class="addedRecipientsList">
+            @if (recipientsInList)
+            {
+                for (int x = 0; x < recipientList.Count - 1; x++)
+                {
+                    <span class="addedRecipient">
+                        @recipientList[x].GetText()
+                    </span>
+                }
+                if (recipientHighlighted)
+                {
+                    <span class="addedRecipient" id="r-highlighted">
+                        @recipientList[recipientList.Count - 1].GetText()
+                    </span>
+                }
+                else
+                {
+                    <span class="addedRecipient">
+                        @recipientList[recipientList.Count - 1].GetText()
+                    </span>
+                }
+            }
+        </div>
         
-        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" />
+        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeyup="@(e => detectDel(e))" />
     </div>
 </div>
 @*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
@@ -169,7 +223,7 @@ public void topInput()
     <div class="rSuggestions" style="top:@getTopHeight();position:fixed">
         @foreach (var tag in GetTags())
         {
-            <div class="tagSuggestion">
+            <div class="tagSuggestion" @onclick="() => addTag(tag)">
                 <span class="hashtagText">
                     @GetTagString(tag)
                 </span>
@@ -177,18 +231,18 @@ public void topInput()
         }
         @foreach (var person in GetPeople())
         {
-            <div class="personSuggestion">
+            <div class="personSuggestion" @onclick="() => addPerson(person)">
                 <div class="suggestionImage">
-                    <LinkedImage Conversant="person"></LinkedImage>
+                    <img src="@person.GetImg()" class="profile-pic" />
                 </div>
                 <div class="suggestionName">
-                    <LinkedName Conversant="person" NameType=1></LinkedName>
+                    <span>@person.GetName()</span>
                 </div>
             </div>
         }
     </div>
 
- }
+}
 
     @*@<!--this is code for displaying a conversation-->
         @if (justAddedRecipient)

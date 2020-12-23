@@ -571,6 +571,10 @@ section#content-container div.comments div.comment {
     padding:12px;
 }
 
+.tagSuggestion:hover{
+    cursor:pointer;
+    background-color:#141414;
+}
 .personSuggestion {
     eight: 40px;
     border-bottom: 1px solid #404040;
@@ -579,7 +583,12 @@ section#content-container div.comments div.comment {
     flex-direction: row;
     align-items: center;
     padding: 12px;
+
     /*    height: 50px;*/
+}
+.personSuggestion:hover{
+    cursor:pointer;
+    background-color:#141414;
 }
 
 .hashtagText{
@@ -591,5 +600,24 @@ section#content-container div.comments div.comment {
 }
 
 .suggestionName{
+}
 
+.addedRecipientsList {
+    display: flex;
+    flex-direction: row;
+    font-size: 11pt;
+    align-items:center;
+    /*    margin-left:8px;*/
+}
+.addedRecipient {
+    padding-right: 6px;
+    padding-left: 6px;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: lightgray;
+    white-space:nowrap;
+}
+#r-highlighted{
+    background-color:darkblue;
+    color:white;
 }

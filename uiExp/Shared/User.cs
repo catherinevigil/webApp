@@ -60,6 +60,10 @@ namespace uiExp.Shared
 
             MakeFirstName();
         }
+        public String GetText()
+        {
+            return this.Name;
+        }
         public List<int> GetFavorites()
         {
             return this.Favorites;

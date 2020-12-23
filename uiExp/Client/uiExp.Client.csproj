@@ -36,4 +36,7 @@
     <None Include="wwwroot\animateListen.js" />
     <None Include="wwwroot\tags.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="..\Shared\Recipient.cs" />
+  </ItemGroup>
 </Project>

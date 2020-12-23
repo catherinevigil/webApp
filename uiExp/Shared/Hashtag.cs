@@ -13,5 +13,10 @@ namespace uiExp.Shared
         {
             this.Tag = tag;
         }
+        public String GetText()
+        {
+            return "#"+this.Tag;
+        }
     }
+    
 }
