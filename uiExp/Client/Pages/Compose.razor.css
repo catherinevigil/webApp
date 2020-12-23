@@ -48,7 +48,6 @@
     color: #a59d9d;
 }
 
-
 .messaging-bottom {
     align-items: center;
     width: 96%;
@@ -78,7 +77,6 @@
 }
 
 .tagSuggestion {
-    height: 40px;
     border-bottom: 1px solid #404040;
     color: lightgray;
     display: flex;
@@ -95,7 +93,6 @@
     }
 
 .personSuggestion {
-    height: 40px;
     border-bottom: 1px solid #404040;
     color: lightgray;
     display: flex;
