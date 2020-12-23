@@ -16,6 +16,11 @@ function focused(docElement) {
     return (document.activeElement === docElement);
 }
 
+function focus(docElement) {
+    //check if doc element is focused
+    docElement.focus();
+}
+
 function initializeFocusListener(docElement) {
     docElement.addEventListener('focus', (event) => {
         event.target.style.background = 'pink';

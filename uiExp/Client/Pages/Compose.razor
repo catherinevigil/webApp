@@ -92,10 +92,10 @@
                 var nameLength = person.GetName().Length;
                 if (!(chars > nameLength))
                 {
-                    Console.WriteLine("name substring: " + person.GetName().Substring(0, chars));
+                    //Console.WriteLine("name substring: " + person.GetName().Substring(0, chars));
                     if (String.Equals(person.GetName().Substring(0, chars).ToLower(), recipientInput.ToLower()))
                     {
-                        Console.WriteLine("name == input: "+recipientInput);
+                        //  Console.WriteLine("name == input: "+recipientInput);
                         People.Add(person);
                     }
                 }
@@ -141,6 +141,7 @@
     }
     public void addTag(Hashtag tag)
     {
+
         if (!recipientsInList)
         {
             recipientInputPlaceholder = "Add more recipients....";
@@ -148,9 +149,11 @@
         recipientList.Add(new Reciever(tag));
         recipientsInList = true;
         recipientInput = "";
+        focus(recipientInputRef);
     }
     public void addPerson(User person)
     {
+
         if (!recipientsInList)
         {
             recipientInputPlaceholder = "Add more recipients....";
@@ -159,28 +162,44 @@
         recipientList.Add(new Reciever(person));
         recipientsInList = true;
         recipientInput = "";
+        focus(recipientInputRef);
     }
     public bool recipientsInList = false;
     private bool recipientHighlighted = false;
+    private bool recipientInputEmpty = false;
 
     private void detectDel(KeyboardEventArgs e)
     {
-        if (recipientsInList && recipientInput=="")
+        Console.WriteLine("key pressed: " + e.Key);
+
+        if (recipientsInList )
         {
-            if (e.Key == "Backspace") {
-                if (recipientHighlighted)
+            if (e.Key == "Backspace" ) {
+                if (recipientInput=="")
                 {
-                    if (recipientList.Count == 1)
-                        recipientsInList = false;
-                    recipientList.RemoveAt(recipientList.Count - 1);
-                    recipientHighlighted = false;
-                }
-                else
-                {
-                    recipientHighlighted = true;
+                    if (recipientHighlighted)
+                    {
+                        if (recipientList.Count == 1)
+                            recipientsInList = false;
+                        recipientList.RemoveAt(recipientList.Count - 1);
+                        recipientHighlighted = false;
+                    }
+                    else
+                    {
+                        recipientHighlighted = true;
+                    }
                 }
             }
+            else if (recipientHighlighted)
+            {
+                recipientHighlighted = false;
+            }
         }
+    }
+
+    async Task focus(ElementReference element)
+    {
+        await JSRuntime.InvokeAsync<object>("focus", element);
     }
 }
 
@@ -195,7 +214,7 @@
                 for (int x = 0; x < recipientList.Count - 1; x++)
                 {
                     <span class="addedRecipient">
-                        @recipientList[x].GetText()
+                        @recipientList[x].GetText(),
                     </span>
                 }
                 if (recipientHighlighted)
@@ -212,8 +231,9 @@
                 }
             }
         </div>
-        
-        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeyup="@(e => detectDel(e))" />
+
+        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectDel(e))"  />
+          @*@onchange="@((String.IsNullOrEmpty(recipientInput) ? detectDel() : detectDel()))"*@
     </div>
 </div>
 @*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@

@@ -610,10 +610,10 @@ section#content-container div.comments div.comment {
     /*    margin-left:8px;*/
 }
 .addedRecipient {
-    padding-right: 6px;
-    padding-left: 6px;
-    margin-left: 4px;
-    margin-right: 4px;
+    padding-right: 7px;
+    padding-left: 7px;
+    padding-bottom: 4px;
+    padding-top: 4px;
     color: lightgray;
     white-space:nowrap;
 }
