@@ -1,3 +1,12 @@
+.message-header {
+    font-style: "HelveticaNeue";
+    color: white;
+    font-size: 15pt;
+    font-weight: bold;
+    padding-top: 30px;
+    padding-left: 20px
+}
+
 .preview-message {
     color: rgb(166, 165, 165);
     margin-bottom: 0px;
