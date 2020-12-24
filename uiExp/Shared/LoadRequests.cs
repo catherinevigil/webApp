@@ -19,7 +19,6 @@ namespace uiExp.Shared
             {
                "Sahil Handa",
                "Almond butter is the the best nut butter",
-               "Best macros best micros best fiber best taste.",
             };
 
             private static string[] lines2 { get; } =
