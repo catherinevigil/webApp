@@ -114,7 +114,8 @@
     {
         if (firstRender)
         {
-            //initialize event listener??
+            //initialize event listener
+            await JSRuntime.InvokeVoidAsync("initKeypressListener", recipientInputRef);
         }
     }
     public void checkState()
@@ -150,6 +151,8 @@
         recipientList.Add(new Reciever(tag));
         recipientsInList = true;
         recipientInput = "";
+        selectedR = -1;
+        rSelected = false;
         focus(recipientInputRef);
     }
     public void addPerson(User person)
@@ -169,9 +172,14 @@
     private bool recipientHighlighted = false;
     private bool recipientInputEmpty = false;
 
-    private void detectKey(KeyboardEventArgs e)
+    async Task doNothingTop(KeyboardEventArgs e)
     {
-        ///Console.WriteLine("key pressed: " + e.Key);
+        await JSRuntime.InvokeVoidAsync("pDefault", e);
+    }
+
+    private void detectKeyTop(KeyboardEventArgs e)
+    {
+        Console.WriteLine("key pressed: " + e.Key);
 
 
         if (e.Key == "Backspace") {
@@ -193,7 +201,7 @@
         else if (e.Key == "ArrowDown")
         {
             Console.WriteLine("selected R pre adjust: " + selectedR);
-            Console.WriteLine("recip list count: " + recipientList.Count);
+
             rSelected = true;
             if (selectedR < GetNumSuggestions() - 1)
                 selectedR++;
@@ -202,10 +210,45 @@
             Console.WriteLine("selected R post adjust: " + selectedR);
 
         }
-        else if (recipientHighlighted)
+        else if (e.Key == "ArrowUp")
+        {
+            rSelected = true;
+            if (selectedR == -1)
+                selectedR = GetNumSuggestions() - 1;
+            else
+                selectedR--;
+        }
+        else if (e.Key == "Enter")
+        {
+            if (rSelected == true)
+            {
+                AddRecipient(selectedR);
+            }
+            else
+            {
+                if (recipientsInList && recipientInput == "")
+                {
+                    focusSlow(messageInputRef);
+                }
+            }
+        }
+        else if (recipientHighlighted) //thus written, arrow down or enter will not remove delete highlight. all other key actions will
         {
             recipientHighlighted = false;
         }
+
+        if (!((e.Key == "ArrowDown")| (e.Key == "ArrowUp")))
+        {
+            rSelected = false;
+            selectedR = -1;
+        }
+        if (!(recipientInput == ""))
+        {
+            Console.WriteLine("last char input: " + recipientInput.Last());
+            Console.WriteLine("last char = empty: " + recipientInput.Last() == "");
+            Console.WriteLine("last char = /n" + recipientInput.Last() == "/n");
+        }
+
     }
     private int GetNumSuggestions()
     {
@@ -215,9 +258,24 @@
     private bool rSelected = false;
     private int selectedR = -1;
 
+    public void AddRecipient (int selected)
+    {
+        if (selectedR < displayTags.Count)
+            addTag(displayTags[selectedR]);
+        else
+            addPerson(displayUsers[selectedR - displayTags.Count]);
+        selectedR = -1;
+    }
+
     async Task focus(ElementReference element)
     {
         await JSRuntime.InvokeAsync<object>("focus", element);
+    }
+    async Task focusSlow(ElementReference element)
+    {
+        //await JSRuntime.InvokeVoidAsync("block", e);
+        await Task.Delay(5);//this is scrubby but was only way i could get focus to switch to message input on enter without adding a line break in the message box
+        await JSRuntime.InvokeVoidAsync("focus",element);
     }
 }
 
@@ -251,7 +309,7 @@
             }
         </div>
 
-        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectKey(e))" @onkeyup="() => topInput()" />
+        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectKeyTop(e))" @onkeyup="() => topInput()" />
           @*@onchange="@((String.IsNullOrEmpty(recipientInput) ? detectDel() : detectDel()))"*@
     </div>
 </div>
