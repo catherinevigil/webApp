@@ -9,7 +9,16 @@
     display: flex;
 }
 
+.material-icons.back {
+    position: relative;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+}
+
 .message-tabText {
+    position: relative;
     color: white;
     margin-top: 30px;
     margin-left: auto;
@@ -17,7 +26,6 @@
     font-size: 17px;
     font-style: "HelveticaNeue";
     font-weight: regular;
-    text-align: center
 }
 
 #input-container-bottom {

@@ -3,9 +3,21 @@
 @inject HttpClient Http
 @using System.Net.Http
 @layout EmptyLayout
+@inject NavigationManager NavigationManager
+
 
 @code{
 
+    private bool InPm()
+    {
+        return NavigationManager.Uri.Contains("Pm");
+    }
+
+    private void NavigateToInbox()
+    {
+        var destination = (InPm()) ? "/inbox" : "/";
+        NavigationManager.NavigateTo("/inbox");
+    }
 
     public String getClass(Boolean left)
     {
@@ -182,7 +194,8 @@
         Console.WriteLine("key pressed: " + e.Key);
 
 
-        if (e.Key == "Backspace") {
+        if (e.Key == "Backspace")
+        {
             if (recipientsInList && recipientInput == "")
             {
                 if (recipientHighlighted)
@@ -237,7 +250,7 @@
             recipientHighlighted = false;
         }
 
-        if (!((e.Key == "ArrowDown")| (e.Key == "ArrowUp")))
+        if (!((e.Key == "ArrowDown") | (e.Key == "ArrowUp")))
         {
             rSelected = false;
             selectedR = -1;
@@ -258,7 +271,7 @@
     private bool rSelected = false;
     private int selectedR = -1;
 
-    public void AddRecipient (int selected)
+    public void AddRecipient(int selected)
     {
         if (selectedR < displayTags.Count)
             addTag(displayTags[selectedR]);
@@ -275,11 +288,16 @@
     {
         //await JSRuntime.InvokeVoidAsync("block", e);
         await Task.Delay(5);//this is scrubby but was only way i could get focus to switch to message input on enter without adding a line break in the message box
-        await JSRuntime.InvokeVoidAsync("focus",element);
+        await JSRuntime.InvokeVoidAsync("focus", element);
     }
 }
 
 <div class="message-tab"
+    <div class="message-tabBack">
+        <i class="material-icons back" @onclick="NavigateToInbox">
+            arrow_back_ios
+        </i>
+    </div>
      <div class="message-tabText">
          New Message
      </div>
@@ -321,12 +339,12 @@
 </div>
 @*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
 
-@if (focusedRecipient && !(recipientInput==""))
+@if (focusedRecipient && !(recipientInput == ""))
 {
     <div class="rSuggestions" style="top: 200px;position:fixed">
 
         @foreach (var tag in displayTags)
-        { 
+        {
             <div class="tagSuggestion" @onclick="() => addTag(tag)" style="background-color:@((displayTags.IndexOf(tag) == selectedR && rSelected) ? "#141414" : "#000000")">
                 <span class="hashtagText">
                     @GetTagString(tag)
@@ -348,45 +366,45 @@
 
 }
 
-    @*@<!--this is code for displaying a conversation-->
-        @if (justAddedRecipient)
-        {
-            <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-                <div class="page-content-pm">
-                    <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-                        <div class="messages">
-                            @foreach (var group in convo.Groups)
-                            {
-                                <div class="message-group">
-                                    <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                                            <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
-                                                @getConversant(i % 2 == 0, convo)
-                                            </span>
-                                        </p>
-                                    @foreach (var message in group.Messages)
-                                    {
-                                        <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                                            <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
-                                                @if (@message.Text.Contains("img"))
-                                                {
-                                                    @((MarkupString)@message.Text)
-                                                }
-                                                else
-                                                {
-                                                    @message.Text
-                                                }
-                                            </span>
-                                        </p>
-                                    }
-                                </div>
-                                i++;
-                            }
+@*@<!--this is code for displaying a conversation-->
+    @if (justAddedRecipient)
+    {
+        <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+            <div class="page-content-pm">
+                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                    <div class="messages">
+                        @foreach (var group in convo.Groups)
+                        {
+                            <div class="message-group">
+                                <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                            @getConversant(i % 2 == 0, convo)
+                                        </span>
+                                    </p>
+                                @foreach (var message in group.Messages)
+                                {
+                                    <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                            @if (@message.Text.Contains("img"))
+                                            {
+                                                @((MarkupString)@message.Text)
+                                            }
+                                            else
+                                            {
+                                                @message.Text
+                                            }
+                                        </span>
+                                    </p>
+                                }
+                            </div>
+                            i++;
+                        }
 
-                        </div>
-                    </section>
-                </div>
-            </body>
-        }*@
+                    </div>
+                </section>
+            </div>
+        </body>
+    }*@
 
 <div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
     <div class="messaging-bottom">
@@ -406,56 +424,56 @@
     </div>
 </div>
 
-    @code {
-        private bool ShowSelector = true;
-        private string message;
-        private string messageInputPlaceholder = "Send a line...";
-        ElementReference messageInputRef;
-        ElementReference recipientInputRef;
+@code {
+    private bool ShowSelector = true;
+    private string message;
+    private string messageInputPlaceholder = "Send a line...";
+    ElementReference messageInputRef;
+    ElementReference recipientInputRef;
 
-        [Inject] IJSRuntime JSRuntime { get; set; }
+    [Inject] IJSRuntime JSRuntime { get; set; }
 
-        double MessageHeight = 0;
-        double RecipientHeight = 0;
+    double MessageHeight = 0;
+    double RecipientHeight = 0;
 
-        public void DeployShareConvo()
+    public void DeployShareConvo()
+    {
+
+    }
+
+    async Task Resize(ElementReference element, bool bottom)
+    {
+        var result = await JSRuntime.InvokeAsync<object>("resizeText", element);
+        if (bottom)
         {
-
+            Double.TryParse(result.ToString(), out MessageHeight);
+            Console.WriteLine("bottom height: " + MessageHeight);
         }
-
-        async Task Resize(ElementReference element, bool bottom)
+        else
         {
-            var result = await JSRuntime.InvokeAsync<object>("resizeText", element);
-            if (bottom)
-            {
-                Double.TryParse(result.ToString(), out MessageHeight);
-                Console.WriteLine("bottom height: " + MessageHeight);
-            }
-            else
-            {
-                Double.TryParse(result.ToString(), out RecipientHeight);
-                Console.WriteLine("top height: " + RecipientHeight);
-            }
-        }
-
-        private string getBottomHeight()
-        {
-            if (MessageHeight == 0)
-                return "58px";
-            else
-                return (MessageHeight + 36).ToString() + "px";
-        }
-
-        private string getTopHeight()
-        {
-            if (RecipientHeight == 0)
-                return "58px";
-            else
-                return (RecipientHeight + 36).ToString() + "px";
-        }
-
-        public void sendMessage()
-        {
-
+            Double.TryParse(result.ToString(), out RecipientHeight);
+            Console.WriteLine("top height: " + RecipientHeight);
         }
     }
+
+    private string getBottomHeight()
+    {
+        if (MessageHeight == 0)
+            return "58px";
+        else
+            return (MessageHeight + 36).ToString() + "px";
+    }
+
+    private string getTopHeight()
+    {
+        if (RecipientHeight == 0)
+            return "58px";
+        else
+            return (RecipientHeight + 36).ToString() + "px";
+    }
+
+    public void sendMessage()
+    {
+
+    }
+}
