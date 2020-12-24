@@ -1,4 +1,4 @@
-s @charset "UTF-8";
+﻿s @charset "UTF-8";
 a,
 body,
 div,
@@ -510,6 +510,7 @@ section#content-container div.comments div.comment {
     padding-left: 20px;
     padding-right: 20px;
 }
+<<<<<<< HEAD
 
 #input-container-bottom {
     bottom: 6px;
@@ -574,7 +575,7 @@ section#content-container div.comments div.comment {
     .tagSuggestion:hover {
         cursor: pointer;
         background-color: #141414 !important;
-/*the !important overrides inline style wich is added to highlight items w/arrow keys*/
+/*the !important overrides inline style which is added to highlight items w/arrow keys*/
     }
 .personSuggestion {
     eight: 40px;
@@ -587,10 +588,10 @@ section#content-container div.comments div.comment {
 
     /*    height: 50px;*/
 }
-.personSuggestion:hover{
-    cursor:pointer;
-    background-color:#141414;
-}
+    .personSuggestion:hover {
+        cursor: pointer;
+        background-color: #141414 !important;
+    }
 
 .hashtagText{
     margin-left:5%;
@@ -622,3 +623,5 @@ section#content-container div.comments div.comment {
     background-color:darkblue;
     color:white;
 }
+=======
+>>>>>>> Sahil's-Second-branch

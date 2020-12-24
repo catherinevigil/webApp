@@ -1,0 +1,146 @@
+﻿.message-tab {
+    position: fixed;
+    top: 5%;
+    color: #2a2a2b;
+    background-color: #2a2a2b;
+    border-radius: 20px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.message-tabText {
+    color: white;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+    font-style: "HelveticaNeue";
+    font-weight: regular;
+    text-align: center
+}
+
+#input-container-bottom {
+    bottom: 6px;
+    width: 80%;
+    position: fixed;
+}
+
+.recipient-container {
+    width: 100%;
+    background-color: #141414;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    border-bottom: 1px solid lightgray;
+}
+
+.recipientText {
+    font-size: 14px;
+    color: #a59d9d;
+}
+
+#inputTextArea
+{
+    font-size: 14px;
+    color: #a59d9d;
+}
+
+.messaging-bottom {
+    align-items: center;
+    width: 96%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#messageInput {
+    /*    margin-left:5%;*/
+    width: 90%;
+}
+
+.bottom-row-compose {
+    position: fixed;
+    bottom: 0px;
+    height: 58px;
+    width: 100%;
+}
+
+.rSuggestions {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.tagSuggestion {
+    border-bottom: 1px solid #404040;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*    height:50px;*/
+    padding: 12px;
+}
+
+    .tagSuggestion:hover {
+        cursor: pointer;
+        background-color: #141414;
+        /*the !important overrides inline style wich is added to highlight items w/arrow keys*/
+    }
+
+.personSuggestion {
+    border-bottom: 1px solid #404040;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    /*    height: 50px;*/
+}
+
+    .personSuggestion:hover {
+        cursor: pointer;
+        background-color: #141414;
+    }
+
+.hashtagText {
+    margin-left: 5%;
+}
+
+.suggestionImage {
+    margin-right: 10px;
+}
+
+.suggestionName {
+}
+
+.addedRecipientsList {
+    display: flex;
+    flex-direction: row;
+    font-size: 11pt;
+    align-items: center;
+    /*    margin-left:8px;*/
+}
+
+.addedRecipient {
+    padding-right: 7px;
+    padding-left: 7px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    color: lightgray;
+    white-space: nowrap;
+}
+
+#r-highlighted {
+    background-color: darkblue;
+    color: white;
+}
+
+.material-icons {
+    font-size: 40px;
+    color: #828284;
+}

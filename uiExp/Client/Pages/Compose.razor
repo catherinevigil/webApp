@@ -279,8 +279,14 @@
     }
 }
 
-<div class="top-row" style="position:fixed; top:0; height:@getTopHeight()"
-    <div class="recipient-container" style="position: fixed; top: 0; height: @getTopHeight()">
+<div class="message-tab"
+     <div class="message-tabText">
+         New Message
+     </div>
+</div>
+
+<div class="top-row" style="position:fixed; top:15%; height:@getTopHeight()"
+    <div class="recipient-container" style="position: fixed; height: @getTopHeight()">
         <div class="recipientText">
             To:
         </div>
@@ -317,7 +323,7 @@
 
 @if (focusedRecipient && !(recipientInput==""))
 {
-    <div class="rSuggestions" style="top:@getTopHeight();position:fixed">
+    <div class="rSuggestions" style="top: 200px;position:fixed">
 
         @foreach (var tag in displayTags)
         { 
@@ -382,20 +388,23 @@
             </body>
         }*@
 
-    <div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
-        <div class="messaging-bottom">
-            <div class="input-container" id="messageInput">
-                <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
-            </div>
-            @if (ShowSelector)
-            {
-                <span class="material-icons" style="font-size:50px" @onclick="DeployShareConvo">
-                    add_box
-                </span>
-            }
+<div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
+    <div class="messaging-bottom">
+        @if (ShowSelector)
+        {
+            <i class="material-icons" @onclick="DeployShareConvo">
+                camera_alt
+                add_box
+            </i>
+        }
+
+        <div class="input-container" id="messageInput">
+            <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
+            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
         </div>
+
     </div>
+</div>
 
     @code {
         private bool ShowSelector = true;
