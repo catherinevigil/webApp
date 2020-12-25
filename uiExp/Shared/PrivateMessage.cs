@@ -12,7 +12,10 @@ namespace uiExp.Shared
         private List<User> partners = new List<User>();
         private String image;
 
-        public PrivateMessage(string[] lines, string user)
+        public PrivateMessage()
+        {
+        }
+            public PrivateMessage(string[] lines, string user)
         {
             this.InboxOwner = Users.GetUserByName(user);
             conversation = new Conversation(lines);

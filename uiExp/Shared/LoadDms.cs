@@ -505,5 +505,24 @@ namespace uiExp.Shared
             InboxList.Add(new PrivateMessage(lines5, user));
             //InboxList.Add(new PrivateMessage(lines6, user));
         }
+        
+
+        public static PrivateMessage GetPm(List<User> users)
+        {
+            var pm = new PrivateMessage();
+            var same = true;
+            foreach (var convo in InboxList)
+            {
+                same = true;
+                foreach (var user in users)
+                {
+                    if (!(pm.GetPartners().Contains(user)))
+                        same = false;
+                }
+                if (same)
+                    return pm;
+            }
+            return null;
+        }
     }
 }
