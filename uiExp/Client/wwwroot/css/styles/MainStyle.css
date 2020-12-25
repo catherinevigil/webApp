@@ -274,9 +274,8 @@ section#content-container div.messages {
 
 
 .lines-content {
-    width: 88%;
-    height: 20vh;
-    margin-left: 6%;
+    width: 95%;
+    height: 25vh;
     max-width: 1100px;
     border: 0px;
     display: flex;
@@ -285,13 +284,21 @@ section#content-container div.messages {
     padding-top: 1.5rem;
     padding-bottom: .5rem;
     top: 5vh;
-    flex-wrap: nowrap;
     overflow-x: auto;
 }
 
+.comments {
+    top: 5vh;
+    width: 95%;
+    height: 20vh;
+    border: 0px;
+    display: flex;
+    overflow-x: auto;
+}
+
+
 section#content-container div.comments { /*paragraph settings*/
     display: flex;
-    flex-direction: column;
     width: 100%;
     justify-content: flex-start;
     flex: 0 0 auto;
@@ -308,9 +315,7 @@ section#content-container div.comments p { /*paragraph settings*/
     section#content-container div.comments p.comment-text {
         font-family: -apple-system, system-ui, "Helvetica Neue", "Work Sans", sans-serif;
         display: flex;
-        flex-direction: column;
         text-align: left;
-        flex: 0 0 auto;
     }
 
         section#content-container div.comments div.comment p.comment-text span {
