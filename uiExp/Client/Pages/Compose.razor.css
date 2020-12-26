@@ -1,12 +1,16 @@
-﻿.message-tab {
-    position: fixed;
-    top: 5%;
+﻿
+.blank-space {
+    flex: 0 1 5%;
+    width: 100%;
+}
+.message-tab {
     color: #2a2a2b;
     background-color: #2a2a2b;
-    border-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
     width: 100%;
-    height: 100px;
     display: flex;
+    flex: 0 1 75px;
 }
 
 .message-tabText {
@@ -21,7 +25,7 @@
 }
 
 #input-container-bottom {
-    bottom: 6px;
+    bottom: 5%;
     width: 80%;
     position: fixed;
 }
@@ -33,7 +37,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    top: 15%;
     border-bottom: 1px solid lightgray;
 }
 
@@ -64,16 +67,21 @@
 }
 
 .bottom-row-compose {
-    position: fixed;
+    /*    position: fixed;
     bottom: 0px;
-    height: 58px;
+    height: 58px;*/
+    flex: 0 1 auto;
     width: 100%;
+    bottom:100%;
 }
+
 
 .rSuggestions {
     display: flex;
     flex-direction: column;
-    width: 100%
+    width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
 }
 
 .tagSuggestion {
@@ -143,4 +151,40 @@
 .material-icons {
     font-size: 40px;
     color: #828284;
+}
+
+.top-row {
+    flex: 0 1 auto;
+     
+}
+
+.page-content-pm-compose {
+    width: 88%;
+    margin-left: 6%;
+    max-width: 1100px;
+    border: 0px;
+    /*    overflow: hidden;*/
+    overflow-y: scroll;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    /*    height: 87vh;*/
+/*    bottom: 58px;
+    position: fixed;*/
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+
+.compose-middle-container {
+    flex: 1 1 auto;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
 }

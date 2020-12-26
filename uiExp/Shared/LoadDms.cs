@@ -516,7 +516,7 @@ namespace uiExp.Shared
                 same = true;
                 foreach (var user in users)
                 {
-                    if (!(pm.GetPartners().Contains(user)))
+                    if (!(pm.GetConversants().Contains(user)))
                         same = false;
                 }
                 if (same)

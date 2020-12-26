@@ -38,10 +38,15 @@ namespace uiExp.Shared
             {
                 if (!(person.GetName() == user))
                 {
-                   this.partners.Add(person);
+                    this.partners.Add(person);
                 }
             }
         }
+        public List<User> GetConversants()
+        {
+            return this.conversation.GetConversants();
+        }
+
         public List<User> GetPartners()
         {
             return this.partners;
@@ -59,7 +64,7 @@ namespace uiExp.Shared
         {
             return conversation.Groups.Last().Texter.GetName();
         }
-
+        
         public String GetConvoName()
         {
             return this.name;

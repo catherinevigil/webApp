@@ -7,41 +7,40 @@
 @code{
 
 
-        public String getClass(Boolean left)
-        {
-            if (left)
-                return ("message message-left aos-init");
-            else
-                return ("message message-right aos-init");
+    public String getClass(Boolean left)
+    {
+        if (left)
+            return ("message message-left aos-init");
+        else
+            return ("message message-right aos-init");
 
-        }
+    }
 
-        public String getAlign(Boolean left)
-        {
-            if (left)
-                return "left";
-            else
-                return "right";
-        }
+    public String getAlign(Boolean left)
+    {
+        if (left)
+            return "left";
+        else
+            return "right";
+    }
 
-        public String getConversant(bool even, Conversation conversation)
-        {
+    public String getConversant(bool even, Conversation conversation)
+    {
+        if (even)
+            return conversation.Conversants.First().GetName();
+        else
+            return conversation.Conversants.Last().GetName();
+    }
 
-            if (even)
-                return conversation.Conversants.First().GetName();
-            else
-                return conversation.Conversants.Last().GetName();
-        }
+    //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
+    //Conversation convo => LoadDms.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
 
-        //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
-        //Conversation convo => LoadDms.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
-
-        public void ShowData()
-        {
-            Console.WriteLine("hello");
-            // var stringWhole = String.Concat(LoadConvos.ConvoList[getConversationNum()]);
-            // Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
-        }
+    public void ShowData()
+    {
+        Console.WriteLine("hello");
+        // var stringWhole = String.Concat(LoadConvos.ConvoList[getConversationNum()]);
+        // Console.WriteLine(stringWhole); //this will print a json of the feed object's properties/values to the console
+    }
 
     private int i = 0;
     private string TopFadeOffset = "-100";
@@ -59,6 +58,7 @@
     private List<Hashtag> displayTags = new List<Hashtag>();
     private List<User> displayUsers = new List<User>();
     private List<Reciever> recipientList = new List<Reciever>();
+    private List<Reciever> suggestionsList = new List<Reciever>();
     private PrivateMessage convo = new PrivateMessage();
 
     public List<Hashtag> GetTags()
@@ -279,9 +279,6 @@
         }
         if (!(recipientInput == ""))
         {
-            Console.WriteLine("last char input: " + recipientInput.Last());
-            Console.WriteLine("last char = empty: " + recipientInput.Last() == "");
-            Console.WriteLine("last char = /n" + recipientInput.Last() == "/n");
         }
 
     }
@@ -314,129 +311,130 @@
     }
 }
 
-<div class="message-tab"
-     <div class="message-tabText">
-         New Message
-     </div>
-</div>
-
-<div class="top-row" style="position:fixed; top:15%; height:@getTopHeight()"
-    <div class="recipient-container" style="position: fixed; height: @getTopHeight()">
-        <div class="recipientText">
-            To:
-        </div>
-        <div class="addedRecipientsList">
-            @if (recipientsInList)
-        {
-            for (int x = 0; x < recipientList.Count - 1; x++)
-            {
-
-                    <span class="addedRecipient">
-                        @recipientList[x].GetText(),
-                    </span>
-                }
-    if (recipientHighlighted)
-    {
-                    <span class="addedRecipient" id="r-highlighted">
-                        @recipientList[recipientList.Count - 1].GetText()
-                    </span>
-                }
-                else
-    {
-                    <span class="addedRecipient">
-                        @recipientList[recipientList.Count - 1].GetText()
-                    </span>
-                }
-            }
-        </div>
-
-        <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectKeyTop(e))" @onkeyup="() => topInput()" />
-          @*@onchange="@((String.IsNullOrEmpty(recipientInput) ? detectDel() : detectDel()))"*@
+<div class="page">
+    <div class="blank-space">
     </div>
-</div>
-@*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
-
-@if (focusedRecipient && !(recipientInput == ""))
-{
-    <div class="rSuggestions" style="top: 200px;position:fixed">
-
-        @foreach (var tag in displayTags)
-        {
-            <div class="tagSuggestion" @onclick="() => addTag(tag)" style="background-color:@((displayTags.IndexOf(tag) == selectedR && rSelected) ? "#141414" : "#000000")">
-                <span class="hashtagText">
-                    @GetTagString(tag)
-                </span>
-            </div>
-        }
-        @foreach (var person in displayUsers) //good to use foreach loops to avoid index errors with for loop
-        {
-            <div class="personSuggestion" @onclick="() => addPerson(person)" style="background-color:@((displayUsers.IndexOf(person)+displayTags.Count == selectedR) ? "#141414" : "#000000")">
-                <div class="suggestionImage">
-                    <img src="@person.GetImg()" class="profile-pic" />
-                </div>
-                <div class="suggestionName">
-                    <span>@person.GetName()</span>
-                </div>
-            </div>
-        }
+    <div class="message-tab"
+         <div class="message-tabText">
+             New Message
+         </div>
     </div>
 
-}
-
-@if (justAddedRecipient && (!(convo.GetConvo() == null)))
-{
-    <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-        <div class="page-content-pm">
-            <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-                <div class="messages">
-                    @foreach (var group in convo.GetConvo().Groups)
+    <div class="top-row">
+        <div class="recipient-container">
+            <div class="recipientText">
+                To:
+            </div>
+            <div class="addedRecipientsList">
+                @if (recipientsInList)
+                {
+                    for (int x = 0; x < recipientList.Count - 1; x++)
                     {
-                        <div class="message-group">
-                            <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                                <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
-                                    @getConversant(i % 2 == 0, convo.GetConvo())
-                                </span>
-                            </p>
-                            @foreach (var message in group.Messages)
-                            {
-                                <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
-                                        @if (@message.Text.Contains("img"))
-                                        {
-                                            @((MarkupString)@message.Text)
-                                        }
-                                        else
-                                        {
-                                            @message.Text
-                                        }
+
+                        <span class="addedRecipient">
+                            @recipientList[x].GetText(),
+                        </span>
+                    }
+                    if (recipientHighlighted)
+                    {
+                        <span class="addedRecipient" id="r-highlighted">
+                            @recipientList[recipientList.Count - 1].GetText()
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="addedRecipient">
+                            @recipientList[recipientList.Count - 1].GetText()
+                        </span>
+                    }
+                }
+            </div>
+
+            <textarea id="inputTextArea" @ref="recipientInputRef" @onfocus="focusTop" @onblur="blurTop" class="comment-reply-message-input" placeholder="@recipientInputPlaceholder" style="resize:none" @bind="recipientInput" @bind:event="oninput" rows="1" @onkeydown="@(e => detectKeyTop(e))" @onkeyup="() => topInput()" />
+              @*@onchange="@((String.IsNullOrEmpty(recipientInput) ? detectDel() : detectDel()))"*@
+        </div>
+    </div>
+    @*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
+    <div class="compose-middle-container">
+        @if (focusedRecipient && !(recipientInput == ""))
+        {
+            <div class="rSuggestions">
+
+                @foreach (var tag in displayTags)
+                {
+                    <div class="tagSuggestion" @onclick="() => addTag(tag)" style="background-color:@((displayTags.IndexOf(tag) == selectedR && rSelected) ? "#141414" : "#000000")">
+                        <span class="hashtagText">
+                            @GetTagString(tag)
+                        </span>
+                    </div>
+                }
+                @foreach (var person in displayUsers) //good to use foreach loops to avoid index errors with for loop
+                {
+                    <div class="personSuggestion" @onclick="() => addPerson(person)" style="background-color:@((displayUsers.IndexOf(person)+displayTags.Count == selectedR) ? "#141414" : "#000000")">
+                        <div class="suggestionImage">
+                            <img src="@person.GetImg()" class="profile-pic" />
+                        </div>
+                        <div class="suggestionName">
+                            <span>@person.GetName()</span>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        }
+        else if (justAddedRecipient && (!(convo.GetConvo() == null)))
+        {
+            <div class="page-content-pm-compose">
+                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                    <div class="messages">
+                        @foreach (var group in convo.GetConvo().Groups)
+                        {
+                            <div class="message-group">
+                                <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                    <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                        @getConversant(i % 2 == 0, convo.GetConvo())
                                     </span>
                                 </p>
-                            }
-                        </div>
-                        i++;
-                    }
+                                @foreach (var message in group.Messages)
+                                {
+                                    <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                            @if (@message.Text.Contains("img"))
+                                            {
+                                                @((MarkupString)@message.Text)
+                                            }
+                                            else
+                                            {
+                                                @message.Text
+                                            }
+                                        </span>
+                                    </p>
+                                }
+                            </div>
+                            i++;
+                        }
 
-                </div>
-            </section>
-        </div>
-    </body>
-}
-
-<div class="bottom-row-compose" style="position:fixed; bottom:0; height:@getBottomHeight()">
-    <div class="messaging-bottom">
-        @if (ShowSelector)
-        {
-            <i class="material-icons" @onclick="DeployShareConvo">
-                camera_alt
-                add_box
-            </i>
+                    </div>
+                </section>
+            </div>
         }
+    </div>
+    <div class="bottom-row-compose">
+        <div class="messaging-bottom">
+            @if (ShowSelector)
+            {
+                <i class="material-icons" @onclick="DeployShareConvo">
+                    camera_alt
+                    add_box
+                </i>
+            }
 
-        <div class="input-container" id="messageInput">
-            <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
-            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
+            <div class="input-container" id="messageInput">
+                <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
+            </div>
+
         </div>
-
     </div>
 </div>
 
