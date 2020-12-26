@@ -38,6 +38,10 @@
     {
         return NavigationManager.Uri.EndsWith("/request");
     }
+    private bool InProfile()
+    {
+        return NavigationManager.Uri.Contains("profile");
+    }
     private bool AtMylines()
     {
         return NavigationManager.Uri.EndsWith("/mylines");
@@ -93,10 +97,7 @@
         return false;
     }
 
-    }
 }
-
-
 
 @*example app
         <div class="page">
@@ -140,19 +141,26 @@
     </div>
     </div>
     }
-
+    else if (InProfile())
+    {
+    <div class="top-row px-4" id="left">
+        <span class="material-icons" @onclick="NavigateBack">
+            arrow_back_ios
+        </span>
+    </div>
+    }
     else if (AtMylines())
     {
     <div class="top-row px-4" id="left">
         <span class="material-icons" @onclick="NavigateBack">
             arrow_back_ios
         </span>
-    <div class="top-row px-4" id="right">
-        <span class="material-icons">
-            settings
-        </span>
+        <div class="top-row px-4" id="right">
+            <span class="material-icons">
+                settings
+            </span>
+        </div>
     </div>
-</div>
     }
 
     @Body
@@ -170,27 +178,27 @@
     }
     else if (NavigationManager.Uri.Contains("request"))
     {
-<div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
-    <div @ref=inputDiv class="input-container" id="input-container-bottom">
-        <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
-        <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
-    </div>
-</div>
+        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
+            <div @ref=inputDiv class="input-container" id="input-container-bottom">
+                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
+            </div>
+        </div>
     }
     else if (NavigationManager.Uri.Contains("convo"))
     {
-<div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
-    <div @ref=inputDiv class="input-container" id="input-container-bottom">
-        <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@CommentInputPlaceholder" style="resize:none" @bind="convoComment" rows="1" @oninput="Resize" />
-        <i class="fas fa-arrow-up icon sendButton" @onclick="@submitComment"></i>
-    </div>
-</div>
+        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
+            <div @ref=inputDiv class="input-container" id="input-container-bottom">
+                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@CommentInputPlaceholder" style="resize:none" @bind="convoComment" rows="1" @oninput="Resize" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitComment"></i>
+            </div>
+        </div>
     }
     else if (NavigationManager.Uri.Contains("Pm"))
     {
         <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
             <div @ref=inputDiv class="input-container" id="input-container-bottom">
-                <textarea id= "inputTextArea" placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                <textarea id="inputTextArea" placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
                 <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
             </div>
         </div>
