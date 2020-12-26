@@ -247,7 +247,7 @@ namespace uiExp.Shared
             "Is minimalist democracy a thing?";
 
         private static string title1 { get; } =
-            "Re. Shadi on minimalist democracy";
+            "Re. minimalist democracy";
 
         private static string title2 { get; } =
             "What is progress in philosophy?";
