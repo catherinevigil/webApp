@@ -78,6 +78,21 @@ namespace uiExp.Shared
         {
             return this.conversation;
         }
+        public bool HasSameUsers(List<User> users)// this code is fucked. 
+        {
+            var conversants = this.GetConversants();
+            foreach (var user in users)
+            {
+                if (!(conversants.Contains(user)))
+                    return false;
+            }
+            foreach (var conversant in conversants)
+            {
+                if (!(users.Contains(conversant)))
+                    return false;
+            }
+            return true;
+        }
     
     }
 }

@@ -7,7 +7,7 @@ namespace uiExp.Shared
     {
         private int DateOfBirth;
         private int PhoneNumber;
-        private String Name;
+        public String Name;
         private String ImageUrl;
         private String FirstName;
         private String Username;
