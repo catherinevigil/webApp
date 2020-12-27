@@ -1,6 +1,6 @@
 ﻿
 .blank-space {
-    flex: 0 1 5%;
+    flex: 0 0 5%;
     width: 100%;
 }
 .message-tab {
@@ -10,7 +10,7 @@
     border-top-left-radius: 20px;
     width: 100%;
     display: flex;
-    flex: 0 1 75px;
+    flex: 0 0 75px;
 }
 
 .message-tabText {
@@ -179,6 +179,7 @@
     flex: 1 1 auto;
     overflow: hidden;
     padding-bottom: 5px;
+    overflow-y:scroll;
 }
 
 .page {
