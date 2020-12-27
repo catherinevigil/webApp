@@ -76,7 +76,12 @@
 
     public void NavigateToConvo(int talk)
     {
-        NavigationManager.NavigateTo("/convo/" + talk);
+        NavigationManager.NavigateTo("/convo/1/" + talk);
+
+    }
+    public void NavigateToFollowingConvo(int talk)
+    {
+        NavigationManager.NavigateTo("/convo/2/" + talk);
 
     }
 
@@ -273,7 +278,7 @@ else
             {
                 var convo = x;
 
-                <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x == LoadFeedConvos.ConvoList.Count - 1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
+                <div class="messages" data-aos="slow-partial-fade" data-aos-duration="@animationDuration" data-aos-offset="@messagesOffset" @onclick="() => NavigateToFollowingConvo(convo)" data-aos-anchor=@getAnchor(x) data-aos-anchor-placement="@((x == LoadFeedConvos.ConvoList.Count - 1) ? "top-top" : "bottom-bottom")" data-aos-id="convo-block">
                     @*this will make it so last message is automatically faded(there's no element on the page for it to fade out with, so starts fading out. to fix, could have to div elements w/ if loop, or extra code for last convo, or use js *@
 
                     <div class="feed-header" data-aos="fade" data-aos-once="false" data-aos-duration="@animationDuration" data-aos-offset="@bottomHeaderHeight" data-aos-anchor-placement="bottom-bottom" data-aos-id="image-divider">
@@ -321,7 +326,7 @@ else
                         }
                     </div>
                     <div class="more-messages">
-                        <span @onclick="() => NavigateToConvo(convo)">@GetMoreMessagesString(LoadFollowingConvos.ConvoList[x])</span>
+                        <span @onclick="() => NavigateToFollowingConvo(convo)">@GetMoreMessagesString(LoadFollowingConvos.ConvoList[x])</span>
                     </div>
                 </div>
 
