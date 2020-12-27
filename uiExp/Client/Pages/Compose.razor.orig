@@ -1,4 +1,4 @@
-@page "/compose/"
+﻿@page "/compose/"
 @using uiExp.Shared
 @inject HttpClient Http
 @using System.Net.Http
@@ -344,6 +344,16 @@
     }
 }
 
+<<<<<<< HEAD
+<div class="page">
+    <div class="blank-space">
+    </div>
+    <div class="message-tab"
+         <div class="message-tabText">
+             New Message
+         </div>
+    </div>
+=======
 <div class="message-tab"
     <div class="message-tabBack">
         <i class="material-icons back" @onclick="NavigateToInbox">
@@ -354,6 +364,7 @@
          New Message
      </div>
 </div>
+>>>>>>> sahil's-second-branch
 
     <div class="top-row">
         <div class="recipient-container">
@@ -389,6 +400,7 @@
               @*@onchange="@((String.IsNullOrEmpty(recipientInput) ? detectDel() : detectDel()))"*@
         </div>
     </div>
+<<<<<<< HEAD
     @*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
 <div class="compose-middle-container">
     @if (focusedRecipient && !(recipientInput == ""))
@@ -401,6 +413,28 @@
                     <span class="hashtagText">
                         @GetTagString(tag)
                     </span>
+=======
+</div>
+@*<button @onclick="checkState" class="btn btn-primary" style="top: 200px; position: absolute;"></button>*@
+
+@if (focusedRecipient && !(recipientInput == ""))
+{
+    <div class="rSuggestions" style="top: 200px;position:fixed">
+
+        @foreach (var tag in displayTags)
+        {
+            <div class="tagSuggestion" @onclick="() => addTag(tag)" style="background-color:@((displayTags.IndexOf(tag) == selectedR && rSelected) ? "#141414" : "#000000")">
+                <span class="hashtagText">
+                    @GetTagString(tag)
+                </span>
+            </div>
+        }
+        @foreach (var person in displayUsers) //good to use foreach loops to avoid index errors with for loop
+        {
+            <div class="personSuggestion" @onclick="() => addPerson(person)" style="background-color:@((displayUsers.IndexOf(person)+displayTags.Count == selectedR) ? "#141414" : "#000000")">
+                <div class="suggestionImage">
+                    <img src="@person.GetImg()" class="profile-pic" />
+>>>>>>> sahil's-second-branch
                 </div>
             }
             @foreach (var person in displayUsers) //good to use foreach loops to avoid index errors with for loop
@@ -416,6 +450,7 @@
             }
         </div>
 
+<<<<<<< HEAD
     } 
     else if (justAddedRecipient && (!(convo == null)))
     {
@@ -440,7 +475,9 @@
                                         @((MarkupString)@message.Text)
                                     }
                                     else
+                                    {
                                         @message.Text
+                                    }
                                 </span>
                             </p>
                         }
@@ -462,6 +499,47 @@
                     add_box
                 </i>
             }
+=======
+@*@<!--this is code for displaying a conversation-->
+    @if (justAddedRecipient)
+    {
+        <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+            <div class="page-content-pm">
+                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                    <div class="messages">
+                        @foreach (var group in convo.Groups)
+                        {
+                            <div class="message-group">
+                                <p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                            @getConversant(i % 2 == 0, convo)
+                                        </span>
+                                    </p>
+                                @foreach (var message in group.Messages)
+                                {
+                                    <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                            @if (@message.Text.Contains("img"))
+                                            {
+                                                @((MarkupString)@message.Text)
+                                            }
+                                            else
+                                            {
+                                                @message.Text
+                                            }
+                                        </span>
+                                    </p>
+                                }
+                            </div>
+                            i++;
+                        }
+
+                    </div>
+                </section>
+            </div>
+        </body>
+    }*@
+>>>>>>> sahil's-second-branch
 
             <div class="input-container" id="messageInput">
                 <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />

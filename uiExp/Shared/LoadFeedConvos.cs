@@ -774,7 +774,7 @@ namespace uiExp.Shared
 
 
         private static string title0 { get; } =
-            "coffehouse vibe";
+            "coffeehouse vibe";
 
         private static string title1 { get; } =
             "Nietzsche x Wokeism";
@@ -786,7 +786,7 @@ namespace uiExp.Shared
             "culture of timidity";
 
         private static string title4 { get; } =
-            "time x quarintine";
+            "time x quarantine";
 
         private static string title5 { get; } =
             "Election predictions";

@@ -1,4 +1,4 @@
-﻿@page "/convo/{convoNum}"
+﻿@page "/convo/{type}/{convoNum}"
 @using uiExp.Shared
 @inject HttpClient Http
 @inject IJSRuntime JS
@@ -9,6 +9,8 @@
     [Parameter]
     public String convoNum { get; set; }
     //public int convoInt { get; set; }
+    [Parameter]
+    public String type { get; set; }
 
     protected override void OnInitialized()
     {
@@ -50,7 +52,7 @@
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
 
-    PublicConvo convo => LoadFeedConvos.ConvoList[getConversationNum()];
+    PublicConvo convo => type == "1" ? LoadFeedConvos.ConvoList[getConversationNum()] : LoadFollowingConvos.ConvoList[getConversationNum()];
     Conversation conversation => convo.GetConversation();//LoadConvos.linesList[1]
     Comments comments => LoadFeedConvos.ConvoList[getConversationNum()].GetComments();
 

@@ -1,0 +1,121 @@
+﻿@page "/settings/"
+@using uiExp.Shared
+@inject HttpClient Http
+@using System.Net.Http
+@layout EmptyLayout
+@inject NavigationManager NavigationManager
+
+
+@code {
+
+    private void NavigatetoMyLines()
+    {
+        NavigationManager.NavigateTo("/mylines");
+    }
+
+}
+
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Helvetica">
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav">
+                <span class="material-icons md-light right" @onclick="NavigatetoMyLines">
+                    clear
+                </span>
+                <h1>SETTINGS</h1>
+            </div>
+            <h2>Notifications</h2>
+            <div class="settings-block">
+                <li class="options">
+                    <label for="Frequency">Frequency</label>
+                    <select name="Frequency" id="Frequency">
+                        <option value="normal">Normal</option>
+                        <option value="off">Off</option>
+                    </select>
+                </li>
+                <li class="options">
+                    <label for="option">Notify Me with Recommended Lines</label>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </li>
+                <li class="options">
+                    <label for="option">Push Notifications</label>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </li>
+            </div>
+            <h2>Permissions</h2>
+            <div class="settings-block">
+                <li class="options">
+                    <label for="Frequency">Allow Direct Messages From</label>
+                    <select name="Frequency" id="Frequency">
+                        <option value="normal">Friends</option>
+                        <option value="off">Everyone</option>
+                        <option value="off">No One</option>
+                    </select>
+                </li>
+                <li class="options">
+                    <label for="option">Who Can View My Saved Threads?</label>
+                    <select name="Frequency" id="Frequency">
+                        <option value="normal">Friends</option>
+                        <option value="off">Everyone</option>
+                        <option value="off">Only Me</option>
+                    </select>
+                </li>
+                <li class="options">
+                    <label for="option">Allow Comments For</label>
+                    <select name="Frequency" id="Frequency">
+                        <option value="normal">Friends</option>
+                        <option value="off">Everyone</option>
+                        <option value="off">Only Me</option>
+                    </select>
+                </li>
+                <li class="options">
+                    Block User
+                    <span class="material-icons md-light">
+                        north_east
+                    </span>
+                </li>
+            </div>
+            <h2>General</h2>
+            <div class="settings-block">
+                <li class="options">
+                    What's New
+                    <span class="material-icons md-light">
+                        north_east
+                    </span>
+                </li>
+                <li class="options">
+                    Contact Us
+                    <span class="material-icons md-light">
+                        north_east
+                    </span>
+                </li>
+                <li class="options">
+                    Privacy Policy
+                    <span class="material-icons md-light">
+                        north_east
+                    </span>
+                </li>
+                <li class="options">
+                    Account Status
+                    <span class="material-icons md-light">
+                        north_east
+                    </span>
+                </li>
+            </div>
+            <div class="settings-block button">
+                <h3>Connect iMessage</h3>
+            </div>
+        </div>
+    </body>
