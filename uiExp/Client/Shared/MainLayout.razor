@@ -69,6 +69,10 @@
     {
         NavigationManager.NavigateTo("/compose");
     }
+    private void NavigatetoSettings()
+    {
+        NavigationManager.NavigateTo("/settings");
+    }
 
     public static int ConvoNum = 0;
 
@@ -156,7 +160,7 @@
             arrow_back_ios
         </span>
         <div class="top-row px-4" id="right">
-            <span class="material-icons">
+            <span class="material-icons" @onclick="NavigatetoSettings">
                 settings
             </span>
         </div>
