@@ -15,6 +15,18 @@ namespace uiExp.Shared
         public Conversation()
         {
         }
+        public Conversation (string message, List<User> recips)
+        {
+            
+            foreach (var person in recips)
+                this.Conversants.Add(person);
+
+            var sender = CurrentUser.cUser;
+            this.Conversants.Add(sender);
+            this.Groups.Add(new MessageGroup(sender));
+            var m = new Message(message);
+            this.Groups.Last().Messages.Add(m);
+        }
 
         public Conversation(String[] convo)
         {

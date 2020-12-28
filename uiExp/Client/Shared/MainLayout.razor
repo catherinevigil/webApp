@@ -124,7 +124,7 @@
 
     @if (!ShowBottomNav())
     {
-    <div class="top-row px-4" id="left">
+    <div class="top-row-inbox px-4" id="left">
         <span class="material-icons" @onclick="NavigateBack">
             arrow_back_ios
         </span>
@@ -132,7 +132,7 @@
         {
             <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
         }
-        <div class="top-row px-4" id="right">
+        <div class="top-row2 px-4" id="right">
         @if (InInbox())
         {
             <span class="material-icons">
@@ -142,7 +142,7 @@
                 create
             </span>
         }
-    </div>
+        </div>
     </div>
     }
     else if (InProfile())
@@ -198,15 +198,6 @@
             </div>
         </div>
     }
-    else if (NavigationManager.Uri.Contains("Pm"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
-            <div @ref=inputDiv class="input-container" id="input-container-bottom">
-                <textarea id="inputTextArea" placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
-            </div>
-        </div>
-    }
 </div>
 
 @*on input to bottom comment/reply input, will need to hide header. input box will grow and it will get ugly*@
@@ -214,14 +205,14 @@
 
 @code{
 
-    private string getBottomHeight()
-    {
-        if (MyHeight == 0)
-            return "58px";
-        else
-            return (MyHeight + 36).ToString() + "px";
-    }
-    ElementReference inputDiv;
+        private string getBottomHeight()
+        {
+            if (MyHeight == 0)
+                return "58px";
+            else
+                return (MyHeight + 36).ToString() + "px";
+        }
+        ElementReference inputDiv;
     public string MessageInputPlaceholder = "reply...";
     public string RequestInputPlaceholder = "what's on your mind?...";
     public string CommentInputPlaceholder = "comment...";
@@ -252,13 +243,11 @@
             inputTextArea.style.height=(inputTextArea.scrollHeight)+'px';
             return inputTextArea.scrollHeight;
         })()");*@
-    var result = await JSRuntime.InvokeAsync<object>("resizeText");
-    Double.TryParse(result.ToString(), out MyHeight);
-    Console.WriteLine("height: "+MyHeight);
+        var result = await JSRuntime.InvokeAsync<object>("resizeText");
+        Double.TryParse(result.ToString(), out MyHeight);
+        Console.WriteLine("height: " + MyHeight);
+    }
 }
-
 @*failed JS code, was just above return Line. problem is inputDiv is not found
 inputDiv.style.height=(inputTextArea.scrollHeight+10)+'px'*@
 
-
-}

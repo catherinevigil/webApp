@@ -66,6 +66,7 @@
 
     ElementReference recipientInputDiv;
 
+    private bool convoOngoing = false;
     private string recipientInput = "";
     private bool focusedRecipient = false;
     private List<Hashtag> displayTags = new List<Hashtag>();
@@ -194,6 +195,9 @@
         //Console.WriteLine("recip list, user names: ");
 
         convo = LoadDms.GetPm(peopleRecievers);
+        if (!(convo == null))
+            convoOngoing = true;
+
         Console.WriteLine("convo conversants: ");
 
         focus(recipientInputRef);
@@ -525,6 +529,22 @@
 
     public void sendMessage()
     {
+        if (convoOngoing)
+        {
+            Console.WriteLine("convo ongoing");
+            var convoNum = LoadDms.InboxList.IndexOf(convo);
+            var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
+            if (!(lastTexter == CurrentUser.cUser))
+                LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser));
 
+            LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(message));
+            NavigationManager.NavigateTo("Pm/" + convoNum);
+        }
+        else
+        {
+            Console.WriteLine("convo new");
+            LoadDms.InboxList.Add(new PrivateMessage(message, GetUsers(recipientList)));
+            NavigationManager.NavigateTo("Pm/" + (LoadDms.InboxList.Count-1).ToString());
+        }
     }
 }
