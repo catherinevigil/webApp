@@ -115,16 +115,16 @@
 }
 */
 
-.top-row-inbox{
+.top-row-inbox {
     display: flex;
     align-items: center;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     z-index: 1;
     flex-direction: row;
     justify-content: flex-start;
+    padding: 5px;
+    border-bottom: 1px solid darkgray;
 }
 
 .top-row2 {
@@ -137,4 +137,5 @@
     z-index: 1;
     flex-direction: row;
     justify-content: flex-end;
+    padding: 5px;
 }

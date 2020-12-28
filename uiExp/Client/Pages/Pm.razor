@@ -4,8 +4,8 @@
 @using System.Net.Http
 
 @code{
-    [Parameter]
-    public String pmNum { get; set; }
+        [Parameter]
+        public String pmNum { get; set; }
     //public int convoInt { get; set; }
 
     protected override void OnInitialized()
@@ -39,14 +39,6 @@
             return "right";
     }
 
-    public String getConversant(bool even, Conversation conversation)
-    {
-
-        if (even)
-            return conversation.Conversants.First().GetName();
-        else
-            return conversation.Conversants.Last().GetName();
-    }
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
     Conversation convo => LoadDms.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
@@ -64,88 +56,101 @@
     public String TopFadeOutAnchorP = "center-top";
     public String FadeInAnchorP = "center-bottom";
 
+    private void NavigateBack() { }
+
 }
 <!--this is code for displaying a conversation-->
-<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-    <div class="page-content-pm">
-        <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-            <div class="messages">
-                @foreach (var group in convo.Groups)
-                {
-                    <div class="message-group">
-                        @*@<p style="text-align:@getAlign(i % 2 == 0);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+<div class="page">
+    <div class="top-row-pm px-4" id="left">
+        <span class="material-icons" @onclick="NavigateBack">
+            arrow_back_ios
+        </span>
+    </div>
+
+    <div class="conversation">
+        <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+            <div class="page-content-pm">
+                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                    <div class="messages">
+                        @foreach (var group in convo.Groups)
+                        {
+                        <div class="message-group">
+                            @*@<p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                                 <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
-                                    @getConversant(i % 2 == 0, convo)
+                                    @group.Texter.GetName()
                                 </span>
                             </p>*@
-                        @foreach (var message in group.Messages)
-                        {
-                            <p class=@getClass(i % 2 == 0) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                                <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
-                                    @if (@message.Text.Contains("img"))
-                                    {
-                                        @((MarkupString)@message.Text)
-                                    }
-                                    else
-                                    {
-                                        @message.Text
-                                    }
-                                </span>
-                            </p>
+                            @foreach (var message in group.Messages)
+                            {
+                                <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                    <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                        @if (@message.Text.Contains("img"))
+                                        {
+                                            @((MarkupString)@message.Text)
+                                        }
+                                        else
+                                        {
+                                            @message.Text
+                                        }
+                                    </span>
+                                </p>
+                            }
+                        </div>
+                            i++;
                         }
-                    </div>
-                    i++;
-                }
 
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     </div>
-    <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
+    <div class="bottom-row px-4">
         <div @ref=inputDiv class="input-container" id="input-container-bottom">
-            <textarea id="inputTextArea" placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+            <textarea @ref=inputArea placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
             <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
         </div>
     </div>
-</body>
+</div>
 
-@code{
-    public string MessageInputPlaceholder = "reply...";
-    ElementReference inputDiv;
-    private String messageReply { get; set; }
+    @code{
+        public string MessageInputPlaceholder = "reply...";
+        ElementReference inputDiv;
+        ElementReference inputArea;
+        private String messageReply { get; set; }
 
-    private void sendReply()
-    {
-        Console.WriteLine("convo ongoing");
-        var convoNum = getConversationNum();
-        var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
-        if (!(lastTexter == CurrentUser.cUser))
-            LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser));
+        private void sendReply()
+        {
+            Console.WriteLine("convo ongoing");
+            var convoNum = getConversationNum();
+            var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
+            if (!(lastTexter == CurrentUser.cUser))
+                LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser));
 
-        LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
+            LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
 
-    }
+        }
 
 
-    private string getBottomHeight()
-    {
-        if (MyHeight == 0)
-            return "58px";
-        else
-            return (MyHeight + 36).ToString() + "px";
-    }
+        private string getBottomHeight()
+        {
+            if (MyHeight == 0)
+                return "58px";
+            else
+                return (MyHeight + 36).ToString() + "px";
+        }
 
-    [Inject] IJSRuntime JSRuntime { get; set; }
-    double MyHeight = 0;
-    async Task Resize()
-    {
-        @*var result = await JSRuntime.InvokeAsync<object>("eval", @"(function() {
-                inputTextArea.style.height='auto';
-                inputTextArea.style.height=(inputTextArea.scrollHeight)+'px';
-                return inputTextArea.scrollHeight;
-            })()");*@
-        var result = await JSRuntime.InvokeAsync<object>("resizeText");
+        [Inject] IJSRuntime JSRuntime { get; set; }
+        double MyHeight = 0;
+        async Task Resize()
+        {
+            @*var result = await JSRuntime.InvokeAsync<object>("eval", @"(function() {
+                    inputTextArea.style.height='auto';
+                    inputTextArea.style.height=(inputTextArea.scrollHeight)+'px';
+                    return inputTextArea.scrollHeight;
+                })()");*@
+        var result = await JSRuntime.InvokeAsync<object>("resizeText", inputArea);
         Double.TryParse(result.ToString(), out MyHeight);
         Console.WriteLine("height: " + MyHeight);
     }
 
-}
+    }
