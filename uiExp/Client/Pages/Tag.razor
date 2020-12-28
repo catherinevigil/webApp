@@ -128,19 +128,46 @@
     {
         selectorOne = true;
     }
+    public void SwitchOneBack()
+    {
+        selectorOne = false;
+    }
     public void SwitchTwo()
     {
         selectorTwo = true;
+    }
+    public void SwitchTwoBack()
+    {
+        selectorTwo = false;
     }
     public void SwitchThree()
     {
         selectorThree = true;
     }
+    public void SwitchThreeBack()
+    {
+        selectorThree = false;
+    }
     public void SwitchFour()
     {
         selectorFour = true;
     }
+    public void SwitchFourBack()
+    {
+        selectorFour = false;
+    }
 
+    public String GetOneBackground()
+    {
+        if (selectorOne)
+        {
+            return "white";
+        }
+        else
+        {
+            return "black";
+        }
+    }
     public String GetOneColor()
     {
         if (selectorOne)
@@ -150,6 +177,17 @@
         else
         {
             return "white";
+        }
+    }
+    public String GetTwoBackground()
+    {
+        if (selectorTwo)
+        {
+            return "white";
+        }
+        else
+        {
+            return "black";
         }
     }
     public String GetTwoColor()
@@ -163,6 +201,17 @@
             return "white";
         }
     }
+    public String GetThreeBackground()
+    {
+        if (selectorThree)
+        {
+            return "white";
+        }
+        else
+        {
+            return "black";
+        }
+    }
     public String GetThreeColor()
     {
         if (selectorThree)
@@ -172,6 +221,17 @@
         else
         {
             return "white";
+        }
+    }
+    public String GetFourBackground()
+    {
+        if (selectorFour)
+        {
+            return "white";
+        }
+        else
+        {
+            return "black";
         }
     }
     public String GetFourColor()
@@ -191,28 +251,44 @@
         {
             return "one";
         }
-        else
+        else if (selectorTwo)
         {
             return "two";
+        }
+        else if (selectorThree)
+        {
+            return "three";
+        }
+        else if (selectorFour)
+        {
+            return "four";
+        }
+        else
+        {
+            return "zero";
         }
     }
 }
 
+<div class="top-float-selector" id="@GetSelector()">
+</div>
+
 <div class="content">
     <div class="top-float">
-        <div class="feed-name-container" @onclick="SwitchOne" style="color: @GetOneColor()">
-            Existensial
+        <div class="feed-name-container" @onclick="(( selectorOne ? SwitchOneBack : SwitchOne))" style="background-color: @GetOneBackground(); color: @GetOneColor()">
+            existensial
         </div>
-        <div class="feed-name-container" @onclick="SwitchTwo" style="color: @GetTwoColor()">
-            Postmodern
+        <div class="feed-name-container" @onclick="(( selectorTwo ? SwitchTwoBack : SwitchTwo))" style="background-color: @GetTwoBackground(); color: @GetTwoColor()">
+            postmodern
         </div>
-        <div class="feed-name-container" @onclick="SwitchThree" style="color: @GetThreeColor()">
-            Aesthetic
+        <div class="feed-name-container" @onclick="(( selectorThree ? SwitchThreeBack : SwitchThree))" style="background-color: @GetThreeBackground(); color: @GetThreeColor()">
+            aesthetic
         </div>
-        <div class="feed-name-container" @onclick="SwitchFour" style="color: @GetFourColor()">
-            Revolutionary
+        <div class="feed-name-container" @onclick="(( selectorFour ? SwitchFourBack : SwitchFour))" style="background-color: @GetFourBackground(); color: @GetFourColor()">
+            revolutionary
         </div>
     </div>
+  
 </div>
 
 @*
@@ -220,6 +296,8 @@ LoadGenericExistensialConvos
 LoadGenericPostmodernConvos
 LoadGenericAestheticConvos
 LoadGenericRevolutionaryConvos*@
+
+
 
 
 <div style="height:25px">

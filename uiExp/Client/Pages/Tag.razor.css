@@ -1,19 +1,7 @@
-﻿.intersections {
-    position: fixed;
-    top: 10%;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 1000px;
-    align-items: center;
-    height: 3rem;
-    width: 90%;
-    background-color: black;
-    margin-bottom: 6px;
-}
-
+﻿
 .top-float {
     position: fixed;
-    top: 3em;
+    top: 5em;
     display: flex;
     justify-content: space-around;
     border-radius: 1000px;
@@ -22,34 +10,6 @@
     width: 90%;
     background-color: black;
     margin-bottom: 6px;
-}
-
-    .top-float:hover {
-        cursor: pointer;
-    }
-
-.top-float-selector {
-    top: 3em;
-    border-radius: 1000px;
-    height: 4rem;
-    width: 45%;
-    background-color: white;
-    color: black;
-    position: absolute;
-    z-index: 0;
-}
-
-
-#left.top-float-selector {
-    margin-left: 5%;
-    margin-right: 50%;
-    width: 45%;
-}
-
-#right.top-float-selector {
-    margin-left: 50%;
-    margin-right: 5%;
-    width: 45%;
 }
 
 .feed-name-container {
@@ -60,6 +20,53 @@
     justify-content: space-around;
     border-radius: 1000px;
     z-index: 1;
+    border: solid;
+    border-color: lightgray;
+    border-width: thin;
+}
+
+.top-float:hover {
+    cursor: pointer;
+}
+
+.top-float-selector {
+    top: 5em;
+    border-radius: 1000px;
+    height: 3rem;
+    width: 20%;
+    background-color: white;
+    color: black;
+    position: absolute;
+    z-index: 0;
+}
+
+#zero.top-float-selector {
+    background-color: lightgray;
+    height: 3rem;
+}
+
+#one.top-float-selector {
+    margin-left: 5%;
+    margin-right: 50%;
+    width: 20%;
+}
+
+#two.top-float-selector {
+    margin-left: 50%;
+    margin-right: 5%;
+    width: 20%;
+}
+
+#three.top-float-selector {
+    margin-left: 50%;
+    margin-right: 5%;
+    width: 20%;
+}
+
+#four.top-float-selector {
+    margin-left: 50%;
+    margin-right: 5%;
+    width: 20%;
 }
 
 .material-icons.right {
@@ -116,6 +123,7 @@ html {
 .page-content {
     width: 88%;
     margin-left: 6%;
+    margin-top: 15%;
     max-width: 1100px;
     border: 0px;
     padding: 0px;
