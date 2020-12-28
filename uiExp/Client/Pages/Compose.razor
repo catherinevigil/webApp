@@ -300,7 +300,7 @@
             {
                 if (recipientsInList && recipientInput == "")
                 {
-                    focusSlow(messageInputRef);
+                    focusSlow(MessageInputRef);
                 }
             }
         }
@@ -428,7 +428,7 @@
         {
             <div class="page-content-pm-compose">
                 <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-                    <div class="messages">
+                    <div class="messages" style="margin:0px">
 
                         @foreach (var group in convo.GetConvo().Groups)
                         {
@@ -462,28 +462,36 @@
     </div>
     <div class="bottom-row-compose">
         <div class="messaging-bottom">
-            @if (ShowSelector)
+            @if (ShowImports)
             {
-                <i class="material-icons" @onclick="DeployShareConvo">
-                    camera_alt
-                    add_box
-                </i>
-            }
+                <div class="icon-column">
+                    <div class="icon-div">
+                        <i class="material-icons" @onclick="DeployImportImage">
+                            camera_alt
+                        </i>
+                        <i class="material-icons" @onclick="DeployImportBubbles">
+                            add_box
+                        </i>
+                    </div>
+                </div>
+                    }
 
-            <div class="input-container" id="messageInput">
-                <textarea id="inputTextArea" @ref="messageInputRef" class="comment-reply-message-input" placeholder="@messageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(messageInputRef, true)" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
+                    <div class="input-container">
+                        <textarea @ref="MessageInputRef" class="comment-reply-message-input" placeholder="@MessageInputPlaceholder" style="resize:none" @bind="message" rows="1" @oninput="() => Resize(MessageInputRef, true)" />
+                        <i class="fas fa-arrow-up icon sendButton" @onclick="@sendMessage"></i>
+                    </div>
+                </div>
             </div>
-
-        </div>
-    </div>
 </div>
 
 @code {
-    private bool ShowSelector = true;
+    private bool ShowImports = true;
+    private void DeployImportBubbles() { }
+    private void DeployImportImage() { }
+
     private string message;
-    private string messageInputPlaceholder = "Send a line...";
-    ElementReference messageInputRef;
+    private string MessageInputPlaceholder = "Send a line...";
+    ElementReference MessageInputRef;
     ElementReference recipientInputRef;
 
     [Inject] IJSRuntime JSRuntime { get; set; }
@@ -546,5 +554,6 @@
             LoadDms.InboxList.Add(new PrivateMessage(message, GetUsers(recipientList)));
             NavigationManager.NavigateTo("Pm/" + (LoadDms.InboxList.Count-1).ToString());
         }
+        Resize(MessageInputRef,true);
     }
 }

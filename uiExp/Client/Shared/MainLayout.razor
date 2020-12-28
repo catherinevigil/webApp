@@ -180,15 +180,6 @@
             </div>
         </div>
     }
-    else if (NavigationManager.Uri.Contains("request"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
-            <div @ref=inputDiv class="input-container" id="input-container-bottom">
-                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
-            </div>
-        </div>
-    }
     else if (NavigationManager.Uri.Contains("convo"))
     {
         <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">

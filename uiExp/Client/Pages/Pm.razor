@@ -43,7 +43,8 @@
 
 
     //static String[] testlist = new String[] { "eli:", "helloworld", "kush:", "hello eli" };
-    Conversation convo => LoadDms.InboxList[getConversationNum()].GetConvo();//LoadConvos.linesList[1]
+    PrivateMessage privateM => LoadDms.InboxList[getConversationNum()];
+    Conversation convo => privateM.GetConvo();//LoadConvos.linesList[1]
 
     public void ShowData()
     {
@@ -70,13 +71,17 @@
         <span class="material-icons" @onclick="NavigateBack">
             arrow_back_ios
         </span>
+        @*<span class="pm-title">
+            @privateM.GetConvoName()
+        </span>*@
+        
     </div>
 
     <div class="conversation" @ref=pmConvo>
         <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
             <div class="page-content-pm">
                 <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-                    <div class="messages">
+                    <div class="messages" style="margin:0px">
                         @foreach (var group in convo.Groups)
                         {
                             <div class="message-group">
@@ -109,15 +114,44 @@
             </div>
         </div>
     </div>
-    <div class="bottom-row-pm px-4">
+    @*<div class="bottom-row-pm">
         <div class="input-container" id="input-container-bottom">
             <textarea @ref=inputArea placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
             <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+        </div>
+    </div>*@
+    <div class="bottom-row-pm">
+        <div class="messaging-bottom">
+            @if (ShowImports)
+            {
+                <div class="icon-column">
+                    <div class="icon-div">
+                        <i class="material-icons" @onclick="DeployImportImage">
+                            camera_alt
+                        </i>
+                        <i class="material-icons" @onclick="DeployImportBubbles">
+                            add_box
+                        </i>
+                    </div>
+                </div>
+                
+            }
+
+            <div class="input-container">
+                <textarea @ref="inputArea" class="comment-reply-message-input" placeholder="@MessageInputPlaceholder" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+            </div>
         </div>
     </div>
 </div>
 
 @code{
+    private bool ShowImports=true;
+    private void DeployImportBubbles() { }
+    private void DeployImportImage() { }
+
+
+
     [Inject] IJSRuntime JSRuntime { get; set; }
 
     public string MessageInputPlaceholder = "reply...";
@@ -135,9 +169,8 @@
         LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
         messageReply = "";
 
-        //normalHeight();
-        Resize(); //calling this returns box to its proper size...
-        //messageReply = "hello!";
+        normalHeight();
+        Resize(); //calling both functions in this returns box to its proper size after sending a message...
     }
 
 
@@ -163,5 +196,6 @@
         Double.TryParse(result.ToString(), out MyHeight);
         Console.WriteLine("height: " + MyHeight);
     }
+
 
 }
