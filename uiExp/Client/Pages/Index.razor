@@ -12,6 +12,7 @@
 @using System.Net.Http
 @inject NavigationManager NavigationManager
 @inject IJSRuntime js
+@layout MainLayout
 
 
 @code{
@@ -85,6 +86,11 @@
 
     }
 
+    public void NavigateToTags()
+    {
+        NavigationManager.NavigateTo("/tag");
+    }
+
     public int bottomHeaderHeight = 60;//aos offset for bottom
     public int animationDuration = 1000;
     public int messagesOffset = 80;//aos offset for top
@@ -151,10 +157,6 @@
     {
         //
     }
-    private void NavigateTag()
-    {
-        NavigationManager.NavigateTo("/tag");
-    }
 }
 
 
@@ -163,11 +165,7 @@
 
     </div>*@
 @*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">*@
-<div class="nav" style="height:5px">
-    <span class="material-icons right" @onclick="NavigateTag">
-        search
-    </span>
-</div>
+
 
 <div class="content">
     <div class="top-float">
@@ -186,8 +184,6 @@
 
 @if (!selectorRight)
 {
-    <div style="height:15px">
-    </div>
     <div class="lines-content">
         <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
             <div class="comments">
@@ -274,9 +270,6 @@
 }
 else
 {
-    @*
-        add code for 'following' feed here
-    *@
     <div style="height:15px">
     </div>
     <div class="page-content">

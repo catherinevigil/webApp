@@ -24,7 +24,7 @@
     }
     private bool AtHome()
     {
-        return NavigationManager.Uri.EndsWith("/index");
+        return NavigationManager.Uri.EndsWith("/");
     }
     private bool InConvo()
     {
@@ -46,10 +46,15 @@
     {
         return NavigationManager.Uri.EndsWith("/mylines");
     }
+    private bool AtTags()
+    {
+        return NavigationManager.Uri.Contains("tag");
+    }
     private bool InPm()
     {
         return NavigationManager.Uri.Contains("Pm");
     }
+
     private bool ShowBottomNav()
     {
         return !InConvo() && !InInbox() && !InRequest() && !InPm();
@@ -101,6 +106,11 @@
         return false;
     }
 
+    public void NavigateToTags()
+    {
+        NavigationManager.NavigateTo("/tag/{tagNum}");
+    }
+
 }
 
 @*example app
@@ -124,47 +134,65 @@
 
     @if (!ShowBottomNav())
     {
-    <div class="top-row px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
+        <div class="top-row px-4" id="left">
+            <span class="material-icons" @onclick="NavigateBack">
+                arrow_back_ios
+            </span>
+            @if (InConvo())
+            {
+                <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
+            }
+            <div class="top-row px-4" id="right">
+                @if (InInbox())
+                {
+                    <span class="material-icons">
+                        select_all
+                    </span>
+                    <span class="material-icons" @onclick="NavigateCompose">
+                        create
+                    </span>
+                }
+            </div>
+        </div>
+    }
+    else if (AtTags())
+    {
+        <div class="material-icons left" @onclick="NavigateBack">
             arrow_back_ios
-        </span>
-        @if (InConvo())
-        {
-            <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
-        }
-        <div class="top-row px-4" id="right">
-        @if (InInbox())
-        {
-            <span class="material-icons">
-                select_all
-            </span>
-            <span class="material-icons" @onclick="NavigateCompose">
-                create
-            </span>
-        }
-    </div>
-    </div>
+        </div>
+
+        <div class="search-bar">
+            <form class="example" action="action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+            </form>
+        </div>
     }
     else if (InProfile())
     {
-    <div class="top-row px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
-            arrow_back_ios
-        </span>
-    </div>
+        <div class="top-row px-4" id="left">
+            <span class="material-icons" @onclick="NavigateBack">
+                arrow_back_ios
+            </span>
+        </div>
+    }
+    else if (AtHome())
+    {
+        <div class="material-icons right" style="cursor: pointer; color: white" @onclick="NavigateToTags">
+            search
+        </div>
     }
     else if (AtMylines())
     {
-    <div class="top-row px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
-            arrow_back_ios
-        </span>
-        <div class="top-row px-4" id="right">
-            <span class="material-icons" @onclick="NavigatetoSettings">
-                settings
+        <div class="top-row px-4" id="left">
+            <span class="material-icons" @onclick="NavigateBack">
+                arrow_back_ios
             </span>
+            <div class="top-row px-4" id="right">
+                <span class="material-icons" @onclick="NavigatetoSettings">
+                    settings
+                </span>
+            </div>
         </div>
-    </div>
     }
 
     @Body

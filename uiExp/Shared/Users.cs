@@ -36,8 +36,16 @@ namespace uiExp.Shared
             List.Add(new User("Damir Marusic", "damir", "DM", "Senior Fellow at the Atlantic Council. Co-host of Wisdom of Crowds with Shadi Hamid.", "https://pbs.twimg.com/profile_images/1336246073569013760/9mx9b-b__400x400.jpg"));
             List.Add(new User("Bruno Macaes", "bruno", "BM", "I write books. “Dawn of Eurasia” (2018), “Belt and Road” (2019), “History Has Begun” (2020), “Geopolitics for the End Time” (2021), “The Search for Greater India” (2022)", "https://pbs.twimg.com/profile_images/1293369494568685575/Bg2A_HZq_400x400.jpg"));
             List.Add(new User("Agnes Callard", "agnes", "AC", "Philosopher, UChicago. Socrates fan account.", "https://humanities-web.s3.us-east-2.amazonaws.com/philosophy/prod/styles/square_image_large/s3/2018-07/Callard.jpg?itok=4SpduN0b"));
-            List.Add(new User("James Baldwin", "baldwin", "JBB", "The one thing that all Americans have in common is that they have no other identity apart from the identity which is being achieved on this continent.", "https://pbs.twimg.com/profile_images/1287997972991508482/JDAAkRLF_400x400.jpg"));
+            List.Add(new User("James Baldwin", "baldwin", "JB", "The one thing that all Americans have in common is that they have no other identity apart from the identity which is being achieved on this continent.", "https://pbs.twimg.com/profile_images/1287997972991508482/JDAAkRLF_400x400.jpg"));
             List.Add(new User("WJ Weatherby", "weatherby", "WJ", "W. J. Weatherby, journalist, died Poughkeepsie NY 5 August, aged 62. A correspondent for the Guardian since 1952, he also wrote for Newsweek, the New York Times and the Washington Post.", "https://pbs.twimg.com/profile_images/1175141826870861825/K2qKoGla_400x400.png"));
+            List.Add(new User("Albert Camus", "camus", "AC","My Wikipedia page labels me a 'Singer-songwriter'. That is absurd.", "https://pbs.twimg.com/profile_images/1247892395397500932/yy0aCdXK_400x400.jpg"));
+            List.Add(new User("Jean-Paul Sartre", "sartre,", "JPS", "To choose is to effect the upsurge along with my engagement of a certain finite extension of concrete and cont.inuous duration, which is precisely that which separates me from the realization of my original possibles.", "https://pbs.twimg.com/profile_images/1245890312708464641/2J-Yi0lU_400x400.jpg"));
+            List.Add(new User("Martin Heidegger", "heidegger", "MH", "Busy waiting for a God to arrive. As are we all.", "https://pbs.twimg.com/profile_images/1200536734766780416/3WVkLy9z_400x400.jpg"));
+            List.Add(new User("Michel Foucault", "foucault", "MF", "People love to misinterpet me. My fans don't know I'm a neliberal. Hehe.", "https://pbs.twimg.com/profile_images/748043752703406080/VSejBGEs_400x400.jpg"));
+            List.Add(new User("Camille Paglia","paglia", "CP", "Woman is the dominant sex. Men have to do all sorts of stuff to prove that they are worthy of woman's attention.", "https://pbs.twimg.com/profile_images/909913605910310912/3kzdwzlS_400x400.jpg"));
+            List.Add(new User("Andy Warhol", "warhol", "AW", "I'm a fake. You're a fake. Mimesis.", "https://pbs.twimg.com/profile_images/951595036470255616/FA3cygc9_400x400.jpg"));
+            List.Add(new User("Adrienne Rich", "rich", "AR", "", "https://pbs.twimg.com/profile_images/915718501087825921/WJ5Afloc_400x400.jpg"));
+            List.Add(new User("Angela Davis", "davis", "AD", "", "https://info.umkc.edu/womenc/wp-content/uploads/2018/02/z.jpg"));
         }
    
 

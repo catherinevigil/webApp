@@ -144,4 +144,159 @@ namespace uiExp.Shared
             ConvoList.Add(new PublicConvo(lines1, title1, poster1, feed1, LoadComments.CommentsList[1], replies1));
         }
     }
+
+
+    public class LoadGenericExistensialConvos
+    {
+        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
+
+        private static string[] lines0 { get; } =
+        {
+                
+            };
+
+        private static string[] lines1 { get; } =
+        {
+                
+            };
+
+        private static string[] feed0 { get; } = {
+            "Albert Camus:",
+            "Mate.",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Jean-Paul Sartre:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
+
+        private static string title0 { get; } =
+            "coffehous vibe, maybe?";
+
+        private static string poster0 { get; } =
+            "Albert Camus";
+
+        private static int[] replies0 { get; } = {
+
+        };
+
+        //string[] lines, string title, string poster, string[] preview
+
+        static LoadGenericExistensialConvos()
+        {
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+        }
+    }
+
+
+
+
+    public class LoadGenericPostmodernConvos
+    {
+        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
+
+        private static string[] lines0 { get; } =
+        {
+                
+            };
+
+        private static string[] feed0 { get; } = {
+            "Michel Foucault:",
+            "I want to continue",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Martin Heidegger:",
+            "There is no being or time", };
+
+        private static string title0 { get; } =
+            "Language mate. Chomsky debate. ";
+
+        private static string poster0 { get; } =
+            "Michel Foucault";
+
+
+        private static int[] replies0 { get; } = {
+
+        };
+
+        //string[] lines, string title, string poster, string[] preview
+
+        static LoadGenericPostmodernConvos()
+        {
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+        }
+    }
+
+
+
+
+    public class LoadGenericAestheticConvos
+    {
+        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
+
+        private static string[] lines0 { get; } =
+        {
+                
+            };
+
+        private static string[] feed0 { get; } = {
+            "Camille Paglia:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Andy Warhol:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
+
+        private static string title0 { get; } =
+            "Why has architecture become so shit?";
+
+
+        private static string poster0 { get; } =
+            "Camille Paglia";
+
+        private static int[] replies0 { get; } = {
+
+        };
+
+        //string[] lines, string title, string poster, string[] preview
+
+        static LoadGenericAestheticConvos()
+        {
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+        }
+    }
+
+
+    public class LoadGenericRevolutionaryConvos
+    {
+        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
+
+        private static string[] lines0 { get; } =
+        {
+                
+            };
+
+        private static string[] feed0 { get; } = {
+            "Adrienne Rich:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Angela Davis:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
+
+        private static string title0 { get; } =
+            "What is black radicalism?";
+
+        private static string poster0 { get; } =
+            "Adrienne Rich";
+
+        private static int[] replies0 { get; } = {
+
+        };
+
+        //string[] lines, string title, string poster, string[] preview
+
+        static LoadGenericRevolutionaryConvos()
+        {
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+        }
+    }
 }

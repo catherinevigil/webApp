@@ -1,4 +1,4 @@
-﻿@page "/tag/"
+﻿@page "/tag/{tagNum}"
 @using uiExp.Shared
 @using System;
 @using System.Collections.Generic;
@@ -7,6 +7,7 @@
 @inject HttpClient Http
 @using System.Net.Http
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @code {
     private void NavigateHomeFeedComponent() { NavigationManager.NavigateTo("/"); }
@@ -110,59 +111,118 @@
     {
         PhilosophyFeed,
         ExistensialFeed,
-        DemocratizedFeed,
+        PostmodernFeed,
         AestheticFeed,
         RevolutionaryFeed
     }
 
     FeedType CurrentFeed = FeedType.PhilosophyFeed;
-    public String Selector = "one";
+    public String Selector = "philosophy";
+
+    public bool selectorOne = false;
+    public bool selectorTwo = false;
+    public bool selectorThree = false;
+    public bool selectorFour = false;
 
     public void SwitchOne()
     {
-        Selector = "one";
+        selectorOne = true;
     }
     public void SwitchTwo()
     {
-        Selector = "two";
+        selectorTwo = true;
     }
     public void SwitchThree()
     {
-        Selector = "three";
+        selectorThree = true;
     }
     public void SwitchFour()
     {
-        Selector = "three";
+        selectorFour = true;
+    }
+
+    public String GetOneColor()
+    {
+        if (selectorOne)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
+    }
+    public String GetTwoColor()
+    {
+        if (selectorTwo)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
+    }
+    public String GetThreeColor()
+    {
+        if (selectorThree)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
+    }
+    public String GetFourColor()
+    {
+        if (selectorFour)
+        {
+            return "black";
+        }
+        else
+        {
+            return "white";
+        }
+    }
+    public String GetSelector()
+    {
+        if (selectorOne)
+        {
+            return "one";
+        }
+        else
+        {
+            return "two";
+        }
     }
 }
 
-
-
-<div class="search">
-    <div class="search bar">
-        @* fill in search bar code here *@
-    </div>
-</div>
-
 <div class="content">
-    <div class="intersections">
-        <div class="feed-name-container" @onclick="SwitchOne">
+    <div class="top-float">
+        <div class="feed-name-container" @onclick="SwitchOne" style="color: @GetOneColor()">
             Existensial
         </div>
-        <div class="feed-name-container" @onclick="SwitchTwo">
-            Democratized
+        <div class="feed-name-container" @onclick="SwitchTwo" style="color: @GetTwoColor()">
+            Postmodern
         </div>
-        <div class="feed-name-container" @onclick="SwitchThree">
+        <div class="feed-name-container" @onclick="SwitchThree" style="color: @GetThreeColor()">
             Aesthetic
         </div>
-        <div class="feed-name-container" @onclick="SwitchFour">
+        <div class="feed-name-container" @onclick="SwitchFour" style="color: @GetFourColor()">
             Revolutionary
         </div>
     </div>
 </div>
 
+@*
+LoadGenericExistensialConvos
+LoadGenericPostmodernConvos
+LoadGenericAestheticConvos
+LoadGenericRevolutionaryConvos*@
 
-<div style="height:15px">
+
+<div style="height:25px">
 </div>
 <div class="page-content">
     <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
@@ -232,5 +292,6 @@
         </div>
     </section>
 </div>
+
 
 
