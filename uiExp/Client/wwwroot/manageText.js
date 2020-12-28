@@ -11,6 +11,28 @@ function resizeText(docElement) {
 
 }
 
+function resizeTextPm(docElement,convoElement) {
+    //const inputTextArea = document.getElementById("inputTextArea");
+    //inputTextArea.style.height = 'auto';
+    //inputTextArea.style.height = (inputTextArea.scrollHeight) + 'px';
+    //return inputTextArea.scrollHeight;
+    convoElement.scrollTop = convoElement.scrollHeight;
+    docElement.style.height = 'auto';
+    docElement.style.height = (docElement.scrollHeight) + 'px';
+    return docElement.scrollHeight;
+
+}
+
+function resetTextPm(docElement, convoElement) {
+    //docElement.style.height = 'auto';
+    console.log("input element value: " + docElement.value)//this will show linebreaks in console, variable bound to input does not include linebreaks 
+    docElement.value = "";
+    docElement.style.height = 58;
+    //docElement.value = "hello!";
+    //console.log("input element value post reset: " + docElement.value)
+    return docElement.scrollHeight;
+
+}
 
 function focused(docElement) {
     //check if doc element is focused

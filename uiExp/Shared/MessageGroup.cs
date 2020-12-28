@@ -13,6 +13,12 @@ namespace uiExp.Shared
         {
             this.Texter = texter;
         }
+
+        public MessageGroup(User texter, bool left)
+        {
+            this.Texter = texter;
+            this.Left = left;
+        }
         public User GetTexter()
         {
             return this.Texter;

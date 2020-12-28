@@ -365,9 +365,6 @@ section#content-container div.comments div.comment {
     overflow-y: scroll;
     padding-top: 1.5rem;
     padding-bottom: 1rem;
-    height: 87vh;
-    bottom: 8vh;
-    position:fixed;
     display:flex;
     flex-direction:column-reverse;
 }

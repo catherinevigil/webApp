@@ -56,11 +56,11 @@ namespace uiExp.Shared
 
                     if (messageGroup.GetTexter() == this.Poster)
                     {
-                        messageGroup.SetLeft();
+                        messageGroup.SetRight();
                     }
                     else
                     {
-                        messageGroup.SetRight();
+                        messageGroup.SetLeft();
                     }
                 }
                 

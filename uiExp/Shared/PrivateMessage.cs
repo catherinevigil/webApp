@@ -19,6 +19,7 @@ namespace uiExp.Shared
         {
             this.InboxOwner = CurrentUser.cUser;
             conversation = new Conversation(message, recipients);
+            this.conversation.Groups = SetMessageSides(this.conversation.Groups);
 
             if (this.partners.Count > 1)
             {
@@ -36,6 +37,7 @@ namespace uiExp.Shared
         {
             this.InboxOwner = Users.GetUserByName(user);
             conversation = new Conversation(lines);
+            this.conversation.Groups = SetMessageSides(this.conversation.Groups); 
             MakePartners(user);
             if (this.partners.Count > 1)
             {
@@ -47,6 +49,27 @@ namespace uiExp.Shared
                 this.image = this.partners[0].GetImg();
                 this.name = partners[0].GetName();
             }
+        }
+
+
+        public List<MessageGroup> SetMessageSides(List<MessageGroup> groups)
+        {
+            {
+                foreach (var messageGroup in groups)
+                {
+                    if (messageGroup.GetTexter() == this.InboxOwner)
+                    {
+                        messageGroup.SetRight();
+                    }
+                    else
+                    {
+                        messageGroup.SetLeft();
+                    }
+                }
+
+            }
+            return groups;
+
         }
 
         public void MakePartners(string user)
