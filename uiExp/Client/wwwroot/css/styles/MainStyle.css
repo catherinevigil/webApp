@@ -98,6 +98,10 @@ html {
 /*    margin-top:10px;*/
 }
 
+.material-icons.right {
+    cursor: pointer;
+    color: white;
+}
 
 .icon {
     color: lightgray;
@@ -531,4 +535,27 @@ section#content-container div.comments div.comment {
 #r-highlighted{
 	background-color:darkblue;
     color:white;
+}
+
+
+/* specific to tag pages*/
+
+.intersections {
+    position: fixed;
+    top: 10%;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1000px;
+    align-items: center;
+    height: 3rem;
+    width: 90%;
+    background-color: black;
+    margin-bottom: 6px;
+}
+
+.material-icons.right {
+    color: white;
+    font-size: 20px;
+    margin-left: 90%;
+    margin-top: 1em;
 }

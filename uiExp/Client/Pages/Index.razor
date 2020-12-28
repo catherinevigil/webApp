@@ -151,6 +151,10 @@
     {
         //
     }
+    private void NavigateTag()
+    {
+        NavigationManager.NavigateTo("/tag");
+    }
 }
 
 
@@ -159,6 +163,12 @@
 
     </div>*@
 @*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">*@
+<div class="nav" style="height:5px">
+    <span class="material-icons right" @onclick="NavigateTag">
+        search
+    </span>
+</div>
+
 <div class="content">
     <div class="top-float">
         @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
