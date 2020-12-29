@@ -15,12 +15,14 @@
     {
         //the param will be set now
         pmNum = pmNum ?? "2";
-
+        var messageNum = 0;
         foreach (var group in convo.Groups)
         {
             foreach (var message in group.Messages)
             {
+                message.selectionManager.SetNum(messageNum);
                 messageList.Add(message);
+                messageNum++;
             }
         }
 
@@ -87,45 +89,114 @@
                 }
 
                 @code{
-                private bool compressed = false;
+                    private bool compressed = false;
 
-                private string GetPrompt()
-                {
-                    //return firstSelected ? "choose the first message of selection" : "choose the last message of selection";
-                    return "choose the first and last message of selection";
-                }
-                private string getClassM(Boolean left)
-                {
-                    return left ? getLeftClass() : "message message-right aos-init";
-
-                }
-                private string getLeftClass()
-                {
-                    return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
-                }
-                private string GetSelectorClass()
-                {
-                    return compressed ? "selector-div showV" : "selector-div hideV";
-                }
-                private void boxInput(Message m, object e)
-                {
-                    var justSelected = (bool)e;
-
-                    // Console.WriteLine(justSelected);
-                    Console.WriteLine(messageList.IndexOf(m));
-                    if (justSelected)
+                    private string GetPrompt()
                     {
-                        numChecked = numChecked + 1;
+                        //return firstSelected ? "choose the first message of selection" : "choose the last message of selection";
+                        return "choose the first and last message of selection";
                     }
-                    else
+                    private string getClassM(Boolean left)
                     {
-                        numChecked = numChecked - 1;
+                        return left ? getLeftClass() : "message message-right aos-init";
+
                     }
-                }
-                private int numChecked;
-                private Message firstM = new Message();
-                private Message lastM = new Message();
-                private int messageCounter = 0;
+                    private string getLeftClass()
+                    {
+                        return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
+                    }
+                    private string GetSelectorClass()
+                    {
+                        return compressed ? "selector-div showV" : "selector-div hideV";
+                    }
+                    private async Task boxInput(Message m, object e)
+                    {
+                        var justSelected = (bool)e;
+                        var numSelected = m.selectionManager.GetNum();
+
+                        if (justSelected)
+                        {
+                            numChecked = numChecked + 1;
+                            if (numChecked == 1) {
+                                firstM = numSelected;
+                                lastM = numSelected;
+                            }
+                            else if (numChecked == 2)
+                            {
+                                if (numSelected < firstM)
+                                    firstM = numSelected;
+                                else if (numSelected > lastM)
+                                    lastM = numSelected;
+                            }
+                            else if (numChecked == 3)
+                            {
+                                int toUncheck = -1;
+                                if (numSelected < firstM)
+                                {
+                                    toUncheck = firstM;
+                                    firstM = numSelected;
+                                }
+                                else if (numSelected > lastM)
+                                {
+                                    toUncheck = lastM;
+                                    lastM = numSelected;
+                                }
+                                else if (firstM<numSelected && numSelected < lastM)
+                                {
+                                    int toFirst = numSelected - firstM;
+                                    int toLast = lastM - numSelected;
+                                    if (toFirst < toLast)
+                                    {
+                                        toUncheck = firstM;
+                                        firstM = numSelected;
+                                    }
+                                    else if (toLast < toFirst)
+                                    {
+                                        toUncheck = lastM;
+                                        lastM = numSelected;
+                                    }
+                                    else if (toLast == toFirst)
+                                    {
+                                        toUncheck = lastM;
+                                        lastM = numSelected;
+                                    }
+                                }
+                                if (!(toUncheck == -1))
+                                {
+                                    messageList[toUncheck].selectionManager.UnSelect(); //this is the only use of the bound variable... just didn't want to use javascript to uncheck box. 
+                                    numChecked = 2;
+                                }
+                                else
+                                    Console.WriteLine("value of to uncheck was not changed....");
+                            }
+                        }
+                        else
+                        {
+                            numChecked = numChecked - 1;
+                            if (numSelected == firstM)
+                            {
+                                firstM = lastM;
+                            }
+                            else if (numSelected == lastM)
+                            {
+                                lastM = firstM;
+                            }
+                            else
+                            {
+                                Console.WriteLine("what'????? the checkbox unchecked was neither first nor last");
+                            }
+                        }
+                        Console.WriteLine("first m: " + firstM + " last m: " + lastM + " numChecked: "+numChecked);
+                        await Task.Delay(1);//need to wait for binding to take effection, only after this delay is m.selectionManager.Selected as it should be
+                        Console.WriteLine("selection manager selected, after wait" + m.selectionManager.Selected);
+                    }
+
+                    //private List<int> selectedList = new List<int>();
+                    private int numChecked;
+                    private int firstM;
+                    private int lastM;
+                    private int messageCounter = 0;
+
                 }
 
                 <div class="conversation" @ref=pmConvo>
@@ -135,17 +206,37 @@
                                 <div class="messages" style="margin:0px">
                                     @foreach (var group in convo.Groups)
                                     {
-                                        <div class="message-group">
+                                        <div class=@getGroupClass(group)>
                                             @*@<p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
                                                     <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
                                                         @group.Texter.GetName()
                                                     </span>
                                                 </p>*@
+                                            @code{
+                                                private bool mNumSelected(int mNum)
+                                                {
+                                                    return (firstM <= mNum && mNum <= lastM);
+                                                }
+                                                public string getGroupClass(MessageGroup group)
+                                                {
+                                                    return mNumSelected(group.Messages.Last().selectionManager.GetNum()) ? "message-group selectedGroup" : "message-group";
+                                                }
+                                                public string getLeftDivClass(int mNum)
+                                                {
+                                                    return mNumSelected(mNum) ? "message-div-left selected" : "message-div-left normal-m-div";
+                                                }
+                                                public string getRightDivClass(int mNum)
+                                                {
+                                                    return mNumSelected(mNum) ? "message-div-right selected" : "message-div-right normal-m-div";
+                                                }
+
+                                                }
                                             @foreach (var message in group.Messages)
                                             {
-                                                <div class="@(( group.Left) ? "message-div-left" : "message-div-right")">
+                                                <div class="@(( group.Left) ? getLeftDivClass(message.selectionManager.GetNum()) : getRightDivClass(message.selectionManager.GetNum()))">
                                                     <div class=@GetSelectorClass()>
-                                                        <input type="checkbox" @oninput="(e) => boxInput(message,e.Value)">
+                                                        <input type="checkbox" @bind="message.selectionManager.Selected" @oninput="(e) => boxInput(message,e.Value)">
+                                                        @*this failed for some reason... bind="@message.selectionManager.Selected"*@
                                                     </div>
                                                     <p class=@getClassM(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
 

@@ -146,6 +146,10 @@ section#content-container div.messages p.message-left {
     justify-content: space-between;
 }
 
+.normal-m-div {
+    background-color: black;
+}
+
 .instructions {
     display: flex;
     align-items: center;
@@ -160,4 +164,12 @@ section#content-container div.messages p.message-left {
 
 .prompt-text{
     color:white;
+}
+.selected {
+    background-color: darkslateblue;
+}
+.selectedGroup {
+    background-color: darkslateblue;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px;
 }

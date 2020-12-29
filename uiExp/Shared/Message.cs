@@ -7,6 +7,7 @@ namespace uiExp.Shared
     public class Message
     {
         public String Text { get; }
+        public SelectionManager selectionManager = new SelectionManager();
 
         public enum type
         {
