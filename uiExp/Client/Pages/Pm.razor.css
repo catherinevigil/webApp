@@ -33,9 +33,8 @@
 }
 
 .page-content-pm {
-    width: 88%;
-    margin-left: 6%;
     max-width: 1100px;
+    margin-right: 4vw;
     border: 0px;
     overflow: hidden;
     overflow-y: scroll;
@@ -102,4 +101,40 @@
 .pm-title{
     color:white;
     margin-left:25%;
+}
+/*these will overrule mainStyles style....*/
+section#content-container div.messages p.message-right {
+    color: #fff;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    max-width:none;
+}
+
+section#content-container div.messages p.message-left {
+    color: #fff;
+    max-width: none;
+}
+
+.left-normal {
+    margin-right: 18vw;
+}
+.left-compressed {
+    margin-right: 11vw;
+}
+
+.right-normal {
+    margin-left: 18vw !important;
+    ;
+}
+
+.right-compressed {
+    margin-left: 11vw !important;
+}
+
+.page-normal{
+    margin-left:4vw;
+}
+
+.page-compressed{
+    margin-left:11vw;
 }

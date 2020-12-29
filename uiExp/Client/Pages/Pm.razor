@@ -23,16 +23,6 @@
 
     }
 
-
-    public String getClass(Boolean left)
-    {
-        if (left)
-            return ("message message-left aos-init");
-        else
-            return ("message message-right aos-init");
-
-    }
-
     public String getAlign(Boolean left)
     {
         if (left)
@@ -71,15 +61,40 @@
         <span class="material-icons" @onclick="NavigateBack">
             arrow_back_ios
         </span>
-        @*<span class="pm-title">
+        <span class="pm-title">
             @privateM.GetConvoName()
-        </span>*@
-        
+        </span>
+        <span class="material-icons" @onclick="() => compressed = (!compressed)">
+            select_all
+        </span>
     </div>
+
+    @code{
+        private bool compressed = false;
+
+        private string getClassM(Boolean left)
+        {
+            return left ? getLeftClass() : getRightClass();
+
+        }
+        private string getClassP()
+        {
+            return compressed ? "page-content-pm page-compressed" : "page-content-pm page-normal";
+        }
+
+        private string getLeftClass()
+        {
+            return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
+        }
+        private string getRightClass()
+        {
+            return compressed ? "message message-right aos-init right-compressed" : "message message-right aos-init right-normal";
+        }
+    }
 
     <div class="conversation" @ref=pmConvo>
         <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-            <div class="page-content-pm">
+            <div class=@getClassP()>
                 <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
                     <div class="messages" style="margin:0px">
                         @foreach (var group in convo.Groups)
@@ -92,7 +107,7 @@
                                     </p>*@
                                 @foreach (var message in group.Messages)
                                 {
-                                    <p class=@getClass(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                    <p class=@getClassM(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
                                         <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
                                             @if (@message.Text.Contains("img"))
                                             {
