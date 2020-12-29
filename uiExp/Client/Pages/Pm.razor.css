@@ -18,7 +18,7 @@
     width: 100%;
     z-index: 1;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 5px;
     border-bottom: 1px solid darkgray;
     flex: 0 1 5%;
@@ -35,6 +35,7 @@
 .page-content-pm {
     max-width: 1100px;
     margin-right: 4vw;
+    margin-left: 4vw;
     border: 0px;
     overflow: hidden;
     overflow-y: scroll;
@@ -100,7 +101,6 @@
 
 .pm-title{
     color:white;
-    margin-left:25%;
 }
 /*these will overrule mainStyles style....*/
 section#content-container div.messages p.message-right {
@@ -116,25 +116,48 @@ section#content-container div.messages p.message-left {
 }
 
 .left-normal {
-    margin-right: 18vw;
+    margin-right:18vw;
+    margin-left:0vw;
 }
 .left-compressed {
     margin-right: 11vw;
+    margin-left: 7vw;
 }
 
-.right-normal {
-    margin-left: 18vw !important;
-    ;
+.selector-div {
+    align-items: center;
+    display: flex;
+}
+.showV{
+/*    display:flex;*/
+    visibility:visible;
+}
+.hideV {
+    /*    display:flex;*/
+    visibility: hidden;
 }
 
-.right-compressed {
-    margin-left: 11vw !important;
+.message-div-left{
+    display:flex;
+    justify-content:flex-start;
+}
+.message-div-right {
+    display: flex;
+    justify-content: space-between;
 }
 
-.page-normal{
-    margin-left:4vw;
+.instructions {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid darkgray;
+    flex: 0 1 4%;
 }
 
-.page-compressed{
-    margin-left:11vw;
+.prompt-text{
+    color:white;
 }

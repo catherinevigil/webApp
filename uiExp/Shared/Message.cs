@@ -19,10 +19,21 @@ namespace uiExp.Shared
         {
             //thumbsUp:1;
         }
+        //public int numInConvo;
 
         public Message(String text)
         {
-            Text = text;
+            this.Text = text;
+        }
+
+        //public Message(String text, int num)
+        //{
+        //    Text = text;
+        //    this.numInConvo = num;
+        //}
+
+        public Message()
+        {
         }
     }
 }

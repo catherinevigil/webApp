@@ -9,11 +9,20 @@
     [Parameter]
     public String pmNum { get; set; }
     //public int convoInt { get; set; }
+    private List<Message> messageList = new List<Message>();
 
     protected override void OnInitialized()
     {
         //the param will be set now
         pmNum = pmNum ?? "2";
+
+        foreach (var group in convo.Groups)
+        {
+            foreach (var message in group.Messages)
+            {
+                messageList.Add(message);
+            }
+        }
 
     }
 
@@ -55,162 +64,207 @@
     }
 
 }
-<!--this is code for displaying a conversation-->
-<div class="page">
-    <div class="top-row-pm px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
-            arrow_back_ios
-        </span>
-        <span class="pm-title">
-            @privateM.GetConvoName()
-        </span>
-        <span class="material-icons" @onclick="() => compressed = (!compressed)">
-            select_all
-        </span>
-    </div>
-
-    @code{
-        private bool compressed = false;
-
-        private string getClassM(Boolean left)
-        {
-            return left ? getLeftClass() : getRightClass();
-
-        }
-        private string getClassP()
-        {
-            return compressed ? "page-content-pm page-compressed" : "page-content-pm page-normal";
-        }
-
-        private string getLeftClass()
-        {
-            return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
-        }
-        private string getRightClass()
-        {
-            return compressed ? "message message-right aos-init right-compressed" : "message message-right aos-init right-normal";
-        }
-    }
-
-    <div class="conversation" @ref=pmConvo>
-        <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-            <div class=@getClassP()>
-                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-                    <div class="messages" style="margin:0px">
-                        @foreach (var group in convo.Groups)
-                        {
-                            <div class="message-group">
-                                @*@<p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                                        <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
-                                            @group.Texter.GetName()
-                                        </span>
-                                    </p>*@
-                                @foreach (var message in group.Messages)
-                                {
-                                    <p class=@getClassM(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
-                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
-                                            @if (@message.Text.Contains("img"))
-                                            {
-                                                @((MarkupString)@message.Text)
-                                            }
-                                            else
-                                            {
-                                                @message.Text
-                                            }
-                                        </span>
-                                    </p>
-                                }
-                            </div>
-                            i++;
-                        }
-
+            <!--this is code for displaying a conversation-->
+            <div class="page">
+                <div class="top-row-pm px-4" id="left">
+                    <span class="material-icons" @onclick="NavigateBack">
+                        arrow_back_ios
+                    </span>
+                    <span class="pm-title">
+                        @privateM.GetConvoName()
+                    </span>
+                    <span class="material-icons" @onclick="() => compressed = (!compressed)">
+                        select_all
+                    </span>
+                </div>
+                @if (compressed)
+                {
+                    <div class="instructions">
+                        <span class="prompt-text">
+                            @GetPrompt()
+                        </span>
                     </div>
-                </section>
-            </div>
-        </div>
-    </div>
-    @*<div class="bottom-row-pm">
-        <div class="input-container" id="input-container-bottom">
-            <textarea @ref=inputArea placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
-            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
-        </div>
-    </div>*@
-    <div class="bottom-row-pm">
-        <div class="messaging-bottom">
-            @if (ShowImports)
-            {
-                <div class="icon-column">
-                    <div class="icon-div">
-                        <i class="material-icons" @onclick="DeployImportImage">
-                            camera_alt
-                        </i>
-                        <i class="material-icons" @onclick="DeployImportBubbles">
-                            add_box
-                        </i>
+                }
+
+                @code{
+                private bool compressed = false;
+
+                private string GetPrompt()
+                {
+                    //return firstSelected ? "choose the first message of selection" : "choose the last message of selection";
+                    return "choose the first and last message of selection";
+                }
+                private string getClassM(Boolean left)
+                {
+                    return left ? getLeftClass() : "message message-right aos-init";
+
+                }
+                private string getLeftClass()
+                {
+                    return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
+                }
+                private string GetSelectorClass()
+                {
+                    return compressed ? "selector-div showV" : "selector-div hideV";
+                }
+                private void boxInput(Message m, object e)
+                {
+                    var justSelected = (bool)e;
+
+                    // Console.WriteLine(justSelected);
+                    Console.WriteLine(messageList.IndexOf(m));
+                    if (justSelected)
+                    {
+                        numChecked = numChecked + 1;
+                    }
+                    else
+                    {
+                        numChecked = numChecked - 1;
+                    }
+                }
+                private int numChecked;
+                private Message firstM = new Message();
+                private Message lastM = new Message();
+                private int messageCounter = 0;
+                }
+
+                <div class="conversation" @ref=pmConvo>
+                    <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+                        <div class="page-content-pm">
+                            <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                                <div class="messages" style="margin:0px">
+                                    @foreach (var group in convo.Groups)
+                                    {
+                                        <div class="message-group">
+                                            @*@<p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                                    <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                                        @group.Texter.GetName()
+                                                    </span>
+                                                </p>*@
+                                            @foreach (var message in group.Messages)
+                                            {
+                                                <div class="@(( group.Left) ? "message-div-left" : "message-div-right")">
+                                                    <div class=@GetSelectorClass()>
+                                                        <input type="checkbox" @oninput="(e) => boxInput(message,e.Value)">
+                                                    </div>
+                                                    <p class=@getClassM(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+
+                                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                                            @if (@message.Text.Contains("img"))
+                                                            {
+                                                                @((MarkupString)@message.Text)
+                                                            }
+                                                            else
+                                                            {
+                                                                @message.Text
+                                                            }
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            }
+                                        </div>
+                                        i++;
+                                    }
+
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
-                
+                <div class="bottom-row-pm">
+                    <div class="messaging-bottom">
+                        @if (ShowImports)
+                        {
+                            <div class="icon-column">
+                                <div class="icon-div">
+                                    <i class="material-icons" @onclick="DeployImportImage">
+                                        camera_alt
+                                    </i>
+                                    <i class="material-icons" @onclick="DeployImportBubbles">
+                                        add_box
+                                    </i>
+                                </div>
+                            </div>
+
+                        }
+
+                        <div class="input-container">
+                            <textarea @ref="inputArea" class="comment-reply-message-input" placeholder="@MessageInputPlaceholder" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @code{
+                private bool ShowImports = true;
+                private void DeployImportBubbles() { }
+                private void DeployImportImage() { }
+
+
+
+                [Inject] IJSRuntime JSRuntime { get; set; }
+
+                public string MessageInputPlaceholder = "reply...";
+                ElementReference inputArea;
+                ElementReference pmConvo;
+                private String messageReply { get; set; }
+
+                private void sendReply()
+                {
+                    var convoNum = getConversationNum();
+                    var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
+                    if (!(lastTexter == CurrentUser.cUser))
+                        LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser, false));
+
+                    LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
+                    messageReply = "";
+
+                    normalHeight();
+                    Resize(); //calling both functions in this returns box to its proper size after sending a message...
+                }
+
+
+                private string getBottomHeight()
+                {
+                    if (MyHeight == 0)
+                        return "58px";
+                    else
+                        return (MyHeight + 36).ToString() + "px";
+                }
+                async Task normalHeight()
+                {
+                    var result = await JSRuntime.InvokeAsync<object>("resetTextPm", inputArea, pmConvo);
+                    Double.TryParse(result.ToString(), out MyHeight);
+
+                }
+
+                double MyHeight = 0;
+                async Task Resize()
+                {
+
+                    var result = await JSRuntime.InvokeAsync<object>("resizeTextPm", inputArea, pmConvo);
+                    Double.TryParse(result.ToString(), out MyHeight);
+                    Console.WriteLine("height: " + MyHeight);
+                }
+
+
             }
 
-            <div class="input-container">
-                <textarea @ref="inputArea" class="comment-reply-message-input" placeholder="@MessageInputPlaceholder" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
-            </div>
-        </div>
-    </div>
-</div>
 
-@code{
-    private bool ShowImports=true;
-    private void DeployImportBubbles() { }
-    private void DeployImportImage() { }
+            @*
+                icons for selector....
 
+                <span class="material-icons selectorCircle" @onclick="NavigateBack">
+                    panorama_fish_eye
+                </span>
+                @*<span class="material-icons selectorCircle" @onclick="NavigateBack">
+                    check_circle_outline
+                </span>*@
 
-
-    [Inject] IJSRuntime JSRuntime { get; set; }
-
-    public string MessageInputPlaceholder = "reply...";
-    ElementReference inputArea;
-    ElementReference pmConvo;
-    private String messageReply { get; set; }
-
-    private void sendReply()
-    {
-        var convoNum = getConversationNum();
-        var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
-        if (!(lastTexter == CurrentUser.cUser))
-            LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser, false));
-
-        LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
-        messageReply = "";
-
-        normalHeight();
-        Resize(); //calling both functions in this returns box to its proper size after sending a message...
-    }
-
-
-    private string getBottomHeight()
-    {
-        if (MyHeight == 0)
-            return "58px";
-        else
-            return (MyHeight + 36).ToString() + "px";
-    }
-    async Task normalHeight()
-    {
-        var result = await JSRuntime.InvokeAsync<object>("resetTextPm", inputArea, pmConvo);
-        Double.TryParse(result.ToString(), out MyHeight);
-
-    }
-
-    double MyHeight = 0;
-    async Task Resize()
-    {
-
-        var result = await JSRuntime.InvokeAsync<object>("resizeTextPm", inputArea, pmConvo);
-        Double.TryParse(result.ToString(), out MyHeight);
-        Console.WriteLine("height: " + MyHeight);
-    }
-
-
-}
+            @*<div class="bottom-row-pm">
+                    <div class="input-container" id="input-container-bottom">
+                        <textarea @ref=inputArea placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                        <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+                    </div>
+                </div>*@
