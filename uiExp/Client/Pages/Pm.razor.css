@@ -21,7 +21,7 @@
     justify-content: space-between;
     padding: 5px;
     border-bottom: 1px solid darkgray;
-    flex: 0 1 5%;
+    flex: 1 0 7%;
 }
 
 .conversation {
@@ -100,6 +100,7 @@
 }
 
 .pm-title{
+    font-size:20pt;
     color:white;
 }
 /*these will overrule mainStyles style....*/
@@ -115,6 +116,23 @@ section#content-container div.messages p.message-left {
     max-width: none;
 }
 
+section#content-container div.messages p.message-right span {
+    background-color: #a6362b;
+    /*                #3a71e8*/
+}
+
+section#content-container div.messages p.message-left span {
+    background-color: #141414
+}
+.shaded-left {
+    color: rgb(102, 102, 102) !important;
+    background-color: #060606 !important;
+}
+.shaded-right {
+    color: rgb(105, 105, 105) !important;
+    background-color: rgb(70, 1, 0) !important;
+}
+
 .left-normal {
     margin-right:18vw;
     margin-left:0vw;
@@ -124,6 +142,12 @@ section#content-container div.messages p.message-left {
     margin-left: 7vw;
 }
 
+.normal-box{
+    opacity:.9;
+}
+.shaded-box{
+    opacity:.3;
+}
 .selector-div {
     align-items: center;
     display: flex;
@@ -165,11 +189,25 @@ section#content-container div.messages p.message-left {
 .prompt-text{
     color:white;
 }
-.selected {
-    background-color: darkslateblue;
-}
+/*.selected {
+    background-color: #404040;*/
+/*dark slate blue also good selected color*/
+/*}
 .selectedGroup {
-    background-color: darkslateblue;
+    background-color: #404040;
     margin-bottom: 0px !important;
     padding-bottom: 6px;
+}*/
+.editing-action{
+    color:lightgray;
+    font-size:11pt;
+}
+    .editing-action:hover {
+        color: white;
+        cursor:pointer;
+    }
+.editing-bottom-div{
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content:space-between; 
 }

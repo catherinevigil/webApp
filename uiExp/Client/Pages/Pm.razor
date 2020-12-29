@@ -67,295 +67,383 @@
 
 }
             <!--this is code for displaying a conversation-->
-            <div class="page">
-                <div class="top-row-pm px-4" id="left">
-                    <span class="material-icons" @onclick="NavigateBack">
-                        arrow_back_ios
-                    </span>
-                    <span class="pm-title">
-                        @privateM.GetConvoName()
-                    </span>
-                    <span class="material-icons" @onclick="() => compressed = (!compressed)">
-                        select_all
-                    </span>
-                </div>
-                @if (compressed)
+<div class="page">
+    @if (!compressed)
+    {
+        <div class="top-row-pm px-4" id="left">
+            <span class="material-icons" @onclick="NavigateBack">
+                arrow_back_ios
+            </span>
+            <span class="pm-title">
+                @privateM.GetConvoName()
+            </span>
+            <span class="material-icons" @onclick="() => compressed = (!compressed)">
+                select_all
+            </span>
+        </div>
+    }
+    else
+    {
+<div class="top-row-pm px-4" id="left">
+        @if (showUndo)
+        {
+            <span class="editing-action" @onclick="Undo">
+                undo
+            </span>
+        }
+      
+        <span class="editing-action" style="visibility:@((numChecked > 0) ? "visible" : "hidden")" @onclick="Unselect">
+            unselect all
+        </span>
+        <span class="pm-title">
+            @privateM.GetConvoName()
+        </span>
+        <span class="editing-action" @onclick="Cancel">
+            cancel
+        </span>
+    </div>
+    }
+    @if (compressed)
+    {
+        <div class="instructions">
+            <span class="prompt-text">
+                @GetPrompt()
+            </span>
+        </div>
+    }
+
+    @code{
+        private bool compressed = false;
+
+        private bool showUndo = false;
+        private void Cancel()
+        {
+            compressed = false;
+            Unselect();
+        }
+        private void Undo()
+        {
+            firstM = oldFirstM;
+            lastM = oldLastM;
+        }
+        private void Unselect()
+        {
+            Console.WriteLine("unselect called");
+            if (numChecked > 0)
+            {
+                messageList[firstM].selectionManager.UnSelect();
+                messageList[lastM].selectionManager.UnSelect();
+
+                firstM = 10000;
+                lastM = -1;
+                numChecked = 0;
+            }
+            Console.WriteLine(lastM);
+        }
+
+        private string GetPrompt()
+        {
+            //return firstSelected ? "choose the first message of selection" : "choose the last message of selection";
+            return "choose the first and last message of selection";
+        }
+        private string getClassM(Boolean left)
+        {
+            return left ? getLeftClass() : "message message-right aos-init";
+
+        }
+        private string getLeftClass()
+        {
+            return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
+        }
+        private string GetSelectorClass()
+        {
+            return compressed ? "selector-div showV" : "selector-div hideV";
+        }
+        private async Task boxInput(Message m, object e)
+        {
+            var justSelected = (bool)e;
+            var numSelected = m.selectionManager.GetNum();
+            oldFirstM = firstM;
+            oldLastM = lastM;
+
+            if (justSelected)
+            {
+                numChecked = numChecked + 1;
+                if (numChecked == 1)
                 {
-                    <div class="instructions">
-                        <span class="prompt-text">
-                            @GetPrompt()
-                        </span>
-                    </div>
+                    firstM = numSelected;
+                    lastM = numSelected;
                 }
-
-                @code{
-                    private bool compressed = false;
-
-                    private string GetPrompt()
-                    {
-                        //return firstSelected ? "choose the first message of selection" : "choose the last message of selection";
-                        return "choose the first and last message of selection";
-                    }
-                    private string getClassM(Boolean left)
-                    {
-                        return left ? getLeftClass() : "message message-right aos-init";
-
-                    }
-                    private string getLeftClass()
-                    {
-                        return compressed ? "message message-left aos-init left-compressed" : "message message-left aos-init left-normal";
-                    }
-                    private string GetSelectorClass()
-                    {
-                        return compressed ? "selector-div showV" : "selector-div hideV";
-                    }
-                    private async Task boxInput(Message m, object e)
-                    {
-                        var justSelected = (bool)e;
-                        var numSelected = m.selectionManager.GetNum();
-
-                        if (justSelected)
-                        {
-                            numChecked = numChecked + 1;
-                            if (numChecked == 1) {
-                                firstM = numSelected;
-                                lastM = numSelected;
-                            }
-                            else if (numChecked == 2)
-                            {
-                                if (numSelected < firstM)
-                                    firstM = numSelected;
-                                else if (numSelected > lastM)
-                                    lastM = numSelected;
-                            }
-                            else if (numChecked == 3)
-                            {
-                                int toUncheck = -1;
-                                if (numSelected < firstM)
-                                {
-                                    toUncheck = firstM;
-                                    firstM = numSelected;
-                                }
-                                else if (numSelected > lastM)
-                                {
-                                    toUncheck = lastM;
-                                    lastM = numSelected;
-                                }
-                                else if (firstM<numSelected && numSelected < lastM)
-                                {
-                                    int toFirst = numSelected - firstM;
-                                    int toLast = lastM - numSelected;
-                                    if (toFirst < toLast)
-                                    {
-                                        toUncheck = firstM;
-                                        firstM = numSelected;
-                                    }
-                                    else if (toLast < toFirst)
-                                    {
-                                        toUncheck = lastM;
-                                        lastM = numSelected;
-                                    }
-                                    else if (toLast == toFirst)
-                                    {
-                                        toUncheck = lastM;
-                                        lastM = numSelected;
-                                    }
-                                }
-                                if (!(toUncheck == -1))
-                                {
-                                    messageList[toUncheck].selectionManager.UnSelect(); //this is the only use of the bound variable... just didn't want to use javascript to uncheck box. 
-                                    numChecked = 2;
-                                }
-                                else
-                                    Console.WriteLine("value of to uncheck was not changed....");
-                            }
-                        }
-                        else
-                        {
-                            numChecked = numChecked - 1;
-                            if (numSelected == firstM)
-                            {
-                                firstM = lastM;
-                            }
-                            else if (numSelected == lastM)
-                            {
-                                lastM = firstM;
-                            }
-                            else
-                            {
-                                Console.WriteLine("what'????? the checkbox unchecked was neither first nor last");
-                            }
-                        }
-                        Console.WriteLine("first m: " + firstM + " last m: " + lastM + " numChecked: "+numChecked);
-                        await Task.Delay(1);//need to wait for binding to take effection, only after this delay is m.selectionManager.Selected as it should be
-                        Console.WriteLine("selection manager selected, after wait" + m.selectionManager.Selected);
-                    }
-
-                    //private List<int> selectedList = new List<int>();
-                    private int numChecked;
-                    private int firstM;
-                    private int lastM;
-                    private int messageCounter = 0;
-
+                else if (numChecked == 2)
+                {
+                    if (numSelected < firstM)
+                        firstM = numSelected;
+                    else if (numSelected > lastM)
+                        lastM = numSelected;
                 }
+                else if (numChecked == 3)
+                {
+                    int toUncheck = -1;
+                    if (numSelected < firstM)
+                    {
+                        toUncheck = firstM;
+                        firstM = numSelected;
+                    }
+                    else if (numSelected > lastM)
+                    {
+                        toUncheck = lastM;
+                        lastM = numSelected;
+                    }
+                    else if (firstM < numSelected && numSelected < lastM)
+                    {
+                        int toFirst = numSelected - firstM;
+                        int toLast = lastM - numSelected;
+                        if (toFirst < toLast)
+                        {
+                            toUncheck = firstM;
+                            firstM = numSelected;
+                        }
+                        else if (toLast < toFirst)
+                        {
+                            toUncheck = lastM;
+                            lastM = numSelected;
+                        }
+                        else if (toLast == toFirst)
+                        {
+                            toUncheck = lastM;
+                            lastM = numSelected;
+                        }
+                    }
+                    if (!(toUncheck == -1))
+                    {
+                        messageList[toUncheck].selectionManager.UnSelect(); //this is the only use of the bound variable... just didn't want to use javascript to uncheck box.
+                        numChecked = 2;
+                    }
+                    else
+                        Console.WriteLine("value of to uncheck was not changed....");
+                }
+            }
+            else
+            {
+                numChecked = numChecked - 1;
+                if (numSelected == firstM)
+                {
+                    firstM = lastM;
+                }
+                else if (numSelected == lastM)
+                {
+                    lastM = firstM;
+                }
+                else
+                {
+                    Console.WriteLine("what'????? the checkbox unchecked was neither first nor last");
+                }
+            }
+            Console.WriteLine("first m: " + firstM + " last m: " + lastM + " numChecked: " + numChecked);
+            await Task.Delay(1);//need to wait for binding to take effection, only after this delay is m.selectionManager.Selected as it should be
+            Console.WriteLine("selection manager selected, after wait" + m.selectionManager.Selected);
+        }
 
-                <div class="conversation" @ref=pmConvo>
-                    <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
-                        <div class="page-content-pm">
-                            <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
-                                <div class="messages" style="margin:0px">
-                                    @foreach (var group in convo.Groups)
+        //private List<int> selectedList = new List<int>();
+        private int numChecked;
+        private int firstM;
+        private int lastM;
+        private int oldFirstM;
+        private int oldLastM;
+        private int messageCounter = 0;
+
+    }
+
+    <div class="conversation" @ref=pmConvo>
+        <div id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+            <div class="page-content-pm">
+                <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
+                    <div class="messages" style="margin:0px">
+                        @foreach (var group in convo.Groups)
+                        {
+                            <div class=@getGroupClass(group)>
+                                @*@<p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
+                                        <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
+                                            @group.Texter.GetName()
+                                        </span>
+                                    </p>*@
+                                @code{
+                                    private bool mNumSelected(int mNum)
                                     {
-                                        <div class=@getGroupClass(group)>
-                                            @*@<p style="text-align:@getAlign(group.Left);" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                                                    <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top">
-                                                        @group.Texter.GetName()
-                                                    </span>
-                                                </p>*@
-                                            @code{
-                                                private bool mNumSelected(int mNum)
-                                                {
-                                                    return (firstM <= mNum && mNum <= lastM);
-                                                }
-                                                public string getGroupClass(MessageGroup group)
-                                                {
-                                                    return mNumSelected(group.Messages.Last().selectionManager.GetNum()) ? "message-group selectedGroup" : "message-group";
-                                                }
-                                                public string getLeftDivClass(int mNum)
-                                                {
-                                                    return mNumSelected(mNum) ? "message-div-left selected" : "message-div-left normal-m-div";
-                                                }
-                                                public string getRightDivClass(int mNum)
-                                                {
-                                                    return mNumSelected(mNum) ? "message-div-right selected" : "message-div-right normal-m-div";
-                                                }
+                                        return (firstM <= mNum && mNum <= lastM);
+                                    }
+                                    public string getGroupClass(MessageGroup group)
+                                    {
+                                        return mNumSelected(group.Messages.Last().selectionManager.GetNum()) ? "message-group selectedGroup" : "message-group";
+                                    }
+                                    public string getLeftDivClass(int mNum)
+                                    {
+                                        return mNumSelected(mNum) ? "message-div-left selected" : "message-div-left normal-m-div";
+                                    }
+                                    public string getRightDivClass(int mNum)
+                                    {
+                                        return mNumSelected(mNum) ? "message-div-right selected" : "message-div-right normal-m-div";
+                                    }
+                                    private string GetSpanClass(bool left, int mNum)
+                                    {
+                                        return left ? getLeftSpanClass(mNum) : getRightSpanClass(mNum);
 
-                                                }
-                                            @foreach (var message in group.Messages)
-                                            {
-                                                <div class="@(( group.Left) ? getLeftDivClass(message.selectionManager.GetNum()) : getRightDivClass(message.selectionManager.GetNum()))">
-                                                    <div class=@GetSelectorClass()>
-                                                        <input type="checkbox" @bind="message.selectionManager.Selected" @oninput="(e) => boxInput(message,e.Value)">
-                                                        @*this failed for some reason... bind="@message.selectionManager.Selected"*@
-                                                    </div>
-                                                    <p class=@getClassM(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                                    }
+                                    private string getLeftSpanClass(int m)
+                                    {
+                                        return (compressed && !mNumSelected(m) && numChecked == 2) ? "shaded-left" : "";
+                                    }
+                                    private string getRightSpanClass(int m)
+                                    {
+                                        return (compressed && !mNumSelected(m) && numChecked==2) ? "shaded-right" : "";
+                                    }
 
-                                                        <span data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
-                                                            @if (@message.Text.Contains("img"))
-                                                            {
-                                                                @((MarkupString)@message.Text)
-                                                            }
-                                                            else
-                                                            {
-                                                                @message.Text
-                                                            }
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            }
+                                }
+                                @foreach (var message in group.Messages)
+                                {
+                                    <div class="@(( group.Left) ? getLeftDivClass(message.selectionManager.GetNum()) : getRightDivClass(message.selectionManager.GetNum()))">
+                                        <div class=@GetSelectorClass()>
+                                            <input type="checkbox" class="@((numChecked == 2 && !mNumSelected(message.selectionManager.GetNum())) ? "shaded-box" : "normal-box")" @bind="message.selectionManager.Selected" @oninput="(e) => boxInput(message,e.Value)">
+                                            @*this failed for some reason... bind="@message.selectionManager.Selected"*@
                                         </div>
-                                        i++;
-                                    }
+                                        <p class=@getClassM(group.Left) data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
 
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom-row-pm">
-                    <div class="messaging-bottom">
-                        @if (ShowImports)
-                        {
-                            <div class="icon-column">
-                                <div class="icon-div">
-                                    <i class="material-icons" @onclick="DeployImportImage">
-                                        camera_alt
-                                    </i>
-                                    <i class="material-icons" @onclick="DeployImportBubbles">
-                                        add_box
-                                    </i>
-                                </div>
+                                            <span class=@GetSpanClass(group.Left,message.selectionManager.GetNum()) data-aos="out" data-aos-duration="600" data-aos-offset="@TopFadeOffset" data-aos-anchor-placement="@TopFadeOutAnchorP">
+                                                @if (@message.Text.Contains("img"))
+                                                {
+                                                    @((MarkupString)@message.Text)
+                                                }
+                                                else
+                                                {
+                                                    @message.Text
+                                                }
+                                            </span>
+                                        </p>
+                                    </div>
+                                }
                             </div>
-
+                            i++;
                         }
 
-                        <div class="input-container">
-                            <textarea @ref="inputArea" class="comment-reply-message-input" placeholder="@MessageInputPlaceholder" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
-                            <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    @if (!(compressed))
+    {
+        <div class="bottom-row-pm">
+            <div class="messaging-bottom">
+                @if (ShowImports)
+                {
+                    <div class="icon-column">
+                        <div class="icon-div">
+                            <i class="material-icons" @onclick="DeployImportImage">
+                                camera_alt
+                            </i>
+                            <i class="material-icons" @onclick="DeployImportBubbles">
+                                add_box
+                            </i>
                         </div>
                     </div>
+
+                }
+
+                <div class="input-container">
+                    <textarea @ref="inputArea" class="comment-reply-message-input" placeholder="@MessageInputPlaceholder" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                    <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
                 </div>
             </div>
+        </div>
 
-            @code{
-                private bool ShowImports = true;
-                private void DeployImportBubbles() { }
-                private void DeployImportImage() { }
+    }
+    @if (compressed)
+    {
+        <div class="bottom-row-pm">
+            <div class="editing-bottom-div">
+                <span class="editing-action" @onclick="Share">
+                    Share
+                </span>
+            </div>
+        </div>
 
+    }
+</div>
 
+        @code{
+            private void Share()
+            {
+                //NavigationManager.NavigateTo("/share"+Segment);
+            }
 
-                [Inject] IJSRuntime JSRuntime { get; set; }
-
-                public string MessageInputPlaceholder = "reply...";
-                ElementReference inputArea;
-                ElementReference pmConvo;
-                private String messageReply { get; set; }
-
-                private void sendReply()
-                {
-                    var convoNum = getConversationNum();
-                    var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
-                    if (!(lastTexter == CurrentUser.cUser))
-                        LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser, false));
-
-                    LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
-                    messageReply = "";
-
-                    normalHeight();
-                    Resize(); //calling both functions in this returns box to its proper size after sending a message...
-                }
+            private bool ShowImports = true;
+            private void DeployImportBubbles() { }
+            private void DeployImportImage() { }
 
 
-                private string getBottomHeight()
-                {
-                    if (MyHeight == 0)
-                        return "58px";
-                    else
-                        return (MyHeight + 36).ToString() + "px";
-                }
-                async Task normalHeight()
-                {
-                    var result = await JSRuntime.InvokeAsync<object>("resetTextPm", inputArea, pmConvo);
-                    Double.TryParse(result.ToString(), out MyHeight);
 
-                }
+            [Inject] IJSRuntime JSRuntime { get; set; }
 
-                double MyHeight = 0;
-                async Task Resize()
-                {
+            public string MessageInputPlaceholder = "reply...";
+            ElementReference inputArea;
+            ElementReference pmConvo;
+            private String messageReply { get; set; }
 
-                    var result = await JSRuntime.InvokeAsync<object>("resizeTextPm", inputArea, pmConvo);
-                    Double.TryParse(result.ToString(), out MyHeight);
-                    Console.WriteLine("height: " + MyHeight);
-                }
+            private void sendReply()
+            {
+                var convoNum = getConversationNum();
+                var lastTexter = LoadDms.InboxList[convoNum].GetConvo().Groups.Last().GetTexter();
+                if (!(lastTexter == CurrentUser.cUser))
+                    LoadDms.InboxList[convoNum].GetConvo().Groups.Add(new MessageGroup(CurrentUser.cUser, false));
 
+                LoadDms.InboxList[convoNum].GetConvo().Groups.Last().Messages.Add(new Message(messageReply));
+                messageReply = "";
 
+                normalHeight();
+                Resize(); //calling both functions in this returns box to its proper size after sending a message...
             }
 
 
-            @*
-                icons for selector....
+            private string getBottomHeight()
+            {
+                if (MyHeight == 0)
+                    return "58px";
+                else
+                    return (MyHeight + 36).ToString() + "px";
+            }
+            async Task normalHeight()
+            {
+                var result = await JSRuntime.InvokeAsync<object>("resetTextPm", inputArea, pmConvo);
+                Double.TryParse(result.ToString(), out MyHeight);
 
-                <span class="material-icons selectorCircle" @onclick="NavigateBack">
-                    panorama_fish_eye
-                </span>
-                @*<span class="material-icons selectorCircle" @onclick="NavigateBack">
-                    check_circle_outline
-                </span>*@
+            }
 
-            @*<div class="bottom-row-pm">
-                    <div class="input-container" id="input-container-bottom">
-                        <textarea @ref=inputArea placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
-                        <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
-                    </div>
-                </div>*@
+            double MyHeight = 0;
+            async Task Resize()
+            {
+
+                var result = await JSRuntime.InvokeAsync<object>("resizeTextPm", inputArea, pmConvo);
+                Double.TryParse(result.ToString(), out MyHeight);
+                Console.WriteLine("height: " + MyHeight);
+            }
+
+
+        }
+
+
+        @*
+            icons for selector....
+
+            <span class="material-icons selectorCircle" @onclick="NavigateBack">
+                panorama_fish_eye
+            </span>
+            @*<span class="material-icons selectorCircle" @onclick="NavigateBack">
+                check_circle_outline
+            </span>*@
+
+        @*<div class="bottom-row-pm">
+                <div class="input-container" id="input-container-bottom">
+                    <textarea @ref=inputArea placeholder="@MessageInputPlaceholder" class="comment-reply-message-input" style="resize:none" @bind="messageReply" rows="1" @oninput="Resize" />
+                    <i class="fas fa-arrow-up icon sendButton" @onclick="@sendReply"></i>
+                </div>
+            </div>*@
