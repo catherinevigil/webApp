@@ -1,4 +1,17 @@
 ﻿
+.tag-title {
+    color: white;
+    font-size: 16pt;
+    align-items: center;
+    text-align: center;
+    height: 3rem;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 2em;
+    width: 100%;
+}
+
 .top-float {
     position: fixed;
     top: 5em;
@@ -75,6 +88,150 @@
     margin-left: 90%;
     margin-top: 0.8em;
 }
+
+
+
+
+/*search bar*/
+
+.search-container {
+    width: 100%;
+    background-color: black;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    margin-left: 2.5em;
+    top: 2em;
+}
+
+.searchText {
+    font-size: 14px;
+    color: #a59d9d;
+}
+
+#inputTextArea {
+    font-size: 14px;
+    color: #a59d9d;
+}
+
+ .rSuggestions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+.tagSuggestion {
+    border-bottom: 1px solid #404040;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*    height:50px;*/
+    padding: 12px;
+}
+
+    .tagSuggestion:hover {
+        cursor: pointer;
+        background-color: #141414;
+        /*the !important overrides inline style wich is added to highlight items w/arrow keys*/
+    }
+
+.personSuggestion {
+    border-bottom: 1px solid #404040;
+    color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    /*    height: 50px;*/
+}
+
+    .personSuggestion:hover {
+        cursor: pointer;
+        background-color: #141414;
+    }
+
+.hashtagText {
+    margin-left: 5%;
+}
+
+.suggestionImage {
+    margin-right: 10px;
+}
+
+.suggestionName {
+}
+
+.addedSearchesList {
+    display: flex;
+    flex-direction: row;
+    font-size: 11pt;
+    align-items: center;
+    /*    margin-left:8px;*/
+}
+
+.addedSearch {
+    padding-right: 7px;
+    padding-left: 7px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    color: lightgray;
+    white-space: nowrap;
+}
+
+#r-highlighted {
+    background-color: darkblue;
+    color: white;
+}
+
+.top-row {
+    flex: 0 1 auto;
+}
+
+.page-content-om-compose {
+    width: 88%;
+    margin-left: 6%;
+    max-width: 1100px;
+    border: 0px;
+    /*    overflow: hidden;*/
+    overflow-y: scroll;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    /*    height: 87vh;*/
+/*    bottom: 58px;
+    position: fixed;*/
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.compose-middle-container {
+    flex: 1 1 auto;
+    overflow: hidden;
+    padding-bottom: 5px;
+    overflow-y:scroll;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+/*end of search bar*/
+
+
+
+
+
+
+
+
 
 s @charset "UTF-8";
 a,
@@ -388,7 +545,7 @@ section#content-container div.comments { /*paragraph settings*/
         align-text: left;
     }
 
-.page-content-pm {
+.page-content-om {
     width: 88%;
     margin-left: 6%;
     max-width: 1100px;

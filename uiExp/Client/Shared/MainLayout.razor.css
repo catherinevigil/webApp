@@ -54,18 +54,6 @@ form.example::after {
     display: table;
 }
 
-.tag-title {
-    color: white;
-    font-size: 16pt;
-    align-items: center;
-    text-align: center;
-    height: 3rem;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 2em;
-    width:100%;
-}
 
 .top-row#left {
     display: flex;

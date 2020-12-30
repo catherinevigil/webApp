@@ -12,11 +12,14 @@ namespace uiExp.Shared
         private List<PublicConvo> ResponseThreads;
         private User Poster;
         private String Title;
+        private String Tags;
         private FeedPreview feedPreview;
         private List<int> ResponseConvoNumbers;
         private String image;
 
-
+        public PublicConvo()
+        {
+        }
         public PublicConvo(string[] lines, string title, string poster)
         {
             this.Poster = Users.GetUserByName(poster);
@@ -39,6 +42,20 @@ namespace uiExp.Shared
             this.conversation.Groups = SetMessageSides(this.conversation.Groups);
             this.feedPreview.SetGroups(SetMessageSides(this.feedPreview.GetGroups()));
         }
+
+        public PublicConvo(string[] lines, string title, string poster, string tags, string[] preview, Comments com, int[] replies)
+        {
+            this.Poster = Users.GetUserByName(poster);
+            this.Title = title;
+            this.Tags = tags;
+            this.conversation = new Conversation(lines);
+            this.feedPreview = new FeedPreview(preview);
+            this.comments = com;
+            this.ResponseConvoNumbers = replies.ToList();
+            this.conversation.Groups = SetMessageSides(this.conversation.Groups);
+            this.feedPreview.SetGroups(SetMessageSides(this.feedPreview.GetGroups()));
+        }
+
         public void dump(object a)
         {
             DumpityDump.Dump(a); //this will print a json of the  object's properties/values to the console
@@ -97,6 +114,10 @@ namespace uiExp.Shared
         {
             return this.conversation;
         }
+        public Conversation GetConvo()
+        {
+            return this.conversation;
+        }
         public Comments GetComments()
         {
             return this.comments;
@@ -104,6 +125,10 @@ namespace uiExp.Shared
         public List<User> GetConversants()
         {
             return this.conversation.Conversants;
+        }
+        public List<Hashtag> GetTags()
+        {
+            return this.conversation.Hashtags;
         }
         public String GetTitle()
         {
@@ -121,6 +146,38 @@ namespace uiExp.Shared
         public List<int> GetReplyConvoNumbers()
         {
             return this.ResponseConvoNumbers;
+        }
+
+        public bool HasSameUsers(List<User> users)// this code is fucked. 
+        {
+            var conversants = this.GetConversants();
+            foreach (var user in users)
+            {
+                if (!(conversants.Contains(user)))
+                    return false;
+            }
+            foreach (var conversant in conversants)
+            {
+                if (!(users.Contains(conversant)))
+                    return false;
+            }
+            return true;
+        }
+
+        public bool HasSameTags(List<Hashtag> hashtags)// this code is fucked. 
+        {
+            var tags = this.GetTags();
+            foreach (var hashtag in hashtags)
+            {
+                if (!(tags.Contains(hashtag)))
+                    return false;
+            }
+            foreach (var hashtag in hashtags)
+            {
+                if (!(tags.Contains(hashtag)))
+                    return false;
+            }
+            return true;
         }
     }
 }

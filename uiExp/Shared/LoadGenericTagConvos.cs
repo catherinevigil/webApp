@@ -99,6 +99,106 @@ namespace uiExp.Shared
                 "Unsuspicious interpretation might be a competing new ideal, awaiting its Socrates.",
             };
 
+        private static string[] lines2 { get; } =
+        {
+            "Albert Camus:",
+            "Mate.",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Jean-Paul Sartre:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
+            "Albert Camus:",
+            "That’s the reason I say it might not hold.",
+            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
+            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
+            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
+            "Jean-Paul Sartre:",
+            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
+            "Albert Camus:",
+            "I think a framework would have to come all at once.",
+            "Could then be filled in.",
+            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
+            "Jean-Paul Sartre:",
+            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
+            "Albert Camus:",
+            "Possibly no",
+            };
+
+        private static string[] lines3 { get; } =
+        {
+            "Michel Foucault:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Martin Heidegger:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
+            "Michel Foucault:",
+            "That’s the reason I say it might not hold.",
+            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
+            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
+            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
+            "Martin Heidegger:",
+            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
+            "Michel Foucault:",
+            "I think a framework would have to come all at once.",
+            "Could then be filled in.",
+            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
+            "Martin Heidegger:",
+            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
+            "Michel Foucault:",
+            "Possibly no",
+            };
+
+        private static string[] lines4 { get; } =
+        {
+            "Camille Paglia:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Andy Warhol:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
+            "Camille Paglia:",
+            "That’s the reason I say it might not hold.",
+            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
+            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
+            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
+            "Andy Warhol:",
+            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
+            "Camille Paglia:",
+            "I think a framework would have to come all at once.",
+            "Could then be filled in.",
+            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
+            "Andy Warhol:",
+            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
+            "Camille Paglia:",
+            "Possibly no",
+            };
+
+        private static string[] lines5 { get; } =
+        {
+            "Adrienne Rich:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Angela Davis:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
+            "Angela Davis:",
+            "That’s the reason I say it might not hold.",
+            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
+            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
+            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
+            "Angela Davis:",
+            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
+            "Adrienne Rich:",
+            "I think a framework would have to come all at once.",
+            "Could then be filled in.",
+            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
+            "Angela Davis:",
+            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
+            "Adrienne Rich:",
+            "Possibly no",
+            };
+
         private static string[] feed0 { get; } = {
             "Bruno Macaes:",
             "Philosophy has made no progress whatsoever",
@@ -114,19 +214,92 @@ namespace uiExp.Shared
             "a lot of us cannot tell when it is happening",
             "don’t all of us want to believe that we are virtuous?"
         };
-    
+
+        private static string[] feed2 { get; } = {
+            "Albert Camus:",
+            "Mate.",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Jean-Paul Sartre:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
+
+        private static string[] feed3 { get; } = {
+            "Michel Foucault:",
+            "I want to continue",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Martin Heidegger:",
+            "There is no being or time", };
+
+        private static string[] feed4 { get; } = {
+            "Camille Paglia:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Andy Warhol:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
+
+        private static string[] feed5 { get; } = {
+            "Adrienne Rich:",
+            "Philosophy has made no progress whatsoever",
+            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
+            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
+            "Angela Davis:",
+            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
+
         private static string title0 { get; } =
             "What is progress in philosophy?";
 
         private static string title1 { get; } =
             "Defining virtue signalling";
 
+        private static string title2 { get; } =
+            "a different coffehouse vibe";
+
+        private static string title3 { get; } =
+            "Language mate. Chomsky debate. ";
+
+        private static string title4 { get; } =
+            "Why has architecture become so shit?";
+
+        private static string title5 { get; } =
+            "What is black radicalism?";
 
         private static string poster0{ get; } =
             "Bruno Macaes";
 
         private static string poster1 { get; } =
             "Bruno Macaes";
+
+        private static string poster2 { get; } =
+            "Albert Camus";
+
+        private static string poster3 { get; } =
+            "Michel Foucault";
+
+        private static string poster4 { get; } =
+            "Camille Paglia";
+
+        private static string poster5 { get; } =
+            "Adrienne Rich";
+
+        private static string tags0 { get; } =
+            "philosophy";
+
+        private static string tags1 { get; } =
+            "philosophy";
+
+        private static string tags2 { get; } =
+            "existensialism";
+
+        private static string tags3 { get; } =
+            "postmodernism";
+
+        private static string tags4 { get; } =
+            "aesthetics";
+
+        private static string tags5 { get; } =
+            "revolution";
 
         private static int[] replies0 { get; } = {
             
@@ -136,242 +309,57 @@ namespace uiExp.Shared
             
         };
 
-        //string[] lines, string title, string poster, string[] preview
+        private static int[] replies2 { get; } = {
+
+        };
+
+        private static int[] replies3 { get; } = {
+        };
+
+        private static int[] replies4 { get; } = {
+        };
+
+        private static int[] replies5 { get; } = {
+
+        };
+
+            //string[] lines, string title, string poster, string[] preview
 
         static LoadGenericTagConvos()
         {
-            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
-            ConvoList.Add(new PublicConvo(lines1, title1, poster1, feed1, LoadComments.CommentsList[1], replies1));
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, tags0, feed0, LoadComments.CommentsList[0], replies0));
+            ConvoList.Add(new PublicConvo(lines1, title1, poster1, tags1, feed1, LoadComments.CommentsList[1], replies1));
+            ConvoList.Add(new PublicConvo(lines2, title2, poster2, tags2, feed2, LoadComments.CommentsList[2], replies2));
+            ConvoList.Add(new PublicConvo(lines3, title3, poster3, tags3, feed3, LoadComments.CommentsList[3], replies3));
+            ConvoList.Add(new PublicConvo(lines4, title4, poster4, tags4, feed4, LoadComments.CommentsList[4], replies4));
+            ConvoList.Add(new PublicConvo(lines5, title5, poster5, tags5, feed5, LoadComments.CommentsList[5], replies5));
         }
-    }
 
-
-    public class LoadGenericExistensialConvos
-    {
-        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
-
-        private static string[] lines0 { get; } =
+        public static PublicConvo GetOm(List<User> users)
         {
-            "Albert Camus:",
-            "Mate.",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Jean-Paul Sartre:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
-            "Albert Camus:",
-            "That’s the reason I say it might not hold.",
-            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
-            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
-            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
-            "Jean-Paul Sartre:",
-            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
-            "Albert Camus:",
-            "I think a framework would have to come all at once.",
-            "Could then be filled in.",
-            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
-            "Jean-Paul Sartre:",
-            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
-            "Albert Camus:",
-            "Possibly no",
-            };
-
-        private static string[] feed0 { get; } = {
-            "Albert Camus:",
-            "Mate.",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Jean-Paul Sartre:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
-
-        private static string title0 { get; } =
-            "coffehous vibe, maybe?";
-
-        private static string poster0 { get; } =
-            "Albert Camus";
-
-        private static int[] replies0 { get; } = {
-
-        };
-
-        //string[] lines, string title, string poster, string[] preview
-
-        static LoadGenericExistensialConvos()
-        {
-            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+            foreach (var convo in ConvoList)
+            {
+                if (convo.HasSameUsers(users))
+                {
+                    return convo;
+                    Console.WriteLine("found matching conversation ");
+                }
+            }
+            return null;
         }
-    }
 
-
-
-
-    public class LoadGenericPostmodernConvos
-    {
-        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
-
-        private static string[] lines0 { get; } =
+        public static PublicConvo GetTagConvo(List<Hashtag> tags)
         {
-            "Michel Foucault:",
-            "Philosophy has made no progress whatsoever",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Martin Heidegger:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
-            "Michel Foucault:",
-            "That’s the reason I say it might not hold.",
-            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
-            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
-            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
-            "Martin Heidegger:",
-            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
-            "Michel Foucault:",
-            "I think a framework would have to come all at once.",
-            "Could then be filled in.",
-            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
-            "Martin Heidegger:",
-            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
-            "Michel Foucault:",
-            "Possibly no",
-            };
-
-        private static string[] feed0 { get; } = {
-            "Michel Foucault:",
-            "I want to continue",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Martin Heidegger:",
-            "There is no being or time", };
-
-        private static string title0 { get; } =
-            "Language mate. Chomsky debate. ";
-
-        private static string poster0 { get; } =
-            "Michel Foucault";
-
-
-        private static int[] replies0 { get; } = {
-
-        };
-
-        //string[] lines, string title, string poster, string[] preview
-
-        static LoadGenericPostmodernConvos()
-        {
-            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
+            foreach (var convo in ConvoList)
+            {
+                if (convo.HasSameTags(tags))
+                {
+                    return convo;
+                    Console.WriteLine("found matching hashtag");
+                }
+            }
+            return null;
         }
-    }
 
-
-
-
-    public class LoadGenericAestheticConvos
-    {
-        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
-
-        private static string[] lines0 { get; } =
-        {
-            "Camille Paglia:",
-            "Philosophy has made no progress whatsoever",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Andy Warhol:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
-            "Camille Paglia:",
-            "That’s the reason I say it might not hold.",
-            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
-            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
-            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
-            "Andy Warhol:",
-            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
-            "Camille Paglia:",
-            "I think a framework would have to come all at once.",
-            "Could then be filled in.",
-            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
-            "Andy Warhol:",
-            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
-            "Camille Paglia:",
-            "Possibly no",
-            };
-
-        private static string[] feed0 { get; } = {
-            "Camille Paglia:",
-            "Philosophy has made no progress whatsoever",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Andy Warhol:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
-
-        private static string title0 { get; } =
-            "Why has architecture become so shit?";
-
-
-        private static string poster0 { get; } =
-            "Camille Paglia";
-
-        private static int[] replies0 { get; } = {
-
-        };
-
-        //string[] lines, string title, string poster, string[] preview
-
-        static LoadGenericAestheticConvos()
-        {
-            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
-        }
-    }
-
-
-    public class LoadGenericRevolutionaryConvos
-    {
-        public static List<PublicConvo> ConvoList = new List<PublicConvo>();
-
-        private static string[] lines0 { get; } =
-        {
-            "Adrienne Rich:",
-            "Philosophy has made no progress whatsoever",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Angela Davis:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?",
-            "Angela Davis:",
-            "That’s the reason I say it might not hold.",
-            "But I still think a radically new and simultaneously compelling view of the world could  be found - to be followed by a kind of generalized acceptance",
-            "We have that in the realm of practical knowledge. The wheel, language, the city, etc. I am thinking the same could happen in the realm of theory.",
-            "Obviously has not happened yet, but we have only been trying for 3000 years and often it’s been the wrong kind of people trying",
-            "Angela Davis:",
-            "Wheel, language, city have paved the way for further inventions/discoveries, do you think that is how it would work for theorizing, or we would just be 'done'?",
-            "Adrienne Rich:",
-            "I think a framework would have to come all at once.",
-            "Could then be filled in.",
-            "But yes as opposed to science philosophy is a view of the whole, can’t see adding pieces to make a whole",
-            "Angela Davis:",
-            "Do you think that, after this discovery has been made, human beings will have no cause to think in a universal way about the meaning of human life, the metaphysical structure of the universe, the problems of knowledge, etc.?",
-            "Adrienne Rich:",
-            "Possibly no",
-            };
-
-        private static string[] feed0 { get; } = {
-            "Adrienne Rich:",
-            "Philosophy has made no progress whatsoever",
-            "I still believe - and maybe this view cannot hold - that philosophy is like a slot machine.",
-            "You try and try and one day one lucky bastard will hit a jackpot. Progress makes no sense here",
-            "Angela Davis:",
-            "one question I wonder about: suppose it made lots of progress--suppose we hit the jackpot--how would we know it?", };
-
-        private static string title0 { get; } =
-            "What is black radicalism?";
-
-        private static string poster0 { get; } =
-            "Adrienne Rich";
-
-        private static int[] replies0 { get; } = {
-
-        };
-
-        //string[] lines, string title, string poster, string[] preview
-
-        static LoadGenericRevolutionaryConvos()
-        {
-            ConvoList.Add(new PublicConvo(lines0, title0, poster0, feed0, LoadComments.CommentsList[0], replies0));
-        }
     }
 }
