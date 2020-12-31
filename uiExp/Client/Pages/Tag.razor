@@ -480,7 +480,7 @@
     private void noSearches()
     {
         if (searchList.Count > 0)
-            convo = LoadGenericTagConvos.GetOm(GetUsers(searchList));
+            convo = LoadGenericTagConvos.GetTagConvo(GetHashtags(searchList));
         else
             convo = null;
         searchesInList = false;

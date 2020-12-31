@@ -12,7 +12,7 @@ namespace uiExp.Shared
         private List<PublicConvo> ResponseThreads;
         private User Poster;
         private String Title;
-        private String Tags;
+        private Hashtag Tag;
         private FeedPreview feedPreview;
         private List<int> ResponseConvoNumbers;
         private String image;
@@ -47,7 +47,7 @@ namespace uiExp.Shared
         {
             this.Poster = Users.GetUserByName(poster);
             this.Title = title;
-            this.Tags = tags;
+            this.Tag = Hashtags.GetTagByName(tags);
             this.conversation = new Conversation(lines);
             this.feedPreview = new FeedPreview(preview);
             this.comments = com;
@@ -129,6 +129,10 @@ namespace uiExp.Shared
         public List<Hashtag> GetTags()
         {
             return this.conversation.Hashtags;
+        }
+        public Hashtag GetHashtag()
+        {
+            return this.Tag;
         }
         public String GetTitle()
         {

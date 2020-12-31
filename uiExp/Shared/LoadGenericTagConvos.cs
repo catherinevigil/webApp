@@ -283,7 +283,7 @@ namespace uiExp.Shared
         private static string poster5 { get; } =
             "Adrienne Rich";
 
-        private static string tags0 { get; } =
+        private static string tag { get; } =
             "philosophy";
 
         private static string tags1 { get; } =
@@ -327,7 +327,7 @@ namespace uiExp.Shared
 
         static LoadGenericTagConvos()
         {
-            ConvoList.Add(new PublicConvo(lines0, title0, poster0, tags0, feed0, LoadComments.CommentsList[0], replies0));
+            ConvoList.Add(new PublicConvo(lines0, title0, poster0, tag, feed0, LoadComments.CommentsList[0], replies0));
             ConvoList.Add(new PublicConvo(lines1, title1, poster1, tags1, feed1, LoadComments.CommentsList[1], replies1));
             ConvoList.Add(new PublicConvo(lines2, title2, poster2, tags2, feed2, LoadComments.CommentsList[2], replies2));
             ConvoList.Add(new PublicConvo(lines3, title3, poster3, tags3, feed3, LoadComments.CommentsList[3], replies3));
@@ -355,7 +355,7 @@ namespace uiExp.Shared
                 if (convo.HasSameTags(tags))
                 {
                     return convo;
-                    Console.WriteLine("found matching hashtag");
+                    Console.WriteLine("found matching conversation");
                 }
             }
             return null;

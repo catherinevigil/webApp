@@ -87,6 +87,19 @@ namespace uiExp.Shared
                 Tags.Add(new Hashtag(tag));
             }
         }
+
+        public static Hashtag GetTagByName(string name)
+        {
+            foreach (var tag in Tags)
+            {
+                if (tag.GetText() == name)
+                {
+                    return tag;
+                }
+            }
+            Console.WriteLine("will return null. no tag by that name: " + name);
+            return null;
+        }
     }
 }
 
