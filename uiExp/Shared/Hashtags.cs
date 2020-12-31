@@ -92,12 +92,15 @@ namespace uiExp.Shared
         {
             foreach (var tag in Tags)
             {
-                if (tag.GetText() == name)
+                if (tag.GetTag() == name)
                 {
                     return tag;
                 }
+                Console.WriteLine("tag: " + tag.GetTag()+ " name: " + name);
+
             }
-            Console.WriteLine("will return null. no tag by that name: " + name);
+
+            Console.WriteLine("will return null. " + name);
             return null;
         }
     }

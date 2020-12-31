@@ -45,7 +45,7 @@ namespace uiExp.Shared
                     {
                         if (this.Conversants.IndexOf(texter) == -1)
                             this.Conversants.Add(texter);
-                        //Console.WriteLine("added conversant" + texter.GetName());
+                        Console.WriteLine("added conversant" + texter.GetName());
                     }
                    // Console.WriteLine("added message group belonging to conversant" + texter.GetName());
                     this.Groups.Add(new MessageGroup(texter));

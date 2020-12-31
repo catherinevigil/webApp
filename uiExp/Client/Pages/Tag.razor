@@ -404,6 +404,12 @@
         rSelected = false;
         containsAllPeople = false;
         focus(searchInputRef);
+
+        convo = LoadGenericTagConvos.GetTagConvo(GetHashtags(searchList));
+        DumpityDump.Dump(convo.GetConversants());
+        DumpityDump.Dump(convo.GetFeedPreview().GetGroups().Last().Messages.Last());
+
+
         justAddedSearch = true;
     }
 
@@ -421,10 +427,14 @@
         var peopleRecievers = GetUsers(searchList);
         convo = LoadGenericTagConvos.GetOm(peopleRecievers);
         Console.WriteLine("convo conversants: ");
+        DumpityDump.Dump(convo.GetConversants());
+        DumpityDump.Dump(convo.GetFeedPreview().GetGroups().Last().Messages.Last());
         focus(searchInputRef);
+
         justAddedSearch = true;
         searchesInList = true;
         searchInput = "";
+
         //Console.WriteLine("recip list, user list: ");
         //DumpityDump.Dump(peopleRecievers);
         //Console.WriteLine("recip list, user names: ");
@@ -446,7 +456,6 @@
                 Console.WriteLine("not adding person");
             }
         }
-        list.Add(CurrentUser.cUser);
         return list;
     }
 
@@ -464,7 +473,6 @@
                 Console.WriteLine("not adding tag");
             }
         }
-        list.Add(null);
         return list;
     }
 
@@ -479,10 +487,7 @@
 
     private void noSearches()
     {
-        if (searchList.Count > 0)
-            convo = LoadGenericTagConvos.GetTagConvo(GetHashtags(searchList));
-        else
-            convo = null;
+        convo = null;
         searchesInList = false;
 
     }
@@ -707,8 +712,6 @@
         <div class="page-content-om-compose">
             <section class="aos-init " data-aos-once="false" data-aos-duration="600" id="content-container">
                 <div class="messages">
-                    @foreach (var group in convo.GetConversants()) ;
-                    {
                     <div class="header-text">
                         <h1 class="feed-title">@convo.GetTitle()</h1>
                         <p class="names">
@@ -729,7 +732,6 @@
                             </p>
                         }
                     </div>
-                    }
                 </div>
             </section>
         </div>

@@ -290,7 +290,7 @@ namespace uiExp.Shared
             "philosophy";
 
         private static string tags2 { get; } =
-            "existensialism";
+            "existentialism";
 
         private static string tags3 { get; } =
             "postmodernism";

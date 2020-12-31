@@ -43,17 +43,18 @@ namespace uiExp.Shared
             this.feedPreview.SetGroups(SetMessageSides(this.feedPreview.GetGroups()));
         }
 
-        public PublicConvo(string[] lines, string title, string poster, string tags, string[] preview, Comments com, int[] replies)
+        public PublicConvo(string[] lines, string title, string poster, string tag, string[] preview, Comments com, int[] replies)
         {
             this.Poster = Users.GetUserByName(poster);
             this.Title = title;
-            this.Tag = Hashtags.GetTagByName(tags);
+            this.Tag = Hashtags.GetTagByName(tag);
             this.conversation = new Conversation(lines);
             this.feedPreview = new FeedPreview(preview);
             this.comments = com;
             this.ResponseConvoNumbers = replies.ToList();
             this.conversation.Groups = SetMessageSides(this.conversation.Groups);
             this.feedPreview.SetGroups(SetMessageSides(this.feedPreview.GetGroups()));
+
         }
 
         public void dump(object a)
@@ -124,6 +125,7 @@ namespace uiExp.Shared
         }
         public List<User> GetConversants()
         {
+            DumpityDump.Dump(this.conversation.Conversants);
             return this.conversation.Conversants;
         }
         public List<Hashtag> GetTags()
@@ -173,15 +175,17 @@ namespace uiExp.Shared
             var tags = this.GetTags();
             foreach (var hashtag in hashtags)
             {
-                if (!(tags.Contains(hashtag)))
-                    return false;
+                if (hashtag == this.Tag)
+                {
+                    return true;
+                    Console.WriteLine("has one common tag!!!!!");
+                    DumpityDump.Dump(hashtags);
+                }
+               
+
             }
-            foreach (var hashtag in hashtags)
-            {
-                if (!(tags.Contains(hashtag)))
-                    return false;
-            }
-            return true;
+            Console.WriteLine("no common tag!!!!!");
+            return false;
         }
     }
 }
