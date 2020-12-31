@@ -33,6 +33,7 @@
     <Content Remove="wwwroot\tags.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="C:\Users\catyl\OneDrive\Documents\GitHub\webApp\Index.razor.css" Link="Pages\Index.razor.css" />
     <None Include="wwwroot\animateListen.js" />
     <None Include="wwwroot\tags.txt" />
   </ItemGroup>

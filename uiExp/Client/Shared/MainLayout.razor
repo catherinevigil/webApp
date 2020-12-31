@@ -119,85 +119,47 @@
             </div>
         </div>
     </div>*@
+@*Example desktop app: 
+        <div class ="page">
+    
+        <div class ="main">
+        //main info//
+        </div> 
 
+        <div class="side-nav"> 
+        //side menu area//
+        </div>
+
+        <div class="right-popup">
+        //this is a dynamic window//
+        </div>
+
+        </div>*@
 <div class="main">
-
-    @if (!ShowBottomNav() && !(InPm()))
-    {
-    <div class="top-row-inbox px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
-            arrow_back_ios
-        </span>
-        @if (InConvo())
-        {
-            <span class="convo-title">@LoadFeedConvos.ConvoList[GetConvoNum()].GetTitle()</span>
-        }
-        <div class="top-row2 px-4" id="right">
-        @if (InInbox())
-        {
-            <span class="material-icons">
-                select_all
-            </span>
-            <span class="material-icons" @onclick="NavigateCompose">
-                create
-            </span>
-        }
+    <div class="accordion-navpanel">
+         <span class="material-icons" @onclick="NavigateBack">
+                arrow_back_ios
+         </span>
+        <div class="accodrion">
+            <div class="card">
+                <span class="material-icons md-light">
+                    home
+                </span>
+            </div>
+            <div class="card">
+                <span class="material-icons md-light">
+                    inbox
+                </span>
+            </div>
+            <div class="card">
+                <span class="material-icons md-light">
+                    settings
+                </span>
+            </div>
         </div>
     </div>
-    }
-    else if (InProfile())
-    {
-    <div class="top-row px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
-            arrow_back_ios
-        </span>
-    </div>
-    }
-    else if (AtMylines())
-    {
-    <div class="top-row px-4" id="left">
-        <span class="material-icons" @onclick="NavigateBack">
-            arrow_back_ios
-        </span>
-        <div class="top-row px-4" id="right">
-            <span class="material-icons" @onclick="NavigatetoSettings">
-                settings
-            </span>
-        </div>
-    </div>
-    }
 
     @Body
-
-    @*in order to get this to stay fixed, need to specifiy position in line.*@
-    @if (ShowBottomNav())
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0">
-            <div class="nav-icon-container">
-                <i class="fas fa-home fa-2x icon" @onclick="NavigateBack"></i>
-                <img src="https://pbs.twimg.com/profile_images/1278702779666624512/etYprSkh_400x400.jpg" class="profile-link action" @onclick="NavigateMyLinesComponent">
-                <i class="fas fa-inbox fa-2x icon" @onclick="NavigateInboxComponent"></i>
-            </div>
-        </div>
-    }
-    else if (NavigationManager.Uri.Contains("request"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
-            <div @ref=inputDiv class="input-container" id="input-container-bottom">
-                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@RequestInputPlaceholder" style="resize:none" @bind="request" rows="1" @oninput="Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitRequest"></i>
-            </div>
-        </div>
-    }
-    else if (NavigationManager.Uri.Contains("convo"))
-    {
-        <div class="bottom-row px-4" style="position:fixed; bottom:0; height:@getBottomHeight()">
-            <div @ref=inputDiv class="input-container" id="input-container-bottom">
-                <textarea id="inputTextArea" class="comment-reply-message-input" placeholder="@CommentInputPlaceholder" style="resize:none" @bind="convoComment" rows="1" @oninput="Resize" />
-                <i class="fas fa-arrow-up icon sendButton" @onclick="@submitComment"></i>
-            </div>
-        </div>
-    }
 </div>
 
 @*on input to bottom comment/reply input, will need to hide header. input box will grow and it will get ugly*@
