@@ -137,25 +137,50 @@
         </div>*@
 <div class="main">
     <div class="accordion-navpanel">
-         <span class="material-icons" @onclick="NavigateBack">
-                arrow_back_ios
-         </span>
         <div class="accodrion">
             <div class="card">
-                <span class="material-icons md-light">
+               <span class="material-icons md-light">
                     home
-                </span>
+               </span>
+               <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Feed
+                  </button>
+               </h2>
             </div>
             <div class="card">
                 <span class="material-icons md-light">
                     inbox
                 </span>
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Inbox
+                    </button>
+                </h2>
             </div>
             <div class="card">
                 <span class="material-icons md-light">
                     settings
                 </span>
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Settings
+                    </button>
+                </h2>
             </div>
+        </div>
+    </div>
+    <div class="right-panel">
+        <div class="lines-content">
+            <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
+                <div class="comments">
+                    @for (int x = 0; x < 6; x++)
+                    {
+                        <LineComponent requestI="LoadRequests.RequestList[x]"></LineComponent>
+                        <hr style="border-top:1px solid white;">
+                    }
+                </div>
+            </section>
         </div>
     </div>
 

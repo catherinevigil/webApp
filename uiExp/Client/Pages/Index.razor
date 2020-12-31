@@ -160,36 +160,21 @@
     </div>*@
 @*<body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">*@
 <div class="content">
-    <div class="top-float">
+    <div class="top-float" style="width: 65%; position: relative">
         @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
-
         <div class="feed-name-container" @onclick="SwitchLeft" style="color:@GetLeftColor()">
             Discover
         </div>
         <div class="feed-name-container" @onclick="SwitchRight" style="color:@GetRightColor()">
             Following
         </div>
-        <div class="top-float-selector" id="@GetSelector()">
+        <div class="top-float-selector" style="width:50%" id="@GetSelector()">
         </div>
     </div>
 </div>
 
 @if (!selectorRight)
 {
-    <div style="height:15px">
-    </div>
-    <div class="lines-content">
-        <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
-            <div class="comments">
-                @for (int x = 0; x < 6; x++)
-                {
-                    <LineComponent requestI="LoadRequests.RequestList[x]"></LineComponent>
-                    <hr style="border-top:1px solid white;">
-                }
-            </div>
-        </section>
-
-    </div>
     <div class="page-content">
         <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
             @*<div style="height:150px">
@@ -265,10 +250,8 @@
 else
 {
     @*
-        add code for 'following' feed here
+        following code goes here
     *@
-    <div style="height:15px">
-    </div>
     <div class="page-content">
         <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
             @*<div style="height:150px">

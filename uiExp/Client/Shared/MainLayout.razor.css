@@ -22,12 +22,29 @@
 }
 
 .card{
-    background-color: black; 
+    display: flex; 
+    flex-direction: row; 
+    background-color: #111; 
+}
+
+.btn .btn-link{
+    color: white;  
 }
 
 .material-icons {
     cursor: pointer;
     color: lightgray;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 25%;
+    right: 0;
+    top: 0;
+    background-color: #111;
+    position: fixed; 
 }
 
 .top-row#left {
