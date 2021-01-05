@@ -98,7 +98,7 @@
         }
 
     @*The code below replaces the selector construction. I wanted something less-mobile-looking, and the selector was proving difficult to style*@
-    <body id="page" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+    <body id="page" style="width: 60%" data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
         <nav class="top">
             <div class="container-fluid">
                 @* text should appear black when selector is over it but text is hidden. z indexing not working :/*@
@@ -106,7 +106,7 @@
                 <button @onclick="FeedStateFollowing" class="btn btn-link" style="color: white">Following</button>
             </div>
         </nav>
-        <div class="feed" style="margin-right: 30%">
+        <div class="feed" style="margin-right: 30%; width: 60%">
             @if (discover)
             {
                 <div class="page-content">
