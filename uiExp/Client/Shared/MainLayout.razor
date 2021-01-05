@@ -139,41 +139,44 @@
     <div class="accordion-navpanel">
         <div class="accodrion">
             <div class="card">
-               <span class="material-icons md-light">
-                    home
-               </span>
-               <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Feed
-                  </button>
-               </h2>
+                <a class="btn btn-link" href="/" style="color: white" type="button">
+                    Feed
+                    <span class="material-icons md-light" style="float: left; margin-right: 8px">
+                        home
+                    </span>
+                </a>
             </div>
             <div class="card">
-                <span class="material-icons md-light">
-                    inbox
-                </span>
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Inbox
-                    </button>
-                </h2>
+                <a class="btn btn-link" href="/inbox" style="color: white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Inbox
+                    <span class="material-icons md-light" style="float: left; margin-right: 8px">
+                        inbox
+                    </span>
+                </a>
             </div>
             <div class="card">
-                <span class="material-icons md-light">
-                    settings
-                </span>
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Settings
-                    </button>
-                </h2>
+                <a class="btn btn-link" href="/mylines" style="color: white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    MyLines
+                    <span class="material-icons md-light" style="float: left; margin-right: 8px">
+                        account_circle
+                    </span>
+                </a>
+            </div>
+            <div class="card">
+                <a class="btn btn-link" href="/settings" style="color: white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Settings
+                    <span class="material-icons md-light" style="float: left; margin-right: 8px">
+                        settings
+                    </span>
+                </a>
             </div>
         </div>
     </div>
-    <div class="right-panel">
+    <div class="Inspect-Panel">
+        <h4>ByLines</h4>
         <div class="lines-content">
             <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
-                <div class="comments">
+                <div class="comments" style="font-size: smaller">
                     @for (int x = 0; x < 6; x++)
                     {
                         <LineComponent requestI="LoadRequests.RequestList[x]"></LineComponent>
@@ -183,8 +186,9 @@
             </section>
         </div>
     </div>
-
-    @Body
+    <div class="contents">
+        @Body
+    </div>
 </div>
 
 @*on input to bottom comment/reply input, will need to hide header. input box will grow and it will get ugly*@

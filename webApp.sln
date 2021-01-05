@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.808.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uiExp.Server", "uiExp\Server\uiExp.Server.csproj", "{6862BB43-D935-4D9D-B374-7EF85477B3B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uiExp.Server", "uiExp\Server\uiExp.Server.csproj", "{6862BB43-D935-4D9D-B374-7EF85477B3B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uiExp.Client", "uiExp\Client\uiExp.Client.csproj", "{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uiExp.Client", "uiExp\Client\uiExp.Client.csproj", "{B080EBA6-4477-4620-BAC4-078EA0FEB6D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uiExp.Shared", "uiExp\Shared\uiExp.Shared.csproj", "{22661C68-70A8-493C-9514-002C4D8A4A9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uiExp.Shared", "uiExp\Shared\uiExp.Shared.csproj", "{22661C68-70A8-493C-9514-002C4D8A4A9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
