@@ -42,21 +42,21 @@
 
 }
 
-<div class="comment">
+<div class="comment" style="max-width: 90%">
     <div class="commenter-photo-div">
         <LinkedImage Conversant="@requestI.GetPoster()"></LinkedImage>
     </div>
     <div class="comment-div">
-        <div class="comment-tight-div"
-            <p style="text-align:center; color:lightgray" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="60" data-aos-anchor-placement="@FadeInAnchorP">
-                <span data-aos="slow-partial-fade" data-aos-duration="600" data-aos-offset="-100px" data-aos-anchor-placement="top-top" style="color:lightgray">
+        <div class="comment-tight-div">
+            <p style="text-align:center; color:lightgray">
+                <span  style="color:lightgray;">
                     <LinkedName Conversant="@requestI.GetPoster()"></LinkedName>
                 </span>
             </p>
 
             @for (int i = 1; i < bubbleNum; i++)
             {
-                <p class="comment-text aos-init" data-aos="fade" data-aos-once="false" data-aos-duration="600" data-aos-offset="@BottomFadeOffset" data-aos-anchor-placement="@FadeInAnchorP">
+                <p class="comment-text" style="display: flex; flex-direction: column; max-width: 95%">
                     <span style="background-color:@color"> @requestI.GetBubbles()[i].Text</span>
                 </p>
             }

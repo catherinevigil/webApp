@@ -140,9 +140,9 @@
         <div class="accodrion">
             <div class="card">
                 <a class="btn btn-link" href="/" style="color: white" type="button">
-                    Feed
+                    Explore
                     <span class="material-icons md-light" style="float: left; margin-right: 8px">
-                        home
+                        explore
                     </span>
                 </a>
             </div>
@@ -173,9 +173,10 @@
         </div>
     </div>
     <div class="Inspect-Panel" id="inspect">
-        <div class="lines-content">
+        <h4 style="color: white; font-weight: bold; text-align: center; padding-bottom: .5em">Lines</h4>
+        <div class="lines-content" style="height: 100%; border-top: solid thin white">
             <section class="aos-init" data-aos-once="false" data-aos-duration="600" id="content-container">
-                <div class="comments" style="font-size: smaller">
+                <div class="comments" style="font-size: smaller; display: flex; flex-direction: column; height: 100%">
                     @for (int x = 0; x < 6; x++)
                     {
                         <LineComponent requestI="LoadRequests.RequestList[x]"></LineComponent>
